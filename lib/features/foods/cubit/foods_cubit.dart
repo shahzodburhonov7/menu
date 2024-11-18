@@ -4,12 +4,14 @@ import 'package:restaurants_menu/common/base/base_cubit.dart';
 import 'package:restaurants_menu/domain/repo/category/category_repo.dart';
 import 'package:restaurants_menu/domain/repo/order/order_repo.dart';
 import 'package:restaurants_menu/domain/repo/product/products_repo.dart';
+import 'package:restaurants_menu/domain/repo/table/table_repo.dart';
 import 'package:restaurants_menu/domain/storage/storage.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_state.dart';
 
 @injectable
 class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
-  FoodsCubit(this.repo, this.productRepo, this.storage, this.orderRepo)
+  FoodsCubit(
+      this.repo, this.productRepo, this.storage, this.orderRepo, this.tableRepo)
       : super(const FoodsBuildable()) {
     userType();
   }
@@ -18,6 +20,20 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
   final FoodCategoryRepo repo;
   final ProductsRepo productRepo;
   final Storage storage;
+  final TableRepo tableRepo;
+
+  void selectTable({required int tableNumber}) {
+    build((buildable) => buildable.copyWith(tableNumber: tableNumber));
+  }
+
+  void getAllTable() {
+    callable(
+      future: tableRepo.getTable(),
+      buildOnStart: () => buildable.copyWith(loading: true),
+      buildOnData: (d) => buildable.copyWith(loading: false, getTableList: d),
+      buildOnError: (e) => buildable.copyWith(loading: false),
+    );
+  }
 
   void postOrder({
     required int foodId,
@@ -29,6 +45,18 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
       buildOnStart: () => buildable.copyWith(orderLoading: true),
       buildOnData: (d) => buildable.copyWith(orderLoading: false),
       buildOnError: (e) => buildable.copyWith(orderLoading: false),
+    );
+  }
+
+  void tableOrder({required int number}) {
+    callable(
+        future: orderRepo.orderTable(number: number),
+        buildOnStart: () => buildable.copyWith(orderLoading: true),
+        buildOnData: (d) =>
+            buildable.copyWith(orderLoading: false, tableOrder: d),
+        buildOnError: (e) => buildable.copyWith(orderLoading: false));
+    debugPrint(
+      "debug ======> ${buildable.tableOrder}",
     );
   }
 

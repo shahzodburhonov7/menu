@@ -7,20 +7,17 @@ import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/widgets/common_search_field.dart';
-import 'package:restaurants_menu/common/widgets/custom_button.dart';
-import 'package:restaurants_menu/domain/model/table_process/table_process.dart';
-import 'package:restaurants_menu/features/process/cubit/process_cubit.dart';
-import 'package:restaurants_menu/features/process/cubit/process_state.dart';
+import 'package:restaurants_menu/domain/model/order_done_list/order_done_list.dart';
+import 'package:restaurants_menu/features/done_order/cubit/done_cubit.dart';
+import 'package:restaurants_menu/features/done_order/cubit/done_state.dart';
 
 @RoutePage()
-class ProcessPage
-    extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
-  const ProcessPage({super.key});
+class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
+  const DonePage({super.key});
 
   @override
   void init(BuildContext context) {
-    context.read<ProcessCubit>().processList();
+    context.read<DoneCubit>().orderDoneList();
     super.init(context);
   }
 
@@ -30,26 +27,21 @@ class ProcessPage
   }
 
   @override
-  Widget builder(BuildContext context, ProcessBuildable state) {
-    final cubit = context.read<ProcessCubit>();
-    return Scaffold(
-      resizeToAvoidBottomInset: true,
-      extendBodyBehindAppBar: true,
-      body: state.loading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : SingleChildScrollView(
+  Widget builder(BuildContext context, state) {
+    final cubit = context.read<DoneCubit>();
+    return state.loading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : Scaffold(
+            body: SingleChildScrollView(
               child: Column(
                 children: [
-                  CommonSearchField(
-                    height: 44.h,
-                  ),
                   SizedBox(
                     height: 32.h,
                   ),
                   ...List.generate(
-                    state.tableProcess.length,
+                    state.orderDoneList.length,
                     (index) {
                       return Column(
                         children: [
@@ -63,7 +55,7 @@ class ProcessPage
                                         fontWeight: FontWeight.w700),
                                   ),
                             trailing: Text(
-                              formatDate(state.tableProcess[index]!.created_at
+                              formatDate(state.orderDoneList[index].created_at
                                   .toString()),
                               style: const TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w700),
@@ -71,18 +63,14 @@ class ProcessPage
                           ),
                           Card(
                             color: Color(0xffFFFFFF),
-                            child: ItemWidget(
-                              price: state.tableProcess[index]!.total_price
+                            child: ItemOrderDone(
+                              price: state.orderDoneList[index].total_price
                                   .toString(),
-                              table: state.tableProcess[index]!.cart!.table
+                              table: state.orderDoneList[index].cart!.table
                                   .toString(),
                               cartItems:
-                                  state.tableProcess[index]!.cart!.cart_items!,
-                              onTap: () {
-                                cubit.orderDone(
-                                  orderId: state.tableProcess[index]!.id!,
-                                );
-                              },
+                                  state.orderDoneList[index].cart!.cart_items!,
+                              onTap: () {},
                             ),
                           ),
                         ],
@@ -92,12 +80,12 @@ class ProcessPage
                 ],
               ),
             ),
-    );
+          );
   }
 }
 
-class ItemWidget extends StatelessWidget {
-  ItemWidget({
+class ItemOrderDone extends StatelessWidget {
+  ItemOrderDone({
     super.key,
     this.cartItems,
     this.price,
@@ -191,29 +179,6 @@ class ItemWidget extends StatelessWidget {
             children: [
               "Stol raqami:".s(16.sp).w(600),
               "$table".s(20.sp).w(600),
-            ],
-          ),
-        ),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8, vertical: 28),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(
-                  onTap: () {},
-                  text: "Tahrirlash",
-                  size: 14.sp,
-                  radius: 8,
-                  width: 150.w,
-                  height: 44.h),
-              CustomButton(
-                radius: 8,
-                onTap: onTap,
-                text: "Tugatish",
-                width: 150.w,
-                size: 14.sp,
-                height: 44.h,
-              ),
             ],
           ),
         ),

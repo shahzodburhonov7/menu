@@ -19,8 +19,9 @@ mixin _$StoreBuildable {
   int get tableNumber => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   bool get orderLoading => throw _privateConstructorUsedError;
+  bool get confirmLoading => throw _privateConstructorUsedError;
   List<dynamic> get getTableList => throw _privateConstructorUsedError;
-  TableOrder get tableOrder => throw _privateConstructorUsedError;
+  TableOrder? get tableOrder => throw _privateConstructorUsedError;
 
   /// Create a copy of StoreBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -39,10 +40,11 @@ abstract class $StoreBuildableCopyWith<$Res> {
       {int tableNumber,
       bool loading,
       bool orderLoading,
+      bool confirmLoading,
       List<dynamic> getTableList,
-      TableOrder tableOrder});
+      TableOrder? tableOrder});
 
-  $TableOrderCopyWith<$Res> get tableOrder;
+  $TableOrderCopyWith<$Res>? get tableOrder;
 }
 
 /// @nodoc
@@ -63,8 +65,9 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
     Object? tableNumber = null,
     Object? loading = null,
     Object? orderLoading = null,
+    Object? confirmLoading = null,
     Object? getTableList = null,
-    Object? tableOrder = null,
+    Object? tableOrder = freezed,
   }) {
     return _then(_value.copyWith(
       tableNumber: null == tableNumber
@@ -79,14 +82,18 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      confirmLoading: null == confirmLoading
+          ? _value.confirmLoading
+          : confirmLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       getTableList: null == getTableList
           ? _value.getTableList
           : getTableList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      tableOrder: null == tableOrder
+      tableOrder: freezed == tableOrder
           ? _value.tableOrder
           : tableOrder // ignore: cast_nullable_to_non_nullable
-              as TableOrder,
+              as TableOrder?,
     ) as $Val);
   }
 
@@ -94,8 +101,12 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TableOrderCopyWith<$Res> get tableOrder {
-    return $TableOrderCopyWith<$Res>(_value.tableOrder, (value) {
+  $TableOrderCopyWith<$Res>? get tableOrder {
+    if (_value.tableOrder == null) {
+      return null;
+    }
+
+    return $TableOrderCopyWith<$Res>(_value.tableOrder!, (value) {
       return _then(_value.copyWith(tableOrder: value) as $Val);
     });
   }
@@ -113,11 +124,12 @@ abstract class _$$StoreBuildableImplCopyWith<$Res>
       {int tableNumber,
       bool loading,
       bool orderLoading,
+      bool confirmLoading,
       List<dynamic> getTableList,
-      TableOrder tableOrder});
+      TableOrder? tableOrder});
 
   @override
-  $TableOrderCopyWith<$Res> get tableOrder;
+  $TableOrderCopyWith<$Res>? get tableOrder;
 }
 
 /// @nodoc
@@ -136,8 +148,9 @@ class __$$StoreBuildableImplCopyWithImpl<$Res>
     Object? tableNumber = null,
     Object? loading = null,
     Object? orderLoading = null,
+    Object? confirmLoading = null,
     Object? getTableList = null,
-    Object? tableOrder = null,
+    Object? tableOrder = freezed,
   }) {
     return _then(_$StoreBuildableImpl(
       tableNumber: null == tableNumber
@@ -152,14 +165,18 @@ class __$$StoreBuildableImplCopyWithImpl<$Res>
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      confirmLoading: null == confirmLoading
+          ? _value.confirmLoading
+          : confirmLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       getTableList: null == getTableList
           ? _value._getTableList
           : getTableList // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      tableOrder: null == tableOrder
+      tableOrder: freezed == tableOrder
           ? _value.tableOrder
           : tableOrder // ignore: cast_nullable_to_non_nullable
-              as TableOrder,
+              as TableOrder?,
     ));
   }
 }
@@ -171,8 +188,9 @@ class _$StoreBuildableImpl implements _StoreBuildable {
       {this.tableNumber = 0,
       this.loading = false,
       this.orderLoading = false,
+      this.confirmLoading = false,
       final List<dynamic> getTableList = const [],
-      this.tableOrder = const TableOrder()})
+      this.tableOrder})
       : _getTableList = getTableList;
 
   @override
@@ -184,6 +202,9 @@ class _$StoreBuildableImpl implements _StoreBuildable {
   @override
   @JsonKey()
   final bool orderLoading;
+  @override
+  @JsonKey()
+  final bool confirmLoading;
   final List<dynamic> _getTableList;
   @override
   @JsonKey()
@@ -194,12 +215,11 @@ class _$StoreBuildableImpl implements _StoreBuildable {
   }
 
   @override
-  @JsonKey()
-  final TableOrder tableOrder;
+  final TableOrder? tableOrder;
 
   @override
   String toString() {
-    return 'StoreBuildable(tableNumber: $tableNumber, loading: $loading, orderLoading: $orderLoading, getTableList: $getTableList, tableOrder: $tableOrder)';
+    return 'StoreBuildable(tableNumber: $tableNumber, loading: $loading, orderLoading: $orderLoading, confirmLoading: $confirmLoading, getTableList: $getTableList, tableOrder: $tableOrder)';
   }
 
   @override
@@ -212,6 +232,8 @@ class _$StoreBuildableImpl implements _StoreBuildable {
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.orderLoading, orderLoading) ||
                 other.orderLoading == orderLoading) &&
+            (identical(other.confirmLoading, confirmLoading) ||
+                other.confirmLoading == confirmLoading) &&
             const DeepCollectionEquality()
                 .equals(other._getTableList, _getTableList) &&
             (identical(other.tableOrder, tableOrder) ||
@@ -224,6 +246,7 @@ class _$StoreBuildableImpl implements _StoreBuildable {
       tableNumber,
       loading,
       orderLoading,
+      confirmLoading,
       const DeepCollectionEquality().hash(_getTableList),
       tableOrder);
 
@@ -242,8 +265,9 @@ abstract class _StoreBuildable implements StoreBuildable {
       {final int tableNumber,
       final bool loading,
       final bool orderLoading,
+      final bool confirmLoading,
       final List<dynamic> getTableList,
-      final TableOrder tableOrder}) = _$StoreBuildableImpl;
+      final TableOrder? tableOrder}) = _$StoreBuildableImpl;
 
   @override
   int get tableNumber;
@@ -252,9 +276,11 @@ abstract class _StoreBuildable implements StoreBuildable {
   @override
   bool get orderLoading;
   @override
+  bool get confirmLoading;
+  @override
   List<dynamic> get getTableList;
   @override
-  TableOrder get tableOrder;
+  TableOrder? get tableOrder;
 
   /// Create a copy of StoreBuildable
   /// with the given fields replaced by the non-null parameter values.

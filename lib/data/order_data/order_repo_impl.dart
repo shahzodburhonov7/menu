@@ -31,4 +31,16 @@ class OrderRepoImpl extends OrderRepo {
     );
     return response.data;
   }
+
+  @override
+  Future<void> orderConfirm({required orderId}) async {
+    await orderApi.orderConfirm(
+      orderId: orderId,
+    );
+  }
+
+  @override
+  Future<void> orderDelete({required String cartItem}) async {
+    await orderApi.orderDelete(cartDelete: cartItem);
+  }
 }

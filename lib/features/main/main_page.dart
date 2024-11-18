@@ -24,7 +24,7 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
       state.type == "afitsant" ? const HomePage() : FoodsPage(),
       const HistoryPage(),
       const StorePage(),
-      const SettingsPage(),
+       SettingsPage(),
       const ProfilePage(),
     ];
     return Scaffold(

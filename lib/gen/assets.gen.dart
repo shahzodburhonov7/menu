@@ -107,6 +107,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/story.svg
   SvgGenImage get story => const SvgGenImage('assets/icons/story.svg');
 
+  /// File path: assets/icons/uzb.svg
+  SvgGenImage get uzb => const SvgGenImage('assets/icons/uzb.svg');
+
   /// File path: assets/icons/verify.png
   AssetGenImage get verify => const AssetGenImage('assets/icons/verify.png');
 
@@ -140,6 +143,7 @@ class $AssetsIconsGen {
         slave,
         splash,
         story,
+        uzb,
         verify
       ];
 }

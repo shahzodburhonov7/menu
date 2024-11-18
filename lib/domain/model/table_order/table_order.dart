@@ -11,28 +11,14 @@ String tableOrderToJson(TableOrder data) => json.encode(data.toJson());
 @freezed
 class TableOrder with _$TableOrder {
   const factory TableOrder({
-    int? order_id,
-    String? status,
-    DateTime? created_at,
-    Cart? cart,
-    int? total_price,
-    int? table_number,
-  }) = _TableOrder;
-
-  factory TableOrder.fromJson(Map<String, dynamic> json) => _$TableOrderFromJson(json);
-}
-
-@freezed
-class Cart with _$Cart {
-  const factory Cart({
     int? id,
     int? user,
     int? table,
     int? total_price,
     List<CartItem>? cart_items,
-  }) = _Cart;
+  }) = _TableOrder;
 
-  factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
+  factory TableOrder.fromJson(Map<String, dynamic> json) => _$TableOrderFromJson(json);
 }
 
 @freezed

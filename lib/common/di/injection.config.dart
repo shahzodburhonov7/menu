@@ -25,9 +25,16 @@ import 'package:restaurants_menu/data/food_category/food_category_repo_impl.dart
     as _i610;
 import 'package:restaurants_menu/data/order_data/order_api.dart' as _i352;
 import 'package:restaurants_menu/data/order_data/order_repo_impl.dart' as _i521;
+import 'package:restaurants_menu/data/process_data/order_process_api.dart'
+    as _i784;
+import 'package:restaurants_menu/data/process_data/order_process_impl.dart'
+    as _i247;
 import 'package:restaurants_menu/data/products_data/products_api.dart' as _i900;
 import 'package:restaurants_menu/data/products_data/products_repo_impl.dart'
     as _i351;
+import 'package:restaurants_menu/data/profile_data/profile_api.dart' as _i159;
+import 'package:restaurants_menu/data/profile_data/profile_repo_impl.dart'
+    as _i443;
 import 'package:restaurants_menu/data/start_repo_impl.dart' as _i126;
 import 'package:restaurants_menu/data/table_data/table_api.dart' as _i108;
 import 'package:restaurants_menu/data/table_data/table_repo_impl.dart' as _i691;
@@ -38,13 +45,19 @@ import 'package:restaurants_menu/domain/repo/category/category_repo.dart'
     as _i160;
 import 'package:restaurants_menu/domain/repo/order/order_repo.dart' as _i479;
 import 'package:restaurants_menu/domain/repo/product/products_repo.dart' as _i7;
+import 'package:restaurants_menu/domain/repo/profile/profile_repo.dart'
+    as _i1070;
 import 'package:restaurants_menu/domain/repo/start_repo.dart' as _i975;
 import 'package:restaurants_menu/domain/repo/table/table_repo.dart' as _i713;
+import 'package:restaurants_menu/domain/repo/table_process_repo/table_process_repo.dart'
+    as _i66;
 import 'package:restaurants_menu/domain/storage/storage.dart' as _i314;
 import 'package:restaurants_menu/features/about_page/cubit/about_cubit.dart'
     as _i20;
 import 'package:restaurants_menu/features/auth/login/cubit/login_cubit.dart'
     as _i833;
+import 'package:restaurants_menu/features/done_order/cubit/done_cubit.dart'
+    as _i809;
 import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart'
     as _i521;
 import 'package:restaurants_menu/features/history/cubit/history_cubit.dart'
@@ -79,9 +92,7 @@ extension GetItInjectableX on _i174.GetIt {
     final networkModule = _$NetworkModule();
     gh.factory<_i625.HistoryCubit>(() => _i625.HistoryCubit());
     gh.factory<_i907.HomeCubit>(() => _i907.HomeCubit());
-    gh.factory<_i552.ProfileCubit>(() => _i552.ProfileCubit());
     gh.factory<_i1026.SettingsCubit>(() => _i1026.SettingsCubit());
-    gh.factory<_i13.ProcessCubit>(() => _i13.ProcessCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
     gh.lazySingleton<_i276.LocaleProvider>(() => _i276.LocaleProvider());
     await gh.lazySingletonAsync<_i314.Storage>(
@@ -102,6 +113,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i636.FoodCategoryApi(gh<_i361.Dio>()));
     gh.factory<_i108.TableApi>(() => _i108.TableApi(gh<_i361.Dio>()));
     gh.factory<_i352.OrderApi>(() => _i352.OrderApi(gh<_i361.Dio>()));
+    gh.factory<_i784.OrderProcessApi>(
+        () => _i784.OrderProcessApi(gh<_i361.Dio>()));
+    gh.factory<_i159.ProfileApi>(() => _i159.ProfileApi(gh<_i361.Dio>()));
     gh.factory<_i479.OrderRepo>(
         () => _i521.OrderRepoImpl(gh<_i352.OrderApi>()));
     gh.factory<_i379.AuthApi>(() => _i379.AuthApi(gh<_i361.Dio>()));
@@ -109,6 +123,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i108.TableApi>(),
           gh<_i314.Storage>(),
         ));
+    gh.factory<_i66.TableProcessRepo>(
+        () => _i247.OrderProcessImpl(gh<_i784.OrderProcessApi>()));
     gh.factory<_i7.ProductsRepo>(
         () => _i351.ProductsRepoImpl(gh<_i900.ProductsApi>()));
     gh.factory<_i308.TableCubit>(() => _i308.TableCubit(gh<_i713.TableRepo>()));
@@ -116,6 +132,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i379.AuthApi>(),
           gh<_i314.Storage>(),
         ));
+    gh.factory<_i1070.ProfileRepo>(
+        () => _i443.ProfileRepoImpl(gh<_i159.ProfileApi>()));
+    gh.factory<_i13.ProcessCubit>(
+        () => _i13.ProcessCubit(gh<_i66.TableProcessRepo>()));
+    gh.factory<_i809.DoneCubit>(
+        () => _i809.DoneCubit(gh<_i66.TableProcessRepo>()));
     gh.factory<_i160.FoodCategoryRepo>(
         () => _i610.FoodCategoryImpl(gh<_i636.FoodCategoryApi>()));
     gh.factory<_i929.StoreCubit>(() => _i929.StoreCubit(
@@ -124,11 +146,14 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i833.LoginCubit>(
         () => _i833.LoginCubit(gh<_i185.AuthRepository>()));
+    gh.factory<_i552.ProfileCubit>(
+        () => _i552.ProfileCubit(gh<_i1070.ProfileRepo>()));
     gh.factory<_i521.FoodsCubit>(() => _i521.FoodsCubit(
           gh<_i160.FoodCategoryRepo>(),
           gh<_i7.ProductsRepo>(),
           gh<_i314.Storage>(),
           gh<_i479.OrderRepo>(),
+          gh<_i713.TableRepo>(),
         ));
     gh.factory<_i20.AboutCubit>(() => _i20.AboutCubit(gh<_i7.ProductsRepo>()));
     return this;

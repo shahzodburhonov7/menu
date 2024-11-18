@@ -7,7 +7,6 @@ import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/common_search_field.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_state.dart';
 import 'package:restaurants_menu/features/foods/widget/food_card.dart';
@@ -21,6 +20,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   @override
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
+    context.read<FoodsCubit>().getAllTable();
 
     super.init(context);
   }
@@ -47,13 +47,27 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 icon: Assets.icons.back.svg(),
               ),
         actions: [
-          Padding(
-            padding: REdgeInsets.only(right: 10),
-            child: GestureDetector(
+          DropdownButton<int>(
+            hint: Text("00"),
+            onChanged: (value) {
+              context.read<FoodsCubit>().selectTable(
+                    tableNumber: value!,
+                  );
+            },
+            items: state.getTableList.map<DropdownMenuItem<int>>((table) {
+              return DropdownMenuItem<int>(
                 onTap: () {
-                  boxOrder.clear();
+                  context.read<FoodsCubit>().tableOrder(
+                        number: table["cart_id"],
+                      );
                 },
-                child: Assets.icons.notifaction.svg()),
+                value: table["number"],
+                child: Text(
+                  "${table["number"]}",
+                  style: const TextStyle(color: Colors.blue),
+                ),
+              );
+            }).toList(),
           )
         ],
       ),
@@ -139,7 +153,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
           ),
         ),
       ),
-      bottomSheet: boxOrder.isNotEmpty
+      bottomSheet: state.tableOrder!.cart_items!.isNotEmpty
           ? Container(
               color: AppColors.appColorOrange,
               height: 48.h,
@@ -158,12 +172,12 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                       "Korzinka".s(16.sp).w(500),
                       CircleAvatar(
                         backgroundColor: AppColors.circleAvatar,
-                        child: " ${state.orderCount}"
+                        child: "${state.tableOrder!.cart_items!.length}"
                             .s(16.sp)
                             .w(600)
                             .a(TextAlign.center),
                       ),
-                      "64 000 UZS".s(16.sp).w(500)
+                      "${state.tableOrder!.total_price!}".s(16.sp).w(500)
                     ],
                   ),
                 ),

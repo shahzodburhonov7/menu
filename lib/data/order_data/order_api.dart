@@ -9,12 +9,25 @@ class OrderApi {
   OrderApi(this.dio);
 
   Future<Response> orderTable({required int id}) async {
+    return await dio.get(
+    "${Constants.apiOrder}$id/",
+
+    );
+  }
+
+  Future<Response> orderConfirm({required int orderId}) async {
     return await dio.post(
-      Constants.apiOrder,
+      Constants.apiOrderCreate,
       data: FormData.fromMap(
-        {"cart ": id},
+        {
+          "cart": orderId,
+        },
       ),
     );
+  }
+
+  Future<Response> orderDelete({required String cartDelete}) async {
+    return await dio.delete("${Constants.apiCartDelete}$cartDelete/delete/");
   }
 
   Future<Response> orderSales({

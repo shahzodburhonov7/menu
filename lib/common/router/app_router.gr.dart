@@ -25,6 +25,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    DoneRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const DonePage(),
+      );
+    },
     FoodsRoute.name: (routeData) {
       final args = routeData.argsAs<FoodsRouteArgs>(
           orElse: () => const FoodsRouteArgs());
@@ -74,9 +80,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     SettingsRoute.name: (routeData) {
+      final args = routeData.argsAs<SettingsRouteArgs>(
+          orElse: () => const SettingsRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SettingsPage(),
+        child: SettingsPage(key: args.key),
       );
     },
     SplashRoute.name: (routeData) {
@@ -135,6 +143,20 @@ class AboutRouteArgs {
   String toString() {
     return 'AboutRouteArgs{foodId: $foodId, key: $key}';
   }
+}
+
+/// generated route for
+/// [DonePage]
+class DoneRoute extends PageRouteInfo<void> {
+  const DoneRoute({List<PageRouteInfo>? children})
+      : super(
+          DoneRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DoneRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -279,16 +301,31 @@ class ProfileRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SettingsPage]
-class SettingsRoute extends PageRouteInfo<void> {
-  const SettingsRoute({List<PageRouteInfo>? children})
-      : super(
+class SettingsRoute extends PageRouteInfo<SettingsRouteArgs> {
+  SettingsRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           SettingsRoute.name,
+          args: SettingsRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SettingsRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SettingsRouteArgs> page =
+      PageInfo<SettingsRouteArgs>(name);
+}
+
+class SettingsRouteArgs {
+  const SettingsRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'SettingsRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:restaurants_menu/features/done_order/done_page.dart';
 import 'package:restaurants_menu/features/history/cubit/history_cubit.dart';
 import 'package:restaurants_menu/features/history/cubit/history_state.dart';
 import 'package:restaurants_menu/features/process/process_page.dart';
@@ -18,7 +19,6 @@ class HistoryPage
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-
         appBar: AppBar(
           title: "Buyurtmalar tarixi".s(24.sp).w(600),
           centerTitle: true,
@@ -66,16 +66,11 @@ class HistoryPage
               SizedBox(
                 height: 28.h,
               ),
-
               const Expanded(
                 child: TabBarView(
                   children: [
                     ProcessPage(),
-                    Center(
-                      child: Text(
-                        'Archived Page',
-                      ),
-                    ),
+                    DonePage(),
                   ],
                 ),
               ),

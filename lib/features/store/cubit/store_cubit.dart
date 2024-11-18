@@ -17,15 +17,16 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
 
   void getAllTable() {
     callable(
-        future: repo.getTable(),
-        buildOnStart: () => buildable.copyWith(loading: true),
-        buildOnData: (d) => buildable.copyWith(loading: false, getTableList: d),
-        buildOnError: (e) => buildable.copyWith(loading: false));
+      future: repo.getTable(),
+      buildOnStart: () => buildable.copyWith(loading: true),
+      buildOnData: (d) => buildable.copyWith(loading: false, getTableList: d),
+      buildOnError: (e) => buildable.copyWith(loading: false),
+    );
   }
 
   void tableOrder({required int number}) {
     callable(
-        future: orderRepo.orderTable(number: 68),
+        future: orderRepo.orderTable(number: number),
         buildOnStart: () => buildable.copyWith(orderLoading: true),
         buildOnData: (d) =>
             buildable.copyWith(orderLoading: false, tableOrder: d),
@@ -33,5 +34,25 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     debugPrint(
       "debug ======> ${buildable.tableOrder}",
     );
+  }
+
+  void orderConfirm({required int orderId}) {
+    callable(
+      future: orderRepo.orderConfirm(orderId: orderId),
+      buildOnStart: () => buildable.copyWith(confirmLoading: true),
+      buildOnData: (d) => buildable.copyWith(
+        confirmLoading: false,
+      ),
+      buildOnError: (e) => buildable.copyWith(confirmLoading: false),
+    );
+  }
+
+  void deleteCart({required String deleteCart}) {
+    callable(
+      future: orderRepo.orderDelete(
+        cartItem: deleteCart,
+      ),
+    );
+    tableOrder(number: buildable.tableNumber);
   }
 }

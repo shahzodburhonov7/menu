@@ -107,7 +107,7 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
                               fontSize: 30.sp,
                               color:
                                   state.getTableList.elementAt(index)["is_busy"]
-                                      ? AppColors.validationRed
+                                      ? AppColors.tabColor
                                       : AppColors.textColor,
                             ),
                           ),

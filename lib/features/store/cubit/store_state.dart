@@ -9,8 +9,9 @@ class StoreBuildable with _$StoreBuildable {
     @Default(0) int tableNumber,
     @Default(false) bool loading,
     @Default(false) bool orderLoading,
+    @Default(false) bool confirmLoading,
     @Default([]) List<dynamic> getTableList,
-    @Default(TableOrder()) TableOrder tableOrder,
+    TableOrder?  tableOrder,
   }) = _StoreBuildable;
 }
 

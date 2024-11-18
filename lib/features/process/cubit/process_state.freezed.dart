@@ -15,13 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$ProcessBuildable {}
+mixin _$ProcessBuildable {
+  bool get loading => throw _privateConstructorUsedError;
+  List<TableProcess?> get tableProcess => throw _privateConstructorUsedError;
+  bool get orderLoading => throw _privateConstructorUsedError;
+
+  /// Create a copy of ProcessBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $ProcessBuildableCopyWith<ProcessBuildable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $ProcessBuildableCopyWith<$Res> {
   factory $ProcessBuildableCopyWith(
           ProcessBuildable value, $Res Function(ProcessBuildable) then) =
       _$ProcessBuildableCopyWithImpl<$Res, ProcessBuildable>;
+  @useResult
+  $Res call(
+      {bool loading, List<TableProcess?> tableProcess, bool orderLoading});
 }
 
 /// @nodoc
@@ -36,13 +49,40 @@ class _$ProcessBuildableCopyWithImpl<$Res, $Val extends ProcessBuildable>
 
   /// Create a copy of ProcessBuildable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loading = null,
+    Object? tableProcess = null,
+    Object? orderLoading = null,
+  }) {
+    return _then(_value.copyWith(
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tableProcess: null == tableProcess
+          ? _value.tableProcess
+          : tableProcess // ignore: cast_nullable_to_non_nullable
+              as List<TableProcess?>,
+      orderLoading: null == orderLoading
+          ? _value.orderLoading
+          : orderLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$ProcessBuildableImplCopyWith<$Res> {
+abstract class _$$ProcessBuildableImplCopyWith<$Res>
+    implements $ProcessBuildableCopyWith<$Res> {
   factory _$$ProcessBuildableImplCopyWith(_$ProcessBuildableImpl value,
           $Res Function(_$ProcessBuildableImpl) then) =
       __$$ProcessBuildableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool loading, List<TableProcess?> tableProcess, bool orderLoading});
 }
 
 /// @nodoc
@@ -55,30 +95,105 @@ class __$$ProcessBuildableImplCopyWithImpl<$Res>
 
   /// Create a copy of ProcessBuildable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? loading = null,
+    Object? tableProcess = null,
+    Object? orderLoading = null,
+  }) {
+    return _then(_$ProcessBuildableImpl(
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      tableProcess: null == tableProcess
+          ? _value._tableProcess
+          : tableProcess // ignore: cast_nullable_to_non_nullable
+              as List<TableProcess?>,
+      orderLoading: null == orderLoading
+          ? _value.orderLoading
+          : orderLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ProcessBuildableImpl implements _ProcessBuildable {
-  const _$ProcessBuildableImpl();
+  const _$ProcessBuildableImpl(
+      {this.loading = false,
+      final List<TableProcess?> tableProcess = const [],
+      this.orderLoading = false})
+      : _tableProcess = tableProcess;
+
+  @override
+  @JsonKey()
+  final bool loading;
+  final List<TableProcess?> _tableProcess;
+  @override
+  @JsonKey()
+  List<TableProcess?> get tableProcess {
+    if (_tableProcess is EqualUnmodifiableListView) return _tableProcess;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_tableProcess);
+  }
+
+  @override
+  @JsonKey()
+  final bool orderLoading;
 
   @override
   String toString() {
-    return 'ProcessBuildable()';
+    return 'ProcessBuildable(loading: $loading, tableProcess: $tableProcess, orderLoading: $orderLoading)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ProcessBuildableImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ProcessBuildableImpl &&
+            (identical(other.loading, loading) || other.loading == loading) &&
+            const DeepCollectionEquality()
+                .equals(other._tableProcess, _tableProcess) &&
+            (identical(other.orderLoading, orderLoading) ||
+                other.orderLoading == orderLoading));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, loading,
+      const DeepCollectionEquality().hash(_tableProcess), orderLoading);
+
+  /// Create a copy of ProcessBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ProcessBuildableImplCopyWith<_$ProcessBuildableImpl> get copyWith =>
+      __$$ProcessBuildableImplCopyWithImpl<_$ProcessBuildableImpl>(
+          this, _$identity);
 }
 
 abstract class _ProcessBuildable implements ProcessBuildable {
-  const factory _ProcessBuildable() = _$ProcessBuildableImpl;
+  const factory _ProcessBuildable(
+      {final bool loading,
+      final List<TableProcess?> tableProcess,
+      final bool orderLoading}) = _$ProcessBuildableImpl;
+
+  @override
+  bool get loading;
+  @override
+  List<TableProcess?> get tableProcess;
+  @override
+  bool get orderLoading;
+
+  /// Create a copy of ProcessBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ProcessBuildableImplCopyWith<_$ProcessBuildableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
