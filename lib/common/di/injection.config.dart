@@ -92,7 +92,6 @@ extension GetItInjectableX on _i174.GetIt {
     final networkModule = _$NetworkModule();
     gh.factory<_i625.HistoryCubit>(() => _i625.HistoryCubit());
     gh.factory<_i907.HomeCubit>(() => _i907.HomeCubit());
-    gh.factory<_i1026.SettingsCubit>(() => _i1026.SettingsCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
     gh.lazySingleton<_i276.LocaleProvider>(() => _i276.LocaleProvider());
     await gh.lazySingletonAsync<_i314.Storage>(
@@ -134,6 +133,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1070.ProfileRepo>(
         () => _i443.ProfileRepoImpl(gh<_i159.ProfileApi>()));
+    gh.factory<_i1026.SettingsCubit>(() => _i1026.SettingsCubit(
+          gh<_i185.AuthRepository>(),
+          gh<_i314.Storage>(),
+        ));
     gh.factory<_i13.ProcessCubit>(
         () => _i13.ProcessCubit(gh<_i66.TableProcessRepo>()));
     gh.factory<_i809.DoneCubit>(
@@ -148,6 +151,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i833.LoginCubit(gh<_i185.AuthRepository>()));
     gh.factory<_i552.ProfileCubit>(
         () => _i552.ProfileCubit(gh<_i1070.ProfileRepo>()));
+    gh.factory<_i20.AboutCubit>(() => _i20.AboutCubit(
+          gh<_i7.ProductsRepo>(),
+          gh<_i479.OrderRepo>(),
+          gh<_i314.Storage>(),
+        ));
     gh.factory<_i521.FoodsCubit>(() => _i521.FoodsCubit(
           gh<_i160.FoodCategoryRepo>(),
           gh<_i7.ProductsRepo>(),
@@ -155,7 +163,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i479.OrderRepo>(),
           gh<_i713.TableRepo>(),
         ));
-    gh.factory<_i20.AboutCubit>(() => _i20.AboutCubit(gh<_i7.ProductsRepo>()));
     return this;
   }
 }

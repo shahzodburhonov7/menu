@@ -21,17 +21,12 @@ FoodInfo _$FoodInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FoodInfo {
   int? get id => throw _privateConstructorUsedError;
-  String? get name_uz => throw _privateConstructorUsedError;
-  String? get name_ru => throw _privateConstructorUsedError;
-  String? get name_en => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get food_info_uz => throw _privateConstructorUsedError;
   String? get food_info_ru => throw _privateConstructorUsedError;
   String? get food_info_en => throw _privateConstructorUsedError;
-  String? get food_composition_uz => throw _privateConstructorUsedError;
-  String? get food_composition_ru => throw _privateConstructorUsedError;
-  String? get food_composition_en => throw _privateConstructorUsedError;
 
   /// Serializes this FoodInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,17 +45,12 @@ abstract class $FoodInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String? name_uz,
-      String? name_ru,
-      String? name_en,
+      String? name,
       String? image,
       int? price,
       String? food_info_uz,
       String? food_info_ru,
-      String? food_info_en,
-      String? food_composition_uz,
-      String? food_composition_ru,
-      String? food_composition_en});
+      String? food_info_en});
 }
 
 /// @nodoc
@@ -79,34 +69,21 @@ class _$FoodInfoCopyWithImpl<$Res, $Val extends FoodInfo>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name_uz = freezed,
-    Object? name_ru = freezed,
-    Object? name_en = freezed,
+    Object? name = freezed,
     Object? image = freezed,
     Object? price = freezed,
     Object? food_info_uz = freezed,
     Object? food_info_ru = freezed,
     Object? food_info_en = freezed,
-    Object? food_composition_uz = freezed,
-    Object? food_composition_ru = freezed,
-    Object? food_composition_en = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name_uz: freezed == name_uz
-          ? _value.name_uz
-          : name_uz // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name_ru: freezed == name_ru
-          ? _value.name_ru
-          : name_ru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name_en: freezed == name_en
-          ? _value.name_en
-          : name_en // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -128,18 +105,6 @@ class _$FoodInfoCopyWithImpl<$Res, $Val extends FoodInfo>
           ? _value.food_info_en
           : food_info_en // ignore: cast_nullable_to_non_nullable
               as String?,
-      food_composition_uz: freezed == food_composition_uz
-          ? _value.food_composition_uz
-          : food_composition_uz // ignore: cast_nullable_to_non_nullable
-              as String?,
-      food_composition_ru: freezed == food_composition_ru
-          ? _value.food_composition_ru
-          : food_composition_ru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      food_composition_en: freezed == food_composition_en
-          ? _value.food_composition_en
-          : food_composition_en // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -154,17 +119,12 @@ abstract class _$$FoodInfoImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String? name_uz,
-      String? name_ru,
-      String? name_en,
+      String? name,
       String? image,
       int? price,
       String? food_info_uz,
       String? food_info_ru,
-      String? food_info_en,
-      String? food_composition_uz,
-      String? food_composition_ru,
-      String? food_composition_en});
+      String? food_info_en});
 }
 
 /// @nodoc
@@ -181,34 +141,21 @@ class __$$FoodInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name_uz = freezed,
-    Object? name_ru = freezed,
-    Object? name_en = freezed,
+    Object? name = freezed,
     Object? image = freezed,
     Object? price = freezed,
     Object? food_info_uz = freezed,
     Object? food_info_ru = freezed,
     Object? food_info_en = freezed,
-    Object? food_composition_uz = freezed,
-    Object? food_composition_ru = freezed,
-    Object? food_composition_en = freezed,
   }) {
     return _then(_$FoodInfoImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name_uz: freezed == name_uz
-          ? _value.name_uz
-          : name_uz // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name_ru: freezed == name_ru
-          ? _value.name_ru
-          : name_ru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name_en: freezed == name_en
-          ? _value.name_en
-          : name_en // ignore: cast_nullable_to_non_nullable
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -230,18 +177,6 @@ class __$$FoodInfoImplCopyWithImpl<$Res>
           ? _value.food_info_en
           : food_info_en // ignore: cast_nullable_to_non_nullable
               as String?,
-      food_composition_uz: freezed == food_composition_uz
-          ? _value.food_composition_uz
-          : food_composition_uz // ignore: cast_nullable_to_non_nullable
-              as String?,
-      food_composition_ru: freezed == food_composition_ru
-          ? _value.food_composition_ru
-          : food_composition_ru // ignore: cast_nullable_to_non_nullable
-              as String?,
-      food_composition_en: freezed == food_composition_en
-          ? _value.food_composition_en
-          : food_composition_en // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -251,17 +186,12 @@ class __$$FoodInfoImplCopyWithImpl<$Res>
 class _$FoodInfoImpl implements _FoodInfo {
   const _$FoodInfoImpl(
       {this.id,
-      this.name_uz,
-      this.name_ru,
-      this.name_en,
+      this.name,
       this.image,
       this.price,
       this.food_info_uz,
       this.food_info_ru,
-      this.food_info_en,
-      this.food_composition_uz,
-      this.food_composition_ru,
-      this.food_composition_en});
+      this.food_info_en});
 
   factory _$FoodInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$FoodInfoImplFromJson(json);
@@ -269,11 +199,7 @@ class _$FoodInfoImpl implements _FoodInfo {
   @override
   final int? id;
   @override
-  final String? name_uz;
-  @override
-  final String? name_ru;
-  @override
-  final String? name_en;
+  final String? name;
   @override
   final String? image;
   @override
@@ -284,16 +210,10 @@ class _$FoodInfoImpl implements _FoodInfo {
   final String? food_info_ru;
   @override
   final String? food_info_en;
-  @override
-  final String? food_composition_uz;
-  @override
-  final String? food_composition_ru;
-  @override
-  final String? food_composition_en;
 
   @override
   String toString() {
-    return 'FoodInfo(id: $id, name_uz: $name_uz, name_ru: $name_ru, name_en: $name_en, image: $image, price: $price, food_info_uz: $food_info_uz, food_info_ru: $food_info_ru, food_info_en: $food_info_en, food_composition_uz: $food_composition_uz, food_composition_ru: $food_composition_ru, food_composition_en: $food_composition_en)';
+    return 'FoodInfo(id: $id, name: $name, image: $image, price: $price, food_info_uz: $food_info_uz, food_info_ru: $food_info_ru, food_info_en: $food_info_en)';
   }
 
   @override
@@ -302,9 +222,7 @@ class _$FoodInfoImpl implements _FoodInfo {
         (other.runtimeType == runtimeType &&
             other is _$FoodInfoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name_uz, name_uz) || other.name_uz == name_uz) &&
-            (identical(other.name_ru, name_ru) || other.name_ru == name_ru) &&
-            (identical(other.name_en, name_en) || other.name_en == name_en) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.food_info_uz, food_info_uz) ||
@@ -312,31 +230,13 @@ class _$FoodInfoImpl implements _FoodInfo {
             (identical(other.food_info_ru, food_info_ru) ||
                 other.food_info_ru == food_info_ru) &&
             (identical(other.food_info_en, food_info_en) ||
-                other.food_info_en == food_info_en) &&
-            (identical(other.food_composition_uz, food_composition_uz) ||
-                other.food_composition_uz == food_composition_uz) &&
-            (identical(other.food_composition_ru, food_composition_ru) ||
-                other.food_composition_ru == food_composition_ru) &&
-            (identical(other.food_composition_en, food_composition_en) ||
-                other.food_composition_en == food_composition_en));
+                other.food_info_en == food_info_en));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name_uz,
-      name_ru,
-      name_en,
-      image,
-      price,
-      food_info_uz,
-      food_info_ru,
-      food_info_en,
-      food_composition_uz,
-      food_composition_ru,
-      food_composition_en);
+  int get hashCode => Object.hash(runtimeType, id, name, image, price,
+      food_info_uz, food_info_ru, food_info_en);
 
   /// Create a copy of FoodInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -357,17 +257,12 @@ class _$FoodInfoImpl implements _FoodInfo {
 abstract class _FoodInfo implements FoodInfo {
   const factory _FoodInfo(
       {final int? id,
-      final String? name_uz,
-      final String? name_ru,
-      final String? name_en,
+      final String? name,
       final String? image,
       final int? price,
       final String? food_info_uz,
       final String? food_info_ru,
-      final String? food_info_en,
-      final String? food_composition_uz,
-      final String? food_composition_ru,
-      final String? food_composition_en}) = _$FoodInfoImpl;
+      final String? food_info_en}) = _$FoodInfoImpl;
 
   factory _FoodInfo.fromJson(Map<String, dynamic> json) =
       _$FoodInfoImpl.fromJson;
@@ -375,11 +270,7 @@ abstract class _FoodInfo implements FoodInfo {
   @override
   int? get id;
   @override
-  String? get name_uz;
-  @override
-  String? get name_ru;
-  @override
-  String? get name_en;
+  String? get name;
   @override
   String? get image;
   @override
@@ -390,12 +281,6 @@ abstract class _FoodInfo implements FoodInfo {
   String? get food_info_ru;
   @override
   String? get food_info_en;
-  @override
-  String? get food_composition_uz;
-  @override
-  String? get food_composition_ru;
-  @override
-  String? get food_composition_en;
 
   /// Create a copy of FoodInfo
   /// with the given fields replaced by the non-null parameter values.

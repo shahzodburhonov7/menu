@@ -14,6 +14,19 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
   void selectTable({required int tableNumber}) {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
   }
+  void add() {
+    build(
+          (buildable) => buildable.copyWith(count: buildable.count + 1),
+    );
+  }
+
+  void remove() {
+    if (buildable.count != 0) {
+      build(
+            (buildable) => buildable.copyWith(count: buildable.count - 1),
+      );
+    }
+  }
 
   void getAllTable() {
     callable(
@@ -23,6 +36,7 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
       buildOnError: (e) => buildable.copyWith(loading: false),
     );
   }
+
 
   void tableOrder({required int number}) {
     callable(

@@ -7,6 +7,7 @@ part  'store_state.freezed.dart';
 class StoreBuildable with _$StoreBuildable {
   const factory StoreBuildable({
     @Default(0) int tableNumber,
+    @Default(0) int count,
     @Default(false) bool loading,
     @Default(false) bool orderLoading,
     @Default(false) bool confirmLoading,

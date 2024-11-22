@@ -14,11 +14,10 @@ class AuthRepoImpl extends AuthRepository {
     this.storage,
   );
 
-
   @override
   Future<void> userLogin(
-      {required String username , required String password}) async {
-    final res = await _api.userLogin(username : username , password: password);
+      {required String username, required String password}) async {
+    final res = await _api.userLogin(username: username, password: password);
 
     await storage.token.set(res.data['access']);
     await storage.userType.set(res.data['user_type']);
@@ -27,5 +26,11 @@ class AuthRepoImpl extends AuthRepository {
     debugPrint('userType: ${storage.userType.call() ?? ''}');
   }
 
+  @override
+  Future<void> userLogOut({required String refToken}) async {
+    final res = await _api.userLogOut(refreshToken: refToken);
+    await storage.refToken.set(res.data["refresh_token"]);
+    debugPrint('refTOKEN: ${storage.refToken.call() ?? ''}');
 
+  }
 }

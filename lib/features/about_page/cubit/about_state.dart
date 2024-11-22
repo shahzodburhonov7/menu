@@ -8,6 +8,9 @@ class AboutBuildable with _$AboutBuildable {
   const factory AboutBuildable({
     @Default(false) bool loading,
     FoodInfo? foodInfo,
+    @Default(0) int count,
+    @Default(false) bool orderLoading,
+
   }) = _AboutBuildable;
 }
 

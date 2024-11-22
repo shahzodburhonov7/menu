@@ -20,4 +20,13 @@ class AuthApi {
       ),
     );
   }
+
+  Future<Response> userLogOut({required String refreshToken}) {
+    return _dio.post(
+      Constants.apiLogOut,
+      data: FormData.fromMap(
+        {"refresh_token": refreshToken},
+      ),
+    );
+  }
 }

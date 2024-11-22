@@ -26,6 +26,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
 
   @override
   Widget builder(BuildContext context, StoreBuildable state) {
+    final cubit=context.read<StoreCubit>();
     if (state.loading) {
       return const CircularProgressIndicator();
     } else {
@@ -43,7 +44,6 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
               },
               items: state.getTableList.map<DropdownMenuItem<int>>((table) {
                 return DropdownMenuItem<int>(
-
                   onTap: () {
                     context.read<StoreCubit>().tableOrder(
                           number: table["cart_id"],
@@ -60,9 +60,9 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
           ],
         ),
         body: state.tableOrder == null
-            ? SizedBox.shrink()
+            ? const SizedBox.shrink()
             : state.orderLoading
-                ? const CircularProgressIndicator()
+                ? const Center(child: CircularProgressIndicator())
                 : Padding(
                     padding: REdgeInsets.all(8.0),
                     child: SizedBox(
@@ -120,7 +120,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                               subtitle: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  "Son: 2".s(12.sp).w(400),
+                                  "Son: ".s(12.sp).w(400),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -129,22 +129,23 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                         children: [
                                           GestureDetector(
                                               onTap: () {
-                                                debugPrint(state.tableNumber
-                                                    .toString());
-                                                debugPrint(
-                                                  state.getTableList
-                                                      .elementAt(index)['id']
-                                                      .toString(),
-                                                );
+                                                cubit.remove();
+
                                               },
                                               child:
                                                   Assets.images.remove.svg()),
                                           Padding(
                                             padding: REdgeInsets.symmetric(
                                                 horizontal: 16),
-                                            child: '2'.s(12.sp).w(400),
+                                            child: '${state.count}'
+                                                .s(12.sp)
+                                                .w(400),
                                           ),
-                                          Assets.images.add.svg(),
+                                          GestureDetector(
+                                              onTap: () {
+                                                cubit.add();
+                                              },
+                                              child: Assets.images.add.svg()),
                                         ],
                                       ),
                                       // "${item.price}".s(16.sp).w(600),
