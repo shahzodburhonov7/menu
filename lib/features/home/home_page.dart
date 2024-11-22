@@ -8,7 +8,6 @@ import 'package:restaurants_menu/features/home/cubit/home_cubit.dart';
 import 'package:restaurants_menu/features/home/cubit/home_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
-
 @RoutePage()
 class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
   const HomePage({super.key});
@@ -31,15 +30,22 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
             children: [
               Padding(
                 padding: REdgeInsets.only(right: 84, left: 10),
-                child: "Lorem ipsum dolor sit amet continental".s(24).w(600),
+                child: "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
               ),
-              SizedBox(height: 28.h),
-              Assets.icons.burger.image(width: 353.w, height: 142.h),
               SizedBox(height: 28.h),
               GestureDetector(
                 onTap: () {
                   context.router.push(
-                     const TableRoute(),
+                    FoodsRoute(),
+                  );
+                },
+                child: Assets.icons.burger.image(width: 353.w, height: 142.h),
+              ),
+              SizedBox(height: 28.h),
+              GestureDetector(
+                onTap: () {
+                  context.router.push(
+                    const TableRoute(),
                   );
                 },
                 child: Assets.icons.banner.svg(width: 344.w, height: 116.h),

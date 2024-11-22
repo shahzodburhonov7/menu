@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:restaurants_menu/common/widgets/common_toast.dart';
 import 'package:restaurants_menu/features/about_page/cubit/about_cubit.dart';
 import 'package:restaurants_menu/features/about_page/cubit/about_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
@@ -23,8 +24,8 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
 
   @override
   Widget builder(BuildContext context, AboutBuildable state) {
-     return
-       Scaffold(
+    final cubit = context.read<AboutCubit>();
+    return Scaffold(
       body: state.loading
           ? const Center(
               child: CircularProgressIndicator(),
@@ -65,7 +66,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                           padding: REdgeInsets.all(24.0),
                           child: Row(
                             children: [
-                              "${state.foodInfo?.name_uz}".s(20.sp).w(500),
+                              "${state.foodInfo?.name}".s(20.sp).w(500),
                             ],
                           ),
                         ),
@@ -82,15 +83,28 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                                 .w(600),
                             Row(
                               children: [
-                                Assets.images.remove
-                                    .svg(width: 24.w, height: 24.h),
+                                GestureDetector(
+                                  onTap: () {
+                                    cubit.remove();
+                                  },
+                                  child: Assets.images.remove
+                                      .svg(width: 24.w, height: 24.h),
+                                ),
                                 Padding(
                                   padding:
                                       REdgeInsets.symmetric(horizontal: 16),
-                                  child: "2".s(14.sp).w(400).c(AppColors.black),
+                                  child: "${state.count}"
+                                      .s(14.sp)
+                                      .w(400)
+                                      .c(AppColors.black),
                                 ),
-                                Assets.images.add
-                                    .svg(width: 24.w, height: 24.h),
+                                GestureDetector(
+                                  onTap: () {
+                                    cubit.add();
+                                  },
+                                  child: Assets.images.add
+                                      .svg(width: 24.w, height: 24.h),
+                                ),
                               ],
                             ),
                           ],
@@ -155,7 +169,15 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
           width: 283.w,
           child: ElevatedButton(
             onPressed: () {
-              context.router.pop(context);
+              if (state.count != 0) {
+                cubit.postOrder(
+                  foodId: state.foodInfo!.id!,
+                  quantity: state.count,
+                );
+                context.router.pop(context);
+              }else{
+                CommonToast.snackBar(context, message: "soni kiriting");
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.textColor,

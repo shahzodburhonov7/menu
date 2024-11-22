@@ -5,7 +5,8 @@ part  'history_state.freezed.dart';
 @freezed
 class HistoryBuildable with _$HistoryBuildable {
   const factory HistoryBuildable({
-    @Default(0) int selectedIndex
+    @Default(0) int selectedIndex,
+
   }) = _HistoryBuildable;
 }
 

@@ -13,17 +13,12 @@ String foodInfoToJson(FoodInfo data) => json.encode(data.toJson());
 class FoodInfo with _$FoodInfo {
   const factory FoodInfo({
     int? id,
-    String? name_uz,
-    String? name_ru,
-    String? name_en,
+    String? name,
     String? image,
     int? price,
     String? food_info_uz,
     String? food_info_ru,
     String? food_info_en,
-    String? food_composition_uz,
-    String? food_composition_ru,
-    String? food_composition_en,
   }) = _FoodInfo;
 
   factory FoodInfo.fromJson(Map<String, dynamic> json) => _$FoodInfoFromJson(json);

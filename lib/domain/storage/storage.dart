@@ -26,6 +26,7 @@ class Storage {
   BaseStorage<int>get cardId=>BaseStorage(_box, "cardId");
 
   BaseStorage<String> get token => BaseStorage(_box, 'token');
+  BaseStorage<String> get refToken => BaseStorage(_box, 'refToken');
 
   BaseStorage<bool> get onboarded => BaseStorage(_box, 'onboarded');
 

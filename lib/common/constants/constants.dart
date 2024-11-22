@@ -18,6 +18,7 @@ class Constants {
   static const apiOrderDone = '/common/order/change/status/';
   static const apiDoneList = '/common/order/list/is-done/';
   static const apiAccount = '/accounts/user/profile/';
+  static const apiLogOut = '/accounts/user/logout/';
 
 
 }

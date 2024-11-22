@@ -1,10 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/custom_container.dart';
 import 'package:restaurants_menu/features/settings/cubit/settings_cubit.dart';
 import 'package:restaurants_menu/features/settings/cubit/settings_state.dart';
@@ -15,12 +17,12 @@ class SettingsPage
     extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
   SettingsPage({super.key});
 
-  String selectedLanguage = 'uz'; // Default tanlangan til
+  String selectedLanguage = 'uz';
 
   @override
   Widget builder(BuildContext context, SettingsBuildable state) {
     bool isSwitched = true;
-
+    final cubit = context.read<SettingsCubit>();
     return Scaffold(
       appBar: AppBar(
         title: "Settings".s(22.sp).w(600),
@@ -92,11 +94,11 @@ class SettingsPage
             ),
             SizedBox(height: 10.h),
             GestureDetector(
-              onTap: (){
-
+              onTap: () {
+                context.router.replaceAll([LoginRoute()]);
+                cubit.userLogOut();
               },
               child: CustomContainer(
-
                 child: Row(
                   children: [
                     Assets.icons.exit.svg(),

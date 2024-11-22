@@ -28,6 +28,7 @@ mixin _$FoodsBuildable {
   List<dynamic> get getTableList => throw _privateConstructorUsedError;
   List<FoodProducts> get foodPro => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
+  int get cartId => throw _privateConstructorUsedError;
 
   /// Create a copy of FoodsBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -54,7 +55,8 @@ abstract class $FoodsBuildableCopyWith<$Res> {
       TableOrder? tableOrder,
       List<dynamic> getTableList,
       List<FoodProducts> foodPro,
-      String type});
+      String type,
+      int cartId});
 
   $TableOrderCopyWith<$Res>? get tableOrder;
 }
@@ -86,6 +88,7 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
     Object? getTableList = null,
     Object? foodPro = null,
     Object? type = null,
+    Object? cartId = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -136,6 +139,10 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      cartId: null == cartId
+          ? _value.cartId
+          : cartId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -174,7 +181,8 @@ abstract class _$$FoodsBuildableImplCopyWith<$Res>
       TableOrder? tableOrder,
       List<dynamic> getTableList,
       List<FoodProducts> foodPro,
-      String type});
+      String type,
+      int cartId});
 
   @override
   $TableOrderCopyWith<$Res>? get tableOrder;
@@ -205,6 +213,7 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
     Object? getTableList = null,
     Object? foodPro = null,
     Object? type = null,
+    Object? cartId = null,
   }) {
     return _then(_$FoodsBuildableImpl(
       loading: null == loading
@@ -255,6 +264,10 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      cartId: null == cartId
+          ? _value.cartId
+          : cartId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -274,7 +287,8 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
       this.tableOrder,
       final List<dynamic> getTableList = const [],
       final List<FoodProducts> foodPro = const [],
-      this.type = ""})
+      this.type = "",
+      this.cartId = 0})
       : _foodCategoryList = foodCategoryList,
         _getTableList = getTableList,
         _foodPro = foodPro;
@@ -333,10 +347,13 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
   @override
   @JsonKey()
   final String type;
+  @override
+  @JsonKey()
+  final int cartId;
 
   @override
   String toString() {
-    return 'FoodsBuildable(loading: $loading, proLoading: $proLoading, pageLoading: $pageLoading, orderLoading: $orderLoading, orderCount: $orderCount, pageType: $pageType, foodCategoryList: $foodCategoryList, tableNumber: $tableNumber, tableOrder: $tableOrder, getTableList: $getTableList, foodPro: $foodPro, type: $type)';
+    return 'FoodsBuildable(loading: $loading, proLoading: $proLoading, pageLoading: $pageLoading, orderLoading: $orderLoading, orderCount: $orderCount, pageType: $pageType, foodCategoryList: $foodCategoryList, tableNumber: $tableNumber, tableOrder: $tableOrder, getTableList: $getTableList, foodPro: $foodPro, type: $type, cartId: $cartId)';
   }
 
   @override
@@ -364,7 +381,8 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
             const DeepCollectionEquality()
                 .equals(other._getTableList, _getTableList) &&
             const DeepCollectionEquality().equals(other._foodPro, _foodPro) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.cartId, cartId) || other.cartId == cartId));
   }
 
   @override
@@ -381,7 +399,8 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
       tableOrder,
       const DeepCollectionEquality().hash(_getTableList),
       const DeepCollectionEquality().hash(_foodPro),
-      type);
+      type,
+      cartId);
 
   /// Create a copy of FoodsBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -406,7 +425,8 @@ abstract class _FoodsBuildable implements FoodsBuildable {
       final TableOrder? tableOrder,
       final List<dynamic> getTableList,
       final List<FoodProducts> foodPro,
-      final String type}) = _$FoodsBuildableImpl;
+      final String type,
+      final int cartId}) = _$FoodsBuildableImpl;
 
   @override
   bool get loading;
@@ -432,6 +452,8 @@ abstract class _FoodsBuildable implements FoodsBuildable {
   List<FoodProducts> get foodPro;
   @override
   String get type;
+  @override
+  int get cartId;
 
   /// Create a copy of FoodsBuildable
   /// with the given fields replaced by the non-null parameter values.

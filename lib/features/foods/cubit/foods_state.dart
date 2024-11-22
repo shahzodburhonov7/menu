@@ -20,6 +20,7 @@ class FoodsBuildable with _$FoodsBuildable {
     @Default([]) List<dynamic> getTableList,
     @Default([]) List<FoodProducts> foodPro,
     @Default("") String type,
+    @Default(0) int cartId,
   }) = _FoodsBuildable;
 }
 
