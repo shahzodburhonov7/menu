@@ -8,7 +8,6 @@ import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/widgets/bottom_sheet_custom.dart';
 import 'package:restaurants_menu/common/widgets/common_toast.dart';
-import 'package:restaurants_menu/common/widgets/custom_button.dart';
 import 'package:restaurants_menu/features/store/cubit/store_cubit.dart';
 import 'package:restaurants_menu/features/store/cubit/store_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
