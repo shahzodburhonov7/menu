@@ -35,6 +35,7 @@ class SplashPage
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             Assets.icons.splash.image(),
             'FOOD APP'.s(40.sp).w(700).c(AppColors.black),
           ],

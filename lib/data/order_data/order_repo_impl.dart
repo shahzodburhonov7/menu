@@ -43,4 +43,10 @@ class OrderRepoImpl extends OrderRepo {
   Future<void> orderDelete({required String cartItem}) async {
     await orderApi.orderDelete(cartDelete: cartItem);
   }
+
+  @override
+  Future<void> quantityUpdate({required int quantity, required int cart_item_id}) async {
+    await orderApi.orderUpdate(quantity: quantity, itemId: cart_item_id);
+    throw UnimplementedError();
+  }
 }

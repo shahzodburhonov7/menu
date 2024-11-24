@@ -8,14 +8,21 @@ class ProductsApi {
 
   ProductsApi(this.dio);
 
-  Future <Response>productGet({required int page})async{
+  Future<Response> productGet() async {
     return await dio.get(Constants.apiFoodList);
   }
-  Future<Response> foodCategoryId({required int id,required int page}) async {
+
+  Future<Response> foodCategoryId({required int id, required int page}) async {
     return await dio.get("${Constants.apiFoodsCategoryId}$id/foods/?page=$page");
   }
-  Future<Response> foodInfo({required int id,}) async {
+
+  Future<Response> foodInfo({
+    required int id,
+  }) async {
     return await dio.get("${Constants.apiFoodsId}$id");
   }
 
+  Future<Response> productSearch({required String query}) async {
+    return await dio.get("${Constants.apiFoodSearch}$query");
+  }
 }

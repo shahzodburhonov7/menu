@@ -19,6 +19,9 @@ import 'package:restaurants_menu/common/widgets/display/display_impl.dart'
     as _i514;
 import 'package:restaurants_menu/data/auth_data/auth_api.dart' as _i379;
 import 'package:restaurants_menu/data/auth_data/auth_repo_impl.dart' as _i43;
+import 'package:restaurants_menu/data/basket_data/basket_api.dart' as _i230;
+import 'package:restaurants_menu/data/basket_data/basket_repo_impl.dart'
+    as _i930;
 import 'package:restaurants_menu/data/food_category/food_category_api.dart'
     as _i636;
 import 'package:restaurants_menu/data/food_category/food_category_repo_impl.dart'
@@ -41,6 +44,7 @@ import 'package:restaurants_menu/data/table_data/table_repo_impl.dart' as _i691;
 import 'package:restaurants_menu/domain/auth_interceptor/auth_interceptor.dart'
     as _i276;
 import 'package:restaurants_menu/domain/repo/auth/auth_repo.dart' as _i185;
+import 'package:restaurants_menu/domain/repo/basket/basket_repo.dart' as _i587;
 import 'package:restaurants_menu/domain/repo/category/category_repo.dart'
     as _i160;
 import 'package:restaurants_menu/domain/repo/order/order_repo.dart' as _i479;
@@ -90,16 +94,16 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final appModule = _$AppModule();
     final networkModule = _$NetworkModule();
-    gh.factory<_i907.HomeCubit>(() => _i907.HomeCubit());
     gh.factory<_i625.HistoryCubit>(() => _i625.HistoryCubit());
+    gh.factory<_i907.HomeCubit>(() => _i907.HomeCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
+    gh.lazySingleton<_i276.LocaleProvider>(() => _i276.LocaleProvider());
     await gh.lazySingletonAsync<_i314.Storage>(
       () => _i314.Storage.create(),
       preResolve: true,
     );
-    gh.lazySingleton<_i276.LocaleProvider>(() => _i276.LocaleProvider());
-    gh.factory<_i826.SplashCubit>(() => _i826.SplashCubit(gh<_i314.Storage>()));
     gh.factory<_i745.MainCubit>(() => _i745.MainCubit(gh<_i314.Storage>()));
+    gh.factory<_i826.SplashCubit>(() => _i826.SplashCubit(gh<_i314.Storage>()));
     gh.factory<_i975.StartRepo>(() => _i126.StartRepoImpl(gh<_i314.Storage>()));
     gh.lazySingleton<_i276.AuthInterceptor>(() => _i276.AuthInterceptor(
           gh<_i314.Storage>(),
@@ -109,12 +113,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i361.Dio>(() => networkModule.dio(gh<_i276.AuthInterceptor>()));
     gh.factory<_i636.FoodCategoryApi>(
         () => _i636.FoodCategoryApi(gh<_i361.Dio>()));
-    gh.factory<_i900.ProductsApi>(() => _i900.ProductsApi(gh<_i361.Dio>()));
-    gh.factory<_i108.TableApi>(() => _i108.TableApi(gh<_i361.Dio>()));
-    gh.factory<_i159.ProfileApi>(() => _i159.ProfileApi(gh<_i361.Dio>()));
     gh.factory<_i352.OrderApi>(() => _i352.OrderApi(gh<_i361.Dio>()));
     gh.factory<_i784.OrderProcessApi>(
         () => _i784.OrderProcessApi(gh<_i361.Dio>()));
+    gh.factory<_i900.ProductsApi>(() => _i900.ProductsApi(gh<_i361.Dio>()));
+    gh.factory<_i159.ProfileApi>(() => _i159.ProfileApi(gh<_i361.Dio>()));
+    gh.factory<_i108.TableApi>(() => _i108.TableApi(gh<_i361.Dio>()));
+    gh.factory<_i230.BasketApi>(() => _i230.BasketApi(gh<_i361.Dio>()));
     gh.factory<_i479.OrderRepo>(
         () => _i521.OrderRepoImpl(gh<_i352.OrderApi>()));
     gh.factory<_i379.AuthApi>(() => _i379.AuthApi(gh<_i361.Dio>()));
@@ -122,11 +127,12 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i108.TableApi>(),
           gh<_i314.Storage>(),
         ));
+    gh.factory<_i587.BasketRepo>(
+        () => _i930.BasketRepoImpl(gh<_i230.BasketApi>()));
     gh.factory<_i66.TableProcessRepo>(
         () => _i247.OrderProcessImpl(gh<_i784.OrderProcessApi>()));
     gh.factory<_i7.ProductsRepo>(
         () => _i351.ProductsRepoImpl(gh<_i900.ProductsApi>()));
-    gh.factory<_i308.TableCubit>(() => _i308.TableCubit(gh<_i713.TableRepo>()));
     gh.factory<_i185.AuthRepository>(() => _i43.AuthRepoImpl(
           gh<_i379.AuthApi>(),
           gh<_i314.Storage>(),
@@ -146,6 +152,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i929.StoreCubit>(() => _i929.StoreCubit(
           gh<_i713.TableRepo>(),
           gh<_i479.OrderRepo>(),
+        ));
+    gh.factory<_i308.TableCubit>(() => _i308.TableCubit(
+          gh<_i713.TableRepo>(),
+          gh<_i314.Storage>(),
         ));
     gh.factory<_i833.LoginCubit>(
         () => _i833.LoginCubit(gh<_i185.AuthRepository>()));

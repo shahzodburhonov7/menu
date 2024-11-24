@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MainBuildable {
   int get currentIndex => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
 
   /// Create a copy of MainBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +31,7 @@ abstract class $MainBuildableCopyWith<$Res> {
           MainBuildable value, $Res Function(MainBuildable) then) =
       _$MainBuildableCopyWithImpl<$Res, MainBuildable>;
   @useResult
-  $Res call({int currentIndex, String type});
+  $Res call({int currentIndex});
 }
 
 /// @nodoc
@@ -51,17 +50,12 @@ class _$MainBuildableCopyWithImpl<$Res, $Val extends MainBuildable>
   @override
   $Res call({
     Object? currentIndex = null,
-    Object? type = null,
   }) {
     return _then(_value.copyWith(
       currentIndex: null == currentIndex
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -74,7 +68,7 @@ abstract class _$$MainBuildableImplCopyWith<$Res>
       __$$MainBuildableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int currentIndex, String type});
+  $Res call({int currentIndex});
 }
 
 /// @nodoc
@@ -91,17 +85,12 @@ class __$$MainBuildableImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? currentIndex = null,
-    Object? type = null,
   }) {
     return _then(_$MainBuildableImpl(
       currentIndex: null == currentIndex
           ? _value.currentIndex
           : currentIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -109,18 +98,15 @@ class __$$MainBuildableImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MainBuildableImpl implements _MainBuildable {
-  const _$MainBuildableImpl({this.currentIndex = 0, this.type = ""});
+  const _$MainBuildableImpl({this.currentIndex = 0});
 
   @override
   @JsonKey()
   final int currentIndex;
-  @override
-  @JsonKey()
-  final String type;
 
   @override
   String toString() {
-    return 'MainBuildable(currentIndex: $currentIndex, type: $type)';
+    return 'MainBuildable(currentIndex: $currentIndex)';
   }
 
   @override
@@ -129,12 +115,11 @@ class _$MainBuildableImpl implements _MainBuildable {
         (other.runtimeType == runtimeType &&
             other is _$MainBuildableImpl &&
             (identical(other.currentIndex, currentIndex) ||
-                other.currentIndex == currentIndex) &&
-            (identical(other.type, type) || other.type == type));
+                other.currentIndex == currentIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentIndex, type);
+  int get hashCode => Object.hash(runtimeType, currentIndex);
 
   /// Create a copy of MainBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -146,13 +131,10 @@ class _$MainBuildableImpl implements _MainBuildable {
 }
 
 abstract class _MainBuildable implements MainBuildable {
-  const factory _MainBuildable({final int currentIndex, final String type}) =
-      _$MainBuildableImpl;
+  const factory _MainBuildable({final int currentIndex}) = _$MainBuildableImpl;
 
   @override
   int get currentIndex;
-  @override
-  String get type;
 
   /// Create a copy of MainBuildable
   /// with the given fields replaced by the non-null parameter values.

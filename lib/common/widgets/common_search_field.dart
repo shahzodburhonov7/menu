@@ -4,20 +4,26 @@ import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 class CommonSearchField extends StatelessWidget {
-  const CommonSearchField({
+  CommonSearchField({
     super.key,
     this.hintText,
-    this.height=40,
+    this.height = 40,
+    this.onChanged,
+    required this.controller,
   });
 
   final double? height;
   final String? hintText;
+  final TextEditingController controller;
+  void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height?.h,
       child: TextField(
+        onChanged: onChanged,
+        controller: controller,
         decoration: InputDecoration(
           hintText: hintText,
           prefixIcon: Padding(

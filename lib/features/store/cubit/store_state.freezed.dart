@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$StoreBuildable {
   int get tableNumber => throw _privateConstructorUsedError;
-  int get count => throw _privateConstructorUsedError;
+  int get cartId => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
   bool get orderLoading => throw _privateConstructorUsedError;
   bool get confirmLoading => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $StoreBuildableCopyWith<$Res> {
   @useResult
   $Res call(
       {int tableNumber,
-      int count,
+      int cartId,
       bool loading,
       bool orderLoading,
       bool confirmLoading,
@@ -65,7 +65,7 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
   @override
   $Res call({
     Object? tableNumber = null,
-    Object? count = null,
+    Object? cartId = null,
     Object? loading = null,
     Object? orderLoading = null,
     Object? confirmLoading = null,
@@ -77,9 +77,9 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
           ? _value.tableNumber
           : tableNumber // ignore: cast_nullable_to_non_nullable
               as int,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
+      cartId: null == cartId
+          ? _value.cartId
+          : cartId // ignore: cast_nullable_to_non_nullable
               as int,
       loading: null == loading
           ? _value.loading
@@ -129,7 +129,7 @@ abstract class _$$StoreBuildableImplCopyWith<$Res>
   @useResult
   $Res call(
       {int tableNumber,
-      int count,
+      int cartId,
       bool loading,
       bool orderLoading,
       bool confirmLoading,
@@ -154,7 +154,7 @@ class __$$StoreBuildableImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tableNumber = null,
-    Object? count = null,
+    Object? cartId = null,
     Object? loading = null,
     Object? orderLoading = null,
     Object? confirmLoading = null,
@@ -166,9 +166,9 @@ class __$$StoreBuildableImplCopyWithImpl<$Res>
           ? _value.tableNumber
           : tableNumber // ignore: cast_nullable_to_non_nullable
               as int,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
+      cartId: null == cartId
+          ? _value.cartId
+          : cartId // ignore: cast_nullable_to_non_nullable
               as int,
       loading: null == loading
           ? _value.loading
@@ -199,7 +199,7 @@ class __$$StoreBuildableImplCopyWithImpl<$Res>
 class _$StoreBuildableImpl implements _StoreBuildable {
   const _$StoreBuildableImpl(
       {this.tableNumber = 0,
-      this.count = 0,
+      this.cartId = 0,
       this.loading = false,
       this.orderLoading = false,
       this.confirmLoading = false,
@@ -212,7 +212,7 @@ class _$StoreBuildableImpl implements _StoreBuildable {
   final int tableNumber;
   @override
   @JsonKey()
-  final int count;
+  final int cartId;
   @override
   @JsonKey()
   final bool loading;
@@ -236,7 +236,7 @@ class _$StoreBuildableImpl implements _StoreBuildable {
 
   @override
   String toString() {
-    return 'StoreBuildable(tableNumber: $tableNumber, count: $count, loading: $loading, orderLoading: $orderLoading, confirmLoading: $confirmLoading, getTableList: $getTableList, tableOrder: $tableOrder)';
+    return 'StoreBuildable(tableNumber: $tableNumber, cartId: $cartId, loading: $loading, orderLoading: $orderLoading, confirmLoading: $confirmLoading, getTableList: $getTableList, tableOrder: $tableOrder)';
   }
 
   @override
@@ -246,7 +246,7 @@ class _$StoreBuildableImpl implements _StoreBuildable {
             other is _$StoreBuildableImpl &&
             (identical(other.tableNumber, tableNumber) ||
                 other.tableNumber == tableNumber) &&
-            (identical(other.count, count) || other.count == count) &&
+            (identical(other.cartId, cartId) || other.cartId == cartId) &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.orderLoading, orderLoading) ||
                 other.orderLoading == orderLoading) &&
@@ -262,7 +262,7 @@ class _$StoreBuildableImpl implements _StoreBuildable {
   int get hashCode => Object.hash(
       runtimeType,
       tableNumber,
-      count,
+      cartId,
       loading,
       orderLoading,
       confirmLoading,
@@ -282,7 +282,7 @@ class _$StoreBuildableImpl implements _StoreBuildable {
 abstract class _StoreBuildable implements StoreBuildable {
   const factory _StoreBuildable(
       {final int tableNumber,
-      final int count,
+      final int cartId,
       final bool loading,
       final bool orderLoading,
       final bool confirmLoading,
@@ -292,7 +292,7 @@ abstract class _StoreBuildable implements StoreBuildable {
   @override
   int get tableNumber;
   @override
-  int get count;
+  int get cartId;
   @override
   bool get loading;
   @override

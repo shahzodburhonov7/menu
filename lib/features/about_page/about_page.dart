@@ -56,7 +56,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                         width: double.infinity,
                         height: 80.h,
                         decoration: const BoxDecoration(
-                          color: AppColors.white,
+                          color: Color(0xffFCF6FD),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
@@ -174,9 +174,12 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                   foodId: state.foodInfo!.id!,
                   quantity: state.count,
                 );
-                context.router.pop(context);
-              }else{
-                CommonToast.snackBar(context, message: "soni kiriting");
+                context.router.pop();
+              } else {
+                CommonToast.snackBar(
+                  context,
+                  message: "soni kiriting",
+                );
               }
             },
             style: ElevatedButton.styleFrom(

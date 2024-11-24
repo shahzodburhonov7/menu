@@ -125,6 +125,9 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
                 onTap: () {
                   debugPrint("Debug1");
                   cubit.postChose(id: state.tableId);
+                  cubit.tableNumber(
+                    tableNumber: state.table,
+                  );
                 },
                 text: "Tasdiqlash",
               )

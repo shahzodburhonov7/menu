@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/common/base/base_cubit.dart';
 import 'package:restaurants_menu/domain/storage/storage.dart';
@@ -19,6 +20,7 @@ class MainCubit extends BaseCubit<MainBuildable, MainListenable> {
   }
 
   void userType() async {
-    build((buildable) => buildable.copyWith(type: storage.userType.call()!));
+    debugPrint('userType: ${USER_TYPE=storage.userType.call() ?? ''}');
+
   }
 }

@@ -6,7 +6,6 @@ part  'main_state.freezed.dart';
 class MainBuildable with _$MainBuildable {
   const factory MainBuildable({
     @Default(0) int currentIndex,
-    @Default("") String type,
 }) = _MainBuildable;
 }
 

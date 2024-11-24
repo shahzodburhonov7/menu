@@ -14,6 +14,7 @@ class AuthRepoImpl extends AuthRepository {
     this.storage,
   );
 
+
   @override
   Future<void> userLogin(
       {required String username, required String password}) async {
@@ -22,8 +23,10 @@ class AuthRepoImpl extends AuthRepository {
     await storage.token.set(res.data['access']);
     await storage.userType.set(res.data['user_type']);
 
+
+
     debugPrint('TOKEN: ${storage.token.call() ?? ''}');
-    debugPrint('userType: ${storage.userType.call() ?? ''}');
+    debugPrint('userType: ${USER_TYPE=storage.userType.call() ?? ''}');
   }
 
   @override

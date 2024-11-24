@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
+import 'package:restaurants_menu/domain/storage/storage.dart';
 import 'package:restaurants_menu/features/foods/foods_page.dart';
 import 'package:restaurants_menu/features/history/history_page.dart';
 import 'package:restaurants_menu/features/home/home_page.dart';
@@ -21,10 +22,10 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
   @override
   Widget builder(BuildContext context, MainBuildable state) {
     List<Widget> bottomBarPages = [
-      state.type == "ofitsant" ? const HomePage() : FoodsPage(),
+      USER_TYPE == "ofitsant" ? const HomePage() : FoodsPage(),
       const HistoryPage(),
       const StorePage(),
-      SettingsPage(),
+       SettingsPage(),
       const ProfilePage(),
     ];
     return Scaffold(
@@ -45,7 +46,10 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
             label: '',
             activeIcon: Assets.icons.activeHistory.svg(),
           ),
-          BottomNavigationBarItem(icon: Assets.icons.story.svg(), activeIcon: Assets.icons.activeStore.svg(), label: ''
+          BottomNavigationBarItem(
+              icon: Assets.icons.story.svg(),
+              activeIcon: Assets.icons.activeStore.svg(),
+              label: ''
               // activeIcon: Assets.icons.activeHistory.svg(),
               ),
           BottomNavigationBarItem(

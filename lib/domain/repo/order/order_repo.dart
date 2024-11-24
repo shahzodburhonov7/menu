@@ -12,4 +12,5 @@ abstract class OrderRepo {
   });
 
   Future<void> orderDelete({required String cartItem});
+  Future<void> quantityUpdate({required int quantity, required int cart_item_id});
 }
