@@ -1,4 +1,3 @@
-
 class Constants {
   static const baseUrl = 'http://api.repid.uz';
   static const version = '/api/v1';
@@ -22,4 +21,10 @@ class Constants {
   static const apiBasketCategory = '/product/product-category/list/';
   static const apiOrderUpdate = '/common/cart-item/';
   static const apiFoodSearch = '/common/food/list/?search=';
+
+  // STOREKEEPER
+  static const apiProductCategory = '/product/product-category/list/';
+  static const apiProductCategoryId = '/product/product-category/';
+  static const apiProductsGet = '/product/product/list/';
+  static const apiProductsSearch = '/product/product/list/?search=';
 }

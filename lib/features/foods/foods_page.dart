@@ -7,6 +7,7 @@ import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/common_search_field.dart';
+import 'package:restaurants_menu/domain/storage/storage.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_state.dart';
 import 'package:restaurants_menu/features/foods/widget/food_card.dart';
@@ -21,12 +22,16 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
     context.read<FoodsCubit>().getAllTable();
-
     super.init(context);
   }
 
   ScrollController scrollController = ScrollController();
   TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void onFocusGained(BuildContext context) {
+    context.read<FoodsCubit>().tableOrder(number: 148);
+  }
 
   @override
   Widget builder(BuildContext context, FoodsBuildable state) {
@@ -48,28 +53,32 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                   icon: Assets.icons.back.svg(),
                 ),
           actions: [
-            DropdownButton<int>(
-              hint: "${state.tableNumber}".s(18.sp),
-              onChanged: (value) {
-                context.read<FoodsCubit>().selectTable(
-                      tableNumber: value!,
-                    );
-              },
-              items: state.getTableList.map<DropdownMenuItem<int>>((table) {
-                return DropdownMenuItem<int>(
-                  onTap: () {
-                    context.read<FoodsCubit>().tableOrder(
-                          number: table["cart_id"],
-                        );
-                  },
-                  value: table["number"],
-                  child: Text(
-                    "${table["number"]}",
-                    style: const TextStyle(color: Colors.blue),
-                  ),
-                );
-              }).toList(),
-            )
+            state.type == 'omborchi'
+                ? const SizedBox.shrink()
+                : DropdownButton<int>(
+                    hint: "${state.tableNumber}".s(18.sp),
+                    onChanged: (value) {
+                      context.read<FoodsCubit>().selectTable(
+                            tableNumber: value!,
+                          );
+                    },
+                    items: state.getTableList.map<DropdownMenuItem<int>>((table) {
+                      return DropdownMenuItem<int>(
+                        onTap: () {
+                          context.read<FoodsCubit>().tableOrder(
+                                number: table["cart_id"],
+                              );
+                        },
+                        value: table["number"],
+                        child: table["cart_id"] != null
+                            ? Text(
+                                "${table["number"]}",
+                                style: const TextStyle(color: Colors.blue),
+                              )
+                            : const SizedBox.shrink(),
+                      );
+                    }).toList(),
+                  )
           ],
         ),
         body: SingleChildScrollView(
@@ -131,14 +140,16 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                           return index == state.foodPro.length
                               ? const CircularProgressIndicator()
                               : FoodCard(
-                                  onTap: () {
-                                    context.router.push(
-                                      AboutRoute(
-                                        foodId: state.foodPro[index].id!,
-                                      ),
-                                    );
-                                  },
-                                  name: "${state.foodPro[index].name_uz}",
+                                  onTap: USER_TYPE == 'ofitsant'
+                                      ? () {
+                                          context.router.push(
+                                            AboutRoute(
+                                              foodId: state.foodPro[index].id!,
+                                            ),
+                                          );
+                                        }
+                                      : () {},
+                                  name: USER_TYPE == 'ofitsant' ? "${state.foodPro[index].name_uz}" : "${state.foodPro[index].name_uz}",
                                   price: "${state.foodPro[index].price}",
                                   image: "${state.foodPro[index].image}",
                                   loading: state.orderLoading,

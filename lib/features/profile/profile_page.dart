@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
+import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/widgets/custom_container.dart';
 import 'package:restaurants_menu/features/profile/cubit/profile_cubit.dart';
@@ -11,8 +12,7 @@ import 'package:restaurants_menu/features/profile/cubit/profile_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
-class ProfilePage
-    extends BasePage<ProfileCubit, ProfileBuildable, ProfileListenable> {
+class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListenable> {
   const ProfilePage({super.key});
 
   @override
@@ -49,11 +49,16 @@ class ProfilePage
                       ),
                       child: CircleAvatar(
                         backgroundColor: const Color(0xffEEF0F4),
+                        backgroundImage: state.profile!.profile_image != null
+                            ? NetworkImage("http://api.repid.uz/${state.profile!.profile_image!}")
+                            : null,
                         radius: 30,
-                        child: Assets.icons.person.svg(
-                          width: 34.67.w,
-                          height: 43.33.h,
-                        ),
+                        child: state.profile!.profile_image == null
+                            ? Assets.icons.person.svg(
+                                width: 34.67.w,
+                                height: 43.33.h,
+                              )
+                            : null,
                       ),
                     ),
                   ),

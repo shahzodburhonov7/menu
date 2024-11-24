@@ -12,22 +12,10 @@ class FoodCategoryImpl extends FoodCategoryRepo {
   FoodCategoryImpl(this.api);
 
   @override
-  Future<List<FoodCategory>> foodCategory({required int page}) async{
-      final response = await api.foodCategory(page: page);
-        return foodCategoryFromJson(
-          jsonEncode(response.data),
-        );
+  Future<List<FoodCategory>> foodCategory({required int page}) async {
+    final response = await api.foodCategory(page: page);
+    return foodCategoryFromJson(
+      jsonEncode(response.data),
+    );
   }
-
-  // @override
-  // Future<FoodCategory> foodCategory({required int page})async {
-  //   final response = await api.foodCategory(page: page);
-  //     return foodCategoryFromJson(
-  //       jsonEncode(response.data),
-  //     );
-  // }
-
-
-
-
 }

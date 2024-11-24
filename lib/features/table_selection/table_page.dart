@@ -75,11 +75,7 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
               CustomContainer(
                 child: Row(
                   children: [
-                    "${state.table}"
-                        .toString()
-                        .s(16.sp)
-                        .w(500)
-                        .c(AppColors.borderColor),
+                    "${state.table}".toString().s(16.sp).w(500).c(AppColors.borderColor),
                   ],
                 ),
               ),
@@ -100,15 +96,10 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
                       (index) {
                         return Center(
                           child: Text(
-                            state.getTableList
-                                .elementAt(index)["number"]
-                                .toString(),
+                            state.getTableList.elementAt(index)["number"].toString(),
                             style: TextStyle(
                               fontSize: 30.sp,
-                              color:
-                                  state.getTableList.elementAt(index)["is_busy"]
-                                      ? AppColors.tabColor
-                                      : AppColors.textColor,
+                              color: state.getTableList.elementAt(index)["is_busy"] ? AppColors.tabColor : AppColors.textColor,
                             ),
                           ),
                         );

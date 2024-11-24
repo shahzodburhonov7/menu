@@ -20,6 +20,7 @@ mixin _$AboutBuildable {
   FoodInfo? get foodInfo => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   bool get orderLoading => throw _privateConstructorUsedError;
+  int get cartId => throw _privateConstructorUsedError;
 
   /// Create a copy of AboutBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +35,12 @@ abstract class $AboutBuildableCopyWith<$Res> {
           AboutBuildable value, $Res Function(AboutBuildable) then) =
       _$AboutBuildableCopyWithImpl<$Res, AboutBuildable>;
   @useResult
-  $Res call({bool loading, FoodInfo? foodInfo, int count, bool orderLoading});
+  $Res call(
+      {bool loading,
+      FoodInfo? foodInfo,
+      int count,
+      bool orderLoading,
+      int cartId});
 
   $FoodInfoCopyWith<$Res>? get foodInfo;
 }
@@ -58,6 +64,7 @@ class _$AboutBuildableCopyWithImpl<$Res, $Val extends AboutBuildable>
     Object? foodInfo = freezed,
     Object? count = null,
     Object? orderLoading = null,
+    Object? cartId = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -76,6 +83,10 @@ class _$AboutBuildableCopyWithImpl<$Res, $Val extends AboutBuildable>
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      cartId: null == cartId
+          ? _value.cartId
+          : cartId // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -102,7 +113,12 @@ abstract class _$$AboutBuildableImplCopyWith<$Res>
       __$$AboutBuildableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool loading, FoodInfo? foodInfo, int count, bool orderLoading});
+  $Res call(
+      {bool loading,
+      FoodInfo? foodInfo,
+      int count,
+      bool orderLoading,
+      int cartId});
 
   @override
   $FoodInfoCopyWith<$Res>? get foodInfo;
@@ -125,6 +141,7 @@ class __$$AboutBuildableImplCopyWithImpl<$Res>
     Object? foodInfo = freezed,
     Object? count = null,
     Object? orderLoading = null,
+    Object? cartId = null,
   }) {
     return _then(_$AboutBuildableImpl(
       loading: null == loading
@@ -143,6 +160,10 @@ class __$$AboutBuildableImplCopyWithImpl<$Res>
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      cartId: null == cartId
+          ? _value.cartId
+          : cartId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -154,7 +175,8 @@ class _$AboutBuildableImpl implements _AboutBuildable {
       {this.loading = false,
       this.foodInfo,
       this.count = 0,
-      this.orderLoading = false});
+      this.orderLoading = false,
+      this.cartId = 0});
 
   @override
   @JsonKey()
@@ -167,10 +189,13 @@ class _$AboutBuildableImpl implements _AboutBuildable {
   @override
   @JsonKey()
   final bool orderLoading;
+  @override
+  @JsonKey()
+  final int cartId;
 
   @override
   String toString() {
-    return 'AboutBuildable(loading: $loading, foodInfo: $foodInfo, count: $count, orderLoading: $orderLoading)';
+    return 'AboutBuildable(loading: $loading, foodInfo: $foodInfo, count: $count, orderLoading: $orderLoading, cartId: $cartId)';
   }
 
   @override
@@ -183,12 +208,13 @@ class _$AboutBuildableImpl implements _AboutBuildable {
                 other.foodInfo == foodInfo) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.orderLoading, orderLoading) ||
-                other.orderLoading == orderLoading));
+                other.orderLoading == orderLoading) &&
+            (identical(other.cartId, cartId) || other.cartId == cartId));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, loading, foodInfo, count, orderLoading);
+      Object.hash(runtimeType, loading, foodInfo, count, orderLoading, cartId);
 
   /// Create a copy of AboutBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -205,7 +231,8 @@ abstract class _AboutBuildable implements AboutBuildable {
       {final bool loading,
       final FoodInfo? foodInfo,
       final int count,
-      final bool orderLoading}) = _$AboutBuildableImpl;
+      final bool orderLoading,
+      final int cartId}) = _$AboutBuildableImpl;
 
   @override
   bool get loading;
@@ -215,6 +242,8 @@ abstract class _AboutBuildable implements AboutBuildable {
   int get count;
   @override
   bool get orderLoading;
+  @override
+  int get cartId;
 
   /// Create a copy of AboutBuildable
   /// with the given fields replaced by the non-null parameter values.

@@ -71,27 +71,27 @@ class FoodCard extends StatelessWidget {
               onTap: onTap,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: CachedNetworkImage(
-                  placeholder:(context, url) => CircularProgressIndicator(),
-                  imageBuilder: (context, imageProvider) => ClipRRect(
-                      borderRadius: BorderRadius.circular(16.r),
-                      child:
-                      Image.network(
-                        height: 149.h,
-                        width: 148.w,
-                        image,
-                        fit: BoxFit.cover,
-                      ),
-                      ),
-                  errorWidget: (context, url, error) => Assets.images.add.svg(),
-                  imageUrl: image,
+                child:
+                    // CachedNetworkImage(
+                    //   placeholder: (context, url) => CircularProgressIndicator(),
+                    //   imageBuilder: (context, imageProvider) => ClipRRect(
+                    //     borderRadius: BorderRadius.circular(16.r),
+                    //     child: Image.network(
+                    //       height: 149.h,
+                    //       width: 148.w,
+                    //       image,
+                    //       fit: BoxFit.cover,
+                    //     ),
+                    //   ),
+                    //   errorWidget: (context, url, error) => Assets.images.add.svg(),
+                    //   imageUrl: image,
+                    // ),
+                    Image.network(
+                  image,
+                  height: 149.h,
+                  width: 148.w,
+                  fit: BoxFit.cover,
                 ),
-                // Image.network(
-                //   image,
-                //   height: 149.h,
-                //   width: 148.w,
-                //   fit: BoxFit.cover,
-                // ),
               ),
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/common/base/base_cubit.dart';
 import 'package:restaurants_menu/domain/repo/table_process_repo/table_process_repo.dart';
@@ -9,6 +10,7 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
   final TableProcessRepo repo;
 
   void processList() {
+    debugPrint("salomlar ..");
     callable(
       future: repo.orderList(),
       buildOnStart: () => buildable.copyWith(loading: true),
