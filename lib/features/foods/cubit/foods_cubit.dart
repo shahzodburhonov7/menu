@@ -42,6 +42,7 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
   }
 
   void tableOrder({required int number}) {
+    storage.cardId.set(number);
     build((buildable) => buildable.copyWith(cartId: number));
     callable(
         future: orderRepo.orderTable(number: number),

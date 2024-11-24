@@ -50,26 +50,19 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                                 ? SizedBox.shrink()
                                 : const Text(
                                     "Jarayonda",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700),
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                                   ),
                             trailing: Text(
-                              formatDate(state.orderDoneList[index].created_at
-                                  .toString()),
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
+                              formatDate(state.orderDoneList[index].created_at.toString()),
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                             ),
                           ),
                           Card(
                             color: Color(0xffFFFFFF),
                             child: ItemOrderDone(
-                              price: state.orderDoneList[index].total_price
-                                  .toString(),
-                              table: state.orderDoneList[index].cart!.table
-                                  .toString(),
-                              cartItems:
-                                  state.orderDoneList[index].cart!.cart_items!,
+                              price: state.orderDoneList[index].total_price.toString(),
+                              table: state.orderDoneList[index].cart!.table.toString(),
+                              cartItems: state.orderDoneList[index].cart!.cart_items!,
                               onTap: () {},
                             ),
                           ),
@@ -132,10 +125,7 @@ class ItemOrderDone extends StatelessWidget {
                         children: [
                           cartItems![index].food_name!.s(14.sp).w(400),
                           SizedBox(height: 4.h),
-                          "Son :${cartItems![index].quantity!}"
-                              .toString()
-                              .s(12.sp)
-                              .w(400),
+                          "Son :${cartItems![index].quantity!}".toString().s(12.sp).w(400),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -182,6 +172,7 @@ class ItemOrderDone extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: 15.h),
       ],
     );
   }

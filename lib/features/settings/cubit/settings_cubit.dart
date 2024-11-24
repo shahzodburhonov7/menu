@@ -12,8 +12,6 @@ class SettingsCubit extends BaseCubit<SettingsBuildable, SettingsListenable> {
   final Storage storage;
 
   void userLogOut() {
-    callable(
-      future: repo.userLogOut(refToken: storage.refToken.call()??""),
-    );
+    storage.token.delete();
   }
 }

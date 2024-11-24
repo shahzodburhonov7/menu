@@ -153,10 +153,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.1),
-                      const Divider(
-                        color: AppColors.dividerColor,
-                        thickness: 1,
-                      ),
+
                     ],
                   ),
                 ),

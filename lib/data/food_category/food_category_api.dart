@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/common/constants/constants.dart';
+import 'package:restaurants_menu/domain/storage/storage.dart';
 
 @injectable
 class FoodCategoryApi {
@@ -9,6 +10,6 @@ class FoodCategoryApi {
   FoodCategoryApi(this.dio);
 
   Future<Response> foodCategory({required int page}) async {
-    return await dio.get("${Constants.apiFoodCategory}$page");
+    return await dio.get(USER_TYPE == 'ofitsant' ? "${Constants.apiFoodCategory}$page" : Constants.apiProductCategory);
   }
 }

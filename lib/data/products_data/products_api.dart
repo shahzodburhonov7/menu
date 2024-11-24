@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/common/constants/constants.dart';
+import 'package:restaurants_menu/domain/storage/storage.dart';
 
 @injectable
 class ProductsApi {
@@ -9,11 +10,12 @@ class ProductsApi {
   ProductsApi(this.dio);
 
   Future<Response> productGet() async {
-    return await dio.get(Constants.apiFoodList);
+    return await dio.get(USER_TYPE == 'ofitsant' ? Constants.apiFoodList : Constants.apiProductsGet);
   }
 
   Future<Response> foodCategoryId({required int id, required int page}) async {
-    return await dio.get("${Constants.apiFoodsCategoryId}$id/foods/?page=$page");
+    return await dio
+        .get(USER_TYPE == 'ofitsant' ? "${Constants.apiFoodsCategoryId}$id/foods/?page=$page" : "${Constants.apiProductCategoryId}$id/");
   }
 
   Future<Response> foodInfo({
@@ -23,6 +25,6 @@ class ProductsApi {
   }
 
   Future<Response> productSearch({required String query}) async {
-    return await dio.get("${Constants.apiFoodSearch}$query");
+    return await dio.get(USER_TYPE == 'ofitsant' ? "${Constants.apiFoodSearch}$query" : "${Constants.apiProductsSearch}$query");
   }
 }

@@ -18,22 +18,29 @@ class FoodCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: REdgeInsets.symmetric(
-          horizontal: 5,
-        ),
-        child: Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            ClipRRect(
+      child: Padding(
+        padding:  REdgeInsets.symmetric(horizontal: 5),
+        child: SizedBox(
+          child: Stack(
+            alignment: Alignment.bottomLeft,
+            children: [
+              ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(image,
-                    width: 104.w, height: 104.h, fit: BoxFit.cover)),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: name.s(14).w(600).c(Colors.white),
-            )
-          ],
+                child: Image.network(
+                  image,
+                  width: 104.w,
+                  height: 104.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: REdgeInsets.all(8.0),
+                child: name.s(14.sp).w(600).c(Colors.white).copyWith(
+                      overflow: TextOverflow.ellipsis,
+                    ),
+              )
+            ],
+          ),
         ),
       ),
     );

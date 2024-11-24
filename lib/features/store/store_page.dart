@@ -8,6 +8,7 @@ import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/widgets/bottom_sheet_custom.dart';
 import 'package:restaurants_menu/common/widgets/common_toast.dart';
+import 'package:restaurants_menu/common/widgets/custom_button.dart';
 import 'package:restaurants_menu/features/store/cubit/store_cubit.dart';
 import 'package:restaurants_menu/features/store/cubit/store_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
@@ -65,97 +66,161 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
             : state.orderLoading
                 ? const Center(child: CircularProgressIndicator())
                 : Padding(
-                    padding: REdgeInsets.all(8.0),
-                    child: SizedBox(
-                      height: (state.tableOrder?.cart_items!.length)! * 100.h,
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
                       child: Card(
-                        child: ListView.separated(
-                          itemCount: (state.tableOrder?.cart_items!)!.length,
-                          itemBuilder: (
-                            context,
-                            index,
-                          ) {
-                            return ListTile(
-                              leading: ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  minWidth: 100.w,
-                                  minHeight: 100.h,
-                                  maxWidth: 100.w,
-                                  maxHeight: 100.h,
-                                ),
-                                child: SizedBox(
-                                  height: 80.h,
-                                  width: 80.w,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
-                                    child: Image.network(
-                                      "${Constants.baseUrl}${state.tableOrder?.cart_items![index].food_image}",
-                                      width: 100.w,
-                                      height: 100.h,
-                                      fit: BoxFit.cover,
+                        color: Colors.white,
+                        child: Padding(
+                          padding: REdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              ...List.generate(
+                                state.tableOrder!.cart_items!.length,
+                                (index) {
+                                  return Padding(
+                                    padding: REdgeInsets.all(8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  child: Image.network(
+                                                    "${Constants.baseUrl}${state.tableOrder!.cart_items![index].food_image!}",
+                                                    width: 80.w,
+                                                    height: 80.h,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              width: 12.w,
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    state
+                                                        .tableOrder!
+                                                        .cart_items![index]
+                                                        .food_name!
+                                                        .s(14.sp)
+                                                        .w(400),
+                                                    GestureDetector(
+                                                      child: Assets.icons.cancel
+                                                          .svg(),
+                                                      onTap: () async {
+                                                        context
+                                                            .read<StoreCubit>()
+                                                            .deleteCart(
+                                                                deleteCart: state
+                                                                    .tableOrder!
+                                                                    .cart_items![
+                                                                        index]
+                                                                    .id
+                                                                    .toString());
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(height: 4.h),
+                                                "Son :${state.tableOrder!.cart_items![index].quantity!}"
+                                                    .toString()
+                                                    .s(12.sp)
+                                                    .w(400),
+                                                SizedBox(
+                                                  height: 13.h,
+                                                ),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        cubit.remove(
+                                                          quantity: state
+                                                              .tableOrder!
+                                                              .cart_items![
+                                                                  index]
+                                                              .quantity!,
+                                                          itemId: state
+                                                              .tableOrder!
+                                                              .cart_items![
+                                                                  index]
+                                                              .id!,
+                                                        );
+                                                      },
+                                                      child: Assets
+                                                          .images.remove
+                                                          .svg(),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 8.w,
+                                                    ),
+                                                    '${state.tableOrder!.cart_items![index].quantity}'
+                                                        .s(12.sp)
+                                                        .w(400),
+                                                    SizedBox(
+                                                      width: 8.w,
+                                                    ),
+                                                    GestureDetector(
+                                                      onTap: () {
+                                                        cubit.add(
+                                                          quantity: state
+                                                              .tableOrder!
+                                                              .cart_items![
+                                                                  index]
+                                                              .quantity!,
+                                                          itemId: state
+                                                              .tableOrder!
+                                                              .cart_items![
+                                                                  index]
+                                                              .id!,
+                                                        );
+                                                      },
+                                                      child: Assets.images.add
+                                                          .svg(),
+                                                    ),
+                                                    SizedBox(
+                                                      width: 55.w,
+                                                    ),
+                                                    state
+                                                        .tableOrder!
+                                                        .cart_items![index]
+                                                        .price!
+                                                        .s(16.sp)
+                                                        .w(600),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 12.h,
+                                        ),
+                                        const Divider(
+                                          color: AppColors.borderTextColor,
+                                          thickness: 1,
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ),
+                                  );
+                                },
                               ),
-                              title: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  "${state.tableOrder?.cart_items![index].price}".s(14.sp).w(400),
-                                  GestureDetector(
-                                    child: Assets.icons.cancel.svg(),
-                                    onTap: () async {
-                                      context.read<StoreCubit>().deleteCart(deleteCart: state.tableOrder!.cart_items![index].id.toString());
-                                    },
-                                  ),
-                                ],
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  "Son: ".s(12.sp).w(400),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          GestureDetector(
-                                              onTap: () {
-                                                cubit.remove(
-                                                  quantity: state.tableOrder!.cart_items![index].quantity!,
-                                                  itemId: state.tableOrder!.cart_items![index].id!,
-                                                );
-                                              },
-                                              child: Assets.images.remove.svg()),
-                                          Padding(
-                                            padding: REdgeInsets.symmetric(horizontal: 16),
-                                            child: '${state.tableOrder!.cart_items![index].quantity}'.s(12.sp).w(400),
-                                          ),
-                                          GestureDetector(
-                                              onTap: () {
-                                                cubit.add(
-                                                  quantity: state.tableOrder!.cart_items![index].quantity!,
-                                                  itemId: state.tableOrder!.cart_items![index].id!,
-                                                );
-                                              },
-                                              child: Assets.images.add.svg()),
-                                        ],
-                                      ),
-                                      // "${item.price}".s(16.sp).w(600),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              onTap: () {},
-                              onLongPress: () {},
-                              dense: false,
-                            );
-                          },
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const Divider(
-                              color: AppColors.dividerColor,
-                              thickness: 1,
-                            );
-                          },
+                            ],
+                          ),
                         ),
                       ),
                     ),

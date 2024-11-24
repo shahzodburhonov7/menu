@@ -10,7 +10,7 @@ class AboutBuildable with _$AboutBuildable {
     FoodInfo? foodInfo,
     @Default(0) int count,
     @Default(false) bool orderLoading,
-
+    @Default(0) int cartId,
   }) = _AboutBuildable;
 }
 
