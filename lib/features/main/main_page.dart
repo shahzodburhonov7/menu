@@ -21,10 +21,10 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
   @override
   Widget builder(BuildContext context, MainBuildable state) {
     List<Widget> bottomBarPages = [
-      state.type == "afitsant" ? const HomePage() : FoodsPage(),
+      state.type == "ofitsant" ? const HomePage() : FoodsPage(),
       const HistoryPage(),
       const StorePage(),
-       SettingsPage(),
+      SettingsPage(),
       const ProfilePage(),
     ];
     return Scaffold(
@@ -45,10 +45,7 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
             label: '',
             activeIcon: Assets.icons.activeHistory.svg(),
           ),
-          BottomNavigationBarItem(
-              icon: Assets.icons.story.svg(),
-              activeIcon: Assets.icons.activeStore.svg(),
-              label: ''
+          BottomNavigationBarItem(icon: Assets.icons.story.svg(), activeIcon: Assets.icons.activeStore.svg(), label: ''
               // activeIcon: Assets.icons.activeHistory.svg(),
               ),
           BottomNavigationBarItem(

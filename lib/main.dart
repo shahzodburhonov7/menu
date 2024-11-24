@@ -17,7 +17,6 @@ void main() async {
       supportedLocales: const [
         Locale('uz', 'UZ'),
         Locale('en', 'EN'),
-
       ],
       path: 'assets/locales',
       fallbackLocale: const Locale('uz', 'UZ'),
@@ -32,9 +31,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return ScreenUtilInit(
       designSize: const Size(393, 852),
       minTextAdapt: true,
@@ -54,3 +50,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// hello
