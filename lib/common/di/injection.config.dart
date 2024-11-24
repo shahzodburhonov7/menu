@@ -111,6 +111,7 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.singleton<_i472.Display>(() => _i514.DisplayImpl());
     gh.factory<_i361.Dio>(() => networkModule.dio(gh<_i276.AuthInterceptor>()));
+    gh.factory<_i230.BasketApi>(() => _i230.BasketApi(gh<_i361.Dio>()));
     gh.factory<_i636.FoodCategoryApi>(
         () => _i636.FoodCategoryApi(gh<_i361.Dio>()));
     gh.factory<_i352.OrderApi>(() => _i352.OrderApi(gh<_i361.Dio>()));
@@ -119,7 +120,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i900.ProductsApi>(() => _i900.ProductsApi(gh<_i361.Dio>()));
     gh.factory<_i159.ProfileApi>(() => _i159.ProfileApi(gh<_i361.Dio>()));
     gh.factory<_i108.TableApi>(() => _i108.TableApi(gh<_i361.Dio>()));
-    gh.factory<_i230.BasketApi>(() => _i230.BasketApi(gh<_i361.Dio>()));
     gh.factory<_i479.OrderRepo>(
         () => _i521.OrderRepoImpl(gh<_i352.OrderApi>()));
     gh.factory<_i379.AuthApi>(() => _i379.AuthApi(gh<_i361.Dio>()));

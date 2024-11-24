@@ -13,10 +13,13 @@ String foodProductsToJson(List<FoodProducts> data) => json.encode(List<dynamic>.
 class FoodProducts with _$FoodProducts {
   const factory FoodProducts({
     int? id,
-    String? name,
+    dynamic name_uz,
+    dynamic name_ru,
+    dynamic name_en,
     String? image,
     int? price,
   }) = _FoodProducts;
 
   factory FoodProducts.fromJson(Map<String, dynamic> json) => _$FoodProductsFromJson(json);
 }
+

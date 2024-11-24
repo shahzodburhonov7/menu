@@ -138,7 +138,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                                       ),
                                     );
                                   },
-                                  name: "${state.foodPro[index].name}",
+                                  name: "${state.foodPro[index].name_uz}",
                                   price: "${state.foodPro[index].price}",
                                   image: "${state.foodPro[index].image}",
                                   loading: state.orderLoading,

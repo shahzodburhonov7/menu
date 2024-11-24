@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'products.dart';
+part of 'basket.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,55 +14,53 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-FoodProducts _$FoodProductsFromJson(Map<String, dynamic> json) {
-  return _FoodProducts.fromJson(json);
+BasketCategory _$BasketCategoryFromJson(Map<String, dynamic> json) {
+  return _BasketCategory.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FoodProducts {
+mixin _$BasketCategory {
   int? get id => throw _privateConstructorUsedError;
-  dynamic get name_uz => throw _privateConstructorUsedError;
-  dynamic get name_ru => throw _privateConstructorUsedError;
-  dynamic get name_en => throw _privateConstructorUsedError;
+  String? get name_uz => throw _privateConstructorUsedError;
+  String? get name_ru => throw _privateConstructorUsedError;
+  String? get name_en => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
-  int? get price => throw _privateConstructorUsedError;
 
-  /// Serializes this FoodProducts to a JSON map.
+  /// Serializes this BasketCategory to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of FoodProducts
+  /// Create a copy of BasketCategory
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $FoodProductsCopyWith<FoodProducts> get copyWith =>
+  $BasketCategoryCopyWith<BasketCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FoodProductsCopyWith<$Res> {
-  factory $FoodProductsCopyWith(
-          FoodProducts value, $Res Function(FoodProducts) then) =
-      _$FoodProductsCopyWithImpl<$Res, FoodProducts>;
+abstract class $BasketCategoryCopyWith<$Res> {
+  factory $BasketCategoryCopyWith(
+          BasketCategory value, $Res Function(BasketCategory) then) =
+      _$BasketCategoryCopyWithImpl<$Res, BasketCategory>;
   @useResult
   $Res call(
       {int? id,
-      dynamic name_uz,
-      dynamic name_ru,
-      dynamic name_en,
-      String? image,
-      int? price});
+      String? name_uz,
+      String? name_ru,
+      String? name_en,
+      String? image});
 }
 
 /// @nodoc
-class _$FoodProductsCopyWithImpl<$Res, $Val extends FoodProducts>
-    implements $FoodProductsCopyWith<$Res> {
-  _$FoodProductsCopyWithImpl(this._value, this._then);
+class _$BasketCategoryCopyWithImpl<$Res, $Val extends BasketCategory>
+    implements $BasketCategoryCopyWith<$Res> {
+  _$BasketCategoryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FoodProducts
+  /// Create a copy of BasketCategory
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -72,7 +70,6 @@ class _$FoodProductsCopyWithImpl<$Res, $Val extends FoodProducts>
     Object? name_ru = freezed,
     Object? name_en = freezed,
     Object? image = freezed,
-    Object? price = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -82,53 +79,48 @@ class _$FoodProductsCopyWithImpl<$Res, $Val extends FoodProducts>
       name_uz: freezed == name_uz
           ? _value.name_uz
           : name_uz // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       name_ru: freezed == name_ru
           ? _value.name_ru
           : name_ru // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       name_en: freezed == name_en
           ? _value.name_en
           : name_en // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$FoodProductsImplCopyWith<$Res>
-    implements $FoodProductsCopyWith<$Res> {
-  factory _$$FoodProductsImplCopyWith(
-          _$FoodProductsImpl value, $Res Function(_$FoodProductsImpl) then) =
-      __$$FoodProductsImplCopyWithImpl<$Res>;
+abstract class _$$BasketCategoryImplCopyWith<$Res>
+    implements $BasketCategoryCopyWith<$Res> {
+  factory _$$BasketCategoryImplCopyWith(_$BasketCategoryImpl value,
+          $Res Function(_$BasketCategoryImpl) then) =
+      __$$BasketCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {int? id,
-      dynamic name_uz,
-      dynamic name_ru,
-      dynamic name_en,
-      String? image,
-      int? price});
+      String? name_uz,
+      String? name_ru,
+      String? name_en,
+      String? image});
 }
 
 /// @nodoc
-class __$$FoodProductsImplCopyWithImpl<$Res>
-    extends _$FoodProductsCopyWithImpl<$Res, _$FoodProductsImpl>
-    implements _$$FoodProductsImplCopyWith<$Res> {
-  __$$FoodProductsImplCopyWithImpl(
-      _$FoodProductsImpl _value, $Res Function(_$FoodProductsImpl) _then)
+class __$$BasketCategoryImplCopyWithImpl<$Res>
+    extends _$BasketCategoryCopyWithImpl<$Res, _$BasketCategoryImpl>
+    implements _$$BasketCategoryImplCopyWith<$Res> {
+  __$$BasketCategoryImplCopyWithImpl(
+      _$BasketCategoryImpl _value, $Res Function(_$BasketCategoryImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FoodProducts
+  /// Create a copy of BasketCategory
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -138,9 +130,8 @@ class __$$FoodProductsImplCopyWithImpl<$Res>
     Object? name_ru = freezed,
     Object? name_en = freezed,
     Object? image = freezed,
-    Object? price = freezed,
   }) {
-    return _then(_$FoodProductsImpl(
+    return _then(_$BasketCategoryImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -148,128 +139,108 @@ class __$$FoodProductsImplCopyWithImpl<$Res>
       name_uz: freezed == name_uz
           ? _value.name_uz
           : name_uz // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       name_ru: freezed == name_ru
           ? _value.name_ru
           : name_ru // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       name_en: freezed == name_en
           ? _value.name_en
           : name_en // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: freezed == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FoodProductsImpl implements _FoodProducts {
-  const _$FoodProductsImpl(
-      {this.id,
-      this.name_uz,
-      this.name_ru,
-      this.name_en,
-      this.image,
-      this.price});
+class _$BasketCategoryImpl implements _BasketCategory {
+  const _$BasketCategoryImpl(
+      {this.id, this.name_uz, this.name_ru, this.name_en, this.image});
 
-  factory _$FoodProductsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FoodProductsImplFromJson(json);
+  factory _$BasketCategoryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BasketCategoryImplFromJson(json);
 
   @override
   final int? id;
   @override
-  final dynamic name_uz;
+  final String? name_uz;
   @override
-  final dynamic name_ru;
+  final String? name_ru;
   @override
-  final dynamic name_en;
+  final String? name_en;
   @override
   final String? image;
-  @override
-  final int? price;
 
   @override
   String toString() {
-    return 'FoodProducts(id: $id, name_uz: $name_uz, name_ru: $name_ru, name_en: $name_en, image: $image, price: $price)';
+    return 'BasketCategory(id: $id, name_uz: $name_uz, name_ru: $name_ru, name_en: $name_en, image: $image)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FoodProductsImpl &&
+            other is _$BasketCategoryImpl &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other.name_uz, name_uz) &&
-            const DeepCollectionEquality().equals(other.name_ru, name_ru) &&
-            const DeepCollectionEquality().equals(other.name_en, name_en) &&
-            (identical(other.image, image) || other.image == image) &&
-            (identical(other.price, price) || other.price == price));
+            (identical(other.name_uz, name_uz) || other.name_uz == name_uz) &&
+            (identical(other.name_ru, name_ru) || other.name_ru == name_ru) &&
+            (identical(other.name_en, name_en) || other.name_en == name_en) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      const DeepCollectionEquality().hash(name_uz),
-      const DeepCollectionEquality().hash(name_ru),
-      const DeepCollectionEquality().hash(name_en),
-      image,
-      price);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name_uz, name_ru, name_en, image);
 
-  /// Create a copy of FoodProducts
+  /// Create a copy of BasketCategory
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$FoodProductsImplCopyWith<_$FoodProductsImpl> get copyWith =>
-      __$$FoodProductsImplCopyWithImpl<_$FoodProductsImpl>(this, _$identity);
+  _$$BasketCategoryImplCopyWith<_$BasketCategoryImpl> get copyWith =>
+      __$$BasketCategoryImplCopyWithImpl<_$BasketCategoryImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FoodProductsImplToJson(
+    return _$$BasketCategoryImplToJson(
       this,
     );
   }
 }
 
-abstract class _FoodProducts implements FoodProducts {
-  const factory _FoodProducts(
+abstract class _BasketCategory implements BasketCategory {
+  const factory _BasketCategory(
       {final int? id,
-      final dynamic name_uz,
-      final dynamic name_ru,
-      final dynamic name_en,
-      final String? image,
-      final int? price}) = _$FoodProductsImpl;
+      final String? name_uz,
+      final String? name_ru,
+      final String? name_en,
+      final String? image}) = _$BasketCategoryImpl;
 
-  factory _FoodProducts.fromJson(Map<String, dynamic> json) =
-      _$FoodProductsImpl.fromJson;
+  factory _BasketCategory.fromJson(Map<String, dynamic> json) =
+      _$BasketCategoryImpl.fromJson;
 
   @override
   int? get id;
   @override
-  dynamic get name_uz;
+  String? get name_uz;
   @override
-  dynamic get name_ru;
+  String? get name_ru;
   @override
-  dynamic get name_en;
+  String? get name_en;
   @override
   String? get image;
-  @override
-  int? get price;
 
-  /// Create a copy of FoodProducts
+  /// Create a copy of BasketCategory
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FoodProductsImplCopyWith<_$FoodProductsImpl> get copyWith =>
+  _$$BasketCategoryImplCopyWith<_$BasketCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
