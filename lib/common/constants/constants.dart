@@ -1,4 +1,3 @@
-
 class Constants {
   static const baseUrl = 'http://api.repid.uz';
   static const version = '/api/v1';
@@ -19,6 +18,6 @@ class Constants {
   static const apiDoneList = '/common/order/list/is-done/';
   static const apiAccount = '/accounts/user/profile/';
   static const apiLogOut = '/accounts/user/logout/';
-
-
+  static const apiOrderUpdate = '/common/cart-item/';
+  static const apiFoodSearch = '/common/food/list/?search=';
 }

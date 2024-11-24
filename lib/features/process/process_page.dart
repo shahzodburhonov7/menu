@@ -14,8 +14,7 @@ import 'package:restaurants_menu/features/process/cubit/process_cubit.dart';
 import 'package:restaurants_menu/features/process/cubit/process_state.dart';
 
 @RoutePage()
-class ProcessPage
-    extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
+class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
   const ProcessPage({super.key});
 
   @override
@@ -43,6 +42,7 @@ class ProcessPage
               child: Column(
                 children: [
                   CommonSearchField(
+                    controller: TextEditingController(),
                     height: 44.h,
                   ),
                   SizedBox(
@@ -58,26 +58,19 @@ class ProcessPage
                                 ? SizedBox.shrink()
                                 : const Text(
                                     "Jarayonda",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700),
+                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                                   ),
                             trailing: Text(
-                              formatDate(state.tableProcess[index]!.created_at
-                                  .toString()),
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
+                              formatDate(state.tableProcess[index]!.created_at.toString()),
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                             ),
                           ),
                           Card(
                             color: Color(0xffFFFFFF),
                             child: ItemWidget(
-                              price: state.tableProcess[index]!.total_price
-                                  .toString(),
-                              table: state.tableProcess[index]!.cart!.table
-                                  .toString(),
-                              cartItems:
-                                  state.tableProcess[index]!.cart!.cart_items!,
+                              price: state.tableProcess[index]!.total_price.toString(),
+                              table: state.tableProcess[index]!.cart!.table.toString(),
+                              cartItems: state.tableProcess[index]!.cart!.cart_items!,
                               onTap: () {
                                 cubit.orderDone(
                                   orderId: state.tableProcess[index]!.id!,
@@ -144,10 +137,7 @@ class ItemWidget extends StatelessWidget {
                         children: [
                           cartItems![index].food_name!.s(14.sp).w(400),
                           SizedBox(height: 4.h),
-                          "Son :${cartItems![index].quantity!}"
-                              .toString()
-                              .s(12.sp)
-                              .w(400),
+                          "Son :${cartItems![index].quantity!}".toString().s(12.sp).w(400),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -199,13 +189,7 @@ class ItemWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomButton(
-                  onTap: () {},
-                  text: "Tahrirlash",
-                  size: 14.sp,
-                  radius: 8,
-                  width: 150.w,
-                  height: 44.h),
+              CustomButton(onTap: () {}, text: "Tahrirlash", size: 14.sp, radius: 8, width: 150.w, height: 44.h),
               CustomButton(
                 radius: 8,
                 onTap: onTap,

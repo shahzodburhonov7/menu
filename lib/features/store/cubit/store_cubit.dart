@@ -14,18 +14,12 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
   void selectTable({required int tableNumber}) {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
   }
-  void add() {
-    build(
-          (buildable) => buildable.copyWith(count: buildable.count + 1),
-    );
-  }
 
-  void remove() {
-    if (buildable.count != 0) {
-      build(
-            (buildable) => buildable.copyWith(count: buildable.count - 1),
-      );
-    }
+  void remove({required int quantity, required int itemId}) {
+    callable(
+      future: orderRepo.quantityUpdate(quantity: quantity -= 1, cart_item_id: itemId),
+    );
+    tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
 
   void getAllTable() {
@@ -37,17 +31,23 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     );
   }
 
-
-  void tableOrder({required int number}) {
+  void add({required int quantity, required int itemId}) async {
     callable(
-        future: orderRepo.orderTable(number: number),
-        buildOnStart: () => buildable.copyWith(orderLoading: true),
-        buildOnData: (d) =>
-            buildable.copyWith(orderLoading: false, tableOrder: d),
-        buildOnError: (e) => buildable.copyWith(orderLoading: false));
-    debugPrint(
-      "debug ======> ${buildable.tableOrder}",
+      future: orderRepo.quantityUpdate(quantity: quantity += 1, cart_item_id: itemId),
     );
+    tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
+  }
+
+  void tableOrder({required int number, required int cartId}) {
+    build((buildable) => buildable.copyWith(tableNumber: number));
+    build((buildable) => buildable.copyWith(cartId: cartId));
+    debugPrint("debug === ${buildable.tableNumber}:::: ${buildable.cartId}");
+
+    callable(
+        future: orderRepo.orderTable(number: cartId),
+        buildOnStart: () => buildable.copyWith(orderLoading: true),
+        buildOnData: (d) => buildable.copyWith(orderLoading: false, tableOrder: d),
+        buildOnError: (e) => buildable.copyWith(orderLoading: false));
   }
 
   void orderConfirm({required int orderId}) {
@@ -67,6 +67,6 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
         cartItem: deleteCart,
       ),
     );
-    tableOrder(number: buildable.tableNumber);
+    tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
 }

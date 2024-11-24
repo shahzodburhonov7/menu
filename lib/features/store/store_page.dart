@@ -26,7 +26,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
 
   @override
   Widget builder(BuildContext context, StoreBuildable state) {
-    final cubit=context.read<StoreCubit>();
+    final cubit = context.read<StoreCubit>();
     if (state.loading) {
       return const CircularProgressIndicator();
     } else {
@@ -36,7 +36,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
           centerTitle: true,
           actions: [
             DropdownButton<int>(
-              hint: Text("00"),
+              hint: Text("${state.tableNumber}"),
               onChanged: (value) {
                 context.read<StoreCubit>().selectTable(
                       tableNumber: value!,
@@ -46,7 +46,8 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                 return DropdownMenuItem<int>(
                   onTap: () {
                     context.read<StoreCubit>().tableOrder(
-                          number: table["cart_id"],
+                          number: table["number"],
+                          cartId: table["cart_id"],
                         );
                   },
                   value: table["number"],
@@ -97,22 +98,13 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                 ),
                               ),
                               title: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  "${state.tableOrder?.cart_items![index].price}"
-                                      .s(14.sp)
-                                      .w(400),
+                                  "${state.tableOrder?.cart_items![index].price}".s(14.sp).w(400),
                                   GestureDetector(
                                     child: Assets.icons.cancel.svg(),
-                                    onTap: () {
-                                      context.read<StoreCubit>().deleteCart(
-                                          deleteCart: state
-                                              .tableOrder!.cart_items![index].id
-                                              .toString());
-                                      debugPrint(
-                                        "============++++++++++++++++++ =>${state.tableOrder!.cart_items![index].id!}",
-                                      );
+                                    onTap: () async {
+                                      context.read<StoreCubit>().deleteCart(deleteCart: state.tableOrder!.cart_items![index].id.toString());
                                     },
                                   ),
                                 ],
@@ -122,28 +114,28 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                 children: [
                                   "Son: ".s(12.sp).w(400),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Row(
                                         children: [
                                           GestureDetector(
                                               onTap: () {
-                                                cubit.remove();
-
+                                                cubit.remove(
+                                                  quantity: state.tableOrder!.cart_items![index].quantity!,
+                                                  itemId: state.tableOrder!.cart_items![index].id!,
+                                                );
                                               },
-                                              child:
-                                                  Assets.images.remove.svg()),
+                                              child: Assets.images.remove.svg()),
                                           Padding(
-                                            padding: REdgeInsets.symmetric(
-                                                horizontal: 16),
-                                            child: '${state.count}'
-                                                .s(12.sp)
-                                                .w(400),
+                                            padding: REdgeInsets.symmetric(horizontal: 16),
+                                            child: '${state.tableOrder!.cart_items![index].quantity}'.s(12.sp).w(400),
                                           ),
                                           GestureDetector(
                                               onTap: () {
-                                                cubit.add();
+                                                cubit.add(
+                                                  quantity: state.tableOrder!.cart_items![index].quantity!,
+                                                  itemId: state.tableOrder!.cart_items![index].id!,
+                                                );
                                               },
                                               child: Assets.images.add.svg()),
                                         ],

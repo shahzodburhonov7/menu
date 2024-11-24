@@ -10,8 +10,7 @@ class OrderApi {
 
   Future<Response> orderTable({required int id}) async {
     return await dio.get(
-    "${Constants.apiOrder}$id/",
-
+      "${Constants.apiOrder}$id/",
     );
   }
 
@@ -42,6 +41,20 @@ class OrderApi {
           "food_id ": foodId,
           "quantity ": quantity,
           "cart_id ": cartId,
+        },
+      ),
+    );
+  }
+
+  Future<Response> orderUpdate({
+    required int quantity,
+    required int itemId,
+  }) async {
+    return await dio.patch(
+      "${Constants.apiOrderUpdate}/$itemId/update/",
+      data: FormData.fromMap(
+        {
+          "quantity ": quantity,
         },
       ),
     );
