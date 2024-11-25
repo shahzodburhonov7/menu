@@ -161,12 +161,31 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
       ),
       bottomSheet: state.tableOrder?.cart_items == null
           ? const SizedBox.shrink()
-          : Bottomsheet(
-              count: state.tableOrder!.cart_items!.length,
-              price: state.tableOrder!.total_price!,
-              initF: () {
-                context.read<FoodsCubit>().tableOrder(number: state.cartId);
-              },
+          : Container(
+              color: AppColors.appColorOrange,
+              height: 48.h,
+              width: double.maxFinite,
+              child: GestureDetector(
+                onTap: () {
+                  context.router.push(
+                    const StoreRoute(),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      "Korzinka".s(16.sp).w(500),
+                      CircleAvatar(
+                        backgroundColor: AppColors.circleAvatar,
+                        child: "${state.tableOrder!.cart_items!.length}".s(16.sp).w(600),
+                      ),
+                      "${state.tableOrder!.total_price!}".s(16.sp).w(500)
+                    ],
+                  ),
+                ),
+              ),
             ),
     );
   }
