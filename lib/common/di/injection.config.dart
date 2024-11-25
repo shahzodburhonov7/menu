@@ -127,6 +127,11 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i108.TableApi>(),
           gh<_i314.Storage>(),
         ));
+    gh.factory<_i929.StoreCubit>(() => _i929.StoreCubit(
+          gh<_i713.TableRepo>(),
+          gh<_i479.OrderRepo>(),
+          gh<_i314.Storage>(),
+        ));
     gh.factory<_i587.BasketRepo>(
         () => _i930.BasketRepoImpl(gh<_i230.BasketApi>()));
     gh.factory<_i66.TableProcessRepo>(
@@ -149,10 +154,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i13.ProcessCubit(gh<_i66.TableProcessRepo>()));
     gh.factory<_i160.FoodCategoryRepo>(
         () => _i610.FoodCategoryImpl(gh<_i636.FoodCategoryApi>()));
-    gh.factory<_i929.StoreCubit>(() => _i929.StoreCubit(
-          gh<_i713.TableRepo>(),
-          gh<_i479.OrderRepo>(),
-        ));
     gh.factory<_i308.TableCubit>(() => _i308.TableCubit(
           gh<_i713.TableRepo>(),
           gh<_i314.Storage>(),

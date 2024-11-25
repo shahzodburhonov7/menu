@@ -54,30 +54,30 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 },
                 icon: Assets.icons.back.svg(),
               ),
-        actions: [
-          DropdownButton<int>(
-            hint: "${state.tableNumber}".s(18.sp),
-            onChanged: (value) {
-              context.read<FoodsCubit>().selectTable(
-                    tableNumber: value!,
-                  );
-            },
-            items: state.getTableList.map<DropdownMenuItem<int>>((table) {
-              return DropdownMenuItem<int>(
-                onTap: () {
-                  context.read<FoodsCubit>().tableOrder(
-                        number: table["cart_id"],
-                      );
-                },
-                value: table["number"],
-                child: Text(
-                  "${table["number"]}",
-                  style: const TextStyle(color: Colors.blue),
-                ),
-              );
-            }).toList(),
-          )
-        ],
+        // actions: [
+        // DropdownButton<int>(
+        //   hint: "${state.tableNumber}".s(18.sp),
+        //   onChanged: (value) {
+        //     context.read<FoodsCubit>().selectTable(
+        //           tableNumber: value!,
+        //         );
+        //   },
+        //   items: state.getTableList.map<DropdownMenuItem<int>>((table) {
+        //     return DropdownMenuItem<int>(
+        //       onTap: () {
+        //         context.read<FoodsCubit>().tableOrder(
+        //               number: table["cart_id"],
+        //             );
+        //       },
+        //       value: table["number"],
+        //       child: Text(
+        //         "${table["number"]}",
+        //         style: const TextStyle(color: Colors.blue),
+        //       ),
+        //     );
+        //   }).toList(),
+        // )
+        // ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -89,8 +89,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
               children: [
                 Padding(
                   padding: REdgeInsets.only(right: 50),
-                  child:
-                      "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
+                  child: "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
                 ),
                 SizedBox(height: 24.h),
                 CommonSearchField(
@@ -112,11 +111,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                           itemBuilder: ((context, index) {
                             return FoodCategoryWidget(
                               onTap: () {
-                                cubit.getFoodProductsId(
-                                    id: state.foodCategoryList
-                                        .elementAt(index)
-                                        .id!,
-                                    page: 1);
+                                cubit.getFoodProductsId(id: state.foodCategoryList.elementAt(index).id!, page: 1);
                               },
                               image: state.foodCategoryList[index].image!,
                               name: state.foodCategoryList[index].name_uz!,
@@ -134,8 +129,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 1,
                           mainAxisSpacing: 50.0,
@@ -165,60 +159,79 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
           ),
         ),
       ),
-      // bottomSheet: CustomSh(
-      //   cartItem: state.tableOrder!.cart_items, price: state.tableOrder.total_price,
-      //
-      // ),
+      bottomSheet: state.tableOrder?.cart_items == null
+          ? const SizedBox.shrink()
+          : Bottomsheet(
+              count: state.tableOrder!.cart_items!.length,
+              price: state.tableOrder!.total_price!,
+              initF: () {
+                context.read<FoodsCubit>().tableOrder(number: state.cartId);
+              },
+            ),
     );
   }
 }
 
-class CustomSh extends StatefulWidget {
-  CustomSh({
+class Bottomsheet extends StatefulWidget {
+  final int count;
+  final int price;
+  final void Function()? initF;
+
+  const Bottomsheet({
     super.key,
-    required this.cartItem,
+    required this.count,
     required this.price,
+    this.initF,
   });
 
-  final String price;
-  final List<CartItem> cartItem;
-
   @override
-  State<CustomSh> createState() => _CustomShState();
+  State<Bottomsheet> createState() => _BottomsheetState();
 }
 
-class _CustomShState extends State<CustomSh> {
+class _BottomsheetState extends State<Bottomsheet> {
+  @override
+  void initState() {
+    super.initState();
+    // If initF is passed, call it
+    if (widget.initF != null) {
+      widget.initF!();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: widget.cartItem == null
-          ? const SizedBox.shrink()
-          : Container(
-              color: AppColors.appColorOrange,
-              height: 48.h,
-              width: double.maxFinite,
-              child: GestureDetector(
-                onTap: () {
-                  context.router.push(
-                    const StoreRoute(),
-                  );
-                },
-                child: Padding(
-                  padding: REdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      "Korzinka".s(16.sp).w(500),
-                      CircleAvatar(
-                        backgroundColor: AppColors.circleAvatar,
-                        child: "${widget.cartItem.length}".s(16.sp).w(600),
-                      ),
-                      "${widget.price}".s(16.sp).w(500)
-                    ],
-                  ),
+    return Container(
+      color: AppColors.appColorOrange,
+      height: 48.h,
+      width: double.maxFinite,
+      child: GestureDetector(
+        onTap: () {
+          context.router.push(const StoreRoute());
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                "Korzinka",
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+              ),
+              CircleAvatar(
+                backgroundColor: AppColors.circleAvatar,
+                child: Text(
+                  "${widget.count}",
+                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
                 ),
               ),
-            ),
+              Text(
+                "${widget.price}",
+                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

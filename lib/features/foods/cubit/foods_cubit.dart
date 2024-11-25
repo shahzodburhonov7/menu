@@ -41,14 +41,16 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
     );
   }
 
-  void tableOrder({required int number}) {
+  void tableOrder({required int number}) async {
     storage.cardId.set(number);
     build((buildable) => buildable.copyWith(cartId: number));
-    callable(
-        future: orderRepo.orderTable(number: number),
-        buildOnStart: () => buildable.copyWith(orderLoading: true),
-        buildOnData: (d) => buildable.copyWith(orderLoading: false, tableOrder: d),
-        buildOnError: (e) => buildable.copyWith(orderLoading: false));
+    await callable(
+      future: orderRepo.orderTable(number: number),
+      buildOnStart: () => buildable.copyWith(orderLoading: true),
+      buildOnData: (d) => buildable.copyWith(orderLoading: false, tableOrder: d),
+      buildOnError: (e) => buildable.copyWith(orderLoading: false),
+    );
+    // tableOrder(number: number);
     debugPrint(
       "debug ======> ${buildable.tableOrder}",
     );

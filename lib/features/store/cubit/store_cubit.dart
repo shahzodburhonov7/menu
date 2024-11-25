@@ -3,13 +3,15 @@ import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/common/base/base_cubit.dart';
 import 'package:restaurants_menu/domain/repo/order/order_repo.dart';
 import 'package:restaurants_menu/domain/repo/table/table_repo.dart';
+import 'package:restaurants_menu/domain/storage/storage.dart';
 import 'package:restaurants_menu/features/store/cubit/store_state.dart';
 
 @injectable
 class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
-  StoreCubit(this.repo, this.orderRepo) : super(const StoreBuildable());
+  StoreCubit(this.repo, this.orderRepo, this.storage) : super(const StoreBuildable());
   final TableRepo repo;
   final OrderRepo orderRepo;
+  final Storage storage;
 
   void selectTable({required int tableNumber}) {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
@@ -32,6 +34,8 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
   }
 
   void add({required int quantity, required int itemId}) async {
+    debugPrint("ItemId === ${itemId}::::CardId ${buildable.cartId}");
+
     callable(
       future: orderRepo.quantityUpdate(quantity: quantity += 1, cart_item_id: itemId),
     );
@@ -44,7 +48,7 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     debugPrint("debug === ${buildable.tableNumber}:::: ${buildable.cartId}");
 
     callable(
-        future: orderRepo.orderTable(number: cartId),
+        future: orderRepo.orderTable(number: storage.cardId.call()!.toInt()),
         buildOnStart: () => buildable.copyWith(orderLoading: true),
         buildOnData: (d) => buildable.copyWith(orderLoading: false, tableOrder: d),
         buildOnError: (e) => buildable.copyWith(orderLoading: false));

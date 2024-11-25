@@ -26,7 +26,6 @@ class TableCubit extends BaseCubit<TableBuildable, TableListenable> {
   }
 
   void postChose({required int id}) {
-    debugPrint("Debug2");
     callable(
         future: repo.tableChose(id: id),
         buildOnStart: () => buildable.copyWith(postTable: true),
@@ -35,8 +34,6 @@ class TableCubit extends BaseCubit<TableBuildable, TableListenable> {
         invokeOnData: (d) => const TableListenable(effect: TableEffect.success),
         invokeOnError: (e) => const TableListenable(effect: TableEffect.error));
   }
-
-
 
   void tableNumber({required int tableNumber}) {
     storage.tableNumber.set(tableNumber);

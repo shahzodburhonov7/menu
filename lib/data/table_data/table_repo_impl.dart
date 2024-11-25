@@ -20,12 +20,9 @@ class TableRepoImpl extends TableRepo {
     return response.data;
   }
 
-
-
   @override
   Future<void> tableChose({required int id}) async {
     final response = await api.tableChose(id: id);
-    debugPrint("Debug3");
     await storage.cardId.set(response.data["cart_id"]);
     debugPrint("stol id ${storage.cardId.call()}");
     return response.data;
