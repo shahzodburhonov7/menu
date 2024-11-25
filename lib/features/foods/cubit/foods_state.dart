@@ -16,7 +16,7 @@ class FoodsBuildable with _$FoodsBuildable {
     @Default(0) int pageType,
     @Default([]) List<FoodCategory> foodCategoryList,
     @Default(0) int tableNumber,
-    TableOrder?  tableOrder,
+    TableOrder? tableOrder,
     @Default([]) List<dynamic> getTableList,
     @Default([]) List<FoodProducts> foodPro,
     @Default("") String type,

@@ -94,16 +94,16 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final appModule = _$AppModule();
     final networkModule = _$NetworkModule();
-    gh.factory<_i625.HistoryCubit>(() => _i625.HistoryCubit());
     gh.factory<_i907.HomeCubit>(() => _i907.HomeCubit());
+    gh.factory<_i625.HistoryCubit>(() => _i625.HistoryCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
-    gh.lazySingleton<_i276.LocaleProvider>(() => _i276.LocaleProvider());
     await gh.lazySingletonAsync<_i314.Storage>(
       () => _i314.Storage.create(),
       preResolve: true,
     );
-    gh.factory<_i745.MainCubit>(() => _i745.MainCubit(gh<_i314.Storage>()));
+    gh.lazySingleton<_i276.LocaleProvider>(() => _i276.LocaleProvider());
     gh.factory<_i826.SplashCubit>(() => _i826.SplashCubit(gh<_i314.Storage>()));
+    gh.factory<_i745.MainCubit>(() => _i745.MainCubit(gh<_i314.Storage>()));
     gh.factory<_i975.StartRepo>(() => _i126.StartRepoImpl(gh<_i314.Storage>()));
     gh.lazySingleton<_i276.AuthInterceptor>(() => _i276.AuthInterceptor(
           gh<_i314.Storage>(),
@@ -111,15 +111,15 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.singleton<_i472.Display>(() => _i514.DisplayImpl());
     gh.factory<_i361.Dio>(() => networkModule.dio(gh<_i276.AuthInterceptor>()));
-    gh.factory<_i230.BasketApi>(() => _i230.BasketApi(gh<_i361.Dio>()));
     gh.factory<_i636.FoodCategoryApi>(
         () => _i636.FoodCategoryApi(gh<_i361.Dio>()));
+    gh.factory<_i900.ProductsApi>(() => _i900.ProductsApi(gh<_i361.Dio>()));
+    gh.factory<_i108.TableApi>(() => _i108.TableApi(gh<_i361.Dio>()));
+    gh.factory<_i159.ProfileApi>(() => _i159.ProfileApi(gh<_i361.Dio>()));
     gh.factory<_i352.OrderApi>(() => _i352.OrderApi(gh<_i361.Dio>()));
+    gh.factory<_i230.BasketApi>(() => _i230.BasketApi(gh<_i361.Dio>()));
     gh.factory<_i784.OrderProcessApi>(
         () => _i784.OrderProcessApi(gh<_i361.Dio>()));
-    gh.factory<_i900.ProductsApi>(() => _i900.ProductsApi(gh<_i361.Dio>()));
-    gh.factory<_i159.ProfileApi>(() => _i159.ProfileApi(gh<_i361.Dio>()));
-    gh.factory<_i108.TableApi>(() => _i108.TableApi(gh<_i361.Dio>()));
     gh.factory<_i479.OrderRepo>(
         () => _i521.OrderRepoImpl(gh<_i352.OrderApi>()));
     gh.factory<_i379.AuthApi>(() => _i379.AuthApi(gh<_i361.Dio>()));

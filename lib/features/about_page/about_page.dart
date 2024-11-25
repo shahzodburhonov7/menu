@@ -66,7 +66,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                           padding: REdgeInsets.all(24.0),
                           child: Row(
                             children: [
-                              "${state.foodInfo?.name}".s(20.sp).w(500),
+                              "${state.foodInfo?.name_uz}".s(20.sp).w(500),
                             ],
                           ),
                         ),

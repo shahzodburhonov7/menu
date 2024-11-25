@@ -112,13 +112,10 @@ class ItemWidget extends StatelessWidget {
     required this.onTap,
   });
 
-
   final List<CartItem>? cartItems;
   final String? price;
   final String? table;
   final void Function() onTap;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +125,7 @@ class ItemWidget extends StatelessWidget {
           cartItems!.length,
           (index) {
             return Padding(
-              padding: REdgeInsets.all(8.0),
+              padding: REdgeInsets.all(20.0),
               child: Column(
                 children: [
                   Row(
@@ -149,25 +146,24 @@ class ItemWidget extends StatelessWidget {
                       SizedBox(
                         width: 12.w,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          cartItems![index].food_name!.s(14.sp).w(400),
-                          SizedBox(height: 4.h),
-                          "Son :${cartItems![index].quantity!}"
-                              .toString()
-                              .s(12.sp)
-                              .w(400),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                              ),
-                              cartItems![index].price!.s(16.sp).w(600)
-                            ],
-                          )
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            cartItems![index].food_name!.s(14.sp).w(400),
+                            SizedBox(height: 4.h),
+                            "Son: ${cartItems![index].quantity!}"
+                                .toString()
+                                .s(12.sp)
+                                .w(400),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                cartItems![index].price!.s(16.sp).w(600)
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),

@@ -13,7 +13,9 @@ String foodInfoToJson(FoodInfo data) => json.encode(data.toJson());
 class FoodInfo with _$FoodInfo {
   const factory FoodInfo({
     int? id,
-    String? name,
+    String? name_uz,
+    String? name_ru,
+    String? name_en,
     String? image,
     int? price,
     String? food_info_uz,
