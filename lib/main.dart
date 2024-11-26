@@ -43,6 +43,8 @@ class MyApp extends StatelessWidget {
             locale: context.locale,
             debugShowCheckedModeBanner: false,
             title: 'FOOD APP',
+            theme: ThemeData(appBarTheme: const AppBarTheme(surfaceTintColor: Colors.white,
+            backgroundColor: Colors.white)),
             routerConfig: getIt<AppRouter>().config(),
           ),
         );

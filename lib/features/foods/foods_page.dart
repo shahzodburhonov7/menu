@@ -52,30 +52,31 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 },
                 icon: Assets.icons.back.svg(),
               ),
-         actions: [
-          state.type == 'omborchi'? const SizedBox.shrink():
-          DropdownButton<int>(
-            hint: "${state.tableNumber}".s(18.sp),
-            onChanged: (value) {
-              context.read<FoodsCubit>().selectTable(
-                    tableNumber: value!,
-                  );
-            },
-            items: state.getTableList.map<DropdownMenuItem<int>>((table) {
-              return DropdownMenuItem<int>(
-                onTap: () {
-                  context.read<FoodsCubit>().tableOrder(
-                        number: table["cart_id"],
-                      );
-                },
-                value: table["number"],
-                child: Text(
-                  "${table["number"]}",
-                  style: const TextStyle(color: Colors.blue),
-                ),
-              );
-            }).toList(),
-          )
+        actions: [
+          state.type == 'omborchi'
+              ? const SizedBox.shrink()
+              : DropdownButton<int>(
+                  hint: "${state.tableNumber}".s(18.sp),
+                  onChanged: (value) {
+                    context.read<FoodsCubit>().selectTable(
+                          tableNumber: value!,
+                        );
+                  },
+                  items: state.getTableList.map<DropdownMenuItem<int>>((table) {
+                    return DropdownMenuItem<int>(
+                      onTap: () {
+                        context.read<FoodsCubit>().tableOrder(
+                              number: table["cart_id"],
+                            );
+                      },
+                      value: table["number"],
+                      child: Text(
+                        "${table["number"]}",
+                        style: const TextStyle(color: Colors.blue),
+                      ),
+                    );
+                  }).toList(),
+                )
         ],
       ),
       body: SafeArea(
@@ -105,7 +106,11 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                         itemBuilder: ((context, index) {
                           return FoodCategoryWidget(
                             onTap: () {
-                              cubit.getFoodProductsId(id: state.foodCategoryList.elementAt(index).id!, page: 1);
+                              cubit.getFoodProductsId(
+                                  id: state.foodCategoryList
+                                      .elementAt(index)
+                                      .id!,
+                                  page: 1);
                             },
                             image: state.foodCategoryList[index].image!,
                             name: state.foodCategoryList[index].name_uz!,
@@ -123,7 +128,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                       child: GridView.builder(
                         scrollDirection: Axis.vertical,
                         physics: const BouncingScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 1,
                           mainAxisSpacing: 50.0,
@@ -148,8 +154,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                                 );
                         },
                       ),
-              ],
-            ),
+                    ),
+            ],
           ),
         ),
       ),

@@ -32,7 +32,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   Widget builder(BuildContext context, StoreBuildable state) {
     final cubit = context.read<StoreCubit>();
     if (state.loading) {
-      return const CircularProgressIndicator();
+      return const Center(child: CircularProgressIndicator());
     } else {
       return Scaffold(
         appBar: AppBar(
