@@ -1,9 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
 
 class FoodCard extends StatelessWidget {
   const FoodCard({
@@ -24,6 +22,7 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       clipBehavior: Clip.none,
       children: [
         Card(
@@ -63,7 +62,7 @@ class FoodCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -30,
+          top: 10,
           left: 0,
           right: 0,
           child: Center(
@@ -97,8 +96,8 @@ class FoodCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -20,
-          right: 20,
+          top: 20,
+          right: 30,
           child: GestureDetector(
             onTap: onTap,
             child: CircleAvatar(

@@ -36,7 +36,6 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   @override
   Widget builder(BuildContext context, FoodsBuildable state) {
     final cubit = context.read<FoodsCubit>();
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -78,55 +77,50 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: REdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: REdgeInsets.only(right: 50),
-                  child: "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
-                ),
-                SizedBox(height: 24.h),
-                CommonSearchField(
-                  onChanged: (query) {
-                    cubit.searchFood(query: query);
-                  },
-                  controller: textEditingController,
-                  hintText: "Pizza, Burger, hot dog, etc",
-                ),
-                SizedBox(height: 24.h),
-                "Kategoriyalar".s(20.sp).w(600),
-                SizedBox(height: 20.h),
-                state.loading
-                    ? const Center(child: CircularProgressIndicator())
-                    : SizedBox(
-                        height: 104.h,
-                        child: ListView.builder(
-                          itemCount: state.foodCategoryList.length,
-                          itemBuilder: ((context, index) {
-                            return FoodCategoryWidget(
-                              onTap: () {
-                                cubit.getFoodProductsId(id: state.foodCategoryList.elementAt(index).id!, page: 1);
-                              },
-                              image: state.foodCategoryList[index].image!,
-                              name: state.foodCategoryList[index].name_uz!,
-                            );
-                          }),
-                          scrollDirection: Axis.horizontal,
-                        ),
+        child: Padding(
+          padding: REdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CommonSearchField(
+                onChanged: (query) {
+                  cubit.searchFood(query: query);
+                },
+                controller: textEditingController,
+                hintText: "Pizza, Burger, hot dog, etc",
+              ),
+              SizedBox(height: 10.h),
+              "Kategoriyalar".s(20.sp).w(600),
+              SizedBox(height: 10.h),
+              state.loading
+                  ? const Center(child: CircularProgressIndicator())
+                  : SizedBox(
+                      height: 104.h,
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: state.foodCategoryList.length,
+                        itemBuilder: ((context, index) {
+                          return FoodCategoryWidget(
+                            onTap: () {
+                              cubit.getFoodProductsId(id: state.foodCategoryList.elementAt(index).id!, page: 1);
+                            },
+                            image: state.foodCategoryList[index].image!,
+                            name: state.foodCategoryList[index].name_uz!,
+                          );
+                        }),
+                        scrollDirection: Axis.horizontal,
                       ),
-                SizedBox(height: 32.h),
-                "Barcha taomlar".s(20.sp).w(600),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                state.proLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : GridView.builder(
+                    ),
+              SizedBox(height: 12.h),
+              "Barcha taomlar".s(20.sp).w(600),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              state.proLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Expanded(
+                      child: GridView.builder(
                         scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 1,
@@ -152,8 +146,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                                 );
                         },
                       ),
-              ],
-            ),
+                    ),
+            ],
           ),
         ),
       ),
