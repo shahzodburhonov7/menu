@@ -129,7 +129,6 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                       child: GridView.builder(
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -160,7 +159,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
             ],
           ),
         ),
-      )
+      ),
       bottomSheet: state.tableOrder?.cart_items == null
           ? const SizedBox.shrink()
           : Container(
@@ -181,7 +180,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                       "Korzinka".s(16.sp).w(500),
                       CircleAvatar(
                         backgroundColor: AppColors.circleAvatar,
-                        child: "${state.tableOrder!.cart_items!.length}".s(16.sp).w(600),
+                        child: "${state.tableOrder!.cart_items!.length}"
+                            .s(16.sp)
+                            .w(600),
                       ),
                       "${state.tableOrder!.total_price!}".s(16.sp).w(500)
                     ],

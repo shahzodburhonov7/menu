@@ -48,21 +48,28 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                           ListTile(
                             title: index != 0
                                 ? SizedBox.shrink()
-                                :  Text(
+                                : Text(
                                     "Bajarilgan",
-                                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                                    style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600),
                                   ),
                             trailing: Text(
-                              formatDate(state.orderDoneList[index].created_at.toString()),
-                              style:  TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
+                              formatDate(state.orderDoneList[index].created_at
+                                  .toString()),
+                              style: TextStyle(
+                                  fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                           ),
                           Card(
                             color: Color(0xffFFFFFF),
                             child: ItemOrderDone(
-                              price: state.orderDoneList[index].total_price.toString(),
-                              table: state.orderDoneList[index].cart!.table.toString(),
-                              cartItems: state.orderDoneList[index].cart!.cart_items!,
+                              price: state.orderDoneList[index].total_price
+                                  .toString(),
+                              table: state.orderDoneList[index].cart!.table
+                                  .toString(),
+                              cartItems:
+                                  state.orderDoneList[index].cart!.cart_items!,
                               onTap: () {},
                             ),
                           ),
@@ -99,7 +106,7 @@ class ItemOrderDone extends StatelessWidget {
           cartItems!.length,
           (index) {
             return Padding(
-              padding: REdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              padding: REdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: [
                   Row(
