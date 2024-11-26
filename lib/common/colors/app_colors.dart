@@ -4,7 +4,7 @@ final class AppColors {
   const AppColors._();
 
   // light
- static const transparent = Colors.transparent;
+  static const transparent = Colors.transparent;
 
   static const dodgerBlue = Color(0xFF246BFD);
   static const gainsBoro = Color(0xFFDDDDDD);
@@ -50,4 +50,6 @@ final class AppColors {
 
   // common
   static const cB9DDE8 = Color(0xffB9DDE8);
+  static Color shimmerBaseColor = Colors.grey.shade400;
+  static Color shimmerHeighColor = Colors.grey.shade100;
 }

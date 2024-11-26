@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FoodCategoryWidget extends StatelessWidget {
   const FoodCategoryWidget({
@@ -16,10 +17,10 @@ class FoodCategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return ZoomTapAnimation(
       onTap: onTap,
       child: Padding(
-        padding:  REdgeInsets.symmetric(horizontal: 5),
+        padding: REdgeInsets.symmetric(horizontal: 5),
         child: SizedBox(
           child: Stack(
             alignment: Alignment.bottomLeft,
