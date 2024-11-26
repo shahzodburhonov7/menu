@@ -33,7 +33,6 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
     context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
   }
 
-//
   @override
   Widget builder(BuildContext context, FoodsBuildable state) {
     final cubit = context.read<FoodsCubit>();
