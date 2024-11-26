@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -66,7 +67,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                           padding: REdgeInsets.all(24.0),
                           child: Row(
                             children: [
-                              "${state.foodInfo?.name}".s(20.sp).w(500),
+                              "${state.foodInfo?.name_uz}".s(20.sp).w(500),
                             ],
                           ),
                         ),
@@ -76,11 +77,15 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            "${state.foodInfo!.price}"
-                                .toString()
-                                .c(AppColors.appColorOrange)
-                                .s(20.sp)
-                                .w(600),
+                            Text(
+                              formatCurrency(
+                                "${state.foodInfo?.price} uzs",
+                              ),
+                              style: TextStyle(
+                                  fontSize: 20.sp,
+                                  fontWeight: FontWeight.w600,color: AppColors.appColorOrange),
+                            )
+,
                             Row(
                               children: [
                                 GestureDetector(
@@ -140,7 +145,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                       Padding(
                         padding: REdgeInsets.only(
                             left: 20, top: 20, right: 70, bottom: 20),
-                        child: "sadsadsadasdas"
+                        child: "${state.foodInfo?.food_info_uz}"
                             .s(14.sp)
                             .w(400)
                             .c(AppColors.hintTextColor),
@@ -192,5 +197,14 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
     );
+  }
+  String formatCurrency(String input) {
+    final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
+    if (numericPart.isEmpty) return input;
+    final int number = int.parse(numericPart);
+    final formattedNumber =
+    NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+    final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
+    return "$formattedNumber $currencyPart";
   }
 }

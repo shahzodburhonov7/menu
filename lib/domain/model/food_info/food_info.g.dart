@@ -9,7 +9,9 @@ part of 'food_info.dart';
 _$FoodInfoImpl _$$FoodInfoImplFromJson(Map<String, dynamic> json) =>
     _$FoodInfoImpl(
       id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
+      name_uz: json['name_uz'] as String?,
+      name_ru: json['name_ru'] as String?,
+      name_en: json['name_en'] as String?,
       image: json['image'] as String?,
       price: (json['price'] as num?)?.toInt(),
       food_info_uz: json['food_info_uz'] as String?,
@@ -20,7 +22,9 @@ _$FoodInfoImpl _$$FoodInfoImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$FoodInfoImplToJson(_$FoodInfoImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
+      'name_uz': instance.name_uz,
+      'name_ru': instance.name_ru,
+      'name_en': instance.name_en,
       'image': instance.image,
       'price': instance.price,
       'food_info_uz': instance.food_info_uz,
