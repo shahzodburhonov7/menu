@@ -18,8 +18,8 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
   }
 
-  void remove({required int quantity, required int itemId}) {
-    callable(
+  void remove({required int quantity, required int itemId}) async {
+    await callable(
       future: orderRepo.quantityUpdate(
           quantity: quantity -= 1, cart_item_id: itemId),
     );
@@ -38,7 +38,7 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
   void add({required int quantity, required int itemId}) async {
     debugPrint("ItemId === $itemId::::CardId ${buildable.cartId}");
 
-    callable(
+    await callable(
       future: orderRepo.quantityUpdate(
           quantity: quantity += 1, cart_item_id: itemId),
     );
@@ -69,8 +69,8 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     );
   }
 
-  void deleteCart({required String deleteCart}) {
-    callable(
+  void deleteCart({required String deleteCart}) async {
+    await callable(
       future: orderRepo.orderDelete(
         cartItem: deleteCart,
       ),
