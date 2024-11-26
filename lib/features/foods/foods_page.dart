@@ -21,7 +21,6 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
     context.read<FoodsCubit>().getAllTable();
-    debugPrint("assssasssssssssssssssssssssssssssss ");
     super.init(context);
   }
 
@@ -30,7 +29,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
 
   @override
   void onFocusGained(BuildContext context) {
-    context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    context
+        .read<FoodsCubit>()
+        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
   }
 
   @override
@@ -87,7 +88,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
               children: [
                 Padding(
                   padding: REdgeInsets.only(right: 50),
-                  child: "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
+                  child:
+                      "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
                 ),
                 SizedBox(height: 24.h),
                 CommonSearchField(
@@ -109,7 +111,11 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                           itemBuilder: ((context, index) {
                             return FoodCategoryWidget(
                               onTap: () {
-                                cubit.getFoodProductsId(id: state.foodCategoryList.elementAt(index).id!, page: 1);
+                                cubit.getFoodProductsId(
+                                    id: state.foodCategoryList
+                                        .elementAt(index)
+                                        .id!,
+                                    page: 1);
                               },
                               image: state.foodCategoryList[index].image!,
                               name: state.foodCategoryList[index].name_uz!,
@@ -127,7 +133,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 1,
                           mainAxisSpacing: 50.0,
@@ -177,7 +184,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                       "Korzinka".s(16.sp).w(500),
                       CircleAvatar(
                         backgroundColor: AppColors.circleAvatar,
-                        child: "${state.tableOrder!.cart_items!.length}".s(16.sp).w(600),
+                        child: "${state.tableOrder!.cart_items!.length}"
+                            .s(16.sp)
+                            .w(600),
                       ),
                       "${state.tableOrder!.total_price!}".s(16.sp).w(500)
                     ],

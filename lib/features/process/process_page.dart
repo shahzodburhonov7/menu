@@ -62,7 +62,7 @@ class ProcessPage
                         children: [
                           ListTile(
                             title: index != 0
-                                ? SizedBox.shrink()
+                                ? const SizedBox.shrink()
                                 : const Text(
                                     "Jarayonda",
                                     style: TextStyle(
@@ -77,7 +77,7 @@ class ProcessPage
                             ),
                           ),
                           Card(
-                            color: Color(0xffFFFFFF),
+                            color: const Color(0xffFFFFFF),
                             child: ItemWidget(
                               price: state.tableProcess[index]!.total_price
                                   .toString(),

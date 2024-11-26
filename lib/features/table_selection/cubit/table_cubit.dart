@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/common/base/base_cubit.dart';
 import 'package:restaurants_menu/domain/repo/table/table_repo.dart';

@@ -38,7 +38,8 @@ class LocaleProvider {
   }
 
   String getLanguageCode() {
-    print("Changed also here: ${_locale.languageCode}");
+  
+    debugPrint("Changed also here: ${_locale.languageCode}");
     return _locale.languageCode;
   }
 }

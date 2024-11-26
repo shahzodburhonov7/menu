@@ -8,7 +8,8 @@ import 'package:restaurants_menu/features/store/cubit/store_state.dart';
 
 @injectable
 class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
-  StoreCubit(this.repo, this.orderRepo, this.storage) : super(const StoreBuildable());
+  StoreCubit(this.repo, this.orderRepo, this.storage)
+      : super(const StoreBuildable());
   final TableRepo repo;
   final OrderRepo orderRepo;
   final Storage storage;
@@ -19,7 +20,8 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
 
   void remove({required int quantity, required int itemId}) {
     callable(
-      future: orderRepo.quantityUpdate(quantity: quantity -= 1, cart_item_id: itemId),
+      future: orderRepo.quantityUpdate(
+          quantity: quantity -= 1, cart_item_id: itemId),
     );
     tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
@@ -34,10 +36,11 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
   }
 
   void add({required int quantity, required int itemId}) async {
-    debugPrint("ItemId === ${itemId}::::CardId ${buildable.cartId}");
+    debugPrint("ItemId === $itemId::::CardId ${buildable.cartId}");
 
     callable(
-      future: orderRepo.quantityUpdate(quantity: quantity += 1, cart_item_id: itemId),
+      future: orderRepo.quantityUpdate(
+          quantity: quantity += 1, cart_item_id: itemId),
     );
     tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
@@ -50,7 +53,8 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     callable(
         future: orderRepo.orderTable(number: storage.cardId.call()!.toInt()),
         buildOnStart: () => buildable.copyWith(orderLoading: true),
-        buildOnData: (d) => buildable.copyWith(orderLoading: false, tableOrder: d),
+        buildOnData: (d) =>
+            buildable.copyWith(orderLoading: false, tableOrder: d),
         buildOnError: (e) => buildable.copyWith(orderLoading: false));
   }
 
