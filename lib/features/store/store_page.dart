@@ -7,6 +7,7 @@ import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/bottom_sheet_custom.dart';
 import 'package:restaurants_menu/common/widgets/common_toast.dart';
 import 'package:restaurants_menu/features/store/cubit/store_cubit.dart';
@@ -32,9 +33,12 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   @override
   void init(BuildContext context) {
     context.read<StoreCubit>().getAllTable();
+    // context.read<StoreCubit>().selectTable(
+    //               tableNumber: value!,
+    //             );
     context.read<StoreCubit>().tableOrder(
           number: 0,
-          cartId: 0,
+          cartId: context.read<StoreCubit>().storage.cardId.call()!,
         );
     super.init(context);
   }
@@ -42,38 +46,13 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   @override
   Widget builder(BuildContext context, StoreBuildable state) {
     final cubit = context.read<StoreCubit>();
-    if (state.loading) {
-      return const Center(child: CircularProgressIndicator());
-    } else {
+    // if (state.loading) {
+    //   return const Center(child: CircularProgressIndicator());
+    // } else {
       return Scaffold(
         appBar: AppBar(
           title: "Savat".s(24.sp).w(600),
           centerTitle: true,
-          actions: [
-            DropdownButton<int>(
-              hint: Text("${state.tableNumber}"),
-              onChanged: (value) {
-                context.read<StoreCubit>().selectTable(
-                      tableNumber: value!,
-                    );
-              },
-              items: state.getTableList.map<DropdownMenuItem<int>>((table) {
-                return DropdownMenuItem<int>(
-                  onTap: () {
-                    context.read<StoreCubit>().tableOrder(
-                          number: table["number"],
-                          cartId: table["cart_id"],
-                        );
-                  },
-                  value: table["number"],
-                  child: Text(
-                    "${table["number"]}",
-                    style: const TextStyle(color: Colors.blue),
-                  ),
-                );
-              }).toList(),
-            )
-          ],
         ),
         body: state.tableOrder == null
             ? const SizedBox.shrink()
@@ -123,11 +102,9 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
-                                                      // Ovqat nomi
                                                       "${state.tableOrder?.cart_items![index].food_name}"
                                                           .s(14.sp)
                                                           .w(400),
-                                                      // X belgisi (cancel button)
                                                       GestureDetector(
                                                         onTap: () async {
                                                           context
@@ -257,6 +234,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                 .read<StoreCubit>()
                 .orderConfirm(orderId: state.tableOrder!.id!);
             CommonToast.snackBar(context, message: "Tastiqlandi");
+            context.router.push(MainRoute());
           },
           text: 'Davom etish',
         ),
@@ -273,4 +251,4 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
     final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
     return "$formattedNumber $currencyPart";
   }
-}
+

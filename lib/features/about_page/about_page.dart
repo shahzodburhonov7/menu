@@ -57,7 +57,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                         width: double.infinity,
                         height: 80.h,
                         decoration: const BoxDecoration(
-                          color: Color(0xffFCF6FD),
+                          color: Colors.white,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30),
@@ -83,9 +83,9 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                               ),
                               style: TextStyle(
                                   fontSize: 20.sp,
-                                  fontWeight: FontWeight.w600,color: AppColors.appColorOrange),
-                            )
-,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.appColorOrange),
+                            ),
                             Row(
                               children: [
                                 GestureDetector(
@@ -158,7 +158,6 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.1),
-
                     ],
                   ),
                 ),
@@ -198,12 +197,13 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
           FloatingActionButtonLocation.miniCenterDocked,
     );
   }
+
   String formatCurrency(String input) {
     final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
     if (numericPart.isEmpty) return input;
     final int number = int.parse(numericPart);
     final formattedNumber =
-    NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+        NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
     final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
     return "$formattedNumber $currencyPart";
   }

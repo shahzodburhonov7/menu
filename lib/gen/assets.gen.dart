@@ -59,6 +59,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/cancel.svg
   SvgGenImage get cancel => const SvgGenImage('assets/icons/cancel.svg');
 
+  /// File path: assets/icons/card.png
+  AssetGenImage get card => const AssetGenImage('assets/icons/card.png');
+
   /// File path: assets/icons/exit.svg
   SvgGenImage get exit => const SvgGenImage('assets/icons/exit.svg');
 
@@ -128,6 +131,7 @@ class $AssetsIconsGen {
         bell,
         burger,
         cancel,
+        card,
         exit,
         eyeVisible,
         global,

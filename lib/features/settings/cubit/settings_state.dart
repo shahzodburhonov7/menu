@@ -4,7 +4,10 @@ part 'settings_state.freezed.dart';
 
 @freezed
 class SettingsBuildable with _$SettingsBuildable {
-  const factory SettingsBuildable() = _SettingsBuildable;
+  const factory SettingsBuildable({
+    @Default(false) bool isExpanded,
+    @Default("English") String selectedLanguage,
+}) = _SettingsBuildable;
 }
 
 @freezed

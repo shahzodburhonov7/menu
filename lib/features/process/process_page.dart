@@ -14,7 +14,8 @@ import 'package:restaurants_menu/features/process/cubit/process_cubit.dart';
 import 'package:restaurants_menu/features/process/cubit/process_state.dart';
 
 @RoutePage()
-class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
+class ProcessPage
+    extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
   const ProcessPage({super.key});
 
   @override
@@ -64,19 +65,26 @@ class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListen
                                 ? const SizedBox.shrink()
                                 : const Text(
                                     "Jarayonda",
-                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700),
                                   ),
                             trailing: Text(
-                              formatDate(state.tableProcess[index]!.created_at.toString()),
-                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                              formatDate(state.tableProcess[index]!.created_at
+                                  .toString()),
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
                             ),
                           ),
                           Card(
                             color: const Color(0xffFFFFFF),
                             child: ItemWidget(
-                              price: state.tableProcess[index]!.total_price.toString(),
-                              table: state.tableProcess[index]!.cart!.table.toString(),
-                              cartItems: state.tableProcess[index]!.cart!.cart_items!,
+                              price: state.tableProcess[index]!.total_price
+                                  .toString(),
+                              table: state.tableProcess[index]!.cart!.table
+                                  .toString(),
+                              cartItems:
+                                  state.tableProcess[index]!.cart!.cart_items!,
                               editOnTap: () {},
                               onTap: () {
                                 cubit.orderDone(
@@ -141,22 +149,30 @@ class ItemWidget extends StatelessWidget {
                       SizedBox(
                         width: 12.w,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          cartItems![index].food_name!.s(14.sp).w(400),
-                          SizedBox(height: 4.h),
-                          "Son :${cartItems![index].quantity!}".toString().s(12.sp).w(400),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                              ),
-                              cartItems![index].price!.s(16.sp).w(600)
-                            ],
-                          )
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            cartItems![index].food_name!.s(14.sp).w(400),
+                            SizedBox(height: 4.h),
+                            "Son: ${cartItems![index].quantity!}"
+                                .toString()
+                                .s(12.sp)
+                                .w(400),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                const Spacer(),
+                                Text(
+                                  formatCurrency(cartItems![index].price!),
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -173,18 +189,21 @@ class ItemWidget extends StatelessWidget {
           },
         ),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               "Jami summa:".s(16.sp).w(600),
-              price!.s(20.sp).w(600),
+              Text(
+                formatCurrency(price!),
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
+              )
             ],
           ),
         ),
         SizedBox(height: 15.h),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -194,11 +213,19 @@ class ItemWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8, vertical: 28),
+          padding: REdgeInsets.symmetric(horizontal: 10, vertical: 28),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomButton(onTap: editOnTap, text: "Tahrirlash", size: 14.sp, radius: 8, width: 150.w, height: 44.h),
+              CustomButton(
+                  onTap: editOnTap,
+                  text: "Tahrirlash",
+                  size: 14.sp,
+                  radius: 8,
+                  color: const Color(0xFF2C2C3D),
+                  backgroundColor: Colors.white,
+                  width: 150.w,
+                  height: 44.h),
               CustomButton(
                 radius: 8,
                 onTap: onTap,
@@ -212,5 +239,15 @@ class ItemWidget extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String formatCurrency(String input) {
+    final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
+    if (numericPart.isEmpty) return input;
+    final int number = int.parse(numericPart);
+    final formattedNumber =
+        NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+    final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
+    return "$formattedNumber $currencyPart";
   }
 }

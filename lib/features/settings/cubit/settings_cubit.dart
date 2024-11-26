@@ -10,7 +10,16 @@ class SettingsCubit extends BaseCubit<SettingsBuildable, SettingsListenable> {
 
   final AuthRepository repo;
   final Storage storage;
+  // Dropdownni ochish/yopish
+  void toggleExpanded() {
+    build((buildable) => buildable.copyWith(isExpanded: !buildable.isExpanded));
+  }
 
+  // Tanlangan tilni o'zgartirish
+  void selectLanguage(String language) {
+    build((buildable) => buildable.copyWith(selectedLanguage: language));
+    toggleExpanded(); // Dropdownni yopamiz
+  }
   void userLogOut() {
     storage.token.delete();
   }

@@ -28,7 +28,6 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
 
   @override
   Widget builder(BuildContext context, state) {
-    final cubit = context.read<DoneCubit>();
     return state.loading
         ? const Center(
             child: CircularProgressIndicator(),
@@ -83,7 +82,15 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
           );
   }
 }
-
+String formatCurrency(String input) {
+  final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
+  if (numericPart.isEmpty) return input;
+  final int number = int.parse(numericPart);
+  final formattedNumber =
+  NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+  final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
+  return "$formattedNumber $currencyPart";
+}
 class ItemOrderDone extends StatelessWidget {
   ItemOrderDone({
     super.key,
@@ -140,7 +147,12 @@ class ItemOrderDone extends StatelessWidget {
                             Row(
                               children: [
                                 const Spacer(),
-                                cartItems![index].price!.s(16.sp).w(600)
+                                Text(
+                                  formatCurrency(cartItems![index].price!),
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600),
+                                ),
                               ],
                             )
                           ],
@@ -166,7 +178,10 @@ class ItemOrderDone extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               "Jami summa:".s(16.sp).w(600),
-              price!.s(20.sp).w(600),
+              Text(
+                formatCurrency(price!),
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
+              )
             ],
           ),
         ),

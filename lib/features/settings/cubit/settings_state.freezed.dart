@@ -15,13 +15,24 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SettingsBuildable {}
+mixin _$SettingsBuildable {
+  bool get isExpanded => throw _privateConstructorUsedError;
+  String get selectedLanguage => throw _privateConstructorUsedError;
+
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SettingsBuildableCopyWith<SettingsBuildable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $SettingsBuildableCopyWith<$Res> {
   factory $SettingsBuildableCopyWith(
           SettingsBuildable value, $Res Function(SettingsBuildable) then) =
       _$SettingsBuildableCopyWithImpl<$Res, SettingsBuildable>;
+  @useResult
+  $Res call({bool isExpanded, String selectedLanguage});
 }
 
 /// @nodoc
@@ -36,13 +47,34 @@ class _$SettingsBuildableCopyWithImpl<$Res, $Val extends SettingsBuildable>
 
   /// Create a copy of SettingsBuildable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isExpanded = null,
+    Object? selectedLanguage = null,
+  }) {
+    return _then(_value.copyWith(
+      isExpanded: null == isExpanded
+          ? _value.isExpanded
+          : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedLanguage: null == selectedLanguage
+          ? _value.selectedLanguage
+          : selectedLanguage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$SettingsBuildableImplCopyWith<$Res> {
+abstract class _$$SettingsBuildableImplCopyWith<$Res>
+    implements $SettingsBuildableCopyWith<$Res> {
   factory _$$SettingsBuildableImplCopyWith(_$SettingsBuildableImpl value,
           $Res Function(_$SettingsBuildableImpl) then) =
       __$$SettingsBuildableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isExpanded, String selectedLanguage});
 }
 
 /// @nodoc
@@ -55,30 +87,83 @@ class __$$SettingsBuildableImplCopyWithImpl<$Res>
 
   /// Create a copy of SettingsBuildable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isExpanded = null,
+    Object? selectedLanguage = null,
+  }) {
+    return _then(_$SettingsBuildableImpl(
+      isExpanded: null == isExpanded
+          ? _value.isExpanded
+          : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      selectedLanguage: null == selectedLanguage
+          ? _value.selectedLanguage
+          : selectedLanguage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SettingsBuildableImpl implements _SettingsBuildable {
-  const _$SettingsBuildableImpl();
+  const _$SettingsBuildableImpl(
+      {this.isExpanded = false, this.selectedLanguage = "English"});
+
+  @override
+  @JsonKey()
+  final bool isExpanded;
+  @override
+  @JsonKey()
+  final String selectedLanguage;
 
   @override
   String toString() {
-    return 'SettingsBuildable()';
+    return 'SettingsBuildable(isExpanded: $isExpanded, selectedLanguage: $selectedLanguage)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SettingsBuildableImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SettingsBuildableImpl &&
+            (identical(other.isExpanded, isExpanded) ||
+                other.isExpanded == isExpanded) &&
+            (identical(other.selectedLanguage, selectedLanguage) ||
+                other.selectedLanguage == selectedLanguage));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isExpanded, selectedLanguage);
+
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SettingsBuildableImplCopyWith<_$SettingsBuildableImpl> get copyWith =>
+      __$$SettingsBuildableImplCopyWithImpl<_$SettingsBuildableImpl>(
+          this, _$identity);
 }
 
 abstract class _SettingsBuildable implements SettingsBuildable {
-  const factory _SettingsBuildable() = _$SettingsBuildableImpl;
+  const factory _SettingsBuildable(
+      {final bool isExpanded,
+      final String selectedLanguage}) = _$SettingsBuildableImpl;
+
+  @override
+  bool get isExpanded;
+  @override
+  String get selectedLanguage;
+
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SettingsBuildableImplCopyWith<_$SettingsBuildableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
