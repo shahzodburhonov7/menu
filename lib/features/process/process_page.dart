@@ -180,7 +180,7 @@ class ItemWidget extends StatelessWidget {
           },
         ),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -191,7 +191,7 @@ class ItemWidget extends StatelessWidget {
         ),
         SizedBox(height: 15.h),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -201,7 +201,7 @@ class ItemWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8, vertical: 28),
+          padding: REdgeInsets.symmetric(horizontal: 20, vertical: 28),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -210,7 +210,11 @@ class ItemWidget extends StatelessWidget {
                   text: "Tahrirlash",
                   size: 14.sp,
                   radius: 8,
+
+                  color: Color(0xff2F2F3F),
+                  backgroundColor: Color(0xffEBEBEC),
                   width: 150.w,
+
                   height: 44.h),
               CustomButton(
                 radius: 8,
