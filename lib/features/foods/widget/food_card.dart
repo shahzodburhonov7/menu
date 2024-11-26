@@ -22,6 +22,7 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       clipBehavior: Clip.none,
       children: [
         Card(
@@ -61,7 +62,7 @@ class FoodCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -30,
+          top: 10,
           left: 0,
           right: 0,
           child: Center(
@@ -95,8 +96,8 @@ class FoodCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -20,
-          right: 20,
+          top: 20,
+          right: 30,
           child: GestureDetector(
             onTap: onTap,
             child: CircleAvatar(
