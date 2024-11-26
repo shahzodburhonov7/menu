@@ -33,7 +33,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
 
   @override
   void onFocusGained(BuildContext context) {
-    context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    context
+        .read<FoodsCubit>()
+        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
   }
 
   @override
@@ -98,7 +100,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
           ),
         ),
       ),
-      bottomSheet: state.tableOrder?.cart_items == null ? const SizedBox.shrink() : FoodsBottomSheetWidget(tableOrder: state.tableOrder!),
+      bottomSheet: state.tableOrder?.cart_items == null
+          ? const SizedBox.shrink()
+          : FoodsBottomSheetWidget(tableOrder: state.tableOrder!),
     );
   }
 }
