@@ -18,5 +18,7 @@ class StoreBuildable with _$StoreBuildable {
 
 @freezed
 class StoreListenable with _$StoreListenable {
-  const factory StoreListenable() = _StoreListenable;
+  const factory StoreListenable({StoreEffect? effect}) = _StoreListenable;
 }
+
+enum StoreEffect{error}

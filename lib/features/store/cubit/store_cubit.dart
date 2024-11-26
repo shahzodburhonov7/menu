@@ -41,6 +41,7 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     await callable(
       future: orderRepo.quantityUpdate(
           quantity: quantity += 1, cart_item_id: itemId),
+      invokeOnError: (e) => const StoreListenable(effect: StoreEffect.error),
     );
     tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
@@ -51,7 +52,7 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     debugPrint("debug === ${buildable.tableNumber}:::: ${buildable.cartId}");
 
     callable(
-        future: orderRepo.orderTable(number: storage.cardId.call()!.toInt()),
+        future: orderRepo.orderTable(number: cartId),
         buildOnStart: () => buildable.copyWith(orderLoading: true),
         buildOnData: (d) =>
             buildable.copyWith(orderLoading: false, tableOrder: d),

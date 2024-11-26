@@ -20,6 +20,16 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   });
 
   @override
+  void listener(BuildContext context, StoreListenable state) {
+    switch (state.effect) {
+      case null:
+        break;
+      case StoreEffect.error:
+        CommonToast.snackBar(context, message: 'Update mumkin emas Qo`shing');
+    }
+  }
+
+  @override
   void init(BuildContext context) {
     context.read<StoreCubit>().getAllTable();
     context.read<StoreCubit>().tableOrder(
