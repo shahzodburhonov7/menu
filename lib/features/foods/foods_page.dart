@@ -53,7 +53,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 },
                 icon: Assets.icons.back.svg(),
               ),
-        actions: [
+         actions: [
+          state.type == 'omborchi'? const SizedBox.shrink():
           DropdownButton<int>(
             hint: "${state.tableNumber}".s(18.sp),
             onChanged: (value) {
