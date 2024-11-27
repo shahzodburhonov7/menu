@@ -28,7 +28,6 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
 
   @override
   Widget builder(BuildContext context, state) {
-    final cubit = context.read<DoneCubit>();
     return state.loading
         ? const Center(
             child: CircularProgressIndicator(),
@@ -47,7 +46,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                         children: [
                           ListTile(
                             title: index != 0
-                                ? SizedBox.shrink()
+                                ? const SizedBox.shrink()
                                 : const Text(
                                     "Jarayonda",
                                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
@@ -58,7 +57,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                             ),
                           ),
                           Card(
-                            color: Color(0xffFFFFFF),
+                            color: const Color(0xffFFFFFF),
                             child: ItemOrderDone(
                               price: state.orderDoneList[index].total_price.toString(),
                               table: state.orderDoneList[index].cart!.table.toString(),
@@ -78,7 +77,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
 }
 
 class ItemOrderDone extends StatelessWidget {
-  ItemOrderDone({
+  const ItemOrderDone({
     super.key,
     this.cartItems,
     this.price,

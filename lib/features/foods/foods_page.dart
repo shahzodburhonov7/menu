@@ -28,8 +28,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
     super.init(context);
   }
 
-  ScrollController scrollController = ScrollController();
-  TextEditingController textEditingController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   void onFocusGained(BuildContext context) {
