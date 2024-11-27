@@ -56,4 +56,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// hello davlat
+// hello world
