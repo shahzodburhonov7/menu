@@ -98,7 +98,11 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
           ),
         ),
       ),
-      bottomSheet: state.tableOrder?.cart_items == null ? const SizedBox.shrink() : FoodsBottomSheetWidget(tableOrder: state.tableOrder!),
+      bottomSheet: state.tableOrder?.cart_items == null
+          ? const SizedBox.shrink()
+          : FoodsBottomSheetWidget(
+              tableOrder: state.tableOrder!,
+            ),
     );
   }
 }
