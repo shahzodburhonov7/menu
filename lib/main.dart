@@ -14,9 +14,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [
+      supportedLocales: [
         Locale('uz', 'UZ'),
         Locale('en', 'EN'),
+        Locale('ru', 'Ru'),
       ],
       path: 'assets/locales',
       fallbackLocale: const Locale('uz', 'UZ'),
@@ -56,4 +57,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// hello world
+// hello davlat
