@@ -27,4 +27,9 @@ class Constants {
   static const apiProductCategoryId = '/product/product-category/';
   static const apiProductsGet = '/product/product/list/';
   static const apiProductsSearch = '/product/product/list/?search=';
+
+// Foydalanuvchi user type
+  static const omborchi = "omborchi";
+  static const ofitsant = "ofitsant";
+  static const kassir = "kassir";
 }

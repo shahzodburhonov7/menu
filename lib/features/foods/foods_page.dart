@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
+import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/common_search_field.dart';
+import 'package:restaurants_menu/domain/storage/storage.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart';
 import 'package:restaurants_menu/features/foods/cubit/foods_state.dart';
 import 'package:restaurants_menu/features/foods/widget/drop_down_widget.dart';
@@ -23,8 +25,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   @override
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
-    context.read<FoodsCubit>().getAllTable();
-    debugPrint("assssasssssssssssssssssssssssssssss ");
+    USER_TYPE == Constants.ofitsant
+        ? context.read<FoodsCubit>().getAllTable()
+        : null;
     super.init(context);
   }
 
@@ -42,7 +45,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: state.type == 'omborchi'
+        leading: state.type == Constants.omborchi
             ? const SizedBox.shrink()
             : IconButton(
                 onPressed: () {
