@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,8 +16,7 @@ import 'package:restaurants_menu/features/settings/widget/settings_widget.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
-class SettingsPage
-    extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
+class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
   SettingsPage({super.key});
 
   @override
@@ -51,12 +51,10 @@ class SettingsPage
             GestureDetector(
               onTap: cubit.toggleLanguages,
               child: SettingsWidget(
-                title: "Languages",
+                title: "languages".tr(),
                 icon: Assets.icons.global.svg(),
                 trailing: GestureDetector(
-                  child: state.isToggled
-                      ? Assets.icons.arrowUp.svg()
-                      : Assets.icons.arrowDown.svg(),
+                  child: state.isToggled ? Assets.icons.arrowUp.svg() : Assets.icons.arrowDown.svg(),
                 ),
               ),
             ),
@@ -74,13 +72,7 @@ class SettingsPage
               },
               child: CustomContainer(
                 child: Row(
-                  children: [
-                    Assets.icons.exit.svg(),
-                    SizedBox(width: 11.w),
-                    'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor),
-                    const Spacer(),
-                    Assets.icons.next.svg()
-                  ],
+                  children: [Assets.icons.exit.svg(), SizedBox(width: 11.w), 'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor), const Spacer(), Assets.icons.next.svg()],
                 ),
               ),
             ),

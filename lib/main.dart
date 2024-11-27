@@ -14,10 +14,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: [
+      supportedLocales: const [
         Locale('uz', 'UZ'),
         Locale('en', 'EN'),
-        Locale('ru', 'Ru'),
+        Locale('ru', 'RU'),
       ],
       path: 'assets/locales',
       fallbackLocale: const Locale('uz', 'UZ'),
@@ -45,9 +45,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'FOOD APP',
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                  surfaceTintColor: Colors.white,
-                  backgroundColor: Colors.white),
+              appBarTheme: const AppBarTheme(surfaceTintColor: Colors.white, backgroundColor: Colors.white),
               scaffoldBackgroundColor: Colors.white,
             ),
             routerConfig: getIt<AppRouter>().config(),
