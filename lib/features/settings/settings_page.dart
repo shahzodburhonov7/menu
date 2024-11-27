@@ -88,6 +88,7 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                 ],
               ),
             ),
+            ////////////
             SizedBox(height: 10.h),
             GestureDetector(
               onTap: () {
