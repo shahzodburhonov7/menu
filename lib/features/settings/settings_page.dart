@@ -10,6 +10,8 @@ import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/custom_container.dart';
 import 'package:restaurants_menu/features/settings/cubit/settings_cubit.dart';
 import 'package:restaurants_menu/features/settings/cubit/settings_state.dart';
+import 'package:restaurants_menu/features/settings/widget/custom_language.dart';
+import 'package:restaurants_menu/features/settings/widget/settings_widget.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
@@ -46,95 +48,24 @@ class SettingsPage
               ),
             ),
             SizedBox(height: 10.h),
-            Container(
-              // margin: EdgeInsets.all(16),
-              padding: REdgeInsets.symmetric(vertical: 20.h, horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  InkWell(
-                    onTap: cubit.toggleExpanded, // Dropdownni ochish/yopish
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(Icons.language, color: Colors.grey[800]),
-                            SizedBox(width: 8),
-                            Text(
-                              "Languages",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.grey[800],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Icon(
-                          state.isExpanded
-                              ? Icons.keyboard_arrow_up
-                              : Icons.keyboard_arrow_down,
-                          color: Colors.grey[800],
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (state.isExpanded)
-                    ..._languages.map((language) {
-                      final isSelected =
-                          language["name"] == state.selectedLanguage;
-                      return InkWell(
-                        onTap: () {
-                          cubit.selectLanguage(language["name"]!); // Tanlash
-                        },
-                        child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 8),
-                          padding: EdgeInsets.symmetric(
-                              vertical: 12, horizontal: 16),
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? Colors.grey[800]
-                                : Colors.grey[200],
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                language["icon"]!,
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              SizedBox(width: 8),
-                              Text(
-                                language["name"]!,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color:
-                                      isSelected ? Colors.white : Colors.black,
-                                  fontWeight: isSelected
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                ],
+            GestureDetector(
+               onTap: cubit.toggleLanguages,
+              child: SettingsWidget(
+                title: "Languages",
+                icon: Assets.icons.global.svg(),
+                trailing: GestureDetector(
+                  child: state.isToggled
+                      ? Assets.icons.arrowUp.svg()
+                      : Assets.icons.arrowDown.svg(),
+                ),
               ),
             ),
+            SizedBox(height: 12.h),
+            state.isToggled
+                ? const Center()
+                : CustomLanguagesWidget(
+                    profileContext: context,
+                  ),
             SizedBox(height: 10.h),
             GestureDetector(
               onTap: () {
@@ -159,9 +90,3 @@ class SettingsPage
     );
   }
 }
-
-final List<Map<String, String>> _languages = [
-  {"name": "Uzbek lotin", "icon": "🇺🇿"},
-  {"name": "English", "icon": "🇬🇧"},
-  {"name": "Russian", "icon": "🇷🇺"},
-];
