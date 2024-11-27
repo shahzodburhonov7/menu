@@ -5,6 +5,7 @@ final class AppColors {
 
   // light
   static const transparent = Colors.transparent;
+  static const btnSend = Color(0xff2F2F3F);
 
   static const dodgerBlue = Color(0xFF246BFD);
   static const gainsBoro = Color(0xFFDDDDDD);
@@ -16,6 +17,11 @@ final class AppColors {
   static const borderColor = Color(0xffD8DADC);
   static const btnColor = Color(0xff2F2F3F);
   static const eyeColor = Color(0xff666666);
+  static const whiteText = Color(0xffFFFFFF);
+  static const fullBlack = Color(0xff000000);
+
+  static const solitudeWhite = Color(0xffF6F8FA);
+
   static const grey = Color(0xffAAA6B9);
   static const textColor = Color(0xff150B3D);
   static const switchColor = Color(0xffE9ECEF);

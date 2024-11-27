@@ -38,6 +38,12 @@ class $AssetsIconsGen {
   SvgGenImage get activeStore =>
       const SvgGenImage('assets/icons/active_store.svg');
 
+  /// File path: assets/icons/arrow_down.svg
+  SvgGenImage get arrowDown => const SvgGenImage('assets/icons/arrow_down.svg');
+
+  /// File path: assets/icons/arrow_up.svg
+  SvgGenImage get arrowUp => const SvgGenImage('assets/icons/arrow_up.svg');
+
   /// File path: assets/icons/back.svg
   SvgGenImage get back => const SvgGenImage('assets/icons/back.svg');
 
@@ -61,6 +67,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/card.png
   AssetGenImage get card => const AssetGenImage('assets/icons/card.png');
+
+  /// File path: assets/icons/eng.png
+  AssetGenImage get eng => const AssetGenImage('assets/icons/eng.png');
 
   /// File path: assets/icons/exit.svg
   SvgGenImage get exit => const SvgGenImage('assets/icons/exit.svg');
@@ -95,6 +104,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/person.svg
   SvgGenImage get person => const SvgGenImage('assets/icons/person.svg');
 
+  /// File path: assets/icons/rus.svg
+  SvgGenImage get rus => const SvgGenImage('assets/icons/rus.svg');
+
   /// File path: assets/icons/search.svg
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
@@ -124,6 +136,8 @@ class $AssetsIconsGen {
         activeHome,
         activeSettings,
         activeStore,
+        arrowDown,
+        arrowUp,
         back,
         backAbout,
         banner,
@@ -132,6 +146,7 @@ class $AssetsIconsGen {
         burger,
         cancel,
         card,
+        eng,
         exit,
         eyeVisible,
         global,
@@ -142,6 +157,7 @@ class $AssetsIconsGen {
         next,
         notifaction,
         person,
+        rus,
         search,
         settings,
         slave,
@@ -222,11 +238,14 @@ class $AssetsLocalesGen {
   /// File path: assets/locales/en-EN.json
   String get enEN => 'assets/locales/en-EN.json';
 
+  /// File path: assets/locales/ru-Ru.json
+  String get ruRu => 'assets/locales/ru-Ru.json';
+
   /// File path: assets/locales/uz-UZ.json
   String get uzUZ => 'assets/locales/uz-UZ.json';
 
   /// List of all assets
-  List<String> get values => [enEN, uzUZ];
+  List<String> get values => [enEN, ruRu, uzUZ];
 }
 
 class Assets {

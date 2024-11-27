@@ -46,7 +46,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                         children: [
                           ListTile(
                             title: index != 0
-                                ? SizedBox.shrink()
+                                ? const SizedBox.shrink()
                                 : Text(
                                     "Bajarilgan",
                                     style: TextStyle(
@@ -61,7 +61,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                             ),
                           ),
                           Card(
-                            color: Color(0xffFFFFFF),
+                            color: const Color(0xffFFFFFF),
                             child: ItemOrderDone(
                               price: state.orderDoneList[index].total_price
                                   .toString(),

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SettingsBuildable {
   bool get isExpanded => throw _privateConstructorUsedError;
+  bool get isToggled => throw _privateConstructorUsedError;
   String get selectedLanguage => throw _privateConstructorUsedError;
 
   /// Create a copy of SettingsBuildable
@@ -32,7 +33,7 @@ abstract class $SettingsBuildableCopyWith<$Res> {
           SettingsBuildable value, $Res Function(SettingsBuildable) then) =
       _$SettingsBuildableCopyWithImpl<$Res, SettingsBuildable>;
   @useResult
-  $Res call({bool isExpanded, String selectedLanguage});
+  $Res call({bool isExpanded, bool isToggled, String selectedLanguage});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$SettingsBuildableCopyWithImpl<$Res, $Val extends SettingsBuildable>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? isToggled = null,
     Object? selectedLanguage = null,
   }) {
     return _then(_value.copyWith(
       isExpanded: null == isExpanded
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isToggled: null == isToggled
+          ? _value.isToggled
+          : isToggled // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedLanguage: null == selectedLanguage
           ? _value.selectedLanguage
@@ -74,7 +80,7 @@ abstract class _$$SettingsBuildableImplCopyWith<$Res>
       __$$SettingsBuildableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isExpanded, String selectedLanguage});
+  $Res call({bool isExpanded, bool isToggled, String selectedLanguage});
 }
 
 /// @nodoc
@@ -91,12 +97,17 @@ class __$$SettingsBuildableImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExpanded = null,
+    Object? isToggled = null,
     Object? selectedLanguage = null,
   }) {
     return _then(_$SettingsBuildableImpl(
       isExpanded: null == isExpanded
           ? _value.isExpanded
           : isExpanded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isToggled: null == isToggled
+          ? _value.isToggled
+          : isToggled // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedLanguage: null == selectedLanguage
           ? _value.selectedLanguage
@@ -110,18 +121,23 @@ class __$$SettingsBuildableImplCopyWithImpl<$Res>
 
 class _$SettingsBuildableImpl implements _SettingsBuildable {
   const _$SettingsBuildableImpl(
-      {this.isExpanded = false, this.selectedLanguage = "English"});
+      {this.isExpanded = false,
+      this.isToggled = false,
+      this.selectedLanguage = ""});
 
   @override
   @JsonKey()
   final bool isExpanded;
   @override
   @JsonKey()
+  final bool isToggled;
+  @override
+  @JsonKey()
   final String selectedLanguage;
 
   @override
   String toString() {
-    return 'SettingsBuildable(isExpanded: $isExpanded, selectedLanguage: $selectedLanguage)';
+    return 'SettingsBuildable(isExpanded: $isExpanded, isToggled: $isToggled, selectedLanguage: $selectedLanguage)';
   }
 
   @override
@@ -131,12 +147,15 @@ class _$SettingsBuildableImpl implements _SettingsBuildable {
             other is _$SettingsBuildableImpl &&
             (identical(other.isExpanded, isExpanded) ||
                 other.isExpanded == isExpanded) &&
+            (identical(other.isToggled, isToggled) ||
+                other.isToggled == isToggled) &&
             (identical(other.selectedLanguage, selectedLanguage) ||
                 other.selectedLanguage == selectedLanguage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExpanded, selectedLanguage);
+  int get hashCode =>
+      Object.hash(runtimeType, isExpanded, isToggled, selectedLanguage);
 
   /// Create a copy of SettingsBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -151,10 +170,13 @@ class _$SettingsBuildableImpl implements _SettingsBuildable {
 abstract class _SettingsBuildable implements SettingsBuildable {
   const factory _SettingsBuildable(
       {final bool isExpanded,
+      final bool isToggled,
       final String selectedLanguage}) = _$SettingsBuildableImpl;
 
   @override
   bool get isExpanded;
+  @override
+  bool get isToggled;
   @override
   String get selectedLanguage;
 
