@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListen
   Widget builder(BuildContext context, ProfileBuildable state) {
     return Scaffold(
       appBar: AppBar(
-        title: "Ma’lumotlar".s(22.sp).w(600),
+        title: "Information".tr().s(22.sp).w(600),
         centerTitle: true,
       ),
       body: state.loading
@@ -62,7 +63,7 @@ class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListen
                   SizedBox(height: 20.h),
                   Row(
                     children: [
-                      'Familiyasi'.s(12).w(500).c(AppColors.textColor),
+                      'Name'.tr().s(12).w(500).c(AppColors.textColor),
                     ],
                   ),
                   SizedBox(height: 8.h),
@@ -76,7 +77,7 @@ class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListen
                   SizedBox(height: 16.h),
                   Row(
                     children: [
-                      'Ismi'.s(12).w(500).c(AppColors.textColor),
+                      'Last name'.tr().s(12).w(500).c(AppColors.textColor),
                     ],
                   ),
                   SizedBox(height: 8.h),

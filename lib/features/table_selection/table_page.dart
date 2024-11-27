@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +56,7 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
           },
           icon: Assets.icons.back.svg(),
         ),
-        title: "Stol".s(24.sp).w(600),
+        title: "Table".s(24.sp).w(600).tr(),
         centerTitle: true,
         actions: [
           Padding(
@@ -70,9 +71,9 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              "Stol raqamini tanlang".s(18.sp).w(700),
+              "Choose a table number".s(18.sp).w(700).tr(),
               SizedBox(height: 20.h),
-              "Stol raqami".s(14.sp).w(500),
+              "Table number".s(14.sp).w(500).tr(),
               SizedBox(height: 20.h),
               CustomContainer(
                 child: Row(
@@ -122,7 +123,7 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
                     tableNumber: state.table,
                   );
                 },
-                text: "Tasdiqlash",
+                text: "Confirmation".tr(),
               )
             ],
           ),

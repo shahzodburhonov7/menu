@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
     context.read<FoodsCubit>().getAllTable();
-    context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    context
+        .read<FoodsCubit>()
+        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
 
     debugPrint("assssasssssssssssssssssssssssssssss ");
     super.init(context);
@@ -34,7 +37,9 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
 
   @override
   void onFocusGained(BuildContext context) {
-    context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    context
+        .read<FoodsCubit>()
+        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
   }
 
   @override
@@ -58,11 +63,13 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: REdgeInsets.all(20.0),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              "motto".s(24.sp).w(600).tr(),
+              SizedBox(height: 20.h),
               CommonSearchField(
                 onChanged: (query) {
                   cubit.searchFood(query: query);
@@ -71,7 +78,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 hintText: "Pizza, Burger, hot dog, etc",
               ),
               SizedBox(height: 10.h),
-              "Kategoriyalar".s(20.sp).w(600),
+              "Categories".s(20.sp).w(600).tr(),
               SizedBox(height: 10.h),
               state.loading
                   ? const FoodsCategoryShimmer()
@@ -79,11 +86,11 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                       foodCategoryList: state.foodCategoryList,
                     ),
               SizedBox(height: 12.h),
-              "Barcha taomlar".s(20.sp).w(600),
+              "All dishes".s(20.sp).w(600).tr(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               state.proLoading
                   ? const FoodsAllShimmer()
-                  : FoodsAllSuccessfuly(
+                  : FoodsAllSuccessFully(
                       foodsPro: state.foodPro,
                       loadingPro: state.proLoading,
                     ),
@@ -91,7 +98,8 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
           ),
         ),
       ),
-      bottomSheet: state.tableOrder?.cart_items == null || state.tableOrder!.cart_items!.isEmpty
+      bottomSheet: state.tableOrder?.cart_items == null ||
+              state.tableOrder!.cart_items!.isEmpty
           ? const SizedBox.shrink()
           : FoodsBottomSheetWidget(
               tableOrder: state.tableOrder!,

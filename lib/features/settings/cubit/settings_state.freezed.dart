@@ -122,7 +122,7 @@ class __$$SettingsBuildableImplCopyWithImpl<$Res>
 class _$SettingsBuildableImpl implements _SettingsBuildable {
   const _$SettingsBuildableImpl(
       {this.isExpanded = false,
-      this.isToggled = false,
+      this.isToggled = true,
       this.selectedLanguage = ""});
 
   @override

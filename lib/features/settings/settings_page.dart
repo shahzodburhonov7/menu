@@ -16,7 +16,8 @@ import 'package:restaurants_menu/features/settings/widget/settings_widget.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
-class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
+class SettingsPage
+    extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
   SettingsPage({super.key});
 
   @override
@@ -25,7 +26,7 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
     final cubit = context.read<SettingsCubit>();
     return Scaffold(
       appBar: AppBar(
-        title: "Settings".s(22.sp).w(600),
+        title: "Settings".tr().s(22.sp).w(600),
         centerTitle: true,
       ),
       body: Padding(
@@ -37,7 +38,7 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                 children: [
                   Assets.icons.bell.svg(),
                   SizedBox(width: 11.w),
-                  'Notifications'.s(12.sp).w(500).c(AppColors.textColor),
+                  'Notifications'.tr().s(12.sp).w(500).c(AppColors.textColor),
                   const Spacer(),
                   CupertinoSwitch(
                     value: isSwitched,
@@ -54,7 +55,9 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                 title: "languages".tr(),
                 icon: Assets.icons.global.svg(),
                 trailing: GestureDetector(
-                  child: state.isToggled ? Assets.icons.arrowUp.svg() : Assets.icons.arrowDown.svg(),
+                  child: state.isToggled
+                      ? Assets.icons.arrowUp.svg()
+                      : Assets.icons.arrowDown.svg(),
                 ),
               ),
             ),
@@ -72,7 +75,17 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
               },
               child: CustomContainer(
                 child: Row(
-                  children: [Assets.icons.exit.svg(), SizedBox(width: 11.w), 'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor), const Spacer(), Assets.icons.next.svg()],
+                  children: [
+                    Assets.icons.exit.svg(),
+                    SizedBox(width: 11.w),
+                    'Log out'
+                        .tr()
+                        .s(12.sp)
+                        .w(500)
+                        .c(AppColors.textColor),
+                    const Spacer(),
+                    Assets.icons.next.svg()
+                  ],
                 ),
               ),
             ),

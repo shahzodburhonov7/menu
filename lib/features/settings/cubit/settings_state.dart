@@ -6,10 +6,9 @@ part 'settings_state.freezed.dart';
 class SettingsBuildable with _$SettingsBuildable {
   const factory SettingsBuildable({
     @Default(false) bool isExpanded,
-    @Default(false) bool isToggled,
-
+    @Default(true) bool isToggled,
     @Default("") String selectedLanguage,
-}) = _SettingsBuildable;
+  }) = _SettingsBuildable;
 }
 
 @freezed

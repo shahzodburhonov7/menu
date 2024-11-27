@@ -24,19 +24,16 @@ class FoodsBottomSheetWidget extends StatelessWidget {
             const StoreRoute(),
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              "Korzinka".s(16.sp).w(500),
-              CircleAvatar(
-                backgroundColor: AppColors.circleAvatar,
-                child: "${tableOrder.cart_items!.length}".s(16.sp).w(600),
-              ),
-              "${tableOrder.total_price!}".s(16.sp).w(500)
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            "Korzinka".s(16.sp).w(500),
+            CircleAvatar(
+              backgroundColor: AppColors.circleAvatar,
+              child: "${tableOrder.cart_items!.length}".s(16.sp).w(600),
+            ),
+            "${tableOrder.total_price!}".s(16.sp).w(500)
+          ],
         ),
       ),
     );

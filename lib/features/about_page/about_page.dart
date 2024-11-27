@@ -26,6 +26,8 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
   @override
   Widget builder(BuildContext context, AboutBuildable state) {
     final cubit = context.read<AboutCubit>();
+    final bool isUzbek = context.locale.languageCode == "uz";
+    final bool isRussian = context.locale.languageCode == "ru";
     return Scaffold(
       body: state.loading
           ? const Center(
@@ -127,28 +129,43 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8),
                                   )),
-                              child: "Mahsulot haqida"
+                              child: "About the product"
                                   .s(14.sp)
                                   .c(AppColors.appColorOrange)
-                                  .w(600),
+                                  .w(600)
+                                  .tr(),
                             ),
                             SizedBox(
                               width: 16.w,
                             ),
-                            "Tarkibi"
+                            "Composition"
                                 .s(14.sp)
                                 .w(400)
-                                .c(AppColors.hintTextColor),
+                                .c(AppColors.hintTextColor)
+                                .tr(),
                           ],
                         ),
                       ),
                       Padding(
                         padding: REdgeInsets.only(
                             left: 20, top: 20, right: 70, bottom: 20),
-                        child: "${state.foodInfo?.food_info_uz}"
-                            .s(14.sp)
-                            .w(400)
-                            .c(AppColors.hintTextColor),
+                        child: isUzbek
+                            ? "${state.foodInfo?.food_info_uz}"
+                                .s(14.sp)
+                                .w(400)
+                                .c(AppColors.hintTextColor)
+                            : isRussian
+                                ? "${state.foodInfo?.food_info_uz}"
+                                    .s(14.sp)
+                                    .w(400)
+                                    .c(AppColors.hintTextColor)
+                                : "${state.foodInfo?.food_info_uz}"
+                                    .s(14.sp)
+                                    .w(400)
+                                    .c(AppColors.hintTextColor)
+                                    .s(14.sp)
+                                    .w(400)
+                                    .c(AppColors.hintTextColor),
                       ),
                       const Divider(
                         color: AppColors.dividerColor,
@@ -189,7 +206,7 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
-            child: "Savatga qo’shish".s(14.sp).w(600).c(AppColors.white),
+            child: "Add to Cart".s(14.sp).w(600).c(AppColors.white).tr(),
           ),
         ),
       ),

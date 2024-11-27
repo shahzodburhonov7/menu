@@ -174,6 +174,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/add.svg
   SvgGenImage get add => const SvgGenImage('assets/images/add.svg');
 
+  /// File path: assets/images/card_order.svg
+  SvgGenImage get cardOrder =>
+      const SvgGenImage('assets/images/card_order.svg');
+
+  /// File path: assets/images/final_Card.svg
+  SvgGenImage get finalCard =>
+      const SvgGenImage('assets/images/final_Card.svg');
+
   /// File path: assets/images/img.png
   AssetGenImage get img => const AssetGenImage('assets/images/img.png');
 
@@ -216,6 +224,8 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         add,
+        cardOrder,
+        finalCard,
         img,
         img1,
         img2,

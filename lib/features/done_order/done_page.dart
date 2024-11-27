@@ -48,7 +48,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                             title: index != 0
                                 ? const SizedBox.shrink()
                                 : Text(
-                                    "Bajarilgan",
+                                    "In process".tr(),
                                     style: TextStyle(
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.w600),
@@ -142,7 +142,7 @@ class ItemOrderDone extends StatelessWidget {
                           children: [
                             cartItems![index].food_name!.s(14.sp).w(400),
                             SizedBox(height: 4.h),
-                            "Son: ${cartItems![index].quantity!}"
+                            "Number ${cartItems![index].quantity!}".tr()
                                 .toString()
                                 .s(12.sp)
                                 .w(400),
@@ -179,7 +179,7 @@ class ItemOrderDone extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              "Jami summa:".s(16.sp).w(600),
+              "Total amount".s(16.sp).w(600).tr(),
               Text(
                 formatCurrency(price!),
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
@@ -193,7 +193,7 @@ class ItemOrderDone extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              "Stol raqami:".s(16.sp).w(600),
+              "Table number".s(16.sp).w(600).tr(),
               "$table".s(20.sp).w(600),
             ],
           ),

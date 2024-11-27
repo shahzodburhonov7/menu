@@ -15,7 +15,8 @@ import 'package:restaurants_menu/features/process/cubit/process_cubit.dart';
 import 'package:restaurants_menu/features/process/cubit/process_state.dart';
 
 @RoutePage()
-class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
+class ProcessPage
+    extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
   const ProcessPage({super.key});
 
   @override
@@ -37,6 +38,8 @@ class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListen
 
   @override
   Widget builder(BuildContext context, ProcessBuildable state) {
+
+
     final cubit = context.read<ProcessCubit>();
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -63,24 +66,35 @@ class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListen
                           ListTile(
                             title: index != 0
                                 ? const SizedBox.shrink()
-                                : const Text(
-                                    "Jarayonda",
-                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                                : Text(
+                                    "In process".tr(),
+                                    style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w700),
                                   ),
                             trailing: Text(
-                              formatDate(state.tableProcess[index]!.created_at.toString()),
-                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                              formatDate(state.tableProcess[index]!.created_at
+                                  .toString()),
+                              style: const TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
                             ),
                           ),
                           Card(
                             color: const Color(0xffFFFFFF),
                             child: ItemWidget(
-                              price: state.tableProcess[index]!.total_price.toString(),
-                              table: state.tableProcess[index]!.cart!.table.toString(),
-                              cartItems: state.tableProcess[index]!.cart!.cart_items!,
+                              price: state.tableProcess[index]!.total_price
+                                  .toString(),
+                              table: state.tableProcess[index]!.cart!.table
+                                  .toString(),
+                              cartItems:
+                                  state.tableProcess[index]!.cart!.cart_items!,
                               editOnTap: () {
-                                cubit.storage.cardId.set(state.tableProcess[index]!.cart!.id!);
-                                context.router.pushAndPopUntil(FoodsRoute(), predicate: (context) => false);
+                                cubit.storage.cardId
+                                    .set(state.tableProcess[index]!.cart!.id!);
+                                context.router.pushAndPopUntil(
+                                  FoodsRoute(),
+                                  predicate: (context) => false,
+                                );
                               },
                               onTap: () {
                                 cubit.orderDone(
@@ -118,6 +132,7 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         ...List.generate(
@@ -149,16 +164,29 @@ class ItemWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            cartItems![index].food_name!.s(14.sp).w(400),
+
+                            cartItems![index].food_name!.s(14.sp).w(400)
+
+                            ,
                             SizedBox(height: 4.h),
-                            "Son: ${cartItems![index].quantity!}".toString().s(12.sp).w(400),
+                            Row(
+                              children: [
+                                "Number".s(12.sp).w(400).tr(),
+                                ": ${cartItems![index].quantity!}"
+                                    .toString()
+                                    .s(12.sp)
+                                    .w(400),
+                              ],
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 const Spacer(),
                                 Text(
                                   formatCurrency(cartItems![index].price!),
-                                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ],
                             )
@@ -184,7 +212,7 @@ class ItemWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              "Jami summa:".s(16.sp).w(600),
+              "Total amount".s(16.sp).w(600).tr(),
               Text(
                 formatCurrency(price!),
                 style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
@@ -198,7 +226,7 @@ class ItemWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              "Stol raqami:".s(16.sp).w(600),
+              "Table number".s(16.sp).w(600).tr(),
               "$table".s(20.sp).w(600),
             ],
           ),
@@ -208,11 +236,19 @@ class ItemWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomButton(onTap: editOnTap, text: "Tahrirlash", size: 14.sp, radius: 8, color: const Color(0xFF2C2C3D), backgroundColor: Colors.white, width: 150.w, height: 44.h),
+              CustomButton(
+                  onTap: editOnTap,
+                  text: "Edit".tr(),
+                  size: 14.sp,
+                  radius: 8,
+                  color: const Color(0xFF2C2C3D),
+                  backgroundColor: Colors.white,
+                  width: 150.w,
+                  height: 44.h),
               CustomButton(
                 radius: 8,
                 onTap: onTap,
-                text: "Tugatish",
+                text: "Finish".tr(),
                 width: 150.w,
                 size: 14.sp,
                 height: 44.h,
@@ -228,7 +264,8 @@ class ItemWidget extends StatelessWidget {
     final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
     if (numericPart.isEmpty) return input;
     final int number = int.parse(numericPart);
-    final formattedNumber = NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+    final formattedNumber =
+        NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
     final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
     return "$formattedNumber $currencyPart";
   }

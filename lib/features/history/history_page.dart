@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
@@ -20,7 +21,7 @@ class HistoryPage
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: "Buyurtmalar tarixi".s(24.sp).w(600),
+          title: "Order history".tr().s(24.sp).w(600),
           centerTitle: true,
         ),
         body: Padding(
@@ -53,12 +54,12 @@ class HistoryPage
                   ),
                   labelColor: AppColors.white,
                   unselectedLabelColor: AppColors.onSelected,
-                  tabs: const [
+                  tabs:  [
                     Tab(
-                      text: 'Jarayonda',
+                      text: 'In process'.tr(),
                     ),
                     Tab(
-                      text: 'Bajarilgan',
+                      text: 'Done'.tr(),
                     ),
                   ],
                 ),

@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
+import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/features/home/cubit/home_cubit.dart';
@@ -29,16 +31,14 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
           child: Column(
             children: [
               Padding(
-                padding: REdgeInsets.only(right: 84, left: 10),
-                child: "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
+                padding:  REdgeInsets.symmetric(horizontal: 8),
+                child: "motto".s(24.sp).w(600).tr(),
               ),
               SizedBox(height: 28.h),
-
               GestureDetector(
                 onTap: () {},
                 child: Assets.icons.burger.image(width: 353.w, height: 142.h),
               ),
-
               SizedBox(height: 28.h),
               GestureDetector(
                 onTap: () {
@@ -46,12 +46,63 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
                     const TableRoute(),
                   );
                 },
-                child: Assets.icons.card.image(width: 344.w, height: 116.h),
+                child: Container(
+                  width: 344.w,
+                  height: 116.h,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff59F54F),
+                    borderRadius: BorderRadius.circular(12),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Assets.images.cardOrder.svg(),
+                          SizedBox(height: 8.h),
+                          "New order".s(18.sp).w(500).c(
+                                AppColors.white,
+                              ).tr(),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 height: 16.h,
               ),
-              Assets.icons.bannerRed.svg(width: 344.w, height: 116.h)
+              Container(
+                width: 344.w,
+                height: 116.h,
+                decoration: BoxDecoration(
+                  color: const Color(0xffFE728E),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Assets.images.finalCard.svg(),
+                        SizedBox(height: 8.h),
+                        "Finish Day".s(18.sp).w(500).c(
+                              AppColors.white,
+                            ).tr(),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
