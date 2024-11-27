@@ -20,24 +20,43 @@ class FoodsAllShimmer extends StatelessWidget {
           childAspectRatio: 0.85,
         ),
         itemBuilder: (context, index) {
-          return Shimmer.fromColors(
-            baseColor: AppColors.shimmerBaseColor,
-            highlightColor: AppColors.shimmerHeighColor,
+          return Card(
             child: Padding(
-              padding: REdgeInsets.symmetric(horizontal: 10.w),
-              child: SizedBox(
-                height: 100.h,
-                width: 100.h,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                ),
+              padding: REdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  shimmerItem(140, 140),
+                  const Spacer(),
+                  shimmerItem(12, 50),
+                  const Spacer(),
+                  shimmerItem(14, 80),
+                  const Spacer(),
+                ],
               ),
             ),
           );
         },
+      ),
+    );
+  }
+
+  Shimmer shimmerItem(double height, double width) {
+    return Shimmer.fromColors(
+      baseColor: AppColors.shimmerBaseColor,
+      highlightColor: AppColors.shimmerHeighColor,
+      child: Padding(
+        padding: REdgeInsets.symmetric(horizontal: 10.w),
+        child: SizedBox(
+          height: height.h,
+          width: width.w,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+          ),
+        ),
       ),
     );
   }

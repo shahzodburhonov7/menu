@@ -16,8 +16,8 @@ import 'package:restaurants_menu/features/auth/login/cubit/login_state.dart';
 class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
   LoginPage({super.key});
 
-  TextEditingController userName = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final TextEditingController userName = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   @override
   void listener(BuildContext context, LoginListenable state) {
@@ -68,8 +68,7 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                 hint: "Enter your login",
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.loginError.isNotEmpty)
-                state.loginError.s(14.sp).c(AppColors.validationRed),
+              if (state.loginError.isNotEmpty) state.loginError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 22.h),
               Row(
                 children: [
@@ -85,8 +84,7 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                 background: AppColors.white,
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.passwordError.isNotEmpty)
-                state.passwordError.s(14.sp).c(AppColors.validationRed),
+              if (state.passwordError.isNotEmpty) state.passwordError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 80.h),
               CustomButton(
                 loading: state.loading,

@@ -48,9 +48,7 @@ class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListen
                       ),
                       child: CircleAvatar(
                         backgroundColor: const Color(0xffEEF0F4),
-                        backgroundImage: state.profile!.profile_image != null
-                            ? NetworkImage("http://api.repid.uz/${state.profile!.profile_image!}")
-                            : null,
+                        backgroundImage: state.profile!.profile_image != null ? NetworkImage("http://api.repid.uz/${state.profile!.profile_image!}") : null,
                         radius: 30,
                         child: state.profile!.profile_image == null
                             ? Assets.icons.person.svg(
@@ -88,7 +86,7 @@ class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListen
                         state.profile!.last_name.toString().s(14).w(400),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

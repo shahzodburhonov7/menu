@@ -56,6 +56,6 @@ final class AppColors {
 
   // common
   static const cB9DDE8 = Color(0xffB9DDE8);
-  static Color shimmerBaseColor = Colors.grey.shade400;
-  static Color shimmerHeighColor = Colors.grey.shade100;
+  static Color shimmerBaseColor = Colors.grey.shade300;
+  static Color shimmerHeighColor = Colors.grey.shade50;
 }
