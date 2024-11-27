@@ -16,7 +16,9 @@ import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
 class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
-  const TablePage({super.key});
+  const TablePage({
+    super.key,
+  });
 
   @override
   void init(BuildContext context) {

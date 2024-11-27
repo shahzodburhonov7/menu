@@ -21,7 +21,14 @@ class TableCubit extends BaseCubit<TableBuildable, TableListenable> {
   }
 
   void postChose({required int id}) {
-    callable(future: repo.tableChose(id: id), buildOnStart: () => buildable.copyWith(postTable: true), buildOnData: (d) => buildable.copyWith(postTable: false), buildOnError: (e) => buildable.copyWith(postTable: false), invokeOnData: (d) => const TableListenable(effect: TableEffect.success), invokeOnError: (e) => const TableListenable(effect: TableEffect.error));
+    callable(
+      future: repo.tableChose(id: id),
+      buildOnStart: () => buildable.copyWith(postTable: true),
+      buildOnData: (d) => buildable.copyWith(postTable: false),
+      buildOnError: (e) => buildable.copyWith(postTable: false),
+      invokeOnData: (d) => const TableListenable(effect: TableEffect.success),
+      invokeOnError: (e) => const TableListenable(effect: TableEffect.error),
+    );
   }
 
   void tableNumber({required int tableNumber}) {

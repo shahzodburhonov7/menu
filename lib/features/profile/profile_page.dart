@@ -86,7 +86,7 @@ class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListen
                         state.profile!.last_name.toString().s(14).w(400),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
