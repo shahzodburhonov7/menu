@@ -10,21 +10,19 @@ import 'package:restaurants_menu/features/main/cubit/main_cubit.dart';
 import 'package:restaurants_menu/features/main/cubit/main_state.dart';
 import 'package:restaurants_menu/features/profile/profile_page.dart';
 import 'package:restaurants_menu/features/settings/settings_page.dart';
-import 'package:restaurants_menu/features/store/store_page.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
 class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
   MainPage({super.key});
 
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+  var scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget builder(BuildContext context, MainBuildable state) {
     List<Widget> bottomBarPages = [
       USER_TYPE == "ofitsant" ? const HomePage() : FoodsPage(),
       const HistoryPage(),
-      const StorePage(),
       SettingsPage(),
       const ProfilePage(),
     ];
@@ -46,9 +44,6 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
             label: '',
             activeIcon: Assets.icons.activeHistory.svg(),
           ),
-          BottomNavigationBarItem(icon: Assets.icons.story.svg(), activeIcon: Assets.icons.activeStore.svg(), label: ''
-              // activeIcon: Assets.icons.activeHistory.svg(),
-              ),
           BottomNavigationBarItem(
             icon: Assets.icons.settings.svg(),
             label: '',

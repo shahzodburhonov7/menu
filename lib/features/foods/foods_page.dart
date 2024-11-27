@@ -18,21 +18,23 @@ import 'package:restaurants_menu/gen/assets.gen.dart';
 @RoutePage()
 class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   FoodsPage({super.key});
+
   @override
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
     context.read<FoodsCubit>().getAllTable();
-    context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
     debugPrint("assssasssssssssssssssssssssssssssss ");
     super.init(context);
   }
 
-  final ScrollController scrollController = ScrollController();
-  final TextEditingController textEditingController = TextEditingController();
+  ScrollController scrollController = ScrollController();
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   void onFocusGained(BuildContext context) {
-    context.read<FoodsCubit>().tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    context
+        .read<FoodsCubit>()
+        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
   }
 
   @override
@@ -53,6 +55,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 },
                 icon: Assets.icons.back.svg(),
               ),
+
       ),
       body: SafeArea(
         child: Padding(
@@ -91,9 +94,7 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
       ),
       bottomSheet: state.tableOrder?.cart_items == null
           ? const SizedBox.shrink()
-          : FoodsBottomSheetWidget(
-              tableOrder: state.tableOrder!,
-            ),
+          : FoodsBottomSheetWidget(tableOrder: state.tableOrder!),
     );
   }
 }

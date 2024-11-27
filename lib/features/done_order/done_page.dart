@@ -46,22 +46,29 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                         children: [
                           ListTile(
                             title: index != 0
-                                ? const SizedBox.shrink()
-                                : const Text(
-                                    "Jarayonda",
-                                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                                ? SizedBox.shrink()
+                                : Text(
+                                    "Bajarilgan",
+                                    style: TextStyle(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600),
                                   ),
                             trailing: Text(
-                              formatDate(state.orderDoneList[index].created_at.toString()),
-                              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
+                              formatDate(state.orderDoneList[index].created_at
+                                  .toString()),
+                              style: TextStyle(
+                                  fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                           ),
                           Card(
-                            color: const Color(0xffFFFFFF),
+                            color: Color(0xffFFFFFF),
                             child: ItemOrderDone(
-                              price: state.orderDoneList[index].total_price.toString(),
-                              table: state.orderDoneList[index].cart!.table.toString(),
-                              cartItems: state.orderDoneList[index].cart!.cart_items!,
+                              price: state.orderDoneList[index].total_price
+                                  .toString(),
+                              table: state.orderDoneList[index].cart!.table
+                                  .toString(),
+                              cartItems:
+                                  state.orderDoneList[index].cart!.cart_items!,
                               onTap: () {},
                             ),
                           ),
@@ -75,18 +82,17 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
           );
   }
 }
-
 String formatCurrency(String input) {
   final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
   if (numericPart.isEmpty) return input;
   final int number = int.parse(numericPart);
-  final formattedNumber = NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+  final formattedNumber =
+  NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
   final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
   return "$formattedNumber $currencyPart";
 }
-
 class ItemOrderDone extends StatelessWidget {
-  const ItemOrderDone({
+  ItemOrderDone({
     super.key,
     this.cartItems,
     this.price,
@@ -134,13 +140,18 @@ class ItemOrderDone extends StatelessWidget {
                           children: [
                             cartItems![index].food_name!.s(14.sp).w(400),
                             SizedBox(height: 4.h),
-                            "Son: ${cartItems![index].quantity!}".toString().s(12.sp).w(400),
+                            "Son: ${cartItems![index].quantity!}"
+                                .toString()
+                                .s(12.sp)
+                                .w(400),
                             Row(
                               children: [
                                 const Spacer(),
                                 Text(
                                   formatCurrency(cartItems![index].price!),
-                                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ],
                             )

@@ -16,8 +16,6 @@ import 'package:restaurants_menu/gen/assets.gen.dart';
 class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
   SettingsPage({super.key});
 
-  String selectedLanguage = 'uz';
-
   @override
   Widget builder(BuildContext context, SettingsBuildable state) {
     bool isSwitched = true;
@@ -57,44 +55,76 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                   BoxShadow(
                     color: Colors.grey.withOpacity(0.2),
                     blurRadius: 8,
-                    offset: const Offset(0, 4),
+                    offset: Offset(0, 4),
                   ),
                 ],
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
-                    child: DropdownButtonHideUnderline(
-                      child: ButtonTheme(
-                        alignedDropdown: true,
-                        child: DropdownButton(
-                          hint: "ssss".s(19),
-                          value: selectedLanguage,
-                          onChanged: (n) {},
-                          items: _languages.map(
-                            (bankItem) {
-                              return DropdownMenuItem(
-                                value: bankItem['code'],
-                                child: Row(
-                                  children: [
-                                    Assets.icons.uzb.svg(),
-                                    Text(
-                                      "${bankItem['name']}",
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ).toList(),
+                  InkWell(
+                    onTap: cubit.toggleExpanded, // Dropdownni ochish/yopish
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(Icons.language, color: Colors.grey[800]),
+                            SizedBox(width: 8),
+                            Text(
+                              "Languages",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.grey[800],
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
+                        Icon(
+                          state.isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                          color: Colors.grey[800],
+                        ),
+                      ],
                     ),
                   ),
+                  if (state.isExpanded)
+                    ..._languages.map((language) {
+                      final isSelected = language["name"] == state.selectedLanguage;
+                      return InkWell(
+                        onTap: () {
+                          cubit.selectLanguage(language["name"]!); // Tanlash
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 8),
+                          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                          decoration: BoxDecoration(
+                            color: isSelected ? Colors.grey[800] : Colors.grey[200],
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                language["icon"]!,
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                language["name"]!,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: isSelected ? Colors.white : Colors.black,
+                                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
                 ],
               ),
             ),
-            ////////////
             SizedBox(height: 10.h),
             GestureDetector(
               onTap: () {
