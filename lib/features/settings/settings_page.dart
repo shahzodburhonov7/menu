@@ -49,7 +49,7 @@ class SettingsPage
             ),
             SizedBox(height: 10.h),
             GestureDetector(
-               onTap: cubit.toggleLanguages,
+              onTap: cubit.toggleLanguages,
               child: SettingsWidget(
                 title: "Languages",
                 icon: Assets.icons.global.svg(),
