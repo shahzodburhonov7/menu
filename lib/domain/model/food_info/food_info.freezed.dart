@@ -21,7 +21,9 @@ FoodInfo _$FoodInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FoodInfo {
   int? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  String? get name_uz => throw _privateConstructorUsedError;
+  String? get name_ru => throw _privateConstructorUsedError;
+  String? get name_en => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   String? get food_info_uz => throw _privateConstructorUsedError;
@@ -45,7 +47,9 @@ abstract class $FoodInfoCopyWith<$Res> {
   @useResult
   $Res call(
       {int? id,
-      String? name,
+      String? name_uz,
+      String? name_ru,
+      String? name_en,
       String? image,
       int? price,
       String? food_info_uz,
@@ -69,7 +73,9 @@ class _$FoodInfoCopyWithImpl<$Res, $Val extends FoodInfo>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
+    Object? name_uz = freezed,
+    Object? name_ru = freezed,
+    Object? name_en = freezed,
     Object? image = freezed,
     Object? price = freezed,
     Object? food_info_uz = freezed,
@@ -81,9 +87,17 @@ class _$FoodInfoCopyWithImpl<$Res, $Val extends FoodInfo>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      name_uz: freezed == name_uz
+          ? _value.name_uz
+          : name_uz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name_ru: freezed == name_ru
+          ? _value.name_ru
+          : name_ru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name_en: freezed == name_en
+          ? _value.name_en
+          : name_en // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -119,7 +133,9 @@ abstract class _$$FoodInfoImplCopyWith<$Res>
   @useResult
   $Res call(
       {int? id,
-      String? name,
+      String? name_uz,
+      String? name_ru,
+      String? name_en,
       String? image,
       int? price,
       String? food_info_uz,
@@ -141,7 +157,9 @@ class __$$FoodInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = freezed,
+    Object? name_uz = freezed,
+    Object? name_ru = freezed,
+    Object? name_en = freezed,
     Object? image = freezed,
     Object? price = freezed,
     Object? food_info_uz = freezed,
@@ -153,9 +171,17 @@ class __$$FoodInfoImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      name_uz: freezed == name_uz
+          ? _value.name_uz
+          : name_uz // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name_ru: freezed == name_ru
+          ? _value.name_ru
+          : name_ru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name_en: freezed == name_en
+          ? _value.name_en
+          : name_en // ignore: cast_nullable_to_non_nullable
               as String?,
       image: freezed == image
           ? _value.image
@@ -186,7 +212,9 @@ class __$$FoodInfoImplCopyWithImpl<$Res>
 class _$FoodInfoImpl implements _FoodInfo {
   const _$FoodInfoImpl(
       {this.id,
-      this.name,
+      this.name_uz,
+      this.name_ru,
+      this.name_en,
       this.image,
       this.price,
       this.food_info_uz,
@@ -199,7 +227,11 @@ class _$FoodInfoImpl implements _FoodInfo {
   @override
   final int? id;
   @override
-  final String? name;
+  final String? name_uz;
+  @override
+  final String? name_ru;
+  @override
+  final String? name_en;
   @override
   final String? image;
   @override
@@ -213,7 +245,7 @@ class _$FoodInfoImpl implements _FoodInfo {
 
   @override
   String toString() {
-    return 'FoodInfo(id: $id, name: $name, image: $image, price: $price, food_info_uz: $food_info_uz, food_info_ru: $food_info_ru, food_info_en: $food_info_en)';
+    return 'FoodInfo(id: $id, name_uz: $name_uz, name_ru: $name_ru, name_en: $name_en, image: $image, price: $price, food_info_uz: $food_info_uz, food_info_ru: $food_info_ru, food_info_en: $food_info_en)';
   }
 
   @override
@@ -222,7 +254,9 @@ class _$FoodInfoImpl implements _FoodInfo {
         (other.runtimeType == runtimeType &&
             other is _$FoodInfoImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.name_uz, name_uz) || other.name_uz == name_uz) &&
+            (identical(other.name_ru, name_ru) || other.name_ru == name_ru) &&
+            (identical(other.name_en, name_en) || other.name_en == name_en) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.food_info_uz, food_info_uz) ||
@@ -235,8 +269,8 @@ class _$FoodInfoImpl implements _FoodInfo {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, image, price,
-      food_info_uz, food_info_ru, food_info_en);
+  int get hashCode => Object.hash(runtimeType, id, name_uz, name_ru, name_en,
+      image, price, food_info_uz, food_info_ru, food_info_en);
 
   /// Create a copy of FoodInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -257,7 +291,9 @@ class _$FoodInfoImpl implements _FoodInfo {
 abstract class _FoodInfo implements FoodInfo {
   const factory _FoodInfo(
       {final int? id,
-      final String? name,
+      final String? name_uz,
+      final String? name_ru,
+      final String? name_en,
       final String? image,
       final int? price,
       final String? food_info_uz,
@@ -270,7 +306,11 @@ abstract class _FoodInfo implements FoodInfo {
   @override
   int? get id;
   @override
-  String? get name;
+  String? get name_uz;
+  @override
+  String? get name_ru;
+  @override
+  String? get name_en;
   @override
   String? get image;
   @override

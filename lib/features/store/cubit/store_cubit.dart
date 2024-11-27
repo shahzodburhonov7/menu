@@ -8,7 +8,8 @@ import 'package:restaurants_menu/features/store/cubit/store_state.dart';
 
 @injectable
 class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
-  StoreCubit(this.repo, this.orderRepo, this.storage) : super(const StoreBuildable());
+  StoreCubit(this.repo, this.orderRepo, this.storage)
+      : super(const StoreBuildable());
   final TableRepo repo;
   final OrderRepo orderRepo;
   final Storage storage;
@@ -17,9 +18,11 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
   }
 
-  void remove({required int quantity, required int itemId}) {
-    callable(
-      future: orderRepo.quantityUpdate(quantity: quantity -= 1, cart_item_id: itemId),
+
+  void remove({required int quantity, required int itemId}) async {
+    await callable(
+      future: orderRepo.quantityUpdate(
+          quantity: quantity -= 1, cart_item_id: itemId),
     );
     tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
@@ -34,23 +37,28 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
   }
 
   void add({required int quantity, required int itemId}) async {
-    debugPrint("ItemId === ${itemId}::::CardId ${buildable.cartId}");
+    debugPrint("ItemId === $itemId::::CardId ${buildable.cartId}");
 
-    callable(
-      future: orderRepo.quantityUpdate(quantity: quantity += 1, cart_item_id: itemId),
+    await callable(
+      future: orderRepo.quantityUpdate(
+          quantity: quantity += 1, cart_item_id: itemId),
+      invokeOnError: (e) => const StoreListenable(effect: StoreEffect.error),
     );
     tableOrder(number: buildable.tableNumber, cartId: buildable.cartId);
   }
 
   void tableOrder({required int number, required int cartId}) {
+    storage.cardId.set(cartId);
+
     build((buildable) => buildable.copyWith(tableNumber: number));
     build((buildable) => buildable.copyWith(cartId: cartId));
     debugPrint("debug === ${buildable.tableNumber}:::: ${buildable.cartId}");
 
     callable(
-        future: orderRepo.orderTable(number: storage.cardId.call()!.toInt()),
+        future: orderRepo.orderTable(number: cartId),
         buildOnStart: () => buildable.copyWith(orderLoading: true),
-        buildOnData: (d) => buildable.copyWith(orderLoading: false, tableOrder: d),
+        buildOnData: (d) =>
+            buildable.copyWith(orderLoading: false, tableOrder: d),
         buildOnError: (e) => buildable.copyWith(orderLoading: false));
   }
 
@@ -65,8 +73,8 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     );
   }
 
-  void deleteCart({required String deleteCart}) {
-    callable(
+  void deleteCart({required String deleteCart}) async {
+    await callable(
       future: orderRepo.orderDelete(
         cartItem: deleteCart,
       ),

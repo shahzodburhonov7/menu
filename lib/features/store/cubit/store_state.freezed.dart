@@ -313,13 +313,23 @@ abstract class _StoreBuildable implements StoreBuildable {
 }
 
 /// @nodoc
-mixin _$StoreListenable {}
+mixin _$StoreListenable {
+  StoreEffect? get effect => throw _privateConstructorUsedError;
+
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $StoreListenableCopyWith<StoreListenable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $StoreListenableCopyWith<$Res> {
   factory $StoreListenableCopyWith(
           StoreListenable value, $Res Function(StoreListenable) then) =
       _$StoreListenableCopyWithImpl<$Res, StoreListenable>;
+  @useResult
+  $Res call({StoreEffect? effect});
 }
 
 /// @nodoc
@@ -334,13 +344,29 @@ class _$StoreListenableCopyWithImpl<$Res, $Val extends StoreListenable>
 
   /// Create a copy of StoreListenable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? effect = freezed,
+  }) {
+    return _then(_value.copyWith(
+      effect: freezed == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as StoreEffect?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$StoreListenableImplCopyWith<$Res> {
+abstract class _$$StoreListenableImplCopyWith<$Res>
+    implements $StoreListenableCopyWith<$Res> {
   factory _$$StoreListenableImplCopyWith(_$StoreListenableImpl value,
           $Res Function(_$StoreListenableImpl) then) =
       __$$StoreListenableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({StoreEffect? effect});
 }
 
 /// @nodoc
@@ -353,28 +379,65 @@ class __$$StoreListenableImplCopyWithImpl<$Res>
 
   /// Create a copy of StoreListenable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? effect = freezed,
+  }) {
+    return _then(_$StoreListenableImpl(
+      effect: freezed == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as StoreEffect?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StoreListenableImpl implements _StoreListenable {
-  const _$StoreListenableImpl();
+  const _$StoreListenableImpl({this.effect});
+
+  @override
+  final StoreEffect? effect;
 
   @override
   String toString() {
-    return 'StoreListenable()';
+    return 'StoreListenable(effect: $effect)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StoreListenableImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StoreListenableImpl &&
+            (identical(other.effect, effect) || other.effect == effect));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, effect);
+
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StoreListenableImplCopyWith<_$StoreListenableImpl> get copyWith =>
+      __$$StoreListenableImplCopyWithImpl<_$StoreListenableImpl>(
+          this, _$identity);
 }
 
 abstract class _StoreListenable implements StoreListenable {
-  const factory _StoreListenable() = _$StoreListenableImpl;
+  const factory _StoreListenable({final StoreEffect? effect}) =
+      _$StoreListenableImpl;
+
+  @override
+  StoreEffect? get effect;
+
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$StoreListenableImplCopyWith<_$StoreListenableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

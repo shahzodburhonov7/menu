@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +7,7 @@ import 'package:restaurants_menu/common/base/base_page.dart';
 import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/common/constants/constants.dart';
 import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:restaurants_menu/common/router/app_router.dart';
 import 'package:restaurants_menu/common/widgets/bottom_sheet_custom.dart';
 import 'package:restaurants_menu/common/widgets/common_toast.dart';
 import 'package:restaurants_menu/features/store/cubit/store_cubit.dart';
@@ -19,11 +21,24 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   });
 
   @override
+  void listener(BuildContext context, StoreListenable state) {
+    switch (state.effect) {
+      case null:
+        break;
+      case StoreEffect.error:
+        CommonToast.snackBar(context, message: 'Update mumkin emas Qo`shing');
+    }
+  }
+
+  @override
   void init(BuildContext context) {
-    // context.read<StoreCubit>().getAllTable();
+    context.read<StoreCubit>().getAllTable();
+    // context.read<StoreCubit>().selectTable(
+    //               tableNumber: value!,
+    //             );
     context.read<StoreCubit>().tableOrder(
           number: 0,
-          cartId: 0,
+          cartId: context.read<StoreCubit>().storage.cardId.call()!,
         );
     super.init(context);
   }
@@ -31,38 +46,13 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   @override
   Widget builder(BuildContext context, StoreBuildable state) {
     final cubit = context.read<StoreCubit>();
-    if (state.loading) {
-      return const CircularProgressIndicator();
-    } else {
+    // if (state.loading) {
+    //   return const Center(child: CircularProgressIndicator());
+    // } else {
       return Scaffold(
         appBar: AppBar(
           title: "Savat".s(24.sp).w(600),
           centerTitle: true,
-          // actions: [
-          //   DropdownButton<int>(
-          //     hint: Text("${state.tableNumber}"),
-          //     onChanged: (value) {
-          //       context.read<StoreCubit>().selectTable(
-          //             tableNumber: value!,
-          //           );
-          //     },
-          //     items: state.getTableList.map<DropdownMenuItem<int>>((table) {
-          //       return DropdownMenuItem<int>(
-          //         onTap: () {
-          //           context.read<StoreCubit>().tableOrder(
-          //                 number: table["number"],
-          //                 cartId: table["cart_id"],
-          //               );
-          //         },
-          //         value: table["number"],
-          //         child: Text(
-          //           "${table["number"]}",
-          //           style: const TextStyle(color: Colors.blue),
-          //         ),
-          //       );
-          //     }).toList(),
-          //   )
-          // ],
         ),
         body: state.tableOrder == null
             ? const SizedBox.shrink()
@@ -86,93 +76,146 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Column(
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius: BorderRadius.circular(8),
-                                                  child: Image.network(
-                                                    "${Constants.baseUrl}${state.tableOrder!.cart_items![index].food_image!}",
-                                                    width: 80.w,
-                                                    height: 80.h,
-                                                    fit: BoxFit.cover,
+                                            // Rasm
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                              child: Image.network(
+                                                "${Constants.baseUrl}${state.tableOrder!.cart_items![index].food_image!}",
+                                                width: 80.w,
+                                                height: 80.h,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                                width: 12), // Bo‘sh joy
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      "${state.tableOrder?.cart_items![index].food_name}"
+                                                          .s(14.sp)
+                                                          .w(400),
+                                                      GestureDetector(
+                                                        onTap: () async {
+                                                          context
+                                                              .read<
+                                                                  StoreCubit>()
+                                                              .deleteCart(
+                                                                deleteCart: state
+                                                                    .tableOrder!
+                                                                    .cart_items![
+                                                                        index]
+                                                                    .id
+                                                                    .toString(),
+                                                              );
+                                                        },
+                                                        child: Assets
+                                                            .icons.cancel
+                                                            .svg(),
+                                                      ),
+                                                    ],
                                                   ),
-                                                )
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              width: 12.w,
-                                            ),
-                                            Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    state.tableOrder!.cart_items![index].food_name!.s(14.sp).w(400),
-                                                    GestureDetector(
-                                                      child: Assets.icons.cancel.svg(),
-                                                      onTap: () async {
-                                                        context
-                                                            .read<StoreCubit>()
-                                                            .deleteCart(deleteCart: state.tableOrder!.cart_items![index].id.toString());
-                                                      },
-                                                    ),
-                                                  ],
-                                                ),
-                                                SizedBox(height: 4.h),
-                                                "Son :${state.tableOrder!.cart_items![index].quantity!}".toString().s(12.sp).w(400),
-                                                SizedBox(
-                                                  height: 13.h,
-                                                ),
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        cubit.remove(
-                                                          quantity: state.tableOrder!.cart_items![index].quantity!,
-                                                          itemId: state.tableOrder!.cart_items![index].id!,
-                                                        );
-                                                      },
-                                                      child: Assets.images.remove.svg(),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 8.w,
-                                                    ),
-                                                    '${state.tableOrder!.cart_items![index].quantity}'.s(12.sp).w(400),
-                                                    SizedBox(
-                                                      width: 8.w,
-                                                    ),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        cubit.add(
-                                                          quantity: state.tableOrder!.cart_items![index].quantity!,
-                                                          itemId: state.tableOrder!.cart_items![index].id!,
-                                                        );
-                                                      },
-                                                      child: Assets.images.add.svg(),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 50.w,
-                                                    ),
-                                                    state.tableOrder!.cart_items![index].price!
-                                                        .s(16.sp)
-                                                        .w(600)
-                                                        .copyWith(overflow: TextOverflow.ellipsis),
-                                                  ],
-                                                )
-                                              ],
+                                                  SizedBox(height: 4.h),
+                                                  // Son qismi
+                                                  Text(
+                                                    "Son: ${state.tableOrder!.cart_items![index].quantity!}",
+                                                    style: TextStyle(
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                  SizedBox(height: 13.h),
+                                                  // Tugmalar va narx
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      // Minus tugmasi
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          cubit.remove(
+                                                            quantity: state
+                                                                .tableOrder!
+                                                                .cart_items![
+                                                                    index]
+                                                                .quantity!,
+                                                            itemId: state
+                                                                .tableOrder!
+                                                                .cart_items![
+                                                                    index]
+                                                                .id!,
+                                                          );
+                                                        },
+                                                        child: Assets
+                                                            .images.remove
+                                                            .svg(),
+                                                      ),
+                                                      Padding(
+                                                        padding: REdgeInsets
+                                                            .symmetric(
+                                                                horizontal: 16),
+                                                        child: Text(
+                                                          '${state.tableOrder!.cart_items![index].quantity}',
+                                                          style: TextStyle(
+                                                              fontSize: 12.sp,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          cubit.add(
+                                                            quantity: state
+                                                                .tableOrder!
+                                                                .cart_items![
+                                                                    index]
+                                                                .quantity!,
+                                                            itemId: state
+                                                                .tableOrder!
+                                                                .cart_items![
+                                                                    index]
+                                                                .id!,
+                                                          );
+                                                        },
+                                                        child: Assets.images.add
+                                                            .svg(),
+                                                      ),
+                                                      const Spacer(),
+                                                      // Narx
+                                                      Text(
+                                                        formatCurrency(state
+                                                            .tableOrder!
+                                                            .cart_items![index]
+                                                            .price!),
+                                                        style: TextStyle(
+                                                            fontSize: 16.sp,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
-                                        SizedBox(
-                                          height: 12.h,
-                                        ),
+                                        SizedBox(height: 12.h),
                                         const Divider(
-                                          color: AppColors.borderTextColor,
-                                          thickness: 1,
-                                        ),
+                                            color: AppColors.borderTextColor,
+                                            thickness: 1),
                                       ],
                                     ),
                                   );
@@ -187,17 +230,25 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
         bottomSheet: BottomSheetCustom(
           loading: state.confirmLoading,
           onTap: () {
-            context.read<StoreCubit>().orderConfirm(
-                  orderId: state.tableOrder!.id!,
-                );
-            CommonToast.snackBar(
-              context,
-              message: "Tastiqlandi",
-            );
+            context
+                .read<StoreCubit>()
+                .orderConfirm(orderId: state.tableOrder!.id!);
+            CommonToast.snackBar(context, message: "Tastiqlandi");
+            context.router.push(MainRoute());
           },
           text: 'Davom etish',
         ),
       );
     }
   }
-}
+
+  String formatCurrency(String input) {
+    final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
+    if (numericPart.isEmpty) return input;
+    final int number = int.parse(numericPart);
+    final formattedNumber =
+        NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+    final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
+    return "$formattedNumber $currencyPart";
+  }
+

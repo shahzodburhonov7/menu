@@ -33,14 +33,12 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
                 child: "Lorem ipsum dolor sit amet continental".s(24.sp).w(600),
               ),
               SizedBox(height: 28.h),
+
               GestureDetector(
-                onTap: () {
-                  context.router.push(
-                    FoodsRoute(),
-                  );
-                },
+                onTap: () {},
                 child: Assets.icons.burger.image(width: 353.w, height: 142.h),
               ),
+
               SizedBox(height: 28.h),
               GestureDetector(
                 onTap: () {
@@ -48,7 +46,7 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
                     const TableRoute(),
                   );
                 },
-                child: Assets.icons.banner.svg(width: 344.w, height: 116.h),
+                child: Assets.icons.card.image(width: 344.w, height: 116.h),
               ),
               SizedBox(
                 height: 16.h,

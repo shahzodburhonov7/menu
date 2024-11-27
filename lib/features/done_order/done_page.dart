@@ -53,7 +53,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                                   ),
                             trailing: Text(
                               formatDate(state.orderDoneList[index].created_at.toString()),
-                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600),
                             ),
                           ),
                           Card(
@@ -74,6 +74,15 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
             ),
           );
   }
+}
+
+String formatCurrency(String input) {
+  final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
+  if (numericPart.isEmpty) return input;
+  final int number = int.parse(numericPart);
+  final formattedNumber = NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+  final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
+  return "$formattedNumber $currencyPart";
 }
 
 class ItemOrderDone extends StatelessWidget {
@@ -98,7 +107,7 @@ class ItemOrderDone extends StatelessWidget {
           cartItems!.length,
           (index) {
             return Padding(
-              padding: REdgeInsets.all(8.0),
+              padding: REdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: [
                   Row(
@@ -119,22 +128,24 @@ class ItemOrderDone extends StatelessWidget {
                       SizedBox(
                         width: 12.w,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          cartItems![index].food_name!.s(14.sp).w(400),
-                          SizedBox(height: 4.h),
-                          "Son :${cartItems![index].quantity!}".toString().s(12.sp).w(400),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                              ),
-                              cartItems![index].price!.s(16.sp).w(600)
-                            ],
-                          )
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            cartItems![index].food_name!.s(14.sp).w(400),
+                            SizedBox(height: 4.h),
+                            "Son: ${cartItems![index].quantity!}".toString().s(12.sp).w(400),
+                            Row(
+                              children: [
+                                const Spacer(),
+                                Text(
+                                  formatCurrency(cartItems![index].price!),
+                                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -151,18 +162,21 @@ class ItemOrderDone extends StatelessWidget {
           },
         ),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               "Jami summa:".s(16.sp).w(600),
-              price!.s(20.sp).w(600),
+              Text(
+                formatCurrency(price!),
+                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
+              )
             ],
           ),
         ),
         SizedBox(height: 15.h),
         Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
+          padding: REdgeInsets.symmetric(horizontal: 20),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

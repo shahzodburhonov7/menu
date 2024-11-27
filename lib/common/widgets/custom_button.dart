@@ -43,6 +43,10 @@ class CustomButton extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius!),
             ),
+            side: const BorderSide(
+              color: Color(0xff2F2F3F),
+              width: 1.0,
+            ),
           ),
           onPressed: onTap,
           child: loading

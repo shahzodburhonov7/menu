@@ -14,9 +14,9 @@ import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
 class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
-  const SettingsPage({super.key});
+  SettingsPage({super.key});
 
-  final String selectedLanguage = 'uz';
+  String selectedLanguage = 'uz';
 
   @override
   Widget builder(BuildContext context, SettingsBuildable state) {
@@ -48,20 +48,21 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
             ),
             SizedBox(height: 10.h),
             Container(
-              height: 60.h,
+              // margin: EdgeInsets.all(16),
+              padding: REdgeInsets.symmetric(vertical: 20.h, horizontal: 16),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
-                boxShadow: const [
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
                   BoxShadow(
-                    color: AppColors.switchColor,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 5),
+                    color: Colors.grey.withOpacity(0.2),
+                    blurRadius: 8,
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
-              child: Row(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Expanded(
                     child: DropdownButtonHideUnderline(
@@ -71,12 +72,17 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                           hint: "ssss".s(19),
                           value: selectedLanguage,
                           onChanged: (n) {},
-                          items: languages.map(
+                          items: _languages.map(
                             (bankItem) {
                               return DropdownMenuItem(
                                 value: bankItem['code'],
                                 child: Row(
-                                  children: [Assets.icons.uzb.svg(), Text(bankItem['name'])],
+                                  children: [
+                                    Assets.icons.uzb.svg(),
+                                    Text(
+                                      "${bankItem['name']}",
+                                    ),
+                                  ],
                                 ),
                               );
                             },
@@ -108,20 +114,8 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
   }
 }
 
-final List<Map> languages = [
-  {
-    'code': 'uz',
-    'name': 'O\'zbek',
-    'flag': '${Assets.images.shurva.image(width: 20)}',
-  },
-  {
-    'code': 'ru',
-    'name': 'Русский',
-    'flag': '${Assets.images.shurva.image()}',
-  },
-  {
-    'code': 'en',
-    'name': 'English',
-    'flag': '${Assets.images.shurva.image()}',
-  },
+final List<Map<String, String>> _languages = [
+  {"name": "Uzbek lotin", "icon": "🇺🇿"},
+  {"name": "English", "icon": "🇬🇧"},
+  {"name": "Russian", "icon": "🇷🇺"},
 ];

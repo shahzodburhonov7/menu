@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-/* TODO change s(), w(), c() to text(double size, double height, int weight, Color color, {...}).
-    Figma design also has height to the texts instead of just size.
-    So UI does not look the same as design.
- */
-
 extension TextStringExtensions on String {
   Text s(double size) => Text(this).s(size);
 
