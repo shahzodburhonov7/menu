@@ -14,16 +14,19 @@ class SettingsCubit extends BaseCubit<SettingsBuildable, SettingsListenable> {
   void toggleExpanded() {
     build((buildable) => buildable.copyWith(isExpanded: !buildable.isExpanded));
   }
+
   void toggleLanguages() {
     build(
-          (buildable) => buildable.copyWith(isToggled: !buildable.isToggled),
+      (buildable) => buildable.copyWith(isToggled: !buildable.isToggled),
     );
   }
+
   // Tanlangan tilni o'zgartirish
   void selectLanguage(String language) {
     build((buildable) => buildable.copyWith(selectedLanguage: language));
-    toggleExpanded(); // Dropdownni yopamiz
+    // toggleExpanded(); // Dropdownni yopamiz
   }
+
   void userLogOut() {
     storage.token.delete();
   }
