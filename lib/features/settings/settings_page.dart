@@ -13,7 +13,8 @@ import 'package:restaurants_menu/features/settings/cubit/settings_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
-class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
+class SettingsPage
+    extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
   SettingsPage({super.key});
 
   @override
@@ -82,7 +83,9 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                           ],
                         ),
                         Icon(
-                          state.isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                          state.isExpanded
+                              ? Icons.keyboard_arrow_up
+                              : Icons.keyboard_arrow_down,
                           color: Colors.grey[800],
                         ),
                       ],
@@ -90,16 +93,20 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                   ),
                   if (state.isExpanded)
                     ..._languages.map((language) {
-                      final isSelected = language["name"] == state.selectedLanguage;
+                      final isSelected =
+                          language["name"] == state.selectedLanguage;
                       return InkWell(
                         onTap: () {
                           cubit.selectLanguage(language["name"]!); // Tanlash
                         },
                         child: Container(
                           margin: EdgeInsets.symmetric(vertical: 8),
-                          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 16),
                           decoration: BoxDecoration(
-                            color: isSelected ? Colors.grey[800] : Colors.grey[200],
+                            color: isSelected
+                                ? Colors.grey[800]
+                                : Colors.grey[200],
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Row(
@@ -113,8 +120,11 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
                                 language["name"]!,
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: isSelected ? Colors.white : Colors.black,
-                                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                                  color:
+                                      isSelected ? Colors.white : Colors.black,
+                                  fontWeight: isSelected
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
                                 ),
                               ),
                             ],
@@ -133,7 +143,13 @@ class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsLi
               },
               child: CustomContainer(
                 child: Row(
-                  children: [Assets.icons.exit.svg(), SizedBox(width: 11.w), 'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor), const Spacer(), Assets.icons.next.svg()],
+                  children: [
+                    Assets.icons.exit.svg(),
+                    SizedBox(width: 11.w),
+                    'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor),
+                    const Spacer(),
+                    Assets.icons.next.svg()
+                  ],
                 ),
               ),
             ),

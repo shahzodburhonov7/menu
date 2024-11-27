@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: const AppBarTheme(
                   surfaceTintColor: Colors.white,
                   backgroundColor: Colors.white),
-              scaffoldBackgroundColor:  Colors.white,
+              scaffoldBackgroundColor: Colors.white,
             ),
             routerConfig: getIt<AppRouter>().config(),
           ),
@@ -56,4 +56,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// hello
+// hello davlat

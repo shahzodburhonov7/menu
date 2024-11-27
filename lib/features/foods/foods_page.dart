@@ -55,7 +55,6 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
                 },
                 icon: Assets.icons.back.svg(),
               ),
-
       ),
       body: SafeArea(
         child: Padding(

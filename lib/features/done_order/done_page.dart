@@ -82,15 +82,17 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
           );
   }
 }
+
 String formatCurrency(String input) {
   final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
   if (numericPart.isEmpty) return input;
   final int number = int.parse(numericPart);
   final formattedNumber =
-  NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+      NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
   final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
   return "$formattedNumber $currencyPart";
 }
+
 class ItemOrderDone extends StatelessWidget {
   ItemOrderDone({
     super.key,
