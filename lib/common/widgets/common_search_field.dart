@@ -4,7 +4,7 @@ import 'package:restaurants_menu/common/colors/app_colors.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 class CommonSearchField extends StatelessWidget {
-  CommonSearchField({
+  const CommonSearchField({
     super.key,
     this.hintText,
     this.height = 40,
@@ -15,7 +15,7 @@ class CommonSearchField extends StatelessWidget {
   final double? height;
   final String? hintText;
   final TextEditingController controller;
-  void Function(String)? onChanged;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {

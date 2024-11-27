@@ -17,7 +17,7 @@ import 'package:restaurants_menu/gen/assets.gen.dart';
 class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
   MainPage({super.key});
 
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget builder(BuildContext context, MainBuildable state) {
@@ -25,7 +25,7 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
       USER_TYPE == "ofitsant" ? const HomePage() : FoodsPage(),
       const HistoryPage(),
       const StorePage(),
-       SettingsPage(),
+      SettingsPage(),
       const ProfilePage(),
     ];
     return Scaffold(
@@ -46,10 +46,7 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
             label: '',
             activeIcon: Assets.icons.activeHistory.svg(),
           ),
-          BottomNavigationBarItem(
-              icon: Assets.icons.story.svg(),
-              activeIcon: Assets.icons.activeStore.svg(),
-              label: ''
+          BottomNavigationBarItem(icon: Assets.icons.story.svg(), activeIcon: Assets.icons.activeStore.svg(), label: ''
               // activeIcon: Assets.icons.activeHistory.svg(),
               ),
           BottomNavigationBarItem(

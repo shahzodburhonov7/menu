@@ -4,14 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/constants/constants.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
 import 'package:restaurants_menu/common/widgets/common_search_field.dart';
-import 'package:restaurants_menu/common/widgets/custom_button.dart';
-import 'package:restaurants_menu/domain/model/table_process/table_process.dart';
 import 'package:restaurants_menu/features/process/cubit/process_cubit.dart';
 import 'package:restaurants_menu/features/process/cubit/process_state.dart';
+import 'package:restaurants_menu/features/process/widgets/process_item_widget.dart';
 
 @RoutePage()
 class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
@@ -74,9 +70,7 @@ class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListen
                           Card(
                             color: const Color(0xffFFFFFF),
                             child: ItemWidget(
-                              price: state.tableProcess[index]!.total_price.toString(),
-                              table: state.tableProcess[index]!.cart!.table.toString(),
-                              cartItems: state.tableProcess[index]!.cart!.cart_items!,
+                              tableProcess: state.tableProcess[index]!,
                               editOnTap: () {},
                               onTap: () {
                                 cubit.orderDone(
@@ -92,125 +86,6 @@ class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListen
                 ],
               ),
             ),
-    );
-  }
-}
-
-class ItemWidget extends StatelessWidget {
-  ItemWidget({
-    super.key,
-    this.cartItems,
-    this.price,
-    this.table,
-    required this.onTap,
-    required this.editOnTap,
-  });
-
-  final List<CartItem>? cartItems;
-  final String? price;
-  final String? table;
-  final void Function() onTap;
-  final Function() editOnTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ...List.generate(
-          cartItems!.length,
-          (index) {
-            return Padding(
-              padding: REdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              "${Constants.baseUrl}${cartItems![index].food_image!}",
-                              width: 80.w,
-                              height: 80.h,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        width: 12.w,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          cartItems![index].food_name!.s(14.sp).w(400),
-                          SizedBox(height: 4.h),
-                          "Son :${cartItems![index].quantity!}".toString().s(12.sp).w(400),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.3,
-                              ),
-                              cartItems![index].price!.s(16.sp).w(600)
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  const Divider(
-                    color: AppColors.borderTextColor,
-                    thickness: 1,
-                  ),
-                ],
-              ),
-            );
-          },
-        ),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              "Jami summa:".s(16.sp).w(600),
-              price!.s(20.sp).w(600),
-            ],
-          ),
-        ),
-        SizedBox(height: 15.h),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              "Stol raqami:".s(16.sp).w(600),
-              "$table".s(20.sp).w(600),
-            ],
-          ),
-        ),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 8, vertical: 28),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(onTap: editOnTap, text: "Tahrirlash", size: 14.sp, radius: 8, width: 150.w, height: 44.h),
-              CustomButton(
-                radius: 8,
-                onTap: onTap,
-                text: "Tugatish",
-                width: 150.w,
-                size: 14.sp,
-                height: 44.h,
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

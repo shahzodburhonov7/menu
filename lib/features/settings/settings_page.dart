@@ -13,11 +13,10 @@ import 'package:restaurants_menu/features/settings/cubit/settings_state.dart';
 import 'package:restaurants_menu/gen/assets.gen.dart';
 
 @RoutePage()
-class SettingsPage
-    extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
-  SettingsPage({super.key});
+class SettingsPage extends BasePage<SettingsCubit, SettingsBuildable, SettingsListenable> {
+  const SettingsPage({super.key});
 
-  String selectedLanguage = 'uz';
+  final String selectedLanguage = 'uz';
 
   @override
   Widget builder(BuildContext context, SettingsBuildable state) {
@@ -77,10 +76,7 @@ class SettingsPage
                               return DropdownMenuItem(
                                 value: bankItem['code'],
                                 child: Row(
-                                  children: [
-                                    Assets.icons.uzb.svg(),
-                                    Text(bankItem['name'])
-                                  ],
+                                  children: [Assets.icons.uzb.svg(), Text(bankItem['name'])],
                                 ),
                               );
                             },
@@ -92,6 +88,7 @@ class SettingsPage
                 ],
               ),
             ),
+            ////////////
             SizedBox(height: 10.h),
             GestureDetector(
               onTap: () {
@@ -100,13 +97,7 @@ class SettingsPage
               },
               child: CustomContainer(
                 child: Row(
-                  children: [
-                    Assets.icons.exit.svg(),
-                    SizedBox(width: 11.w),
-                    'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor),
-                    const Spacer(),
-                    Assets.icons.next.svg()
-                  ],
+                  children: [Assets.icons.exit.svg(), SizedBox(width: 11.w), 'Akkauntdan chiqish'.s(12.sp).w(500).c(AppColors.textColor), const Spacer(), Assets.icons.next.svg()],
                 ),
               ),
             ),
