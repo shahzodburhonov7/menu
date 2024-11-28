@@ -52,6 +52,10 @@ class ProcessPage
               child: Column(
                 children: [
                   CommonSearchField(
+                    textInputType: TextInputType.number,
+                    onChanged: (value) {
+                      context.read<ProcessCubit>().tableProcessNumber(tableId: int.parse(value));
+                    },
                     controller: TextEditingController(),
                     height: 44.h,
                   ),

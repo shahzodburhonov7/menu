@@ -30,4 +30,12 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
     );
     processList();
   }
+
+  Future<void> tableProcessNumber({required int tableId}) async {
+    callable(
+      future: repo.tableProcessNumber(tableId: tableId),
+      buildOnStart: () => buildable.copyWith(loading: true),
+      buildOnData: (data) => buildable.copyWith(tableProcess: data, loading: false),
+    );
+  }
 }
