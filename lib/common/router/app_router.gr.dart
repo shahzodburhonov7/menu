@@ -68,9 +68,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProcessRoute.name: (routeData) {
+      final args = routeData.argsAs<ProcessRouteArgs>(
+          orElse: () => const ProcessRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProcessPage(),
+        child: ProcessPage(key: args.key),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -273,16 +275,31 @@ class MainRouteArgs {
 
 /// generated route for
 /// [ProcessPage]
-class ProcessRoute extends PageRouteInfo<void> {
-  const ProcessRoute({List<PageRouteInfo>? children})
-      : super(
+class ProcessRoute extends PageRouteInfo<ProcessRouteArgs> {
+  ProcessRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProcessRoute.name,
+          args: ProcessRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'ProcessRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProcessRouteArgs> page =
+      PageInfo<ProcessRouteArgs>(name);
+}
+
+class ProcessRouteArgs {
+  const ProcessRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProcessRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

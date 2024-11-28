@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:restaurants_menu/data/process_data/order_process_api.dart';
@@ -31,5 +30,11 @@ class OrderProcessImpl extends TableProcessRepo {
     final response = await orderProcessApi.orderDoneList();
     final res = ordersDoneListFromJson(jsonEncode(response.data));
     return res;
+  }
+
+  @override
+  Future<List<TableProcess?>> tableProcessNumber({required int tableId}) async {
+    final response = await orderProcessApi.tableProcessNumber(tableId: tableId);
+    return tableProcessFromJson(jsonEncode(response.data));
   }
 }

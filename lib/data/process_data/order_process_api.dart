@@ -24,4 +24,8 @@ class OrderProcessApi {
   Future<Response> orderDoneList() async {
     return await dio.get(Constants.apiDoneList);
   }
+
+  Future<Response> tableProcessNumber({required int tableId}) async {
+    return await dio.get("${Constants.apiProcessNumber}$tableId");
+  }
 }

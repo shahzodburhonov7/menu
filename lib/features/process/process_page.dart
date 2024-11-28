@@ -17,7 +17,7 @@ import 'package:restaurants_menu/features/process/cubit/process_state.dart';
 @RoutePage()
 class ProcessPage
     extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
-  const ProcessPage({super.key});
+  ProcessPage({super.key});
 
   @override
   void init(BuildContext context) {
@@ -36,80 +36,92 @@ class ProcessPage
     super.onFocusGained(context);
   }
 
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget builder(BuildContext context, ProcessBuildable state) {
-
-
     final cubit = context.read<ProcessCubit>();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       extendBodyBehindAppBar: true,
-      body: state.loading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : SingleChildScrollView(
-              child: Column(
-                children: [
-                  CommonSearchField(
-                    controller: TextEditingController(),
-                    height: 44.h,
-                  ),
-                  SizedBox(
-                    height: 32.h,
-                  ),
-                  ...List.generate(
-                    state.tableProcess.length,
-                    (index) {
-                      return Column(
-                        children: [
-                          ListTile(
-                            title: index != 0
-                                ? const SizedBox.shrink()
-                                : Text(
-                                    "In process".tr(),
-                                    style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w700),
-                                  ),
-                            trailing: Text(
-                              formatDate(state.tableProcess[index]!.created_at
-                                  .toString()),
-                              style: const TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w700),
-                            ),
-                          ),
-                          Card(
-                            color: const Color(0xffFFFFFF),
-                            child: ItemWidget(
-                              price: state.tableProcess[index]!.total_price
-                                  .toString(),
-                              table: state.tableProcess[index]!.cart!.table
-                                  .toString(),
-                              cartItems:
-                                  state.tableProcess[index]!.cart!.cart_items!,
-                              editOnTap: () {
-                                cubit.storage.cardId
-                                    .set(state.tableProcess[index]!.cart!.id!);
-                                context.router.pushAndPopUntil(
-                                  FoodsRoute(),
-                                  predicate: (context) => false,
-                                );
-                              },
-                              onTap: () {
-                                cubit.orderDone(
-                                  orderId: state.tableProcess[index]!.id!,
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ],
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CommonSearchField(
+              textInputType: TextInputType.number,
+              onChanged: (value) {
+                context
+                    .read<ProcessCubit>()
+                    .tableProcessNumber(tableId: int.parse(value));
+              },
+              controller: textEditingController,
+              height: 44.h,
             ),
+            state.loading
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : Column(
+                    children: [
+                      SizedBox(
+                        height: 32.h,
+                      ),
+                      ...List.generate(
+                        state.tableProcess.length,
+                        (index) {
+                          return Column(
+                            children: [
+                              ListTile(
+                                title: index != 0
+                                    ? const SizedBox.shrink()
+                                    : Text(
+                                        "In process".tr(),
+                                        style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                trailing: Text(
+                                  formatDate(state
+                                      .tableProcess[index]!.created_at
+                                      .toString()),
+                                  style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                              Card(
+                                color: const Color(0xffFFFFFF),
+                                child: ItemWidget(
+                                  price: state.tableProcess[index]!.total_price
+                                      .toString(),
+                                  table: state.tableProcess[index]!.cart!.table
+                                      .toString(),
+                                  cartItems: state
+                                      .tableProcess[index]!.cart!.cart_items!,
+                                  editOnTap: () {
+                                    cubit.storage.cardId.set(
+                                        state.tableProcess[index]!.cart!.id!);
+                                    context.router.pushAndPopUntil(
+                                      FoodsRoute(),
+                                      predicate: (context) => false,
+                                    );
+                                  },
+                                  onTap: () {
+                                    cubit.orderDone(
+                                      orderId: state.tableProcess[index]!.id!,
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -132,7 +144,6 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
       children: [
         ...List.generate(
@@ -164,10 +175,7 @@ class ItemWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-
-                            cartItems![index].food_name!.s(14.sp).w(400)
-
-                            ,
+                            cartItems![index].food_name!.s(14.sp).w(400),
                             SizedBox(height: 4.h),
                             Row(
                               children: [
