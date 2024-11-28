@@ -238,14 +238,14 @@ class $AssetsLocalesGen {
   /// File path: assets/locales/en-EN.json
   String get enEN => 'assets/locales/en-EN.json';
 
-  /// File path: assets/locales/ru-RU.json
-  String get ruRU => 'assets/locales/ru-RU.json';
+  /// File path: assets/locales/ru-Ru.json
+  String get ruRu => 'assets/locales/ru-Ru.json';
 
   /// File path: assets/locales/uz-UZ.json
   String get uzUZ => 'assets/locales/uz-UZ.json';
 
   /// List of all assets
-  List<String> get values => [enEN, ruRU, uzUZ];
+  List<String> get values => [enEN, ruRu, uzUZ];
 }
 
 class Assets {

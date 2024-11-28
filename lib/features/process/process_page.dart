@@ -49,6 +49,10 @@ class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListen
               child: Column(
                 children: [
                   CommonSearchField(
+                    textInputType: TextInputType.number,
+                    onChanged: (value) {
+                      context.read<ProcessCubit>().tableProcessNumber(tableId: int.parse(value));
+                    },
                     controller: TextEditingController(),
                     height: 44.h,
                   ),

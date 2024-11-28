@@ -14,6 +14,7 @@ class Constants {
   static const apiOrderCreate = '/common/order/create/';
   static const apiCartDelete = '/common/cart-item/';
   static const apiProcess = '/common/order/list/in-process/';
+  static const apiProcessNumber = '/common/order/list/in-process/?table_number=';
   static const apiOrderDone = '/common/order/change/status/';
   static const apiDoneList = '/common/order/list/is-done/';
   static const apiAccount = '/accounts/user/profile/';

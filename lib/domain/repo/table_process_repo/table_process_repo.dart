@@ -6,5 +6,7 @@ abstract class TableProcessRepo {
 
   Future<void> orderDone({required int orderId});
 
-  Future<List<OrdersDoneList>>ordersDoneList();
+  Future<List<OrdersDoneList>> ordersDoneList();
+
+  Future<List<TableProcess?>> tableProcessNumber({required int tableId});
 }

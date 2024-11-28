@@ -10,12 +10,14 @@ class CommonSearchField extends StatelessWidget {
     this.height = 40,
     this.onChanged,
     required this.controller,
+    this.textInputType,
   });
 
   final double? height;
   final String? hintText;
   final TextEditingController controller;
   final void Function(String)? onChanged;
+  final TextInputType? textInputType;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class CommonSearchField extends StatelessWidget {
       height: height?.h,
       child: TextField(
         onChanged: onChanged,
+        keyboardType: textInputType,
         controller: controller,
         decoration: InputDecoration(
           hintText: hintText,

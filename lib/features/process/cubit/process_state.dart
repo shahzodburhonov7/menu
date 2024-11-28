@@ -8,7 +8,7 @@ class ProcessBuildable with _$ProcessBuildable {
   const factory ProcessBuildable({
     @Default(false) bool loading,
     @Default([]) List<TableProcess?> tableProcess,
-    @Default(false)bool orderLoading
+    @Default(false) bool orderLoading,
   }) = _ProcessBuildable;
 }
 
