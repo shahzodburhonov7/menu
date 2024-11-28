@@ -12,73 +12,73 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:logger/logger.dart' as _i974;
-import 'package:restaurants_menu/common/di/app_module.dart' as _i565;
-import 'package:restaurants_menu/common/di/network_module.dart' as _i613;
-import 'package:restaurants_menu/common/widgets/display/display.dart' as _i472;
-import 'package:restaurants_menu/common/widgets/display/display_impl.dart'
+import 'package:WaiterPro/common/di/app_module.dart' as _i565;
+import 'package:WaiterPro/common/di/network_module.dart' as _i613;
+import 'package:WaiterPro/common/widgets/display/display.dart' as _i472;
+import 'package:WaiterPro/common/widgets/display/display_impl.dart'
     as _i514;
-import 'package:restaurants_menu/data/auth_data/auth_api.dart' as _i379;
-import 'package:restaurants_menu/data/auth_data/auth_repo_impl.dart' as _i43;
-import 'package:restaurants_menu/data/basket_data/basket_api.dart' as _i230;
-import 'package:restaurants_menu/data/basket_data/basket_repo_impl.dart'
+import 'package:WaiterPro/data/auth_data/auth_api.dart' as _i379;
+import 'package:WaiterPro/data/auth_data/auth_repo_impl.dart' as _i43;
+import 'package:WaiterPro/data/basket_data/basket_api.dart' as _i230;
+import 'package:WaiterPro/data/basket_data/basket_repo_impl.dart'
     as _i930;
-import 'package:restaurants_menu/data/food_category/food_category_api.dart'
+import 'package:WaiterPro/data/food_category/food_category_api.dart'
     as _i636;
-import 'package:restaurants_menu/data/food_category/food_category_repo_impl.dart'
+import 'package:WaiterPro/data/food_category/food_category_repo_impl.dart'
     as _i610;
-import 'package:restaurants_menu/data/order_data/order_api.dart' as _i352;
-import 'package:restaurants_menu/data/order_data/order_repo_impl.dart' as _i521;
-import 'package:restaurants_menu/data/process_data/order_process_api.dart'
+import 'package:WaiterPro/data/order_data/order_api.dart' as _i352;
+import 'package:WaiterPro/data/order_data/order_repo_impl.dart' as _i521;
+import 'package:WaiterPro/data/process_data/order_process_api.dart'
     as _i784;
-import 'package:restaurants_menu/data/process_data/order_process_impl.dart'
+import 'package:WaiterPro/data/process_data/order_process_impl.dart'
     as _i247;
-import 'package:restaurants_menu/data/products_data/products_api.dart' as _i900;
-import 'package:restaurants_menu/data/products_data/products_repo_impl.dart'
+import 'package:WaiterPro/data/products_data/products_api.dart' as _i900;
+import 'package:WaiterPro/data/products_data/products_repo_impl.dart'
     as _i351;
-import 'package:restaurants_menu/data/profile_data/profile_api.dart' as _i159;
-import 'package:restaurants_menu/data/profile_data/profile_repo_impl.dart'
+import 'package:WaiterPro/data/profile_data/profile_api.dart' as _i159;
+import 'package:WaiterPro/data/profile_data/profile_repo_impl.dart'
     as _i443;
-import 'package:restaurants_menu/data/start_repo_impl.dart' as _i126;
-import 'package:restaurants_menu/data/table_data/table_api.dart' as _i108;
-import 'package:restaurants_menu/data/table_data/table_repo_impl.dart' as _i691;
-import 'package:restaurants_menu/domain/auth_interceptor/auth_interceptor.dart'
+import 'package:WaiterPro/data/start_repo_impl.dart' as _i126;
+import 'package:WaiterPro/data/table_data/table_api.dart' as _i108;
+import 'package:WaiterPro/data/table_data/table_repo_impl.dart' as _i691;
+import 'package:WaiterPro/domain/auth_interceptor/auth_interceptor.dart'
     as _i276;
-import 'package:restaurants_menu/domain/repo/auth/auth_repo.dart' as _i185;
-import 'package:restaurants_menu/domain/repo/basket/basket_repo.dart' as _i587;
-import 'package:restaurants_menu/domain/repo/category/category_repo.dart'
+import 'package:WaiterPro/domain/repo/auth/auth_repo.dart' as _i185;
+import 'package:WaiterPro/domain/repo/basket/basket_repo.dart' as _i587;
+import 'package:WaiterPro/domain/repo/category/category_repo.dart'
     as _i160;
-import 'package:restaurants_menu/domain/repo/order/order_repo.dart' as _i479;
-import 'package:restaurants_menu/domain/repo/product/products_repo.dart' as _i7;
-import 'package:restaurants_menu/domain/repo/profile/profile_repo.dart'
+import 'package:WaiterPro/domain/repo/order/order_repo.dart' as _i479;
+import 'package:WaiterPro/domain/repo/product/products_repo.dart' as _i7;
+import 'package:WaiterPro/domain/repo/profile/profile_repo.dart'
     as _i1070;
-import 'package:restaurants_menu/domain/repo/start_repo.dart' as _i975;
-import 'package:restaurants_menu/domain/repo/table/table_repo.dart' as _i713;
-import 'package:restaurants_menu/domain/repo/table_process_repo/table_process_repo.dart'
+import 'package:WaiterPro/domain/repo/start_repo.dart' as _i975;
+import 'package:WaiterPro/domain/repo/table/table_repo.dart' as _i713;
+import 'package:WaiterPro/domain/repo/table_process_repo/table_process_repo.dart'
     as _i66;
-import 'package:restaurants_menu/domain/storage/storage.dart' as _i314;
-import 'package:restaurants_menu/features/about_page/cubit/about_cubit.dart'
+import 'package:WaiterPro/domain/storage/storage.dart' as _i314;
+import 'package:WaiterPro/features/about_page/cubit/about_cubit.dart'
     as _i20;
-import 'package:restaurants_menu/features/auth/login/cubit/login_cubit.dart'
+import 'package:WaiterPro/features/auth/login/cubit/login_cubit.dart'
     as _i833;
-import 'package:restaurants_menu/features/done_order/cubit/done_cubit.dart'
+import 'package:WaiterPro/features/done_order/cubit/done_cubit.dart'
     as _i809;
-import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart'
+import 'package:WaiterPro/features/foods/cubit/foods_cubit.dart'
     as _i521;
-import 'package:restaurants_menu/features/history/cubit/history_cubit.dart'
+import 'package:WaiterPro/features/history/cubit/history_cubit.dart'
     as _i625;
-import 'package:restaurants_menu/features/home/cubit/home_cubit.dart' as _i907;
-import 'package:restaurants_menu/features/main/cubit/main_cubit.dart' as _i745;
-import 'package:restaurants_menu/features/process/cubit/process_cubit.dart'
+import 'package:WaiterPro/features/home/cubit/home_cubit.dart' as _i907;
+import 'package:WaiterPro/features/main/cubit/main_cubit.dart' as _i745;
+import 'package:WaiterPro/features/process/cubit/process_cubit.dart'
     as _i13;
-import 'package:restaurants_menu/features/profile/cubit/profile_cubit.dart'
+import 'package:WaiterPro/features/profile/cubit/profile_cubit.dart'
     as _i552;
-import 'package:restaurants_menu/features/settings/cubit/settings_cubit.dart'
+import 'package:WaiterPro/features/settings/cubit/settings_cubit.dart'
     as _i1026;
-import 'package:restaurants_menu/features/start/splash/cubit/splash_cubit.dart'
+import 'package:WaiterPro/features/start/splash/cubit/splash_cubit.dart'
     as _i826;
-import 'package:restaurants_menu/features/store/cubit/store_cubit.dart'
+import 'package:WaiterPro/features/store/cubit/store_cubit.dart'
     as _i929;
-import 'package:restaurants_menu/features/table_selection/cubit/table_cubit.dart'
+import 'package:WaiterPro/features/table_selection/cubit/table_cubit.dart'
     as _i308;
 
 extension GetItInjectableX on _i174.GetIt {

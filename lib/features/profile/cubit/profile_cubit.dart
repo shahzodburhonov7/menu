@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/repo/profile/profile_repo.dart';
-import 'package:restaurants_menu/features/profile/cubit/profile_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/repo/profile/profile_repo.dart';
+import 'package:WaiterPro/features/profile/cubit/profile_state.dart';
 
 
 @injectable

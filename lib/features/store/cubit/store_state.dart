@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:restaurants_menu/domain/model/table_order/table_order.dart';
+import 'package:WaiterPro/domain/model/table_order/table_order.dart';
 
 part 'store_state.freezed.dart';
 

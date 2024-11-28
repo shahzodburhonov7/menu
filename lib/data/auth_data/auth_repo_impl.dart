@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/data/auth_data/auth_api.dart';
-import 'package:restaurants_menu/domain/repo/auth/auth_repo.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
+import 'package:WaiterPro/data/auth_data/auth_api.dart';
+import 'package:WaiterPro/domain/repo/auth/auth_repo.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepoImpl extends AuthRepository {

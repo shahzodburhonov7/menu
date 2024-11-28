@@ -1,4 +1,4 @@
-# restaurants_menu
+# WaiterPro
 
 A new Flutter project.
 

@@ -2,9 +2,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:restaurants_menu/common/base/base_state.dart';
-import 'package:restaurants_menu/common/di/injection.dart';
-import 'package:restaurants_menu/common/widgets/display/display.dart';
+import 'package:WaiterPro/common/base/base_state.dart';
+import 'package:WaiterPro/common/di/injection.dart';
+import 'package:WaiterPro/common/widgets/display/display.dart';
 
 
 abstract class BaseCubit<BUILDABLE, LISTENABLE>

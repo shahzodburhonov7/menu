@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/di/injection.dart';
-import 'package:restaurants_menu/common/router/app_router.dart';
-import 'package:restaurants_menu/common/widgets/display/display_widget.dart';
+import 'package:WaiterPro/common/di/injection.dart';
+import 'package:WaiterPro/common/router/app_router.dart';
+import 'package:WaiterPro/common/widgets/display/display_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             debugShowCheckedModeBanner: false,
-            title: 'FOOD APP',
+            title: 'Waiter Pro',
             theme: ThemeData(
               appBarTheme: const AppBarTheme(surfaceTintColor: Colors.white, backgroundColor: Colors.white),
               scaffoldBackgroundColor: Colors.white,

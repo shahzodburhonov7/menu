@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/constants/constants.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/widgets/custom_button.dart';
-import 'package:restaurants_menu/domain/model/table_process/table_process.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/widgets/custom_button.dart';
+import 'package:WaiterPro/domain/model/table_process/table_process.dart';
 
 class ItemWidget extends StatelessWidget {
   const ItemWidget({

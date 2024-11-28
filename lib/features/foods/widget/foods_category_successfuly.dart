@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/domain/model/category/food_category.dart';
-import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart';
-import 'package:restaurants_menu/features/foods/widget/food_category.dart';
+import 'package:WaiterPro/domain/model/category/food_category.dart';
+import 'package:WaiterPro/features/foods/cubit/foods_cubit.dart';
+import 'package:WaiterPro/features/foods/widget/food_category.dart';
 
 class FoodsCategorySuccessfuly extends StatelessWidget {
   const FoodsCategorySuccessfuly({

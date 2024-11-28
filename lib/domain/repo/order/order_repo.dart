@@ -1,4 +1,4 @@
-import 'package:restaurants_menu/domain/model/table_order/table_order.dart';
+import 'package:WaiterPro/domain/model/table_order/table_order.dart';
 
 abstract class OrderRepo {
   Future<TableOrder> orderTable({required int number});

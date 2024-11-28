@@ -3,13 +3,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/widgets/custom_container.dart';
-import 'package:restaurants_menu/features/profile/cubit/profile_cubit.dart';
-import 'package:restaurants_menu/features/profile/cubit/profile_state.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/widgets/custom_container.dart';
+import 'package:WaiterPro/features/profile/cubit/profile_cubit.dart';
+import 'package:WaiterPro/features/profile/cubit/profile_state.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 @RoutePage()
 class ProfilePage extends BasePage<ProfileCubit, ProfileBuildable, ProfileListenable> {

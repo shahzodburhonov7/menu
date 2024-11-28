@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_storage.dart';
-import 'package:restaurants_menu/domain/model/products/products.dart';
+import 'package:WaiterPro/common/base/base_storage.dart';
+import 'package:WaiterPro/domain/model/products/products.dart';
 
 late Box<FoodProducts> boxOrder;
 String USER_TYPE = "";

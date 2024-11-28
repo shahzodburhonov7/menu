@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/data/process_data/order_process_api.dart';
-import 'package:restaurants_menu/domain/model/order_done_list/order_done_list.dart';
-import 'package:restaurants_menu/domain/model/table_process/table_process.dart';
-import 'package:restaurants_menu/domain/repo/table_process_repo/table_process_repo.dart';
+import 'package:WaiterPro/data/process_data/order_process_api.dart';
+import 'package:WaiterPro/domain/model/order_done_list/order_done_list.dart';
+import 'package:WaiterPro/domain/model/table_process/table_process.dart';
+import 'package:WaiterPro/domain/repo/table_process_repo/table_process_repo.dart';
 
 @Injectable(as: TableProcessRepo)
 class OrderProcessImpl extends TableProcessRepo {

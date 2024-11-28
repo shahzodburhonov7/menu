@@ -1,5 +1,5 @@
-import 'package:restaurants_menu/domain/model/food_info/food_info.dart';
-import 'package:restaurants_menu/domain/model/products/products.dart';
+import 'package:WaiterPro/domain/model/food_info/food_info.dart';
+import 'package:WaiterPro/domain/model/products/products.dart';
 
 abstract class ProductsRepo {
   Future<List<FoodProducts>> getProducts();

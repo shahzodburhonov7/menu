@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/repo/category/category_repo.dart';
-import 'package:restaurants_menu/domain/repo/order/order_repo.dart';
-import 'package:restaurants_menu/domain/repo/product/products_repo.dart';
-import 'package:restaurants_menu/domain/repo/table/table_repo.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
-import 'package:restaurants_menu/features/foods/cubit/foods_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/repo/category/category_repo.dart';
+import 'package:WaiterPro/domain/repo/order/order_repo.dart';
+import 'package:WaiterPro/domain/repo/product/products_repo.dart';
+import 'package:WaiterPro/domain/repo/table/table_repo.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
+import 'package:WaiterPro/features/foods/cubit/foods_state.dart';
 
 @injectable
 class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {

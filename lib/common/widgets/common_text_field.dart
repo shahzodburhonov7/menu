@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
 
 class CommonTextField extends StatefulWidget {
   const CommonTextField({

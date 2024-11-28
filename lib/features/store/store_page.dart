@@ -3,16 +3,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/constants/constants.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/router/app_router.dart';
-import 'package:restaurants_menu/common/widgets/bottom_sheet_custom.dart';
-import 'package:restaurants_menu/common/widgets/common_toast.dart';
-import 'package:restaurants_menu/features/store/cubit/store_cubit.dart';
-import 'package:restaurants_menu/features/store/cubit/store_state.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/router/app_router.dart';
+import 'package:WaiterPro/common/widgets/bottom_sheet_custom.dart';
+import 'package:WaiterPro/common/widgets/common_toast.dart';
+import 'package:WaiterPro/features/store/cubit/store_cubit.dart';
+import 'package:WaiterPro/features/store/cubit/store_state.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 @RoutePage()
 class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {

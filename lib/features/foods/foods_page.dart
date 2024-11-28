@@ -3,18 +3,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/router/app_router.dart';
-import 'package:restaurants_menu/common/widgets/common_search_field.dart';
-import 'package:restaurants_menu/features/foods/cubit/foods_cubit.dart';
-import 'package:restaurants_menu/features/foods/cubit/foods_state.dart';
-import 'package:restaurants_menu/features/foods/widget/foods_all_shimmer.dart';
-import 'package:restaurants_menu/features/foods/widget/foods_all_successfuly.dart';
-import 'package:restaurants_menu/features/foods/widget/foods_bottom_sheet.dart';
-import 'package:restaurants_menu/features/foods/widget/foods_category_shimmer.dart';
-import 'package:restaurants_menu/features/foods/widget/foods_category_successfuly.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/router/app_router.dart';
+import 'package:WaiterPro/common/widgets/common_search_field.dart';
+import 'package:WaiterPro/features/foods/cubit/foods_cubit.dart';
+import 'package:WaiterPro/features/foods/cubit/foods_state.dart';
+import 'package:WaiterPro/features/foods/widget/foods_all_shimmer.dart';
+import 'package:WaiterPro/features/foods/widget/foods_all_successfuly.dart';
+import 'package:WaiterPro/features/foods/widget/foods_bottom_sheet.dart';
+import 'package:WaiterPro/features/foods/widget/foods_category_shimmer.dart';
+import 'package:WaiterPro/features/foods/widget/foods_category_successfuly.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 @RoutePage()
 class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {

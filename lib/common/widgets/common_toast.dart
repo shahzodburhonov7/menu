@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
 
 class CommonToast {
   static void snackBar(BuildContext context,

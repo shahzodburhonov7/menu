@@ -3,13 +3,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/constants/constants.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/domain/model/order_done_list/order_done_list.dart';
-import 'package:restaurants_menu/features/done_order/cubit/done_cubit.dart';
-import 'package:restaurants_menu/features/done_order/cubit/done_state.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/domain/model/order_done_list/order_done_list.dart';
+import 'package:WaiterPro/features/done_order/cubit/done_cubit.dart';
+import 'package:WaiterPro/features/done_order/cubit/done_state.dart';
 
 @RoutePage()
 class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {

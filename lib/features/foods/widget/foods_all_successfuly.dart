@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/router/app_router.dart';
-import 'package:restaurants_menu/domain/model/products/products.dart';
-import 'package:restaurants_menu/features/foods/widget/food_card.dart';
+import 'package:WaiterPro/common/router/app_router.dart';
+import 'package:WaiterPro/domain/model/products/products.dart';
+import 'package:WaiterPro/features/foods/widget/food_card.dart';
 
 class FoodsAllSuccessFully extends StatelessWidget {
   const FoodsAllSuccessFully({

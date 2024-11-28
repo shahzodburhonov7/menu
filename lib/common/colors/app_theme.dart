@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
 import 'color_scheme.dart';
 
 @immutable
