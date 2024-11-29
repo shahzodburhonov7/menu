@@ -1,10 +1,10 @@
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
-import 'package:restaurants_menu/common/di/injection.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/widgets/display/display.dart';
-import 'package:restaurants_menu/common/widgets/display/display_type.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/di/injection.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/widgets/display/display.dart';
+import 'package:WaiterPro/common/widgets/display/display_type.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 
 class DisplayWidget extends StatelessWidget {

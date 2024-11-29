@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/router/app_router.dart';
-import 'package:restaurants_menu/features/home/cubit/home_cubit.dart';
-import 'package:restaurants_menu/features/home/cubit/home_state.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/router/app_router.dart';
+import 'package:WaiterPro/features/home/cubit/home_cubit.dart';
+import 'package:WaiterPro/features/home/cubit/home_state.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 @RoutePage()
 class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {

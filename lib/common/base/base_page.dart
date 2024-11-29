@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:focus_detector/focus_detector.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
-import 'package:restaurants_menu/common/base/base_builder.dart';
-import 'package:restaurants_menu/common/base/base_listener.dart';
-import 'package:restaurants_menu/common/base/base_state.dart';
-import 'package:restaurants_menu/common/di/injection.dart';
-import 'package:restaurants_menu/common/widgets/error_view.dart';
-import 'package:restaurants_menu/common/widgets/loading_view.dart';
+import 'package:WaiterPro/common/base/base_builder.dart';
+import 'package:WaiterPro/common/base/base_listener.dart';
+import 'package:WaiterPro/common/base/base_state.dart';
+import 'package:WaiterPro/common/di/injection.dart';
+import 'package:WaiterPro/common/widgets/error_view.dart';
+import 'package:WaiterPro/common/widgets/loading_view.dart';
 
 
 abstract class BasePage<CUBIT extends Cubit<BaseState<BUILDABLE, LISTENABLE>>,

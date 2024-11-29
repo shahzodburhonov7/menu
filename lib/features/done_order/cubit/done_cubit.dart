@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/repo/table_process_repo/table_process_repo.dart';
-import 'package:restaurants_menu/features/done_order/cubit/done_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/repo/table_process_repo/table_process_repo.dart';
+import 'package:WaiterPro/features/done_order/cubit/done_state.dart';
 
 @injectable
 class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {

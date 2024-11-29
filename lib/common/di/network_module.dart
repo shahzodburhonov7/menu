@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:restaurants_menu/common/constants/constants.dart';
-import 'package:restaurants_menu/domain/auth_interceptor/auth_interceptor.dart';
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/domain/auth_interceptor/auth_interceptor.dart';
 
 
 @module

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 
 @lazySingleton
 class AuthInterceptor extends QueuedInterceptor {

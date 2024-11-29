@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/features/settings/widget/language.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/features/settings/widget/language.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 class CustomLanguagesWidget extends StatelessWidget {
   const CustomLanguagesWidget({

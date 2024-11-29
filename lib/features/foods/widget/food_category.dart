@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class FoodCategoryWidget extends StatelessWidget {

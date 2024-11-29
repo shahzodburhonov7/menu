@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/constants/constants.dart';
+import 'package:WaiterPro/common/constants/constants.dart';
 
 @injectable
 class TableApi {

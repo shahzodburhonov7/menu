@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/data/products_data/products_api.dart';
-import 'package:restaurants_menu/domain/model/food_info/food_info.dart';
-import 'package:restaurants_menu/domain/model/products/products.dart';
-import 'package:restaurants_menu/domain/repo/product/products_repo.dart';
+import 'package:WaiterPro/data/products_data/products_api.dart';
+import 'package:WaiterPro/domain/model/food_info/food_info.dart';
+import 'package:WaiterPro/domain/model/products/products.dart';
+import 'package:WaiterPro/domain/repo/product/products_repo.dart';
 
 @Injectable(as: ProductsRepo)
 class ProductsRepoImpl extends ProductsRepo {

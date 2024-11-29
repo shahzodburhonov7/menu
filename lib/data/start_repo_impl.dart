@@ -1,7 +1,7 @@
 
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/domain/repo/start_repo.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
+import 'package:WaiterPro/domain/repo/start_repo.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 
 @Injectable(as: StartRepo)
 class StartRepoImpl extends StartRepo {

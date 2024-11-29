@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:restaurants_menu/domain/model/category/food_category.dart';
-import 'package:restaurants_menu/domain/model/products/products.dart';
-import 'package:restaurants_menu/domain/model/table_order/table_order.dart';
+import 'package:WaiterPro/domain/model/category/food_category.dart';
+import 'package:WaiterPro/domain/model/products/products.dart';
+import 'package:WaiterPro/domain/model/table_order/table_order.dart';
 
 part 'foods_state.freezed.dart';
 

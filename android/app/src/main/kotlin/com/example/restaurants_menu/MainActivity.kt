@@ -1,4 +1,4 @@
-package com.example.restaurants_menu
+package com.example.WaiterPro
 
 import io.flutter.embedding.android.FlutterActivity
 

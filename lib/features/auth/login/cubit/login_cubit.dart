@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/repo/auth/auth_repo.dart';
-import 'package:restaurants_menu/features/auth/login/cubit/login_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/repo/auth/auth_repo.dart';
+import 'package:WaiterPro/features/auth/login/cubit/login_state.dart';
 
 @injectable
 class LoginCubit extends BaseCubit<LoginBuildable, LoginListenable> {

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/repo/order/order_repo.dart';
-import 'package:restaurants_menu/domain/repo/product/products_repo.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
-import 'package:restaurants_menu/features/about_page/cubit/about_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/repo/order/order_repo.dart';
+import 'package:WaiterPro/domain/repo/product/products_repo.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
+import 'package:WaiterPro/features/about_page/cubit/about_state.dart';
 
 @injectable
 class AboutCubit extends BaseCubit<AboutBuildable, AboutListenable> {

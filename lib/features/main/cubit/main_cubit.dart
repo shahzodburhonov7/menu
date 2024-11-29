@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
-import 'package:restaurants_menu/features/main/cubit/main_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
+import 'package:WaiterPro/features/main/cubit/main_state.dart';
 
 @injectable
 class MainCubit extends BaseCubit<MainBuildable, MainListenable> {

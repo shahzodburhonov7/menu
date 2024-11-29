@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:restaurants_menu/domain/model/profile_model/profile.dart';
+import 'package:WaiterPro/domain/model/profile_model/profile.dart';
 
 part  'profile_state.freezed.dart';
 

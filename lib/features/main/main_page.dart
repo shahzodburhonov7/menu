@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
-import 'package:restaurants_menu/features/foods/foods_page.dart';
-import 'package:restaurants_menu/features/history/history_page.dart';
-import 'package:restaurants_menu/features/home/home_page.dart';
-import 'package:restaurants_menu/features/main/cubit/main_cubit.dart';
-import 'package:restaurants_menu/features/main/cubit/main_state.dart';
-import 'package:restaurants_menu/features/profile/profile_page.dart';
-import 'package:restaurants_menu/features/settings/settings_page.dart';
-import 'package:restaurants_menu/gen/assets.gen.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
+import 'package:WaiterPro/features/foods/foods_page.dart';
+import 'package:WaiterPro/features/history/history_page.dart';
+import 'package:WaiterPro/features/home/home_page.dart';
+import 'package:WaiterPro/features/main/cubit/main_cubit.dart';
+import 'package:WaiterPro/features/main/cubit/main_state.dart';
+import 'package:WaiterPro/features/profile/profile_page.dart';
+import 'package:WaiterPro/features/settings/settings_page.dart';
+import 'package:WaiterPro/gen/assets.gen.dart';
 
 @RoutePage()
 class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {

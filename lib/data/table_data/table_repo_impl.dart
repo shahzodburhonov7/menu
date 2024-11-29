@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/data/table_data/table_api.dart';
-import 'package:restaurants_menu/domain/repo/table/table_repo.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
+import 'package:WaiterPro/data/table_data/table_api.dart';
+import 'package:WaiterPro/domain/repo/table/table_repo.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 
 @Injectable(as: TableRepo)
 class TableRepoImpl extends TableRepo {

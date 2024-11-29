@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/data/order_data/order_api.dart';
-import 'package:restaurants_menu/domain/model/table_order/table_order.dart';
-import 'package:restaurants_menu/domain/repo/order/order_repo.dart';
+import 'package:WaiterPro/data/order_data/order_api.dart';
+import 'package:WaiterPro/domain/model/table_order/table_order.dart';
+import 'package:WaiterPro/domain/repo/order/order_repo.dart';
 
 @Injectable(as: OrderRepo)
 class OrderRepoImpl extends OrderRepo {

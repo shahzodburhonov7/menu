@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/common/base/base_cubit.dart';
-import 'package:restaurants_menu/domain/repo/table/table_repo.dart';
-import 'package:restaurants_menu/domain/storage/storage.dart';
-import 'package:restaurants_menu/features/table_selection/cubit/table_state.dart';
+import 'package:WaiterPro/common/base/base_cubit.dart';
+import 'package:WaiterPro/domain/repo/table/table_repo.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
+import 'package:WaiterPro/features/table_selection/cubit/table_state.dart';
 
 @injectable
 class TableCubit extends BaseCubit<TableBuildable, TableListenable> {

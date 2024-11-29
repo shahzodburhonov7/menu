@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/base/base_page.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/features/done_order/done_page.dart';
-import 'package:restaurants_menu/features/history/cubit/history_cubit.dart';
-import 'package:restaurants_menu/features/history/cubit/history_state.dart';
-import 'package:restaurants_menu/features/process/process_page.dart';
+import 'package:WaiterPro/common/base/base_page.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/features/done_order/done_page.dart';
+import 'package:WaiterPro/features/history/cubit/history_cubit.dart';
+import 'package:WaiterPro/features/history/cubit/history_state.dart';
+import 'package:WaiterPro/features/process/process_page.dart';
 
 @RoutePage()
 class HistoryPage

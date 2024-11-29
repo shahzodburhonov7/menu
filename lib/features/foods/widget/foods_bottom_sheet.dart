@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:restaurants_menu/common/colors/app_colors.dart';
-import 'package:restaurants_menu/common/extensions/text_extensions.dart';
-import 'package:restaurants_menu/common/router/app_router.dart';
-import 'package:restaurants_menu/domain/model/table_order/table_order.dart';
+import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/router/app_router.dart';
+import 'package:WaiterPro/domain/model/table_order/table_order.dart';
 
 class FoodsBottomSheetWidget extends StatelessWidget {
   const FoodsBottomSheetWidget({

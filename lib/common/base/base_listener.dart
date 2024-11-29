@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:restaurants_menu/common/base/base_state.dart';
+import 'package:WaiterPro/common/base/base_state.dart';
 
 class BaseListener<
     CUBIT extends StateStreamable<BaseState<BUILDABLE, LISTENABLE>>,

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:injectable/injectable.dart';
-import 'package:restaurants_menu/data/profile_data/profile_api.dart';
-import 'package:restaurants_menu/domain/model/profile_model/profile.dart';
-import 'package:restaurants_menu/domain/repo/profile/profile_repo.dart';
+import 'package:WaiterPro/data/profile_data/profile_api.dart';
+import 'package:WaiterPro/domain/model/profile_model/profile.dart';
+import 'package:WaiterPro/domain/repo/profile/profile_repo.dart';
 
 @Injectable(as: ProfileRepo)
 class ProfileRepoImpl extends ProfileRepo {
