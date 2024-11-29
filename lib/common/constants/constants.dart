@@ -1,5 +1,5 @@
 class Constants {
-  static const baseUrl = 'http://api.repid.uz';
+  static const baseUrl = 'https://api.repid.uz';
   static const version = '/api/v1';
   static const apiLogin = '/accounts/user/login/';
   static const apiFoodCategory = '/common/category/list/?page=';
