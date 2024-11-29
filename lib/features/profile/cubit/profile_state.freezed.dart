@@ -19,9 +19,7 @@ mixin _$ProfileBuildable {
   Profile? get profile => throw _privateConstructorUsedError;
   bool get loading => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProfileBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProfileBuildableCopyWith<ProfileBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,8 +45,6 @@ class _$ProfileBuildableCopyWithImpl<$Res, $Val extends ProfileBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProfileBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -67,8 +63,6 @@ class _$ProfileBuildableCopyWithImpl<$Res, $Val extends ProfileBuildable>
     ) as $Val);
   }
 
-  /// Create a copy of ProfileBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProfileCopyWith<$Res>? get profile {
@@ -104,8 +98,6 @@ class __$$ProfileBuildableImplCopyWithImpl<$Res>
       $Res Function(_$ProfileBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProfileBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,9 +145,7 @@ class _$ProfileBuildableImpl implements _ProfileBuildable {
   @override
   int get hashCode => Object.hash(runtimeType, profile, loading);
 
-  /// Create a copy of ProfileBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProfileBuildableImplCopyWith<_$ProfileBuildableImpl> get copyWith =>
@@ -171,11 +161,8 @@ abstract class _ProfileBuildable implements ProfileBuildable {
   Profile? get profile;
   @override
   bool get loading;
-
-  /// Create a copy of ProfileBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProfileBuildableImplCopyWith<_$ProfileBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -199,9 +186,6 @@ class _$ProfileListenableCopyWithImpl<$Res, $Val extends ProfileListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ProfileListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -218,9 +202,6 @@ class __$$ProfileListenableImplCopyWithImpl<$Res>
   __$$ProfileListenableImplCopyWithImpl(_$ProfileListenableImpl _value,
       $Res Function(_$ProfileListenableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ProfileListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

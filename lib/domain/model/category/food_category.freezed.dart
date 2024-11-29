@@ -26,12 +26,8 @@ mixin _$FoodCategory {
   String? get name_en => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
 
-  /// Serializes this FoodCategory to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FoodCategory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FoodCategoryCopyWith<FoodCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,8 +56,6 @@ class _$FoodCategoryCopyWithImpl<$Res, $Val extends FoodCategory>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FoodCategory
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,8 +114,6 @@ class __$$FoodCategoryImplCopyWithImpl<$Res>
       _$FoodCategoryImpl _value, $Res Function(_$FoodCategoryImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FoodCategory
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -193,14 +185,12 @@ class _$FoodCategoryImpl implements _FoodCategory {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name_uz, name_ru, name_en, image);
 
-  /// Create a copy of FoodCategory
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FoodCategoryImplCopyWith<_$FoodCategoryImpl> get copyWith =>
@@ -235,11 +225,8 @@ abstract class _FoodCategory implements FoodCategory {
   String? get name_en;
   @override
   String? get image;
-
-  /// Create a copy of FoodCategory
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FoodCategoryImplCopyWith<_$FoodCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

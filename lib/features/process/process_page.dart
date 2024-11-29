@@ -1,16 +1,14 @@
+import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/widgets/custom_button.dart';
+import 'package:WaiterPro/features/process/widgets/process_item_widget.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:WaiterPro/common/base/base_page.dart';
-import 'package:WaiterPro/common/colors/app_colors.dart';
-import 'package:WaiterPro/common/constants/constants.dart';
-import 'package:WaiterPro/common/extensions/text_extensions.dart';
 import 'package:WaiterPro/common/router/app_router.dart';
 import 'package:WaiterPro/common/widgets/common_search_field.dart';
-import 'package:WaiterPro/common/widgets/custom_button.dart';
-import 'package:WaiterPro/domain/model/table_process/table_process.dart';
 import 'package:WaiterPro/features/process/cubit/process_cubit.dart';
 import 'package:WaiterPro/features/process/cubit/process_state.dart';
 
@@ -50,9 +48,9 @@ class ProcessPage
             CommonSearchField(
               textInputType: TextInputType.number,
               onChanged: (value) {
-                context
-                    .read<ProcessCubit>()
-                    .tableProcessNumber(tableId: int.parse(value));
+                context.read<ProcessCubit>().tableProcessNumber(
+                      tableId: int.parse(value),
+                    );
               },
               controller: textEditingController,
               height: 44.h,
@@ -126,155 +124,153 @@ class ProcessPage
   }
 }
 
-class ItemWidget extends StatelessWidget {
-  ItemWidget({
+class PaymentCheck extends StatelessWidget {
+  const PaymentCheck({
     super.key,
-    this.cartItems,
-    this.price,
-    this.table,
-    required this.onTap,
-    required this.editOnTap,
   });
-
-  final List<CartItem>? cartItems;
-  final String? price;
-  final String? table;
-  final void Function() onTap;
-  final Function() editOnTap;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ...List.generate(
-          cartItems!.length,
+          1,
           (index) {
-            return Padding(
-              padding: REdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Column(
+            return Column(
+              children: [
+                SizedBox(height: 24.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    "Stol raqami".s(18.sp).w(500),
+                    "25".s(20.sp).w(500)
+                  ],
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  children: List.generate(
+                    50,
+                    (index) => Expanded(
+                      child: Container(
+                        height: 1,
+                        color:
+                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                ...List.generate(
+                  5,
+                  (index) {
+                    return Padding(
+                      padding: REdgeInsets.symmetric(vertical: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              "${Constants.baseUrl}${cartItems![index].food_image!}",
-                              width: 80.w,
-                              height: 80.h,
-                              fit: BoxFit.cover,
-                            ),
-                          )
+                          "Choyxona osh: ".s(18.sp).w(500),
+                          "2".s(20.sp).w(500)
                         ],
                       ),
-                      SizedBox(
-                        width: 12.w,
+                    );
+                  },
+                ),
+                Row(
+                  children: List.generate(
+                    50,
+                    (index) => Expanded(
+                      child: Container(
+                        height: 1,
+                        color:
+                            index % 2 == 0 ? Colors.grey : Colors.transparent,
                       ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            cartItems![index].food_name!.s(14.sp).w(400),
-                            SizedBox(height: 4.h),
-                            Row(
-                              children: [
-                                "Number".s(12.sp).w(400).tr(),
-                                ": ${cartItems![index].quantity!}"
-                                    .toString()
-                                    .s(12.sp)
-                                    .w(400),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                const Spacer(),
-                                Text(
-                                  formatCurrency(cartItems![index].price!),
-                                  style: TextStyle(
-                                      fontSize: 16.sp,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 12.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    "Sana:".s(18.sp).w(500),
+                    "31.08.2024".s(20.sp).w(500)
+                  ],
+                ),
+                SizedBox(height: 8.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    "Vaqt:".s(18.sp).w(500),
+                    "11:12:34".s(20.sp).w(500)
+                  ],
+                ),
+                SizedBox(height: 12.h),
+                Row(
+                  children: List.generate(
+                    50,
+                    (index) => Expanded(
+                      child: Container(
+                        height: 1,
+                        color:
+                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    "Summa".s(18.sp).w(500),
+                    "84 000 UZS".s(20.sp).w(500)
+                  ],
+                ),
+                SizedBox(height: 12.h),
+                Row(
+                  children: List.generate(
+                    50,
+                    (index) => Expanded(
+                      child: Container(
+                        height: 1,
+                        color:
+                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: REdgeInsets.symmetric(vertical: 28),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomButton(
+                          onTap: () {},
+                          text: "Edit".tr(),
+                          size: 14.sp,
+                          radius: 8,
+                          color: const Color(0xFF2C2C3D),
+                          backgroundColor: Colors.white,
+                          width: 150.w,
+                          height: 44.h),
+                      CustomButton(
+                        radius: 8,
+                        onTap: () {},
+                        text: "Finish".tr(),
+                        width: 150.w,
+                        size: 14.sp,
+                        height: 44.h,
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  const Divider(
-                    color: AppColors.borderTextColor,
-                    thickness: 1,
-                  ),
-                ],
-              ),
+                ),
+              ],
             );
           },
-        ),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              "Total amount".s(16.sp).w(600).tr(),
-              Text(
-                formatCurrency(price!),
-                style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-        ),
-        SizedBox(height: 15.h),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              "Table number".s(16.sp).w(600).tr(),
-              "$table".s(20.sp).w(600),
-            ],
-          ),
-        ),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 10, vertical: 28),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(
-                  onTap: editOnTap,
-                  text: "Edit".tr(),
-                  size: 14.sp,
-                  radius: 8,
-                  color: const Color(0xFF2C2C3D),
-                  backgroundColor: Colors.white,
-                  width: 150.w,
-                  height: 44.h),
-              CustomButton(
-                radius: 8,
-                onTap: onTap,
-                text: "Finish".tr(),
-                width: 150.w,
-                size: 14.sp,
-                height: 44.h,
-              ),
-            ],
-          ),
-        ),
+        )
       ],
     );
-  }
-
-  String formatCurrency(String input) {
-    final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
-    if (numericPart.isEmpty) return input;
-    final int number = int.parse(numericPart);
-    final formattedNumber =
-        NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
-    final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
-    return "$formattedNumber $currencyPart";
   }
 }

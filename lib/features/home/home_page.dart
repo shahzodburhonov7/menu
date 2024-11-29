@@ -1,6 +1,9 @@
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:WaiterPro/common/base/base_page.dart';
 import 'package:WaiterPro/common/colors/app_colors.dart';
@@ -16,6 +19,8 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
 
   @override
   Widget builder(BuildContext context, HomeBuildable state) {
+    final cubit= context.read<HomeCubit>();
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -31,7 +36,7 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
           child: Column(
             children: [
               Padding(
-                padding:  REdgeInsets.symmetric(horizontal: 8),
+                padding: REdgeInsets.symmetric(horizontal: 8),
                 child: "motto".s(24.sp).w(600).tr(),
               ),
               SizedBox(height: 28.h),
@@ -42,6 +47,14 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
               SizedBox(height: 28.h),
               GestureDetector(
                 onTap: () {
+                  // if (USER_TYPE == Constants.ofitsant) {
+                  //
+                  // } else if (USER_TYPE == Constants.kassir) {
+                  //    cubit.postChose(id: 87);
+                  //   context.router.push(
+                  //     FoodsRoute(),
+                  //   );
+                  // }
                   context.router.push(
                     const TableRoute(),
                   );
@@ -68,9 +81,13 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
                         children: [
                           Assets.images.cardOrder.svg(),
                           SizedBox(height: 8.h),
-                          "New order".s(18.sp).w(500).c(
+                          "New order"
+                              .s(18.sp)
+                              .w(500)
+                              .c(
                                 AppColors.white,
-                              ).tr(),
+                              )
+                              .tr(),
                         ],
                       ),
                     ],
@@ -95,9 +112,13 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
                       children: [
                         Assets.images.finalCard.svg(),
                         SizedBox(height: 8.h),
-                        "Finish Day".s(18.sp).w(500).c(
+                        "Finish Day"
+                            .s(18.sp)
+                            .w(500)
+                            .c(
                               AppColors.white,
-                            ).tr(),
+                            )
+                            .tr(),
                       ],
                     ),
                   ],

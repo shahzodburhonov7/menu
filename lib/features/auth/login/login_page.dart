@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,13 +52,13 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
               ),
               Row(
                 children: [
-                  "Hi, Welcome !".s(30.sp).w(700).c(AppColors.black),
+                  "Hi Welcome".s(30.sp).w(700).c(AppColors.black).tr(),
                 ],
               ),
               SizedBox(height: 38.h),
               Row(
                 children: [
-                  "Login".s(14).w(400).c(AppColors.black),
+                  "Name".s(14).w(400).c(AppColors.black).tr(),
                 ],
               ),
               SizedBox(height: 6.h),
@@ -65,26 +66,30 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                 onChanged: (v) => cubit.clearError(),
                 controller: userName,
                 background: AppColors.white,
-                hint: "Enter your login",
+                hint: "Enter your login".tr(),
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.loginError.isNotEmpty) state.loginError.s(14.sp).c(AppColors.validationRed),
+              if (state.loginError.isNotEmpty)
+                state.loginError.s(14.sp).c(
+                      AppColors.validationRed,
+                    ),
               SizedBox(height: 22.h),
               Row(
                 children: [
-                  "Password".s(14.sp).w(400).c(AppColors.black),
+                  "Password".s(14.sp).w(400).c(AppColors.black).tr(),
                 ],
               ),
               SizedBox(height: 6.h),
               CommonTextField(
                 onChanged: (v) => cubit.clearError(),
                 controller: password,
-                hint: "Password",
+                hint: "password".tr(),
                 obscureText: true,
                 background: AppColors.white,
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.passwordError.isNotEmpty) state.passwordError.s(14.sp).c(AppColors.validationRed),
+              if (state.passwordError.isNotEmpty)
+                state.passwordError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 80.h),
               CustomButton(
                 loading: state.loading,
@@ -100,7 +105,7 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                     );
                   }
                 },
-                text: 'Log In',
+                text: 'Auth'.tr(),
               ),
             ],
           ),

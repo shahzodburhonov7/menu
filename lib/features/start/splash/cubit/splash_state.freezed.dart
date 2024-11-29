@@ -33,9 +33,6 @@ class _$SplashBuildableCopyWithImpl<$Res, $Val extends SplashBuildable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of SplashBuildable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -52,9 +49,6 @@ class __$$SplashBuildableImplCopyWithImpl<$Res>
   __$$SplashBuildableImplCopyWithImpl(
       _$SplashBuildableImpl _value, $Res Function(_$SplashBuildableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of SplashBuildable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -85,9 +79,7 @@ abstract class _SplashBuildable implements SplashBuildable {
 mixin _$SplashListenable {
   SplashEffect? get effect => throw _privateConstructorUsedError;
 
-  /// Create a copy of SplashListenable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SplashListenableCopyWith<SplashListenable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -111,8 +103,6 @@ class _$SplashListenableCopyWithImpl<$Res, $Val extends SplashListenable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SplashListenable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,8 +136,6 @@ class __$$SplashListenableImplCopyWithImpl<$Res>
       $Res Function(_$SplashListenableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SplashListenable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,9 +174,7 @@ class _$SplashListenableImpl implements _SplashListenable {
   @override
   int get hashCode => Object.hash(runtimeType, effect);
 
-  /// Create a copy of SplashListenable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SplashListenableImplCopyWith<_$SplashListenableImpl> get copyWith =>
@@ -202,11 +188,8 @@ abstract class _SplashListenable implements SplashListenable {
 
   @override
   SplashEffect? get effect;
-
-  /// Create a copy of SplashListenable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SplashListenableImplCopyWith<_$SplashListenableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
