@@ -41,7 +41,7 @@ class CustomButton extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(radius!),
+              borderRadius: BorderRadius.circular(radius!.r),
             ),
             side: const BorderSide(
               color: Color(0xff2F2F3F),
@@ -49,9 +49,7 @@ class CustomButton extends StatelessWidget {
             ),
           ),
           onPressed: onTap,
-          child: loading
-              ? const CircularProgressIndicator()
-              : text.s(size.sp).w(fontWeight).c(color),
+          child: loading ? const CircularProgressIndicator() : text.s(size.sp).w(fontWeight).c(color),
         ),
       ),
     );

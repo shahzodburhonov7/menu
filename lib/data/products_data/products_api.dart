@@ -10,12 +10,14 @@ class ProductsApi {
   ProductsApi(this.dio);
 
   Future<Response> productGet() async {
-    return await dio.get(USER_TYPE == 'ofitsant' ? Constants.apiFoodList : Constants.apiProductsGet);
+    return await dio
+        .get(USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir ? Constants.apiFoodList : Constants.apiProductsGet);
   }
 
   Future<Response> foodCategoryId({required int id, required int page}) async {
-    return await dio
-        .get(USER_TYPE == 'ofitsant' ? "${Constants.apiFoodsCategoryId}$id/foods/?page=$page" : "${Constants.apiProductCategoryId}$id/");
+    return await dio.get(USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir
+        ? "${Constants.apiFoodsCategoryId}$id/foods/?page=$page"
+        : "${Constants.apiProductCategoryId}$id/");
   }
 
   Future<Response> foodInfo({
@@ -25,6 +27,8 @@ class ProductsApi {
   }
 
   Future<Response> productSearch({required String query}) async {
-    return await dio.get(USER_TYPE == 'ofitsant' ? "${Constants.apiFoodSearch}$query" : "${Constants.apiProductsSearch}$query");
+    return await dio.get(USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir
+        ? "${Constants.apiFoodSearch}$query"
+        : "${Constants.apiProductsSearch}$query");
   }
 }
