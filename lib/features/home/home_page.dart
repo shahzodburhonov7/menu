@@ -10,6 +10,7 @@ import 'package:WaiterPro/features/home/cubit/home_cubit.dart';
 import 'package:WaiterPro/features/home/cubit/home_state.dart';
 import 'package:WaiterPro/gen/assets.gen.dart';
 
+
 @RoutePage()
 class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
   const HomePage({super.key});
