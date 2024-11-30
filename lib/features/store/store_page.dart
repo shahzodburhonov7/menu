@@ -83,7 +83,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             child: Image.network(
-                                              "${Constants.baseUrl}${state.tableOrder!.cart_items![index].food_image!}",
+                                              "${state.tableOrder!.cart_items![index].food_image!}",
                                               width: 80.w,
                                               height: 80.h,
                                               fit: BoxFit.cover,

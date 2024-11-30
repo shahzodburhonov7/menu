@@ -160,7 +160,7 @@ class ItemWidget extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
-                              "${Constants.baseUrl}${cartItems![index].food_image!}",
+                              "${cartItems![index].food_image!}",
                               width: 80.w,
                               height: 80.h,
                               fit: BoxFit.cover,
