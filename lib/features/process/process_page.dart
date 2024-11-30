@@ -13,8 +13,7 @@ import 'package:WaiterPro/features/process/cubit/process_cubit.dart';
 import 'package:WaiterPro/features/process/cubit/process_state.dart';
 
 @RoutePage()
-class ProcessPage
-    extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
+class ProcessPage extends BasePage<ProcessCubit, ProcessBuildable, ProcessListenable> {
   ProcessPage({super.key});
 
   @override
@@ -74,31 +73,21 @@ class ProcessPage
                                     ? const SizedBox.shrink()
                                     : Text(
                                         "In process".tr(),
-                                        style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700),
+                                        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                                       ),
                                 trailing: Text(
-                                  formatDate(state
-                                      .tableProcess[index]!.created_at
-                                      .toString()),
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
+                                  formatDate(state.tableProcess[index]!.created_at.toString()),
+                                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                                 ),
                               ),
                               Card(
                                 color: const Color(0xffFFFFFF),
                                 child: ItemWidget(
-                                  price: state.tableProcess[index]!.total_price
-                                      .toString(),
-                                  table: state.tableProcess[index]!.cart!.table
-                                      .toString(),
-                                  cartItems: state
-                                      .tableProcess[index]!.cart!.cart_items!,
+                                  price: state.tableProcess[index]!.total_price.toString(),
+                                  table: state.tableProcess[index]!.cart!.table.toString(),
+                                  cartItems: state.tableProcess[index]!.cart!.cart_items!,
                                   editOnTap: () {
-                                    cubit.storage.cardId.set(
-                                        state.tableProcess[index]!.cart!.id!);
+                                    cubit.storage.cardId.set(state.tableProcess[index]!.cart!.id!);
                                     context.router.pushAndPopUntil(
                                       FoodsRoute(),
                                       predicate: (context) => false,
@@ -141,10 +130,7 @@ class PaymentCheck extends StatelessWidget {
                 SizedBox(height: 24.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    "Stol raqami".s(18.sp).w(500),
-                    "25".s(20.sp).w(500)
-                  ],
+                  children: ["Stol raqami".s(18.sp).w(500), "25".s(20.sp).w(500)],
                 ),
                 SizedBox(
                   height: 12,
@@ -155,8 +141,7 @@ class PaymentCheck extends StatelessWidget {
                     (index) => Expanded(
                       child: Container(
                         height: 1,
-                        color:
-                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                        color: index % 2 == 0 ? Colors.grey : Colors.transparent,
                       ),
                     ),
                   ),
@@ -171,10 +156,7 @@ class PaymentCheck extends StatelessWidget {
                       padding: REdgeInsets.symmetric(vertical: 8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          "Choyxona osh: ".s(18.sp).w(500),
-                          "2".s(20.sp).w(500)
-                        ],
+                        children: ["Choyxona osh: ".s(18.sp).w(500), "2".s(20.sp).w(500)],
                       ),
                     );
                   },
@@ -185,8 +167,7 @@ class PaymentCheck extends StatelessWidget {
                     (index) => Expanded(
                       child: Container(
                         height: 1,
-                        color:
-                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                        color: index % 2 == 0 ? Colors.grey : Colors.transparent,
                       ),
                     ),
                   ),
@@ -194,18 +175,12 @@ class PaymentCheck extends StatelessWidget {
                 SizedBox(height: 12.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    "Sana:".s(18.sp).w(500),
-                    "31.08.2024".s(20.sp).w(500)
-                  ],
+                  children: ["Sana:".s(18.sp).w(500), "31.08.2024".s(20.sp).w(500)],
                 ),
                 SizedBox(height: 8.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    "Vaqt:".s(18.sp).w(500),
-                    "11:12:34".s(20.sp).w(500)
-                  ],
+                  children: ["Vaqt:".s(18.sp).w(500), "11:12:34".s(20.sp).w(500)],
                 ),
                 SizedBox(height: 12.h),
                 Row(
@@ -214,8 +189,7 @@ class PaymentCheck extends StatelessWidget {
                     (index) => Expanded(
                       child: Container(
                         height: 1,
-                        color:
-                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                        color: index % 2 == 0 ? Colors.grey : Colors.transparent,
                       ),
                     ),
                   ),
@@ -223,10 +197,7 @@ class PaymentCheck extends StatelessWidget {
                 SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    "Summa".s(18.sp).w(500),
-                    "84 000 UZS".s(20.sp).w(500)
-                  ],
+                  children: ["Summa".s(18.sp).w(500), "84 000 UZS".s(20.sp).w(500)],
                 ),
                 SizedBox(height: 12.h),
                 Row(
@@ -235,36 +206,33 @@ class PaymentCheck extends StatelessWidget {
                     (index) => Expanded(
                       child: Container(
                         height: 1,
-                        color:
-                            index % 2 == 0 ? Colors.grey : Colors.transparent,
+                        color: index % 2 == 0 ? Colors.grey : Colors.transparent,
                       ),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: REdgeInsets.symmetric(vertical: 28),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomButton(
-                          onTap: () {},
-                          text: "Edit".tr(),
-                          size: 14.sp,
-                          radius: 8,
-                          color: const Color(0xFF2C2C3D),
-                          backgroundColor: Colors.white,
-                          width: 150.w,
-                          height: 44.h),
-                      CustomButton(
-                        radius: 8,
-                        onTap: () {},
-                        text: "Finish".tr(),
-                        width: 150.w,
-                        size: 14.sp,
-                        height: 44.h,
-                      ),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomButton(
+                      onTap: () {},
+                      text: "Edit".tr(),
+                      size: 14.sp,
+                      radius: 8,
+                      color: const Color(0xFF2C2C3D),
+                      backgroundColor: Colors.white,
+                      // width: 150.w,
+                      // height: 44.h,
+                    ),
+                    CustomButton(
+                      radius: 8,
+                      onTap: () {},
+                      text: "Finish".tr(),
+                      width: 150.w,
+                      size: 14.sp,
+                      height: 44.h,
+                    ),
+                  ],
                 ),
               ],
             );
