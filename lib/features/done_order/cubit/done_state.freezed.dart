@@ -19,9 +19,7 @@ mixin _$DoneBuildable {
   bool get loading => throw _privateConstructorUsedError;
   List<OrdersDoneList> get orderDoneList => throw _privateConstructorUsedError;
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $DoneBuildableCopyWith<DoneBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,8 +43,6 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,8 +81,6 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
       _$DoneBuildableImpl _value, $Res Function(_$DoneBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,9 +139,7 @@ class _$DoneBuildableImpl implements _DoneBuildable {
   int get hashCode => Object.hash(runtimeType, loading,
       const DeepCollectionEquality().hash(_orderDoneList));
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$DoneBuildableImplCopyWith<_$DoneBuildableImpl> get copyWith =>
@@ -163,11 +155,8 @@ abstract class _DoneBuildable implements DoneBuildable {
   bool get loading;
   @override
   List<OrdersDoneList> get orderDoneList;
-
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$DoneBuildableImplCopyWith<_$DoneBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -191,9 +180,6 @@ class _$DoneListenableCopyWithImpl<$Res, $Val extends DoneListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of DoneListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -210,9 +196,6 @@ class __$$DoneListenableImplCopyWithImpl<$Res>
   __$$DoneListenableImplCopyWithImpl(
       _$DoneListenableImpl _value, $Res Function(_$DoneListenableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of DoneListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

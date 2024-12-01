@@ -15,13 +15,21 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$HomeBuildable {}
+mixin _$HomeBuildable {
+  bool get postTable => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeBuildableCopyWith<HomeBuildable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $HomeBuildableCopyWith<$Res> {
   factory $HomeBuildableCopyWith(
           HomeBuildable value, $Res Function(HomeBuildable) then) =
       _$HomeBuildableCopyWithImpl<$Res, HomeBuildable>;
+  @useResult
+  $Res call({bool postTable});
 }
 
 /// @nodoc
@@ -34,15 +42,29 @@ class _$HomeBuildableCopyWithImpl<$Res, $Val extends HomeBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HomeBuildable
-  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? postTable = null,
+  }) {
+    return _then(_value.copyWith(
+      postTable: null == postTable
+          ? _value.postTable
+          : postTable // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$HomeBuildableImplCopyWith<$Res> {
+abstract class _$$HomeBuildableImplCopyWith<$Res>
+    implements $HomeBuildableCopyWith<$Res> {
   factory _$$HomeBuildableImplCopyWith(
           _$HomeBuildableImpl value, $Res Function(_$HomeBuildableImpl) then) =
       __$$HomeBuildableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool postTable});
 }
 
 /// @nodoc
@@ -53,42 +75,80 @@ class __$$HomeBuildableImplCopyWithImpl<$Res>
       _$HomeBuildableImpl _value, $Res Function(_$HomeBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeBuildable
-  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? postTable = null,
+  }) {
+    return _then(_$HomeBuildableImpl(
+      postTable: null == postTable
+          ? _value.postTable
+          : postTable // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$HomeBuildableImpl implements _HomeBuildable {
-  const _$HomeBuildableImpl();
+  const _$HomeBuildableImpl({this.postTable = false});
+
+  @override
+  @JsonKey()
+  final bool postTable;
 
   @override
   String toString() {
-    return 'HomeBuildable()';
+    return 'HomeBuildable(postTable: $postTable)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$HomeBuildableImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$HomeBuildableImpl &&
+            (identical(other.postTable, postTable) ||
+                other.postTable == postTable));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, postTable);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HomeBuildableImplCopyWith<_$HomeBuildableImpl> get copyWith =>
+      __$$HomeBuildableImplCopyWithImpl<_$HomeBuildableImpl>(this, _$identity);
 }
 
 abstract class _HomeBuildable implements HomeBuildable {
-  const factory _HomeBuildable() = _$HomeBuildableImpl;
+  const factory _HomeBuildable({final bool postTable}) = _$HomeBuildableImpl;
+
+  @override
+  bool get postTable;
+  @override
+  @JsonKey(ignore: true)
+  _$$HomeBuildableImplCopyWith<_$HomeBuildableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$HomeListenable {}
+mixin _$HomeListenable {
+  TableEffect? get effect => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeListenableCopyWith<HomeListenable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $HomeListenableCopyWith<$Res> {
   factory $HomeListenableCopyWith(
           HomeListenable value, $Res Function(HomeListenable) then) =
       _$HomeListenableCopyWithImpl<$Res, HomeListenable>;
+  @useResult
+  $Res call({TableEffect? effect});
 }
 
 /// @nodoc
@@ -101,15 +161,29 @@ class _$HomeListenableCopyWithImpl<$Res, $Val extends HomeListenable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of HomeListenable
-  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? effect = freezed,
+  }) {
+    return _then(_value.copyWith(
+      effect: freezed == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as TableEffect?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$HomeListenableImplCopyWith<$Res> {
+abstract class _$$HomeListenableImplCopyWith<$Res>
+    implements $HomeListenableCopyWith<$Res> {
   factory _$$HomeListenableImplCopyWith(_$HomeListenableImpl value,
           $Res Function(_$HomeListenableImpl) then) =
       __$$HomeListenableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({TableEffect? effect});
 }
 
 /// @nodoc
@@ -120,30 +194,60 @@ class __$$HomeListenableImplCopyWithImpl<$Res>
       _$HomeListenableImpl _value, $Res Function(_$HomeListenableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of HomeListenable
-  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? effect = freezed,
+  }) {
+    return _then(_$HomeListenableImpl(
+      effect: freezed == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as TableEffect?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$HomeListenableImpl implements _HomeListenable {
-  const _$HomeListenableImpl();
+  const _$HomeListenableImpl({this.effect});
+
+  @override
+  final TableEffect? effect;
 
   @override
   String toString() {
-    return 'HomeListenable()';
+    return 'HomeListenable(effect: $effect)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$HomeListenableImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$HomeListenableImpl &&
+            (identical(other.effect, effect) || other.effect == effect));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, effect);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HomeListenableImplCopyWith<_$HomeListenableImpl> get copyWith =>
+      __$$HomeListenableImplCopyWithImpl<_$HomeListenableImpl>(
+          this, _$identity);
 }
 
 abstract class _HomeListenable implements HomeListenable {
-  const factory _HomeListenable() = _$HomeListenableImpl;
+  const factory _HomeListenable({final TableEffect? effect}) =
+      _$HomeListenableImpl;
+
+  @override
+  TableEffect? get effect;
+  @override
+  @JsonKey(ignore: true)
+  _$$HomeListenableImplCopyWith<_$HomeListenableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

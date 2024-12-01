@@ -77,7 +77,6 @@ extension GetItInjectableX on _i174.GetIt {
     final appModule = _$AppModule();
     final networkModule = _$NetworkModule();
     gh.factory<_i618.HistoryCubit>(() => _i618.HistoryCubit());
-    gh.factory<_i117.HomeCubit>(() => _i117.HomeCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
     gh.lazySingleton<_i708.LocaleProvider>(() => _i708.LocaleProvider());
     await gh.lazySingletonAsync<_i550.Storage>(
@@ -114,6 +113,7 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i367.AuthApi>(),
           gh<_i550.Storage>(),
         ));
+    gh.factory<_i117.HomeCubit>(() => _i117.HomeCubit(gh<_i236.TableRepo>()));
     gh.factory<_i953.LoginCubit>(
         () => _i953.LoginCubit(gh<_i219.AuthRepository>()));
     gh.factory<_i242.OrderRepo>(

@@ -1,3 +1,4 @@
+import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,9 @@ class MainPage extends BasePage<MainCubit, MainBuildable, MainListenable> {
   @override
   Widget builder(BuildContext context, MainBuildable state) {
     List<Widget> bottomBarPages = [
-      USER_TYPE == "ofitsant" ? const HomePage() : FoodsPage(),
+      USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir
+          ? const HomePage()
+          : FoodsPage(),
       const HistoryPage(),
       SettingsPage(),
       const ProfilePage(),
