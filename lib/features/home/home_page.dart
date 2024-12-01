@@ -11,15 +11,13 @@ import 'package:WaiterPro/features/home/cubit/home_cubit.dart';
 import 'package:WaiterPro/features/home/cubit/home_state.dart';
 import 'package:WaiterPro/gen/assets.gen.dart';
 
-
 @RoutePage()
 class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
   const HomePage({super.key});
 
   @override
   Widget builder(BuildContext context, HomeBuildable state) {
-    final cubit= context.read<HomeCubit>();
-
+    final cubit = context.read<HomeCubit>();
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -96,31 +94,36 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
               SizedBox(
                 height: 16.h,
               ),
-              Container(
-                width: 344.w,
-                height: 116.h,
-                decoration: BoxDecoration(
-                  color: const Color(0xffFE728E),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Assets.images.finalCard.svg(),
-                        SizedBox(height: 8.h),
-                        "Finish Day"
-                            .s(18.sp)
-                            .w(500)
-                            .c(
-                              AppColors.white,
-                            )
-                            .tr(),
-                      ],
-                    ),
-                  ],
+              GestureDetector(
+                onTap: () {
+                  context.router.push(FinishDayRoute());
+                },
+                child: Container(
+                  width: 344.w,
+                  height: 116.h,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffFE728E),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Assets.images.finalCard.svg(),
+                          SizedBox(height: 8.h),
+                          "Finish Day"
+                              .s(18.sp)
+                              .w(500)
+                              .c(
+                                AppColors.white,
+                              )
+                              .tr(),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

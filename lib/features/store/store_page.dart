@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:WaiterPro/common/base/base_page.dart';
 import 'package:WaiterPro/common/colors/app_colors.dart';
-import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
 import 'package:WaiterPro/common/router/app_router.dart';
 import 'package:WaiterPro/common/widgets/bottom_sheet_custom.dart';

@@ -20,7 +20,9 @@ mixin _$SettingsBuildable {
   bool get isToggled => throw _privateConstructorUsedError;
   String get selectedLanguage => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SettingsBuildableCopyWith<SettingsBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$SettingsBuildableCopyWithImpl<$Res, $Val extends SettingsBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$SettingsBuildableImplCopyWithImpl<$Res>
       $Res Function(_$SettingsBuildableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,7 +157,9 @@ class _$SettingsBuildableImpl implements _SettingsBuildable {
   int get hashCode =>
       Object.hash(runtimeType, isExpanded, isToggled, selectedLanguage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SettingsBuildableImplCopyWith<_$SettingsBuildableImpl> get copyWith =>
@@ -171,8 +179,11 @@ abstract class _SettingsBuildable implements SettingsBuildable {
   bool get isToggled;
   @override
   String get selectedLanguage;
+
+  /// Create a copy of SettingsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SettingsBuildableImplCopyWith<_$SettingsBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -196,6 +207,9 @@ class _$SettingsListenableCopyWithImpl<$Res, $Val extends SettingsListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SettingsListenable
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -212,6 +226,9 @@ class __$$SettingsListenableImplCopyWithImpl<$Res>
   __$$SettingsListenableImplCopyWithImpl(_$SettingsListenableImpl _value,
       $Res Function(_$SettingsListenableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SettingsListenable
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

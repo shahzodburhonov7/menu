@@ -30,7 +30,9 @@ mixin _$FoodsBuildable {
   String get type => throw _privateConstructorUsedError;
   int get cartId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FoodsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FoodsBuildableCopyWith<FoodsBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +71,8 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FoodsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,6 +146,8 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
     ) as $Val);
   }
 
+  /// Create a copy of FoodsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TableOrderCopyWith<$Res>? get tableOrder {
@@ -190,6 +196,8 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
       _$FoodsBuildableImpl _value, $Res Function(_$FoodsBuildableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FoodsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -394,7 +402,9 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
       type,
       cartId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FoodsBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FoodsBuildableImplCopyWith<_$FoodsBuildableImpl> get copyWith =>
@@ -444,8 +454,11 @@ abstract class _FoodsBuildable implements FoodsBuildable {
   String get type;
   @override
   int get cartId;
+
+  /// Create a copy of FoodsBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FoodsBuildableImplCopyWith<_$FoodsBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -469,6 +482,9 @@ class _$FoodsListenableCopyWithImpl<$Res, $Val extends FoodsListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FoodsListenable
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -485,6 +501,9 @@ class __$$FoodsListenableImplCopyWithImpl<$Res>
   __$$FoodsListenableImplCopyWithImpl(
       _$FoodsListenableImpl _value, $Res Function(_$FoodsListenableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FoodsListenable
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

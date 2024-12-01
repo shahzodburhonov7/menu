@@ -29,7 +29,7 @@ class ItemWidget extends StatelessWidget {
       children: [
         ...List.generate(
           cartItems!.length,
-          (index) {
+              (index) {
             return Padding(
               padding: REdgeInsets.all(8.0),
               child: Column(
@@ -41,7 +41,7 @@ class ItemWidget extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
-                              "${Constants.baseUrl}${cartItems![index].food_image!}",
+                              "${cartItems![index].food_image!}",
                               width: 80.w,
                               height: 80.h,
                               fit: BoxFit.cover,
@@ -61,7 +61,10 @@ class ItemWidget extends StatelessWidget {
                             Row(
                               children: [
                                 "Number".s(12.sp).w(400).tr(),
-                                ": ${cartItems![index].quantity!}".toString().s(12.sp).w(400),
+                                ": ${cartItems![index].quantity!}"
+                                    .toString()
+                                    .s(12.sp)
+                                    .w(400),
                               ],
                             ),
                             Row(
@@ -70,7 +73,9 @@ class ItemWidget extends StatelessWidget {
                                 const Spacer(),
                                 Text(
                                   formatCurrency(cartItems![index].price!),
-                                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                                  style: TextStyle(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ],
                             )
@@ -116,30 +121,26 @@ class ItemWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: REdgeInsets.all(8.0),
+          padding: REdgeInsets.symmetric(horizontal: 10, vertical: 28),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: CustomButton(
+              CustomButton(
                   onTap: editOnTap,
                   text: "Edit".tr(),
-                  size: 14,
+                  size: 14.sp,
                   radius: 8,
                   color: const Color(0xFF2C2C3D),
                   backgroundColor: Colors.white,
-                ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: CustomButton(
-                  radius: 8,
-                  onTap: onTap,
-                  text: "Finish".tr(),
-                  size: 14,
-                ),
+                  width: 150.w,
+                  height: 44.h),
+              CustomButton(
+                radius: 8,
+                onTap: onTap,
+                text: "Finish".tr(),
+                width: 150.w,
+                size: 14.sp,
+                height: 44.h,
               ),
             ],
           ),
@@ -152,7 +153,8 @@ class ItemWidget extends StatelessWidget {
     final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
     if (numericPart.isEmpty) return input;
     final int number = int.parse(numericPart);
-    final formattedNumber = NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+    final formattedNumber =
+    NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
     final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
     return "$formattedNumber $currencyPart";
   }

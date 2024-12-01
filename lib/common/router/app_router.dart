@@ -1,3 +1,5 @@
+import 'package:WaiterPro/features/finish_day/finish_day_page.dart';
+import 'package:WaiterPro/features/product_add/product_add_page.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:WaiterPro/features/about_page/about_page.dart';
@@ -33,5 +35,7 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: StoreRoute.page),
     AutoRoute(page: AboutRoute.page),
     AutoRoute(page: DoneRoute.page),
+    AutoRoute(page: ProductAddRoute.page),
+    AutoRoute(page: FinishDayRoute.page),
   ];
 }

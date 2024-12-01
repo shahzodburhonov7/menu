@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$HistoryBuildable {
   int get selectedIndex => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HistoryBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $HistoryBuildableCopyWith<HistoryBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$HistoryBuildableCopyWithImpl<$Res, $Val extends HistoryBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of HistoryBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$HistoryBuildableImplCopyWithImpl<$Res>
       $Res Function(_$HistoryBuildableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HistoryBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,7 +121,9 @@ class _$HistoryBuildableImpl implements _HistoryBuildable {
   @override
   int get hashCode => Object.hash(runtimeType, selectedIndex);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HistoryBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$HistoryBuildableImplCopyWith<_$HistoryBuildableImpl> get copyWith =>
@@ -129,8 +137,11 @@ abstract class _HistoryBuildable implements HistoryBuildable {
 
   @override
   int get selectedIndex;
+
+  /// Create a copy of HistoryBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$HistoryBuildableImplCopyWith<_$HistoryBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -154,6 +165,9 @@ class _$HistoryListenableCopyWithImpl<$Res, $Val extends HistoryListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of HistoryListenable
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -170,6 +184,9 @@ class __$$HistoryListenableImplCopyWithImpl<$Res>
   __$$HistoryListenableImplCopyWithImpl(_$HistoryListenableImpl _value,
       $Res Function(_$HistoryListenableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HistoryListenable
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

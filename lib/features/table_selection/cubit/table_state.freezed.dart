@@ -22,7 +22,9 @@ mixin _$TableBuildable {
   int get tableId => throw _privateConstructorUsedError;
   bool get postTable => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TableBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TableBuildableCopyWith<TableBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +53,8 @@ class _$TableBuildableCopyWithImpl<$Res, $Val extends TableBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TableBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -109,6 +113,8 @@ class __$$TableBuildableImplCopyWithImpl<$Res>
       _$TableBuildableImpl _value, $Res Function(_$TableBuildableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TableBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -204,7 +210,9 @@ class _$TableBuildableImpl implements _TableBuildable {
       tableId,
       postTable);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TableBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TableBuildableImplCopyWith<_$TableBuildableImpl> get copyWith =>
@@ -230,8 +238,11 @@ abstract class _TableBuildable implements TableBuildable {
   int get tableId;
   @override
   bool get postTable;
+
+  /// Create a copy of TableBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TableBuildableImplCopyWith<_$TableBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -240,7 +251,9 @@ abstract class _TableBuildable implements TableBuildable {
 mixin _$TableListenable {
   TableEffect? get effect => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TableListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TableListenableCopyWith<TableListenable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -264,6 +277,8 @@ class _$TableListenableCopyWithImpl<$Res, $Val extends TableListenable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TableListenable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -297,6 +312,8 @@ class __$$TableListenableImplCopyWithImpl<$Res>
       _$TableListenableImpl _value, $Res Function(_$TableListenableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TableListenable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -335,7 +352,9 @@ class _$TableListenableImpl implements _TableListenable {
   @override
   int get hashCode => Object.hash(runtimeType, effect);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TableListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TableListenableImplCopyWith<_$TableListenableImpl> get copyWith =>
@@ -349,8 +368,11 @@ abstract class _TableListenable implements TableListenable {
 
   @override
   TableEffect? get effect;
+
+  /// Create a copy of TableListenable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TableListenableImplCopyWith<_$TableListenableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -31,6 +31,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const DonePage(),
       );
     },
+    FinishDayRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FinishDayPage(),
+      );
+    },
     FoodsRoute.name: (routeData) {
       final args = routeData.argsAs<FoodsRouteArgs>(
           orElse: () => const FoodsRouteArgs());
@@ -73,6 +79,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: ProcessPage(key: args.key),
+      );
+    },
+    ProductAddRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProductAddPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -157,6 +169,20 @@ class DoneRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'DoneRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FinishDayPage]
+class FinishDayRoute extends PageRouteInfo<void> {
+  const FinishDayRoute({List<PageRouteInfo>? children})
+      : super(
+          FinishDayRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FinishDayRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -300,6 +326,20 @@ class ProcessRouteArgs {
   String toString() {
     return 'ProcessRouteArgs{key: $key}';
   }
+}
+
+/// generated route for
+/// [ProductAddPage]
+class ProductAddRoute extends PageRouteInfo<void> {
+  const ProductAddRoute({List<PageRouteInfo>? children})
+      : super(
+          ProductAddRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductAddRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

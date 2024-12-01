@@ -24,7 +24,9 @@ mixin _$StoreBuildable {
   List<dynamic> get getTableList => throw _privateConstructorUsedError;
   TableOrder? get tableOrder => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreBuildableCopyWith<StoreBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +59,8 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +104,8 @@ class _$StoreBuildableCopyWithImpl<$Res, $Val extends StoreBuildable>
     ) as $Val);
   }
 
+  /// Create a copy of StoreBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TableOrderCopyWith<$Res>? get tableOrder {
@@ -142,6 +148,8 @@ class __$$StoreBuildableImplCopyWithImpl<$Res>
       _$StoreBuildableImpl _value, $Res Function(_$StoreBuildableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -261,7 +269,9 @@ class _$StoreBuildableImpl implements _StoreBuildable {
       const DeepCollectionEquality().hash(_getTableList),
       tableOrder);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreBuildableImplCopyWith<_$StoreBuildableImpl> get copyWith =>
@@ -293,8 +303,11 @@ abstract class _StoreBuildable implements StoreBuildable {
   List<dynamic> get getTableList;
   @override
   TableOrder? get tableOrder;
+
+  /// Create a copy of StoreBuildable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreBuildableImplCopyWith<_$StoreBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -303,7 +316,9 @@ abstract class _StoreBuildable implements StoreBuildable {
 mixin _$StoreListenable {
   StoreEffect? get effect => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoreListenableCopyWith<StoreListenable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -327,6 +342,8 @@ class _$StoreListenableCopyWithImpl<$Res, $Val extends StoreListenable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -360,6 +377,8 @@ class __$$StoreListenableImplCopyWithImpl<$Res>
       _$StoreListenableImpl _value, $Res Function(_$StoreListenableImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -398,7 +417,9 @@ class _$StoreListenableImpl implements _StoreListenable {
   @override
   int get hashCode => Object.hash(runtimeType, effect);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoreListenableImplCopyWith<_$StoreListenableImpl> get copyWith =>
@@ -412,8 +433,11 @@ abstract class _StoreListenable implements StoreListenable {
 
   @override
   StoreEffect? get effect;
+
+  /// Create a copy of StoreListenable
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoreListenableImplCopyWith<_$StoreListenableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

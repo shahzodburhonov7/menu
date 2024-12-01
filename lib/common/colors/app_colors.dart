@@ -19,6 +19,7 @@ final class AppColors {
   static const eyeColor = Color(0xff666666);
   static const whiteText = Color(0xffFFFFFF);
   static const fullBlack = Color(0xff000000);
+  static const textFinal = Color(0xff002B48);
 
   static const solitudeWhite = Color(0xffF6F8FA);
 

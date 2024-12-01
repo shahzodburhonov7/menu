@@ -26,8 +26,12 @@ mixin _$BasketCategory {
   String? get name_en => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
 
+  /// Serializes this BasketCategory to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BasketCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BasketCategoryCopyWith<BasketCategory> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$BasketCategoryCopyWithImpl<$Res, $Val extends BasketCategory>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BasketCategory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,6 +120,8 @@ class __$$BasketCategoryImplCopyWithImpl<$Res>
       _$BasketCategoryImpl _value, $Res Function(_$BasketCategoryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BasketCategory
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -185,12 +193,14 @@ class _$BasketCategoryImpl implements _BasketCategory {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, name_uz, name_ru, name_en, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BasketCategory
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BasketCategoryImplCopyWith<_$BasketCategoryImpl> get copyWith =>
@@ -226,8 +236,11 @@ abstract class _BasketCategory implements BasketCategory {
   String? get name_en;
   @override
   String? get image;
+
+  /// Create a copy of BasketCategory
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BasketCategoryImplCopyWith<_$BasketCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

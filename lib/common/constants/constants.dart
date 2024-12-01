@@ -22,6 +22,8 @@ class Constants {
   static const apiBasketCategory = '/product/product-category/list/';
   static const apiOrderUpdate = '/common/cart-item/';
   static const apiFoodSearch = '/common/food/list/?search=';
+  static const apiFinalDay = '/common/finish-day/';
+
 
   // STOREKEEPER
   static const apiProductCategory = '/product/product-category/list/';

@@ -178,6 +178,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/add.svg
   SvgGenImage get add => const SvgGenImage('assets/images/add.svg');
 
+  /// File path: assets/images/box.svg
+  SvgGenImage get box => const SvgGenImage('assets/images/box.svg');
+
   /// File path: assets/images/card_order.svg
   SvgGenImage get cardOrder =>
       const SvgGenImage('assets/images/card_order.svg');
@@ -225,9 +228,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/shurva.png
   AssetGenImage get shurva => const AssetGenImage('assets/images/shurva.png');
 
+  /// File path: assets/images/upload.svg
+  SvgGenImage get upload => const SvgGenImage('assets/images/upload.svg');
+
   /// List of all assets
   List<dynamic> get values => [
         add,
+        box,
         cardOrder,
         finalCard,
         img,
@@ -242,7 +249,8 @@ class $AssetsImagesGen {
         qatiq,
         remove,
         salat,
-        shurva
+        shurva,
+        upload
       ];
 }
 

@@ -20,6 +20,8 @@ import 'package:WaiterPro/data/auth_data/auth_api.dart' as _i367;
 import 'package:WaiterPro/data/auth_data/auth_repo_impl.dart' as _i721;
 import 'package:WaiterPro/data/basket_data/basket_api.dart' as _i935;
 import 'package:WaiterPro/data/basket_data/basket_repo_impl.dart' as _i982;
+import 'package:WaiterPro/data/finish_data/finish_data_api.dart' as _i629;
+import 'package:WaiterPro/data/finish_data/finish_data_repo_impl.dart' as _i21;
 import 'package:WaiterPro/data/food_category/food_category_api.dart' as _i342;
 import 'package:WaiterPro/data/food_category/food_category_repo_impl.dart'
     as _i798;
@@ -39,6 +41,8 @@ import 'package:WaiterPro/domain/auth_interceptor/auth_interceptor.dart'
 import 'package:WaiterPro/domain/repo/auth/auth_repo.dart' as _i219;
 import 'package:WaiterPro/domain/repo/basket/basket_repo.dart' as _i166;
 import 'package:WaiterPro/domain/repo/category/category_repo.dart' as _i374;
+import 'package:WaiterPro/domain/repo/finish_today/finish_today_repo.dart'
+    as _i805;
 import 'package:WaiterPro/domain/repo/order/order_repo.dart' as _i242;
 import 'package:WaiterPro/domain/repo/product/products_repo.dart' as _i387;
 import 'package:WaiterPro/domain/repo/profile/profile_repo.dart' as _i829;
@@ -50,11 +54,15 @@ import 'package:WaiterPro/domain/storage/storage.dart' as _i550;
 import 'package:WaiterPro/features/about_page/cubit/about_cubit.dart' as _i751;
 import 'package:WaiterPro/features/auth/login/cubit/login_cubit.dart' as _i953;
 import 'package:WaiterPro/features/done_order/cubit/done_cubit.dart' as _i232;
+import 'package:WaiterPro/features/finish_day/cubit/finish_day_cubit.dart'
+    as _i1016;
 import 'package:WaiterPro/features/foods/cubit/foods_cubit.dart' as _i174;
 import 'package:WaiterPro/features/history/cubit/history_cubit.dart' as _i618;
 import 'package:WaiterPro/features/home/cubit/home_cubit.dart' as _i117;
 import 'package:WaiterPro/features/main/cubit/main_cubit.dart' as _i269;
 import 'package:WaiterPro/features/process/cubit/process_cubit.dart' as _i511;
+import 'package:WaiterPro/features/product_add/cubit/product_add_cubit.dart'
+    as _i834;
 import 'package:WaiterPro/features/profile/cubit/profile_cubit.dart' as _i299;
 import 'package:WaiterPro/features/settings/cubit/settings_cubit.dart' as _i200;
 import 'package:WaiterPro/features/start/splash/cubit/splash_cubit.dart'
@@ -77,6 +85,7 @@ extension GetItInjectableX on _i174.GetIt {
     final appModule = _$AppModule();
     final networkModule = _$NetworkModule();
     gh.factory<_i618.HistoryCubit>(() => _i618.HistoryCubit());
+    gh.factory<_i834.ProductAddCubit>(() => _i834.ProductAddCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
     gh.lazySingleton<_i708.LocaleProvider>(() => _i708.LocaleProvider());
     await gh.lazySingletonAsync<_i550.Storage>(
@@ -102,6 +111,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i373.ProductsApi>(() => _i373.ProductsApi(gh<_i361.Dio>()));
     gh.factory<_i718.ProfileApi>(() => _i718.ProfileApi(gh<_i361.Dio>()));
     gh.factory<_i728.TableApi>(() => _i728.TableApi(gh<_i361.Dio>()));
+    gh.factory<_i629.FinishDataApi>(() => _i629.FinishDataApi(gh<_i361.Dio>()));
     gh.factory<_i367.AuthApi>(() => _i367.AuthApi(gh<_i361.Dio>()));
     gh.factory<_i236.TableRepo>(() => _i992.TableRepoImpl(
           gh<_i728.TableApi>(),
@@ -109,6 +119,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i374.FoodCategoryRepo>(
         () => _i798.FoodCategoryImpl(gh<_i342.FoodCategoryApi>()));
+    gh.factory<_i805.FinishTodayRepo>(
+        () => _i21.FinishDataImpl(finishDataApi: gh<_i629.FinishDataApi>()));
+    gh.factory<_i1016.FinishDayCubit>(
+        () => _i1016.FinishDayCubit(gh<_i805.FinishTodayRepo>()));
     gh.factory<_i219.AuthRepository>(() => _i721.AuthRepoImpl(
           gh<_i367.AuthApi>(),
           gh<_i550.Storage>(),
