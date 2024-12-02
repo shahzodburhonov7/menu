@@ -11,4 +11,7 @@ class FinishDataApi {
   Future<Response> finishToday() async {
     return await dio.post(Constants.apiFinalDay);
   }
+  Future<Response> todayCashier() async {
+    return await dio.post(Constants.apiFinishCashier);
+  }
 }

@@ -1,8 +1,12 @@
 import 'package:WaiterPro/common/base/base_page.dart';
 import 'package:WaiterPro/common/colors/app_colors.dart';
+import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
+import 'package:WaiterPro/common/widgets/common_toast.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:WaiterPro/features/finish_day/cubit/finish_day_cubit.dart';
 import 'package:WaiterPro/features/finish_day/cubit/finish_day_state.dart';
+import 'package:WaiterPro/features/finish_day/widget/cashier_page.dart';
 import 'package:WaiterPro/gen/assets.gen.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -16,8 +20,31 @@ class FinishDayPage
   const FinishDayPage({super.key});
 
   @override
+  void listener(BuildContext context, FinishDayListenable state) {
+    switch (state.effect) {
+      case null:
+        break;
+      case FinishEffect.error:
+        CommonToast.snackBar(
+          context,
+          message: "xato",
+        );
+      case FinishEffect.errorCashier:
+        CommonToast.snackBar(
+          context,
+          message: "xato",
+        );
+
+    }
+  }
+
+  @override
   void init(BuildContext context) {
-    context.read<FinishDayCubit>().finishToday();
+    if (USER_TYPE == Constants.kassir) {
+      context.read<FinishDayCubit>().todayFinish();
+    } else if (USER_TYPE == Constants.ofitsant) {
+      context.read<FinishDayCubit>().finishToday();
+    }
     super.init(context);
   }
 
@@ -31,50 +58,109 @@ class FinishDayPage
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-          onTap: (){
+          onTap: () {
             context.router.pop();
           },
           child: Padding(
             padding: REdgeInsets.all(10.0),
             child: Assets.icons.back.svg(),
-
           ),
         ),
       ),
-      body: state.loading
-          ? Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              child: Padding(
+      body: SingleChildScrollView(
+        child: state.loading
+            ? Center(child: CircularProgressIndicator())
+            : Padding(
                 padding: REdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    Padding(
-                      padding: REdgeInsets.symmetric(vertical: 10),
-                      child: Card(
-                        color: Colors.white,
-                        child: Padding(
-                          padding: REdgeInsets.all(24.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  "Sana".s(20).w(500).c(AppColors.textFinal),
-                                  Text(
-                                    formatDate(
-                                      "${state.finishToday!.sana!}",
+                    if (USER_TYPE == Constants.kassir)
+                      state.cashLoading
+                          ? Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : CashierPage(
+                              todayDate:
+                                  state.cashierFinish!.sana.toString(),
+                              orderNumber:
+                                  state.cashierFinish!.orders_count.toString(),
+                              delivery:
+                                  state.cashierFinish!.delivery.toString(),
+                              salary:
+                                  state.cashierFinish!.total_price.toString(),
+                              cashier: state.cashierFinish!.cashier.toString(),
+                            )
+                    else if (USER_TYPE == Constants.ofitsant)
+                      Padding(
+                        padding: REdgeInsets.symmetric(vertical: 10),
+                        child: Card(
+                          color: Colors.white,
+                          child: Padding(
+                            padding: REdgeInsets.all(24.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    "Sana".s(20).w(500).c(AppColors.textFinal),
+                                    Text(
+                                      formatDate(
+                                        "${state.finishToday!.sana!}",
+                                      ),
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 12),
+                                  child: Row(
+                                    children: List.generate(
+                                      50,
+                                      (index) => Expanded(
+                                        child: Container(
+                                          height: 0.5,
+                                          color: index % 2 == 0
+                                              ? Colors.grey
+                                              : Colors.transparent,
+                                        ),
+                                      ),
                                     ),
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500),
-                                  )
-                                ],
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 12),
-                                child: Row(
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    "Xizmatlar soni"
+                                        .s(18.sp)
+                                        .w(500)
+                                        .c(AppColors.textFinal),
+                                    "${state.finishToday!.orders!}"
+                                        .s(20.sp)
+                                        .w(500)
+                                  ],
+                                ),
+                                Padding(
+                                  padding: REdgeInsets.symmetric(vertical: 12),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      "Xizmat uchun foiz"
+                                          .s(18.sp)
+                                          .w(500)
+                                          .c(AppColors.textFinal),
+                                      "${state.finishToday!.percentage_for!}%"
+                                          .s(20)
+                                          .w(500)
+                                    ],
+                                  ),
+                                ),
+                                Row(
                                   children: List.generate(
                                     50,
                                     (index) => Expanded(
@@ -87,104 +173,66 @@ class FinishDayPage
                                     ),
                                   ),
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  "Xizmatlar soni"
-                                      .s(18.sp)
-                                      .w(500)
-                                      .c(AppColors.textFinal),
-                                  "${state.finishToday!.orders!}".s(20).w(500)
-                                ],
-                              ),
-                              Padding(
-                                padding: REdgeInsets.symmetric(vertical: 12),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    "Xizmat uchun foiz"
-                                        .s(18.sp)
-                                        .w(500)
-                                        .c(AppColors.textFinal),
-                                    "${state.finishToday!.percentage_for!}%"
-                                        .s(20)
-                                        .w(500)
-                                  ],
-                                ),
-                              ),
-                              Row(
-                                children: List.generate(
-                                  50,
-                                  (index) => Expanded(
-                                    child: Container(
-                                      height: 0.5,
-                                      color: index % 2 == 0
-                                          ? Colors.grey
-                                          : Colors.transparent,
-                                    ),
+                                Padding(
+                                  padding: REdgeInsets.symmetric(vertical: 12),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      "Summa"
+                                          .s(20)
+                                          .w(500)
+                                          .c(AppColors.textFinal),
+                                      Text(
+                                        formatCurrency(
+                                            "${state.finishToday!.total_price!} UZS"),
+                                        style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: REdgeInsets.symmetric(vertical: 12),
-                                child: Row(
+                                Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    "Summa".s(20).w(500).c(AppColors.textFinal),
+                                    "KPI".s(20).w(500).c(AppColors.textFinal),
                                     Text(
                                       formatCurrency(
-                                          "${state.finishToday!.total_price!} UZS"),
+                                          "${state.finishToday!.ofitsant_kpi!} UZS"),
                                       style: TextStyle(
                                           fontSize: 20.sp,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ],
                                 ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  "KPI".s(20).w(500).c(AppColors.textFinal),
-                                  Text(
-                                    formatCurrency(
-                                        "${state.finishToday!.ofitsant_kpi!} UZS"),
-                                    style: TextStyle(
-                                        fontSize: 20.sp,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 12.h),
-                              Row(
-                                children: List.generate(
-                                  50,
-                                  (index) => Expanded(
-                                    child: Container(
-                                      height: 0.5,
-                                      color: index % 2 == 0
-                                          ? Colors.grey
-                                          : Colors.transparent,
+                                SizedBox(height: 12.h),
+                                Row(
+                                  children: List.generate(
+                                    50,
+                                    (index) => Expanded(
+                                      child: Container(
+                                        height: 0.5,
+                                        color: index % 2 == 0
+                                            ? Colors.grey
+                                            : Colors.transparent,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                              )
-                            ],
+                                SizedBox(
+                                  height: 20.h,
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    )
+                      )
                   ],
                 ),
               ),
-            ),
+      ),
     );
   }
 

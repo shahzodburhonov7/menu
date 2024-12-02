@@ -1,3 +1,6 @@
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/common/widgets/common_toast.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,34 @@ import 'package:WaiterPro/gen/assets.gen.dart';
 @RoutePage()
 class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
   const HomePage({super.key});
+
+  @override
+  void listener(BuildContext context, HomeListenable state) {
+    switch (state.effect) {
+      case null:
+        break;
+
+      case TableEffect.homeSuccess:
+        context.router.push(
+          FinishDayRoute(),
+        );
+      case TableEffect.homeError:
+        CommonToast.snackBar(
+          context,
+          message: "Siz xali kuni yakunlay olmaysiz buyurtmani tasdiqlang",
+        );
+      case TableEffect.finishToday:
+        context.router.push(
+          FinishDayRoute(),
+        );
+      case TableEffect.finishTodayError:
+      CommonToast.snackBar(
+        context,
+        message: "Siz xali kuni yakunlay olmaysiz buyurtmani tasdiqlang",
+      );
+    }
+    super.listener(context, state);
+  }
 
   @override
   Widget builder(BuildContext context, HomeBuildable state) {
@@ -39,22 +70,22 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
               SizedBox(height: 28.h),
               GestureDetector(
                 onTap: () {},
-                child: Assets.icons.burger.image(width: 353.w, height: 142.h),
+                child: Assets.icons.burger.image(
+                  width: 353.w,
+                  height: 142.h,
+                ),
               ),
               SizedBox(height: 28.h),
               GestureDetector(
                 onTap: () {
-                  // if (USER_TYPE == Constants.ofitsant) {
-                  //
-                  // } else if (USER_TYPE == Constants.kassir) {
-                  //    cubit.postChose(id: 87);
-                  //   context.router.push(
-                  //     FoodsRoute(),
-                  //   );
-                  // }
-                  context.router.push(
-                    const TableRoute(),
-                  );
+                  if (USER_TYPE == Constants.ofitsant) {
+                    context.router.push(TableRoute());
+                  } else if (USER_TYPE == Constants.kassir) {
+                    cubit.tableCreate();
+                    context.router.push(
+                      FoodsRoute(),
+                    );
+                  }
                 },
                 child: Container(
                   width: 344.w,
@@ -96,7 +127,14 @@ class HomePage extends BasePage<HomeCubit, HomeBuildable, HomeListenable> {
               ),
               GestureDetector(
                 onTap: () {
-                  context.router.push(FinishDayRoute());
+                  if(USER_TYPE==Constants.ofitsant){
+                    cubit.finishToday();
+
+                  }else if(USER_TYPE==Constants.kassir){
+                    cubit.todayFinish();
+
+                  }
+
                 },
                 child: Container(
                   width: 344.w,

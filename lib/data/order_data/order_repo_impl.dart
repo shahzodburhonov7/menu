@@ -1,3 +1,5 @@
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/data/order_data/order_api.dart';
@@ -7,8 +9,9 @@ import 'package:WaiterPro/domain/repo/order/order_repo.dart';
 @Injectable(as: OrderRepo)
 class OrderRepoImpl extends OrderRepo {
   final OrderApi orderApi;
+  final Storage storage;
 
-  OrderRepoImpl(this.orderApi);
+  OrderRepoImpl(this.orderApi, this.storage);
 
   @override
   Future<TableOrder> orderTable({required int number}) async {
@@ -37,6 +40,9 @@ class OrderRepoImpl extends OrderRepo {
     await orderApi.orderConfirm(
       orderId: orderId,
     );
+    if (USER_TYPE == Constants.kassir) {
+     await storage.cardId.delete();
+    }
   }
 
   @override

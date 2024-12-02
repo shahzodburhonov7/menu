@@ -18,7 +18,6 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
   }
 
-
   void remove({required int quantity, required int itemId}) async {
     await callable(
       future: orderRepo.quantityUpdate(
@@ -66,9 +65,7 @@ class StoreCubit extends BaseCubit<StoreBuildable, StoreListenable> {
     callable(
       future: orderRepo.orderConfirm(orderId: orderId),
       buildOnStart: () => buildable.copyWith(confirmLoading: true),
-      buildOnData: (d) => buildable.copyWith(
-        confirmLoading: false,
-      ),
+      buildOnData: (d) => buildable.copyWith(confirmLoading: false),
       buildOnError: (e) => buildable.copyWith(confirmLoading: false),
     );
   }

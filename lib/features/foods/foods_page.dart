@@ -1,3 +1,5 @@
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +25,19 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
   @override
   void init(BuildContext context) {
     context.read<FoodsCubit>().getCategory(page: 1);
-    context.read<FoodsCubit>().getAllTable();
-    context
-        .read<FoodsCubit>()
-        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    if (USER_TYPE == Constants.ofitsant) {
+      context.read<FoodsCubit>().getAllTable();
+    }
+    try {
+      context.read<FoodsCubit>().tableOrder(
+            number: context.read<FoodsCubit>().storage.cardId.call()!,
+          );
+    } catch (e) {
+      print("Xatolik: $e");
+    }
 
     debugPrint("assssasssssssssssssssssssssssssssss ");
+
     super.init(context);
   }
 

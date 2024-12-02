@@ -9,12 +9,30 @@ class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {
 
   final TableProcessRepo repo;
 
-
-  void orderDoneList(){
-    callable(future: repo.ordersDoneList(),
-      buildOnStart:()=> buildable.copyWith(loading: true),
-      buildOnData:(d)=> buildable.copyWith(loading: false,orderDoneList: d),
-      buildOnError:(d)=> buildable.copyWith(loading: false),
+  Future<void> confirmList({required int pageNumber}) async {
+    await callable(
+      future: repo.fetchConfirmAll(pageNumber: pageNumber),
+      buildOnStart: () => buildable.copyWith(confirmLoading: true),
+      buildOnData: (d) => buildable.copyWith(confirmLoading: false),
+      buildOnError: (e) => buildable.copyWith(confirmLoading: false),
     );
+  }
+
+  void getAllOrder() {
+    final controller = repo.getLocationController();
+    build((buildable) => buildable.copyWith(locationController: controller));
+  }
+
+  void orderDoneList() {
+    callable(
+      future: repo.ordersDoneList(),
+      buildOnStart: () => buildable.copyWith(loading: true),
+      buildOnData: (d) => buildable.copyWith(loading: false, orderDoneList: d),
+      buildOnError: (d) => buildable.copyWith(loading: false),
+    );
+  }
+
+  int getTotalPages(int count, int pageSize) {
+    return (count / pageSize).ceil();
   }
 }

@@ -31,7 +31,11 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
           message: "Parol yoki email xato",
         );
       case LoginEffect.success:
-        context.router.replaceAll([MainRoute()]);
+        context.router.replaceAll(
+          [
+            MainRoute(),
+          ],
+        );
     }
     super.listener(context, state);
   }
@@ -52,7 +56,18 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
               ),
               Row(
                 children: [
-                  "Hi Welcome".s(30.sp).w(700).c(AppColors.black).tr(),
+                  Flexible(
+                    child: Text(
+                      "Hi Welcome".tr(),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  // "Hi Welcome".s(30.sp).w(700).c(AppColors.black).tr(),
                 ],
               ),
               SizedBox(height: 38.h),
@@ -69,7 +84,8 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                 hint: "Enter your login".tr(),
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.loginError.isNotEmpty) state.loginError.s(14.sp).c(AppColors.validationRed),
+              if (state.loginError.isNotEmpty)
+                state.loginError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 22.h),
               Row(
                 children: [
@@ -85,7 +101,8 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                 background: AppColors.white,
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.passwordError.isNotEmpty) state.passwordError.s(14.sp).c(AppColors.validationRed),
+              if (state.passwordError.isNotEmpty)
+                state.passwordError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 80.h),
               CustomButton(
                 loading: state.loading,

@@ -44,9 +44,6 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
   Widget builder(BuildContext context, StoreBuildable state) {
     final cubit = context.read<StoreCubit>();
 
-    // if (state.loading) {
-    //   return const Center(child: CircularProgressIndicator());
-    // } else {
     return Scaffold(
       appBar: AppBar(
         title: "Cart".s(24.sp).w(600).tr(),
@@ -225,9 +222,12 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
           context
               .read<StoreCubit>()
               .orderConfirm(orderId: state.tableOrder!.id!);
+          // context.read<StoreCubit>().storage.cardId.delete();
           CommonToast.snackBar(context,
               message: "Tastiqlandi", color: Colors.green);
-          context.router.push(MainRoute());
+          context.router.replaceAll(
+            [MainRoute()],
+          );
         },
         text: 'Continue'.tr(),
       ),

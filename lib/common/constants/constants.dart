@@ -23,6 +23,11 @@ class Constants {
   static const apiOrderUpdate = '/common/cart-item/';
   static const apiFoodSearch = '/common/food/list/?search=';
   static const apiFinalDay = '/common/finish-day/';
+  static const apiConfirmList = '/common/order/list/is-not-confirm/';
+  static const apiConfirm = '/common/order/confirm/';
+  static const apiConfirmAll = '/common/order/list/is-confirm/';
+  static const apiTableCr = '/common/create/cart/';
+  static const apiFinishCashier = '/common/cashier-finish-day/';
 
 
   // STOREKEEPER

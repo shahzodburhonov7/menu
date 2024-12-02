@@ -27,4 +27,11 @@ class TableRepoImpl extends TableRepo {
     debugPrint("stol id ${storage.cardId.call()}");
     return response.data;
   }
+
+  @override
+  Future<void> tableCreated() async {
+    final response = await api.tableCreate();
+    await storage.cardId.set(response.data["cart_id"]);
+    return response.data;
+  }
 }

@@ -18,6 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DoneBuildable {
   bool get loading => throw _privateConstructorUsedError;
   List<OrdersDoneList> get orderDoneList => throw _privateConstructorUsedError;
+  bool get confirmLoading => throw _privateConstructorUsedError;
+  List<ConfirmAll?> get confirmAll => throw _privateConstructorUsedError;
+  List<ConfirmPagination?> get confirmAllOrder =>
+      throw _privateConstructorUsedError;
+  int get pageNumber =>
+      throw _privateConstructorUsedError; // Default sahifa raqami 1
+  int get totalPages => throw _privateConstructorUsedError; // Total sahifalar
+  int get currentPage => throw _privateConstructorUsedError; // Total sahifalar
+  int? get count => throw _privateConstructorUsedError; // Ma'lumotlar soni
+  String? get next =>
+      throw _privateConstructorUsedError; // Keyingi sahifa (agar bo'lsa)
+  String? get previous =>
+      throw _privateConstructorUsedError; // Oldingi sahifa (agar bo'lsa)
+  List<Result>? get confirmPagination =>
+      throw _privateConstructorUsedError; // Ma'lumotlar ro'yxati
+  PagingController<int, Result>? get locationController =>
+      throw _privateConstructorUsedError;
+  bool get hasMore => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of DoneBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +51,22 @@ abstract class $DoneBuildableCopyWith<$Res> {
           DoneBuildable value, $Res Function(DoneBuildable) then) =
       _$DoneBuildableCopyWithImpl<$Res, DoneBuildable>;
   @useResult
-  $Res call({bool loading, List<OrdersDoneList> orderDoneList});
+  $Res call(
+      {bool loading,
+      List<OrdersDoneList> orderDoneList,
+      bool confirmLoading,
+      List<ConfirmAll?> confirmAll,
+      List<ConfirmPagination?> confirmAllOrder,
+      int pageNumber,
+      int totalPages,
+      int currentPage,
+      int? count,
+      String? next,
+      String? previous,
+      List<Result>? confirmPagination,
+      PagingController<int, Result>? locationController,
+      bool hasMore,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -52,6 +86,19 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
   $Res call({
     Object? loading = null,
     Object? orderDoneList = null,
+    Object? confirmLoading = null,
+    Object? confirmAll = null,
+    Object? confirmAllOrder = null,
+    Object? pageNumber = null,
+    Object? totalPages = null,
+    Object? currentPage = null,
+    Object? count = freezed,
+    Object? next = freezed,
+    Object? previous = freezed,
+    Object? confirmPagination = freezed,
+    Object? locationController = freezed,
+    Object? hasMore = null,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -62,6 +109,58 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
           ? _value.orderDoneList
           : orderDoneList // ignore: cast_nullable_to_non_nullable
               as List<OrdersDoneList>,
+      confirmLoading: null == confirmLoading
+          ? _value.confirmLoading
+          : confirmLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      confirmAll: null == confirmAll
+          ? _value.confirmAll
+          : confirmAll // ignore: cast_nullable_to_non_nullable
+              as List<ConfirmAll?>,
+      confirmAllOrder: null == confirmAllOrder
+          ? _value.confirmAllOrder
+          : confirmAllOrder // ignore: cast_nullable_to_non_nullable
+              as List<ConfirmPagination?>,
+      pageNumber: null == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      next: freezed == next
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as String?,
+      previous: freezed == previous
+          ? _value.previous
+          : previous // ignore: cast_nullable_to_non_nullable
+              as String?,
+      confirmPagination: freezed == confirmPagination
+          ? _value.confirmPagination
+          : confirmPagination // ignore: cast_nullable_to_non_nullable
+              as List<Result>?,
+      locationController: freezed == locationController
+          ? _value.locationController
+          : locationController // ignore: cast_nullable_to_non_nullable
+              as PagingController<int, Result>?,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -74,7 +173,22 @@ abstract class _$$DoneBuildableImplCopyWith<$Res>
       __$$DoneBuildableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool loading, List<OrdersDoneList> orderDoneList});
+  $Res call(
+      {bool loading,
+      List<OrdersDoneList> orderDoneList,
+      bool confirmLoading,
+      List<ConfirmAll?> confirmAll,
+      List<ConfirmPagination?> confirmAllOrder,
+      int pageNumber,
+      int totalPages,
+      int currentPage,
+      int? count,
+      String? next,
+      String? previous,
+      List<Result>? confirmPagination,
+      PagingController<int, Result>? locationController,
+      bool hasMore,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -92,6 +206,19 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
     Object? orderDoneList = null,
+    Object? confirmLoading = null,
+    Object? confirmAll = null,
+    Object? confirmAllOrder = null,
+    Object? pageNumber = null,
+    Object? totalPages = null,
+    Object? currentPage = null,
+    Object? count = freezed,
+    Object? next = freezed,
+    Object? previous = freezed,
+    Object? confirmPagination = freezed,
+    Object? locationController = freezed,
+    Object? hasMore = null,
+    Object? isLoading = null,
   }) {
     return _then(_$DoneBuildableImpl(
       loading: null == loading
@@ -102,6 +229,58 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
           ? _value._orderDoneList
           : orderDoneList // ignore: cast_nullable_to_non_nullable
               as List<OrdersDoneList>,
+      confirmLoading: null == confirmLoading
+          ? _value.confirmLoading
+          : confirmLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      confirmAll: null == confirmAll
+          ? _value._confirmAll
+          : confirmAll // ignore: cast_nullable_to_non_nullable
+              as List<ConfirmAll?>,
+      confirmAllOrder: null == confirmAllOrder
+          ? _value._confirmAllOrder
+          : confirmAllOrder // ignore: cast_nullable_to_non_nullable
+              as List<ConfirmPagination?>,
+      pageNumber: null == pageNumber
+          ? _value.pageNumber
+          : pageNumber // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalPages: null == totalPages
+          ? _value.totalPages
+          : totalPages // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      count: freezed == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      next: freezed == next
+          ? _value.next
+          : next // ignore: cast_nullable_to_non_nullable
+              as String?,
+      previous: freezed == previous
+          ? _value.previous
+          : previous // ignore: cast_nullable_to_non_nullable
+              as String?,
+      confirmPagination: freezed == confirmPagination
+          ? _value._confirmPagination
+          : confirmPagination // ignore: cast_nullable_to_non_nullable
+              as List<Result>?,
+      locationController: freezed == locationController
+          ? _value.locationController
+          : locationController // ignore: cast_nullable_to_non_nullable
+              as PagingController<int, Result>?,
+      hasMore: null == hasMore
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -111,8 +290,24 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
 class _$DoneBuildableImpl implements _DoneBuildable {
   const _$DoneBuildableImpl(
       {this.loading = false,
-      final List<OrdersDoneList> orderDoneList = const []})
-      : _orderDoneList = orderDoneList;
+      final List<OrdersDoneList> orderDoneList = const [],
+      this.confirmLoading = false,
+      final List<ConfirmAll?> confirmAll = const [],
+      final List<ConfirmPagination?> confirmAllOrder = const [],
+      this.pageNumber = 1,
+      this.totalPages = 1,
+      this.currentPage = 1,
+      this.count,
+      this.next,
+      this.previous,
+      final List<Result>? confirmPagination,
+      this.locationController,
+      this.hasMore = false,
+      this.isLoading = false})
+      : _orderDoneList = orderDoneList,
+        _confirmAll = confirmAll,
+        _confirmAllOrder = confirmAllOrder,
+        _confirmPagination = confirmPagination;
 
   @override
   @JsonKey()
@@ -127,8 +322,72 @@ class _$DoneBuildableImpl implements _DoneBuildable {
   }
 
   @override
+  @JsonKey()
+  final bool confirmLoading;
+  final List<ConfirmAll?> _confirmAll;
+  @override
+  @JsonKey()
+  List<ConfirmAll?> get confirmAll {
+    if (_confirmAll is EqualUnmodifiableListView) return _confirmAll;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_confirmAll);
+  }
+
+  final List<ConfirmPagination?> _confirmAllOrder;
+  @override
+  @JsonKey()
+  List<ConfirmPagination?> get confirmAllOrder {
+    if (_confirmAllOrder is EqualUnmodifiableListView) return _confirmAllOrder;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_confirmAllOrder);
+  }
+
+  @override
+  @JsonKey()
+  final int pageNumber;
+// Default sahifa raqami 1
+  @override
+  @JsonKey()
+  final int totalPages;
+// Total sahifalar
+  @override
+  @JsonKey()
+  final int currentPage;
+// Total sahifalar
+  @override
+  final int? count;
+// Ma'lumotlar soni
+  @override
+  final String? next;
+// Keyingi sahifa (agar bo'lsa)
+  @override
+  final String? previous;
+// Oldingi sahifa (agar bo'lsa)
+  final List<Result>? _confirmPagination;
+// Oldingi sahifa (agar bo'lsa)
+  @override
+  List<Result>? get confirmPagination {
+    final value = _confirmPagination;
+    if (value == null) return null;
+    if (_confirmPagination is EqualUnmodifiableListView)
+      return _confirmPagination;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+// Ma'lumotlar ro'yxati
+  @override
+  final PagingController<int, Result>? locationController;
+  @override
+  @JsonKey()
+  final bool hasMore;
+  @override
+  @JsonKey()
+  final bool isLoading;
+
+  @override
   String toString() {
-    return 'DoneBuildable(loading: $loading, orderDoneList: $orderDoneList)';
+    return 'DoneBuildable(loading: $loading, orderDoneList: $orderDoneList, confirmLoading: $confirmLoading, confirmAll: $confirmAll, confirmAllOrder: $confirmAllOrder, pageNumber: $pageNumber, totalPages: $totalPages, currentPage: $currentPage, count: $count, next: $next, previous: $previous, confirmPagination: $confirmPagination, locationController: $locationController, hasMore: $hasMore, isLoading: $isLoading)';
   }
 
   @override
@@ -138,12 +397,50 @@ class _$DoneBuildableImpl implements _DoneBuildable {
             other is _$DoneBuildableImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
             const DeepCollectionEquality()
-                .equals(other._orderDoneList, _orderDoneList));
+                .equals(other._orderDoneList, _orderDoneList) &&
+            (identical(other.confirmLoading, confirmLoading) ||
+                other.confirmLoading == confirmLoading) &&
+            const DeepCollectionEquality()
+                .equals(other._confirmAll, _confirmAll) &&
+            const DeepCollectionEquality()
+                .equals(other._confirmAllOrder, _confirmAllOrder) &&
+            (identical(other.pageNumber, pageNumber) ||
+                other.pageNumber == pageNumber) &&
+            (identical(other.totalPages, totalPages) ||
+                other.totalPages == totalPages) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.next, next) || other.next == next) &&
+            (identical(other.previous, previous) ||
+                other.previous == previous) &&
+            const DeepCollectionEquality()
+                .equals(other._confirmPagination, _confirmPagination) &&
+            (identical(other.locationController, locationController) ||
+                other.locationController == locationController) &&
+            (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading,
-      const DeepCollectionEquality().hash(_orderDoneList));
+  int get hashCode => Object.hash(
+      runtimeType,
+      loading,
+      const DeepCollectionEquality().hash(_orderDoneList),
+      confirmLoading,
+      const DeepCollectionEquality().hash(_confirmAll),
+      const DeepCollectionEquality().hash(_confirmAllOrder),
+      pageNumber,
+      totalPages,
+      currentPage,
+      count,
+      next,
+      previous,
+      const DeepCollectionEquality().hash(_confirmPagination),
+      locationController,
+      hasMore,
+      isLoading);
 
   /// Create a copy of DoneBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -157,12 +454,51 @@ class _$DoneBuildableImpl implements _DoneBuildable {
 abstract class _DoneBuildable implements DoneBuildable {
   const factory _DoneBuildable(
       {final bool loading,
-      final List<OrdersDoneList> orderDoneList}) = _$DoneBuildableImpl;
+      final List<OrdersDoneList> orderDoneList,
+      final bool confirmLoading,
+      final List<ConfirmAll?> confirmAll,
+      final List<ConfirmPagination?> confirmAllOrder,
+      final int pageNumber,
+      final int totalPages,
+      final int currentPage,
+      final int? count,
+      final String? next,
+      final String? previous,
+      final List<Result>? confirmPagination,
+      final PagingController<int, Result>? locationController,
+      final bool hasMore,
+      final bool isLoading}) = _$DoneBuildableImpl;
 
   @override
   bool get loading;
   @override
   List<OrdersDoneList> get orderDoneList;
+  @override
+  bool get confirmLoading;
+  @override
+  List<ConfirmAll?> get confirmAll;
+  @override
+  List<ConfirmPagination?> get confirmAllOrder;
+  @override
+  int get pageNumber; // Default sahifa raqami 1
+  @override
+  int get totalPages; // Total sahifalar
+  @override
+  int get currentPage; // Total sahifalar
+  @override
+  int? get count; // Ma'lumotlar soni
+  @override
+  String? get next; // Keyingi sahifa (agar bo'lsa)
+  @override
+  String? get previous; // Oldingi sahifa (agar bo'lsa)
+  @override
+  List<Result>? get confirmPagination; // Ma'lumotlar ro'yxati
+  @override
+  PagingController<int, Result>? get locationController;
+  @override
+  bool get hasMore;
+  @override
+  bool get isLoading;
 
   /// Create a copy of DoneBuildable
   /// with the given fields replaced by the non-null parameter values.

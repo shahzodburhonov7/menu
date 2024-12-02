@@ -103,6 +103,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1066.StartRepoImpl(gh<_i550.Storage>()));
     gh.factory<_i361.Dio>(() => networkModule.dio(gh<_i708.AuthInterceptor>()));
     gh.factory<_i935.BasketApi>(() => _i935.BasketApi(gh<_i361.Dio>()));
+    gh.factory<_i629.FinishDataApi>(() => _i629.FinishDataApi(gh<_i361.Dio>()));
     gh.factory<_i342.FoodCategoryApi>(
         () => _i342.FoodCategoryApi(gh<_i361.Dio>()));
     gh.factory<_i1064.OrderApi>(() => _i1064.OrderApi(gh<_i361.Dio>()));
@@ -111,7 +112,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i373.ProductsApi>(() => _i373.ProductsApi(gh<_i361.Dio>()));
     gh.factory<_i718.ProfileApi>(() => _i718.ProfileApi(gh<_i361.Dio>()));
     gh.factory<_i728.TableApi>(() => _i728.TableApi(gh<_i361.Dio>()));
-    gh.factory<_i629.FinishDataApi>(() => _i629.FinishDataApi(gh<_i361.Dio>()));
     gh.factory<_i367.AuthApi>(() => _i367.AuthApi(gh<_i361.Dio>()));
     gh.factory<_i236.TableRepo>(() => _i992.TableRepoImpl(
           gh<_i728.TableApi>(),
@@ -127,15 +127,25 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i367.AuthApi>(),
           gh<_i550.Storage>(),
         ));
-    gh.factory<_i117.HomeCubit>(() => _i117.HomeCubit(gh<_i236.TableRepo>()));
+    gh.factory<_i242.OrderRepo>(() => _i413.OrderRepoImpl(
+          gh<_i1064.OrderApi>(),
+          gh<_i550.Storage>(),
+        ));
+    gh.factory<_i621.StoreCubit>(() => _i621.StoreCubit(
+          gh<_i236.TableRepo>(),
+          gh<_i242.OrderRepo>(),
+          gh<_i550.Storage>(),
+        ));
     gh.factory<_i953.LoginCubit>(
         () => _i953.LoginCubit(gh<_i219.AuthRepository>()));
-    gh.factory<_i242.OrderRepo>(
-        () => _i413.OrderRepoImpl(gh<_i1064.OrderApi>()));
     gh.factory<_i596.TableProcessRepo>(
         () => _i176.OrderProcessImpl(gh<_i591.OrderProcessApi>()));
     gh.factory<_i829.ProfileRepo>(
         () => _i261.ProfileRepoImpl(gh<_i718.ProfileApi>()));
+    gh.factory<_i117.HomeCubit>(() => _i117.HomeCubit(
+          gh<_i236.TableRepo>(),
+          gh<_i805.FinishTodayRepo>(),
+        ));
     gh.factory<_i387.ProductsRepo>(
         () => _i761.ProductsRepoImpl(gh<_i373.ProductsApi>()));
     gh.factory<_i299.ProfileCubit>(
@@ -156,11 +166,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i751.AboutCubit>(() => _i751.AboutCubit(
           gh<_i387.ProductsRepo>(),
-          gh<_i242.OrderRepo>(),
-          gh<_i550.Storage>(),
-        ));
-    gh.factory<_i621.StoreCubit>(() => _i621.StoreCubit(
-          gh<_i236.TableRepo>(),
           gh<_i242.OrderRepo>(),
           gh<_i550.Storage>(),
         ));

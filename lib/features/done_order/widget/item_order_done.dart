@@ -3,34 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:WaiterPro/common/colors/app_colors.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
-import 'package:WaiterPro/common/widgets/custom_button.dart';
-import 'package:WaiterPro/domain/model/table_process/table_process.dart';
+import 'package:WaiterPro/domain/model/order_done_list/order_done_list.dart';
 
-class ItemWidget extends StatelessWidget {
-  ItemWidget({
+class ItemOrderDone extends StatelessWidget {
+  ItemOrderDone({
     super.key,
-    this.cartItems,
+    required this.cartItems,
     this.price,
     this.table,
     required this.onTap,
-    required this.editOnTap,
   });
 
-  final List<CartItem>? cartItems;
+  final List<CartItem> cartItems;
   final String? price;
   final String? table;
   final void Function() onTap;
-  final Function() editOnTap;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         ...List.generate(
-          cartItems!.length,
+          cartItems.length,
               (index) {
             return Padding(
-              padding: REdgeInsets.all(8.0),
+              padding: REdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: [
                   Row(
@@ -40,7 +37,7 @@ class ItemWidget extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
-                              "${cartItems![index].food_image!}",
+                              "${cartItems[index].food_image!}",
                               width: 80.w,
                               height: 80.h,
                               fit: BoxFit.cover,
@@ -55,23 +52,18 @@ class ItemWidget extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            cartItems![index].food_name!.s(14.sp).w(400),
+                            cartItems[index].food_name!.s(14.sp).w(400),
                             SizedBox(height: 4.h),
+                            "Number ${cartItems[index].quantity!}"
+                                .tr()
+                                .toString()
+                                .s(12.sp)
+                                .w(400),
                             Row(
-                              children: [
-                                "Number".s(12.sp).w(400).tr(),
-                                ": ${cartItems![index].quantity!}"
-                                    .toString()
-                                    .s(12.sp)
-                                    .w(400),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 const Spacer(),
                                 Text(
-                                  formatCurrency(cartItems![index].price!),
+                                  formatCurrency(cartItems[index].price!),
                                   style: TextStyle(
                                       fontSize: 16.sp,
                                       fontWeight: FontWeight.w600),
@@ -119,42 +111,17 @@ class ItemWidget extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-          padding: REdgeInsets.symmetric(horizontal: 10, vertical: 28),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomButton(
-                  onTap: editOnTap,
-                  text: "Edit".tr(),
-                  size: 14.sp,
-                  radius: 8,
-                  color: const Color(0xFF2C2C3D),
-                  backgroundColor: Colors.white,
-                  width: 150.w,
-                  height: 44.h),
-              CustomButton(
-                radius: 8,
-                onTap: onTap,
-                text: "Finish".tr(),
-                width: 150.w,
-                size: 14.sp,
-                height: 44.h,
-              ),
-            ],
-          ),
-        ),
+        SizedBox(height: 15.h),
       ],
     );
   }
-
-  String formatCurrency(String input) {
-    final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
-    if (numericPart.isEmpty) return input;
-    final int number = int.parse(numericPart);
-    final formattedNumber =
-    NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
-    final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
-    return "$formattedNumber $currencyPart";
-  }
+}
+String formatCurrency(String input) {
+  final numericPart = input.replaceAll(RegExp(r'[^\d]'), '');
+  if (numericPart.isEmpty) return input;
+  final int number = int.parse(numericPart);
+  final formattedNumber =
+  NumberFormat('#,###', 'en_US').format(number).replaceAll(',', ' ');
+  final currencyPart = input.replaceAll(RegExp(r'\d'), '').trim();
+  return "$formattedNumber $currencyPart";
 }

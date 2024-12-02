@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FinishDayBuildable {
   bool get loading => throw _privateConstructorUsedError;
   FinishToday? get finishToday => throw _privateConstructorUsedError;
+  CashierFinish? get cashierFinish => throw _privateConstructorUsedError;
+  bool get cashLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of FinishDayBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -32,9 +34,14 @@ abstract class $FinishDayBuildableCopyWith<$Res> {
           FinishDayBuildable value, $Res Function(FinishDayBuildable) then) =
       _$FinishDayBuildableCopyWithImpl<$Res, FinishDayBuildable>;
   @useResult
-  $Res call({bool loading, FinishToday? finishToday});
+  $Res call(
+      {bool loading,
+      FinishToday? finishToday,
+      CashierFinish? cashierFinish,
+      bool cashLoading});
 
   $FinishTodayCopyWith<$Res>? get finishToday;
+  $CashierFinishCopyWith<$Res>? get cashierFinish;
 }
 
 /// @nodoc
@@ -54,6 +61,8 @@ class _$FinishDayBuildableCopyWithImpl<$Res, $Val extends FinishDayBuildable>
   $Res call({
     Object? loading = null,
     Object? finishToday = freezed,
+    Object? cashierFinish = freezed,
+    Object? cashLoading = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -64,6 +73,14 @@ class _$FinishDayBuildableCopyWithImpl<$Res, $Val extends FinishDayBuildable>
           ? _value.finishToday
           : finishToday // ignore: cast_nullable_to_non_nullable
               as FinishToday?,
+      cashierFinish: freezed == cashierFinish
+          ? _value.cashierFinish
+          : cashierFinish // ignore: cast_nullable_to_non_nullable
+              as CashierFinish?,
+      cashLoading: null == cashLoading
+          ? _value.cashLoading
+          : cashLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -80,6 +97,20 @@ class _$FinishDayBuildableCopyWithImpl<$Res, $Val extends FinishDayBuildable>
       return _then(_value.copyWith(finishToday: value) as $Val);
     });
   }
+
+  /// Create a copy of FinishDayBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CashierFinishCopyWith<$Res>? get cashierFinish {
+    if (_value.cashierFinish == null) {
+      return null;
+    }
+
+    return $CashierFinishCopyWith<$Res>(_value.cashierFinish!, (value) {
+      return _then(_value.copyWith(cashierFinish: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -90,10 +121,16 @@ abstract class _$$FinishDayBuildableImplCopyWith<$Res>
       __$$FinishDayBuildableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool loading, FinishToday? finishToday});
+  $Res call(
+      {bool loading,
+      FinishToday? finishToday,
+      CashierFinish? cashierFinish,
+      bool cashLoading});
 
   @override
   $FinishTodayCopyWith<$Res>? get finishToday;
+  @override
+  $CashierFinishCopyWith<$Res>? get cashierFinish;
 }
 
 /// @nodoc
@@ -111,6 +148,8 @@ class __$$FinishDayBuildableImplCopyWithImpl<$Res>
   $Res call({
     Object? loading = null,
     Object? finishToday = freezed,
+    Object? cashierFinish = freezed,
+    Object? cashLoading = null,
   }) {
     return _then(_$FinishDayBuildableImpl(
       loading: null == loading
@@ -121,6 +160,14 @@ class __$$FinishDayBuildableImplCopyWithImpl<$Res>
           ? _value.finishToday
           : finishToday // ignore: cast_nullable_to_non_nullable
               as FinishToday?,
+      cashierFinish: freezed == cashierFinish
+          ? _value.cashierFinish
+          : cashierFinish // ignore: cast_nullable_to_non_nullable
+              as CashierFinish?,
+      cashLoading: null == cashLoading
+          ? _value.cashLoading
+          : cashLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -128,17 +175,26 @@ class __$$FinishDayBuildableImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FinishDayBuildableImpl implements _FinishDayBuildable {
-  const _$FinishDayBuildableImpl({this.loading = false, this.finishToday});
+  const _$FinishDayBuildableImpl(
+      {this.loading = false,
+      this.finishToday,
+      this.cashierFinish,
+      this.cashLoading = false});
 
   @override
   @JsonKey()
   final bool loading;
   @override
   final FinishToday? finishToday;
+  @override
+  final CashierFinish? cashierFinish;
+  @override
+  @JsonKey()
+  final bool cashLoading;
 
   @override
   String toString() {
-    return 'FinishDayBuildable(loading: $loading, finishToday: $finishToday)';
+    return 'FinishDayBuildable(loading: $loading, finishToday: $finishToday, cashierFinish: $cashierFinish, cashLoading: $cashLoading)';
   }
 
   @override
@@ -148,11 +204,16 @@ class _$FinishDayBuildableImpl implements _FinishDayBuildable {
             other is _$FinishDayBuildableImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
             (identical(other.finishToday, finishToday) ||
-                other.finishToday == finishToday));
+                other.finishToday == finishToday) &&
+            (identical(other.cashierFinish, cashierFinish) ||
+                other.cashierFinish == cashierFinish) &&
+            (identical(other.cashLoading, cashLoading) ||
+                other.cashLoading == cashLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loading, finishToday);
+  int get hashCode => Object.hash(
+      runtimeType, loading, finishToday, cashierFinish, cashLoading);
 
   /// Create a copy of FinishDayBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -167,12 +228,18 @@ class _$FinishDayBuildableImpl implements _FinishDayBuildable {
 abstract class _FinishDayBuildable implements FinishDayBuildable {
   const factory _FinishDayBuildable(
       {final bool loading,
-      final FinishToday? finishToday}) = _$FinishDayBuildableImpl;
+      final FinishToday? finishToday,
+      final CashierFinish? cashierFinish,
+      final bool cashLoading}) = _$FinishDayBuildableImpl;
 
   @override
   bool get loading;
   @override
   FinishToday? get finishToday;
+  @override
+  CashierFinish? get cashierFinish;
+  @override
+  bool get cashLoading;
 
   /// Create a copy of FinishDayBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -183,13 +250,23 @@ abstract class _FinishDayBuildable implements FinishDayBuildable {
 }
 
 /// @nodoc
-mixin _$FinishDayListenable {}
+mixin _$FinishDayListenable {
+  FinishEffect? get effect => throw _privateConstructorUsedError;
+
+  /// Create a copy of FinishDayListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $FinishDayListenableCopyWith<FinishDayListenable> get copyWith =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $FinishDayListenableCopyWith<$Res> {
   factory $FinishDayListenableCopyWith(
           FinishDayListenable value, $Res Function(FinishDayListenable) then) =
       _$FinishDayListenableCopyWithImpl<$Res, FinishDayListenable>;
+  @useResult
+  $Res call({FinishEffect? effect});
 }
 
 /// @nodoc
@@ -204,13 +281,29 @@ class _$FinishDayListenableCopyWithImpl<$Res, $Val extends FinishDayListenable>
 
   /// Create a copy of FinishDayListenable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? effect = freezed,
+  }) {
+    return _then(_value.copyWith(
+      effect: freezed == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as FinishEffect?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$FinishDayListenableImplCopyWith<$Res> {
+abstract class _$$FinishDayListenableImplCopyWith<$Res>
+    implements $FinishDayListenableCopyWith<$Res> {
   factory _$$FinishDayListenableImplCopyWith(_$FinishDayListenableImpl value,
           $Res Function(_$FinishDayListenableImpl) then) =
       __$$FinishDayListenableImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({FinishEffect? effect});
 }
 
 /// @nodoc
@@ -223,29 +316,65 @@ class __$$FinishDayListenableImplCopyWithImpl<$Res>
 
   /// Create a copy of FinishDayListenable
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? effect = freezed,
+  }) {
+    return _then(_$FinishDayListenableImpl(
+      effect: freezed == effect
+          ? _value.effect
+          : effect // ignore: cast_nullable_to_non_nullable
+              as FinishEffect?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$FinishDayListenableImpl implements _FinishDayListenable {
-  const _$FinishDayListenableImpl();
+  const _$FinishDayListenableImpl({this.effect});
+
+  @override
+  final FinishEffect? effect;
 
   @override
   String toString() {
-    return 'FinishDayListenable()';
+    return 'FinishDayListenable(effect: $effect)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FinishDayListenableImpl);
+            other is _$FinishDayListenableImpl &&
+            (identical(other.effect, effect) || other.effect == effect));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, effect);
+
+  /// Create a copy of FinishDayListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FinishDayListenableImplCopyWith<_$FinishDayListenableImpl> get copyWith =>
+      __$$FinishDayListenableImplCopyWithImpl<_$FinishDayListenableImpl>(
+          this, _$identity);
 }
 
 abstract class _FinishDayListenable implements FinishDayListenable {
-  const factory _FinishDayListenable() = _$FinishDayListenableImpl;
+  const factory _FinishDayListenable({final FinishEffect? effect}) =
+      _$FinishDayListenableImpl;
+
+  @override
+  FinishEffect? get effect;
+
+  /// Create a copy of FinishDayListenable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FinishDayListenableImplCopyWith<_$FinishDayListenableImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

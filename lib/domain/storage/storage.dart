@@ -24,6 +24,7 @@ class Storage {
   BaseStorage<String> get userType => BaseStorage(_box, "usertype");
 
   BaseStorage<int> get cardId => BaseStorage(_box, "cardId");
+  BaseStorage<int> get cardCreate => BaseStorage(_box, "cardCreate");
   BaseStorage<int> get tableNumber => BaseStorage(_box, "tableNumber");
 
   BaseStorage<String> get token => BaseStorage(_box, 'token');

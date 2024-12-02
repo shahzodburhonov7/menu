@@ -21,6 +21,10 @@ class TableApi {
     ));
   }
 
+  Future<Response> tableCreate() async {
+    return await dio.post(Constants.apiTableCr);
+  }
+
   Future<Response> tableId({required int id}) async {
     debugPrint("Debug 4");
     return await dio.post(

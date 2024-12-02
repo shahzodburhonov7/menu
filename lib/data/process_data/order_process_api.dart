@@ -12,6 +12,23 @@ class OrderProcessApi {
     return await dio.get(Constants.apiProcess);
   }
 
+  Future<Response> confirmList() async {
+    return await dio.get(Constants.apiConfirmList);
+  }
+
+  Future<Response> confirmListAll() async {
+    return await dio.get(Constants.apiConfirmAll);
+  }
+
+  Future<Response> confirmPaginationAll({required int pageNumber}) async {
+    return await dio.get(
+      Constants.apiConfirmAll,
+      queryParameters: {
+        'page': pageNumber,
+      },
+    );
+  }
+
   Future<Response> orderDone({required int orderId}) async {
     return await dio.post(
       Constants.apiOrderDone,
@@ -19,6 +36,16 @@ class OrderProcessApi {
         {"order_id": orderId},
       ),
     );
+  }
+
+  Future<Response> orderConfirm({required int orderId}) async {
+    final response = await dio.post(
+      Constants.apiConfirm,
+      data: FormData.fromMap({
+        "order_id": orderId,
+      }),
+    );
+    return response;
   }
 
   Future<Response> orderDoneList() async {

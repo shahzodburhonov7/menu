@@ -26,9 +26,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     DoneRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<DoneRouteArgs>(orElse: () => const DoneRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DonePage(),
+        child: DonePage(key: args.key),
       );
     },
     FinishDayRoute.name: (routeData) {
@@ -161,16 +163,30 @@ class AboutRouteArgs {
 
 /// generated route for
 /// [DonePage]
-class DoneRoute extends PageRouteInfo<void> {
-  const DoneRoute({List<PageRouteInfo>? children})
-      : super(
+class DoneRoute extends PageRouteInfo<DoneRouteArgs> {
+  DoneRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           DoneRoute.name,
+          args: DoneRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'DoneRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<DoneRouteArgs> page = PageInfo<DoneRouteArgs>(name);
+}
+
+class DoneRouteArgs {
+  const DoneRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'DoneRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

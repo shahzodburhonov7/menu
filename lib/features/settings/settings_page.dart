@@ -1,3 +1,5 @@
+import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,7 +40,9 @@ class SettingsPage
                 children: [
                   Assets.icons.bell.svg(),
                   SizedBox(width: 11.w),
-                  'Notifications'.tr().s(12.sp).w(500).c(AppColors.textColor),
+                  'Notifications'.tr().s(12.sp).w(500).c(
+                        AppColors.textColor,
+                      ),
                   const Spacer(),
                   CupertinoSwitch(
                     value: isSwitched,
@@ -62,35 +66,35 @@ class SettingsPage
               ),
             ),
             SizedBox(height: 12.h),
-
             state.isToggled
                 ? const Center()
                 : CustomLanguagesWidget(
                     profileContext: context,
                   ),
             SizedBox(height: 10.h),
-            // GestureDetector(
-            //   onTap: () {
-            //     context.router.push(
-            //       ProductAddRoute(),
-            //     );
-            //   },
-            //   child: CustomContainer(
-            //     child: Row(
-            //       children: [
-            //         Assets.images.box.svg(),
-            //         SizedBox(width: 11.w),
-            //         'Mahsulot qo’shish'
-            //             .tr()
-            //             .s(12.sp)
-            //             .w(500)
-            //             .c(AppColors.textColor),
-            //         const Spacer(),
-            //         Assets.icons.next.svg()
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            if (USER_TYPE == Constants.omborchi)
+              GestureDetector(
+                onTap: () {
+                  context.router.push(
+                    ProductAddRoute(),
+                  );
+                },
+                child: CustomContainer(
+                  child: Row(
+                    children: [
+                      Assets.images.box.svg(),
+                      SizedBox(width: 11.w),
+                      'Mahsulot qo’shish'
+                          .tr()
+                          .s(12.sp)
+                          .w(500)
+                          .c(AppColors.textColor),
+                      const Spacer(),
+                      Assets.icons.next.svg()
+                    ],
+                  ),
+                ),
+              ),
             SizedBox(height: 12.h),
             GestureDetector(
               onTap: () {

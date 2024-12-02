@@ -11,6 +11,26 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
   final TableProcessRepo repo;
   final Storage storage;
 
+
+  void confirmOrder({required int orderId}) async {
+    await callable(
+      future: repo.tableConfirm(tableId: orderId),
+      buildOnStart: () => buildable.copyWith(confirmDoneLoading: true),
+      buildOnData: (d) => buildable.copyWith(confirmDoneLoading: false),
+      buildOnError: (e) => buildable.copyWith(confirmDoneLoading: false),
+    );
+    confirmList(); // Confirm listni qayta chaqirish
+  }
+
+  void confirmList() {
+    callable(
+      future: repo.confirmList(),
+      buildOnStart: () => buildable.copyWith(confirmLoading: true),
+      buildOnData: (d) => buildable.copyWith(confirmLoading: false, confirmAll: d),
+      buildOnError: (e) => buildable.copyWith(confirmLoading: false), // Xatoni modelga bermaslik
+    );
+  }
+
   void processList() {
     debugPrint("salomlar ..");
     callable(

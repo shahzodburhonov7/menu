@@ -17,6 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HomeBuildable {
   bool get postTable => throw _privateConstructorUsedError;
+  bool get postCreate => throw _privateConstructorUsedError;
+  bool get loading => throw _privateConstructorUsedError;
+  FinishToday? get finishToday => throw _privateConstructorUsedError;
+  CashierFinish? get cashierFinish => throw _privateConstructorUsedError;
+  bool get cashLoading => throw _privateConstructorUsedError;
 
   /// Create a copy of HomeBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +36,16 @@ abstract class $HomeBuildableCopyWith<$Res> {
           HomeBuildable value, $Res Function(HomeBuildable) then) =
       _$HomeBuildableCopyWithImpl<$Res, HomeBuildable>;
   @useResult
-  $Res call({bool postTable});
+  $Res call(
+      {bool postTable,
+      bool postCreate,
+      bool loading,
+      FinishToday? finishToday,
+      CashierFinish? cashierFinish,
+      bool cashLoading});
+
+  $FinishTodayCopyWith<$Res>? get finishToday;
+  $CashierFinishCopyWith<$Res>? get cashierFinish;
 }
 
 /// @nodoc
@@ -50,13 +64,66 @@ class _$HomeBuildableCopyWithImpl<$Res, $Val extends HomeBuildable>
   @override
   $Res call({
     Object? postTable = null,
+    Object? postCreate = null,
+    Object? loading = null,
+    Object? finishToday = freezed,
+    Object? cashierFinish = freezed,
+    Object? cashLoading = null,
   }) {
     return _then(_value.copyWith(
       postTable: null == postTable
           ? _value.postTable
           : postTable // ignore: cast_nullable_to_non_nullable
               as bool,
+      postCreate: null == postCreate
+          ? _value.postCreate
+          : postCreate // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      finishToday: freezed == finishToday
+          ? _value.finishToday
+          : finishToday // ignore: cast_nullable_to_non_nullable
+              as FinishToday?,
+      cashierFinish: freezed == cashierFinish
+          ? _value.cashierFinish
+          : cashierFinish // ignore: cast_nullable_to_non_nullable
+              as CashierFinish?,
+      cashLoading: null == cashLoading
+          ? _value.cashLoading
+          : cashLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
+  }
+
+  /// Create a copy of HomeBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FinishTodayCopyWith<$Res>? get finishToday {
+    if (_value.finishToday == null) {
+      return null;
+    }
+
+    return $FinishTodayCopyWith<$Res>(_value.finishToday!, (value) {
+      return _then(_value.copyWith(finishToday: value) as $Val);
+    });
+  }
+
+  /// Create a copy of HomeBuildable
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CashierFinishCopyWith<$Res>? get cashierFinish {
+    if (_value.cashierFinish == null) {
+      return null;
+    }
+
+    return $CashierFinishCopyWith<$Res>(_value.cashierFinish!, (value) {
+      return _then(_value.copyWith(cashierFinish: value) as $Val);
+    });
   }
 }
 
@@ -68,7 +135,18 @@ abstract class _$$HomeBuildableImplCopyWith<$Res>
       __$$HomeBuildableImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool postTable});
+  $Res call(
+      {bool postTable,
+      bool postCreate,
+      bool loading,
+      FinishToday? finishToday,
+      CashierFinish? cashierFinish,
+      bool cashLoading});
+
+  @override
+  $FinishTodayCopyWith<$Res>? get finishToday;
+  @override
+  $CashierFinishCopyWith<$Res>? get cashierFinish;
 }
 
 /// @nodoc
@@ -85,11 +163,36 @@ class __$$HomeBuildableImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? postTable = null,
+    Object? postCreate = null,
+    Object? loading = null,
+    Object? finishToday = freezed,
+    Object? cashierFinish = freezed,
+    Object? cashLoading = null,
   }) {
     return _then(_$HomeBuildableImpl(
       postTable: null == postTable
           ? _value.postTable
           : postTable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      postCreate: null == postCreate
+          ? _value.postCreate
+          : postCreate // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loading: null == loading
+          ? _value.loading
+          : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      finishToday: freezed == finishToday
+          ? _value.finishToday
+          : finishToday // ignore: cast_nullable_to_non_nullable
+              as FinishToday?,
+      cashierFinish: freezed == cashierFinish
+          ? _value.cashierFinish
+          : cashierFinish // ignore: cast_nullable_to_non_nullable
+              as CashierFinish?,
+      cashLoading: null == cashLoading
+          ? _value.cashLoading
+          : cashLoading // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -98,15 +201,34 @@ class __$$HomeBuildableImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$HomeBuildableImpl implements _HomeBuildable {
-  const _$HomeBuildableImpl({this.postTable = false});
+  const _$HomeBuildableImpl(
+      {this.postTable = false,
+      this.postCreate = false,
+      this.loading = false,
+      this.finishToday,
+      this.cashierFinish,
+      this.cashLoading = false});
 
   @override
   @JsonKey()
   final bool postTable;
+  @override
+  @JsonKey()
+  final bool postCreate;
+  @override
+  @JsonKey()
+  final bool loading;
+  @override
+  final FinishToday? finishToday;
+  @override
+  final CashierFinish? cashierFinish;
+  @override
+  @JsonKey()
+  final bool cashLoading;
 
   @override
   String toString() {
-    return 'HomeBuildable(postTable: $postTable)';
+    return 'HomeBuildable(postTable: $postTable, postCreate: $postCreate, loading: $loading, finishToday: $finishToday, cashierFinish: $cashierFinish, cashLoading: $cashLoading)';
   }
 
   @override
@@ -115,11 +237,21 @@ class _$HomeBuildableImpl implements _HomeBuildable {
         (other.runtimeType == runtimeType &&
             other is _$HomeBuildableImpl &&
             (identical(other.postTable, postTable) ||
-                other.postTable == postTable));
+                other.postTable == postTable) &&
+            (identical(other.postCreate, postCreate) ||
+                other.postCreate == postCreate) &&
+            (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.finishToday, finishToday) ||
+                other.finishToday == finishToday) &&
+            (identical(other.cashierFinish, cashierFinish) ||
+                other.cashierFinish == cashierFinish) &&
+            (identical(other.cashLoading, cashLoading) ||
+                other.cashLoading == cashLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, postTable);
+  int get hashCode => Object.hash(runtimeType, postTable, postCreate, loading,
+      finishToday, cashierFinish, cashLoading);
 
   /// Create a copy of HomeBuildable
   /// with the given fields replaced by the non-null parameter values.
@@ -131,10 +263,26 @@ class _$HomeBuildableImpl implements _HomeBuildable {
 }
 
 abstract class _HomeBuildable implements HomeBuildable {
-  const factory _HomeBuildable({final bool postTable}) = _$HomeBuildableImpl;
+  const factory _HomeBuildable(
+      {final bool postTable,
+      final bool postCreate,
+      final bool loading,
+      final FinishToday? finishToday,
+      final CashierFinish? cashierFinish,
+      final bool cashLoading}) = _$HomeBuildableImpl;
 
   @override
   bool get postTable;
+  @override
+  bool get postCreate;
+  @override
+  bool get loading;
+  @override
+  FinishToday? get finishToday;
+  @override
+  CashierFinish? get cashierFinish;
+  @override
+  bool get cashLoading;
 
   /// Create a copy of HomeBuildable
   /// with the given fields replaced by the non-null parameter values.

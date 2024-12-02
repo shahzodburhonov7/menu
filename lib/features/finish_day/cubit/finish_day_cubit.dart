@@ -11,9 +11,22 @@ class FinishDayCubit
 
   void finishToday() {
     callable(
-        future: finishTodayRepo.finishToday(),
-        buildOnStart: () => buildable.copyWith(loading: true),
-        buildOnData: (d) => buildable.copyWith(finishToday: d, loading: false),
-        buildOnError: (e) => buildable.copyWith(loading: false));
+      future: finishTodayRepo.finishToday(),
+      buildOnStart: () => buildable.copyWith(loading: true),
+      buildOnData: (d) => buildable.copyWith(finishToday: d, loading: false),
+      buildOnError: (e) => buildable.copyWith(loading: false),
+      invokeOnError: (error) => FinishDayListenable(effect: FinishEffect.error),
+    );
+  }
+
+  void todayFinish() {
+    callable(
+      future: finishTodayRepo.todayCashier(),
+      buildOnStart: () => buildable.copyWith(cashLoading: true),
+      buildOnData: (d) =>
+          buildable.copyWith(cashierFinish: d, cashLoading: false),
+      buildOnError: (e) => buildable.copyWith(cashLoading: false),
+      invokeOnError: (error) => FinishDayListenable(effect: FinishEffect.errorCashier),
+    );
   }
 }
