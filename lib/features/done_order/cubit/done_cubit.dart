@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/common/base/base_cubit.dart';
 import 'package:WaiterPro/domain/repo/table_process_repo/table_process_repo.dart';
@@ -8,12 +9,19 @@ class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {
   DoneCubit(this.repo) : super(const DoneBuildable());
 
   final TableProcessRepo repo;
+  Future<void> confirmListOrder({required int pageNumber}) async {
+    debugPrint("Fetching page: $pageNumber");
+  }
 
   Future<void> confirmList({required int pageNumber}) async {
+    debugPrint("Fetching page: $pageNumber");
+
     await callable(
       future: repo.fetchConfirmAll(pageNumber: pageNumber),
       buildOnStart: () => buildable.copyWith(confirmLoading: true),
-      buildOnData: (d) => buildable.copyWith(confirmLoading: false),
+      buildOnData: (d) => buildable.copyWith(
+        confirmLoading: false,
+      ),
       buildOnError: (e) => buildable.copyWith(confirmLoading: false),
     );
   }
@@ -21,6 +29,7 @@ class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {
   void getAllOrder() {
     final controller = repo.getLocationController();
     build((buildable) => buildable.copyWith(locationController: controller));
+
   }
 
   void orderDoneList() {

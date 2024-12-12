@@ -1,5 +1,8 @@
 import 'package:WaiterPro/common/constants/constants.dart';
+import 'package:WaiterPro/common/widgets/custom_button.dart';
 import 'package:WaiterPro/domain/storage/storage.dart';
+import 'package:WaiterPro/features/foods/widget/food_all_vegetables.dart';
+import 'package:WaiterPro/features/foods/widget/food_category_vegetables.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +27,11 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
 
   @override
   void init(BuildContext context) {
-    context.read<FoodsCubit>().getCategory(page: 1);
+    if (USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir) {
+      context.read<FoodsCubit>().getCategory(page: 1);
+    } else {
+      context.read<FoodsCubit>().getCategoryVegetables(page: 1);
+    }
     if (USER_TYPE == Constants.ofitsant) {
       context.read<FoodsCubit>().getAllTable();
     }
@@ -89,27 +96,53 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
               SizedBox(height: 10.h),
               "Categories".s(20.sp).w(600).tr(),
               SizedBox(height: 10.h),
-              state.loading
-                  ? const FoodsCategoryShimmer()
-                  : FoodsCategorySuccessfuly(
-                      foodCategoryList: state.foodCategoryList,
-                    ),
+              if (USER_TYPE == Constants.ofitsant ||
+                  USER_TYPE == Constants.kassir)
+                state.loading
+                    ? const FoodsCategoryShimmer()
+                    : FoodsCategorySuccessfully(
+                        foodCategoryList: state.foodCategoryList,
+                      )
+              else
+                state.vegetablesOrderPro
+                    ? const FoodsCategoryShimmer()
+                    : FoodsCategoryVegetablesSuccessfully(
+                        foodCategoryList: state.foodCategoryList,
+                      ),
               SizedBox(height: 12.h),
               "All dishes".s(20.sp).w(600).tr(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-              state.proLoading
-                  ? const FoodsAllShimmer()
-                  : FoodsAllSuccessFully(
-                      foodsPro: state.foodPro,
-                      loadingPro: state.proLoading,
-                    ),
+              if (USER_TYPE == Constants.ofitsant ||
+                  USER_TYPE == Constants.kassir)
+                state.proLoading
+                    ? const FoodsAllShimmer()
+                    : FoodsAllSuccessFully(
+                        foodsPro: state.foodPro,
+                        loadingPro: state.proLoading,
+                      )
+              else
+                state.vegetablesOrder
+                    ? const FoodsAllShimmer()
+                    : FoodAllVegetables(
+                        proAdd: state.vegetablesAll,
+                        loadingAdd: state.vegetablesOrder,
+                      ),
             ],
           ),
         ),
       ),
       bottomSheet: state.tableOrder?.cart_items == null ||
               state.tableOrder!.cart_items!.isEmpty
-          ? const SizedBox.shrink()
+          ? CustomButton(
+              radius: 0,
+              width: double.infinity,
+              onTap: () {
+                context.router.push(
+                  ProductAddRoute(),
+                );
+              },
+              text: "Mahsulot qo’shish",
+            )
           : FoodsBottomSheetWidget(
               tableOrder: state.tableOrder!,
             ),

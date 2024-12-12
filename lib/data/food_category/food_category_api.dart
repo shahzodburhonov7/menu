@@ -10,8 +10,11 @@ class FoodCategoryApi {
   FoodCategoryApi(this.dio);
 
   Future<Response> foodCategory({required int page}) async {
-    return await dio.get(USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir
-        ? "${Constants.apiFoodCategory}$page"
-        : Constants.apiProductCategory);
+    return await dio.get(
+        USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir
+            ? "${Constants.apiFoodCategory}$page"
+            : Constants.apiProductCategory);
   }
+
+
 }

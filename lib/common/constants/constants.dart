@@ -30,6 +30,13 @@ class Constants {
   static const apiFinishCashier = '/common/cashier-finish-day/';
 
 
+  //product
+  static const apiProductList="/product/product/list/";
+  static const apiProductId="/product/product-category/";
+  static const apiProductAdd="/product/product/create/";
+  static const apiProductInfo="/product/product/";
+
+
   // STOREKEEPER
   static const apiProductCategory = '/product/product-category/list/';
   static const apiProductCategoryId = '/product/product-category/';

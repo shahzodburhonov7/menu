@@ -62,11 +62,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/burger.png
   AssetGenImage get burger => const AssetGenImage('assets/icons/burger.png');
 
+  /// File path: assets/icons/calendar_icon.svg
+  SvgGenImage get calendarIcon =>
+      const SvgGenImage('assets/icons/calendar_icon.svg');
+
   /// File path: assets/icons/cancel.svg
   SvgGenImage get cancel => const SvgGenImage('assets/icons/cancel.svg');
 
   /// File path: assets/icons/card.png
   AssetGenImage get card => const AssetGenImage('assets/icons/card.png');
+
+  /// File path: assets/icons/drow_icon.svg
+  SvgGenImage get drowIcon => const SvgGenImage('assets/icons/drow_icon.svg');
 
   /// File path: assets/icons/eng.png
   AssetGenImage get eng => const AssetGenImage('assets/icons/eng.png');
@@ -107,6 +114,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/person.svg
   SvgGenImage get person => const SvgGenImage('assets/icons/person.svg');
 
+  /// File path: assets/icons/price_icon.svg
+  SvgGenImage get priceIcon => const SvgGenImage('assets/icons/price_icon.svg');
+
   /// File path: assets/icons/rus.svg
   SvgGenImage get rus => const SvgGenImage('assets/icons/rus.svg');
 
@@ -122,8 +132,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/icons/splash.png');
 
+  /// File path: assets/icons/store_count.svg
+  SvgGenImage get storeCount =>
+      const SvgGenImage('assets/icons/store_count.svg');
+
+  /// File path: assets/icons/store_icon.svg
+  SvgGenImage get storeIcon => const SvgGenImage('assets/icons/store_icon.svg');
+
   /// File path: assets/icons/story.svg
   SvgGenImage get story => const SvgGenImage('assets/icons/story.svg');
+
+  /// File path: assets/icons/time_icon.svg
+  SvgGenImage get timeIcon => const SvgGenImage('assets/icons/time_icon.svg');
 
   /// File path: assets/icons/uzb.svg
   SvgGenImage get uzb => const SvgGenImage('assets/icons/uzb.svg');
@@ -147,8 +167,10 @@ class $AssetsIconsGen {
         bannerRed,
         bell,
         burger,
+        calendarIcon,
         cancel,
         card,
+        drowIcon,
         eng,
         exit,
         eyeVisible,
@@ -161,12 +183,16 @@ class $AssetsIconsGen {
         next,
         notifaction,
         person,
+        priceIcon,
         rus,
         search,
         settings,
         slave,
         splash,
+        storeCount,
+        storeIcon,
         story,
+        timeIcon,
         uzb,
         verify
       ];

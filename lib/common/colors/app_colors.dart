@@ -41,6 +41,7 @@ final class AppColors {
 
 //
   static const white = Color(0xFFFFFFFF);
+  static const borderDrown = Color(0xFFF5F6F8);
   static const l162936 = Color(0xFF162936);
   static const l31708E = Color(0xff31708E);
   static const lE5F0FB = Color(0xffE5F0FB);

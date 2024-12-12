@@ -23,9 +23,7 @@ mixin _$ProcessBuildable {
   bool get confirmLoading => throw _privateConstructorUsedError;
   bool get confirmDoneLoading => throw _privateConstructorUsedError;
 
-  /// Create a copy of ProcessBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProcessBuildableCopyWith<ProcessBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,8 +53,6 @@ class _$ProcessBuildableCopyWithImpl<$Res, $Val extends ProcessBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProcessBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -121,8 +117,6 @@ class __$$ProcessBuildableImplCopyWithImpl<$Res>
       $Res Function(_$ProcessBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProcessBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -239,9 +233,7 @@ class _$ProcessBuildableImpl implements _ProcessBuildable {
       confirmLoading,
       confirmDoneLoading);
 
-  /// Create a copy of ProcessBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProcessBuildableImplCopyWith<_$ProcessBuildableImpl> get copyWith =>
@@ -270,11 +262,8 @@ abstract class _ProcessBuildable implements ProcessBuildable {
   bool get confirmLoading;
   @override
   bool get confirmDoneLoading;
-
-  /// Create a copy of ProcessBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProcessBuildableImplCopyWith<_$ProcessBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -298,9 +287,6 @@ class _$ProcessListenableCopyWithImpl<$Res, $Val extends ProcessListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of ProcessListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -317,9 +303,6 @@ class __$$ProcessListenableImplCopyWithImpl<$Res>
   __$$ProcessListenableImplCopyWithImpl(_$ProcessListenableImpl _value,
       $Res Function(_$ProcessListenableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of ProcessListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

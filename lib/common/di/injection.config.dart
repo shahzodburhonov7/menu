@@ -70,6 +70,8 @@ import 'package:WaiterPro/features/start/splash/cubit/splash_cubit.dart'
 import 'package:WaiterPro/features/store/cubit/store_cubit.dart' as _i621;
 import 'package:WaiterPro/features/table_selection/cubit/table_cubit.dart'
     as _i152;
+import 'package:WaiterPro/features/vegetables/cubit/vegetables_cubit.dart'
+    as _i734;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -85,7 +87,6 @@ extension GetItInjectableX on _i174.GetIt {
     final appModule = _$AppModule();
     final networkModule = _$NetworkModule();
     gh.factory<_i618.HistoryCubit>(() => _i618.HistoryCubit());
-    gh.factory<_i834.ProductAddCubit>(() => _i834.ProductAddCubit());
     gh.lazySingleton<_i974.Logger>(() => appModule.logger);
     gh.lazySingleton<_i708.LocaleProvider>(() => _i708.LocaleProvider());
     await gh.lazySingletonAsync<_i550.Storage>(
@@ -164,6 +165,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i236.TableRepo>(),
           gh<_i550.Storage>(),
         ));
+    gh.factory<_i734.VegetablesCubit>(
+        () => _i734.VegetablesCubit(gh<_i387.ProductsRepo>()));
     gh.factory<_i751.AboutCubit>(() => _i751.AboutCubit(
           gh<_i387.ProductsRepo>(),
           gh<_i242.OrderRepo>(),
@@ -171,6 +174,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i232.DoneCubit>(
         () => _i232.DoneCubit(gh<_i596.TableProcessRepo>()));
+    gh.factory<_i834.ProductAddCubit>(
+        () => _i834.ProductAddCubit(gh<_i387.ProductsRepo>()));
     gh.factory<_i174.FoodsCubit>(() => _i174.FoodsCubit(
           gh<_i374.FoodCategoryRepo>(),
           gh<_i387.ProductsRepo>(),

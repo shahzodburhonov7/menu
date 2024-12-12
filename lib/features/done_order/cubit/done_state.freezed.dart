@@ -38,9 +38,7 @@ mixin _$DoneBuildable {
   bool get hasMore => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $DoneBuildableCopyWith<DoneBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,8 +77,6 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -199,8 +195,6 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
       _$DoneBuildableImpl _value, $Res Function(_$DoneBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -442,9 +436,7 @@ class _$DoneBuildableImpl implements _DoneBuildable {
       hasMore,
       isLoading);
 
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$DoneBuildableImplCopyWith<_$DoneBuildableImpl> get copyWith =>
@@ -480,30 +472,27 @@ abstract class _DoneBuildable implements DoneBuildable {
   @override
   List<ConfirmPagination?> get confirmAllOrder;
   @override
-  int get pageNumber; // Default sahifa raqami 1
-  @override
-  int get totalPages; // Total sahifalar
-  @override
-  int get currentPage; // Total sahifalar
-  @override
-  int? get count; // Ma'lumotlar soni
-  @override
-  String? get next; // Keyingi sahifa (agar bo'lsa)
-  @override
-  String? get previous; // Oldingi sahifa (agar bo'lsa)
-  @override
-  List<Result>? get confirmPagination; // Ma'lumotlar ro'yxati
-  @override
+  int get pageNumber;
+  @override // Default sahifa raqami 1
+  int get totalPages;
+  @override // Total sahifalar
+  int get currentPage;
+  @override // Total sahifalar
+  int? get count;
+  @override // Ma'lumotlar soni
+  String? get next;
+  @override // Keyingi sahifa (agar bo'lsa)
+  String? get previous;
+  @override // Oldingi sahifa (agar bo'lsa)
+  List<Result>? get confirmPagination;
+  @override // Ma'lumotlar ro'yxati
   PagingController<int, Result>? get locationController;
   @override
   bool get hasMore;
   @override
   bool get isLoading;
-
-  /// Create a copy of DoneBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$DoneBuildableImplCopyWith<_$DoneBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -527,9 +516,6 @@ class _$DoneListenableCopyWithImpl<$Res, $Val extends DoneListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of DoneListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -546,9 +532,6 @@ class __$$DoneListenableImplCopyWithImpl<$Res>
   __$$DoneListenableImplCopyWithImpl(
       _$DoneListenableImpl _value, $Res Function(_$DoneListenableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of DoneListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

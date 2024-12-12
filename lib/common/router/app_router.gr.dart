@@ -84,9 +84,11 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ProductAddRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductAddRouteArgs>(
+          orElse: () => const ProductAddRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ProductAddPage(),
+        child: ProductAddPage(key: args.key),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -119,6 +121,16 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const TablePage(),
+      );
+    },
+    VegetablesRoute.name: (routeData) {
+      final args = routeData.argsAs<VegetablesRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: VegetablesPage(
+          args.foodId,
+          key: args.key,
+        ),
       );
     },
   };
@@ -346,16 +358,31 @@ class ProcessRouteArgs {
 
 /// generated route for
 /// [ProductAddPage]
-class ProductAddRoute extends PageRouteInfo<void> {
-  const ProductAddRoute({List<PageRouteInfo>? children})
-      : super(
+class ProductAddRoute extends PageRouteInfo<ProductAddRouteArgs> {
+  ProductAddRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           ProductAddRoute.name,
+          args: ProductAddRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'ProductAddRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ProductAddRouteArgs> page =
+      PageInfo<ProductAddRouteArgs>(name);
+}
+
+class ProductAddRouteArgs {
+  const ProductAddRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ProductAddRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -441,4 +468,42 @@ class TableRoute extends PageRouteInfo<void> {
   static const String name = 'TableRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [VegetablesPage]
+class VegetablesRoute extends PageRouteInfo<VegetablesRouteArgs> {
+  VegetablesRoute({
+    required int foodId,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          VegetablesRoute.name,
+          args: VegetablesRouteArgs(
+            foodId: foodId,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'VegetablesRoute';
+
+  static const PageInfo<VegetablesRouteArgs> page =
+      PageInfo<VegetablesRouteArgs>(name);
+}
+
+class VegetablesRouteArgs {
+  const VegetablesRouteArgs({
+    required this.foodId,
+    this.key,
+  });
+
+  final int foodId;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'VegetablesRouteArgs{foodId: $foodId, key: $key}';
+  }
 }

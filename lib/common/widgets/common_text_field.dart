@@ -31,9 +31,11 @@ class CommonTextField extends StatefulWidget {
     this.onTap,
     this.minLines,
     this.maxLines = 1,
-    this.onFocusChange
+    this.onFocusChange,
+    this.borderRadius = 16,
   });
 
+  final double? borderRadius;
   final String? hint;
   final Widget? prefixIcon;
   final Widget? suffix;
@@ -44,7 +46,7 @@ class CommonTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatter;
-  final Color?enabledBorderColor;
+  final Color? enabledBorderColor;
   final Color? background;
   final String? mask;
   final int? maxLength;
@@ -59,7 +61,7 @@ class CommonTextField extends StatefulWidget {
   final GestureTapCallback? onTap;
   final int? maxLines;
   final int? minLines;
-  final void Function(bool)?onFocusChange;
+  final void Function(bool)? onFocusChange;
 
   @override
   State<CommonTextField> createState() => _CommonTextFieldState();
@@ -90,7 +92,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
   @override
   Widget build(BuildContext context) {
     return Focus(
-      onFocusChange:widget.onFocusChange,
+      onFocusChange: widget.onFocusChange,
       child: TextFormField(
         textAlignVertical: TextAlignVertical.center,
         maxLines: widget.maxLines,
@@ -106,18 +108,17 @@ class _CommonTextFieldState extends State<CommonTextField> {
         onChanged: widget.onChanged == null
             ? null
             : (phone) {
-          final number = widget.moneyInput
-              ? phone.replaceAll(' ', '')
-              : maskFormatter.unmaskText(phone);
-          widget.onChanged!(number);
-        },
+                final number = widget.moneyInput
+                    ? phone.replaceAll(' ', '')
+                    : maskFormatter.unmaskText(phone);
+                widget.onChanged!(number);
+              },
         inputFormatters: widget.inputFormatter ??
             [
               widget.moneyInput ? PriceInputFormatter() : maskFormatter,
             ],
         textInputAction: widget.textInputAction,
         decoration: InputDecoration(
-
           filled: true,
           fillColor: widget.background ?? const Color(0xffFAFAFA),
           hintText: widget.hint,
@@ -130,10 +131,10 @@ class _CommonTextFieldState extends State<CommonTextField> {
           prefixIcon: widget.prefixIcon == null
               ? null
               : Align(
-            widthFactor: 1,
-            alignment: Alignment.center,
-            child: widget.prefixIcon,
-          ),
+                  widthFactor: 1,
+                  alignment: Alignment.center,
+                  child: widget.prefixIcon,
+                ),
           hintStyle: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
@@ -146,7 +147,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
             borderSide: BorderSide(
               color: widget.enabledBorderColor ?? Colors.white,
             ),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(widget.borderRadius!),
           ),
           disabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.red),
@@ -164,22 +165,22 @@ class _CommonTextFieldState extends State<CommonTextField> {
           ),
           suffixIcon: widget.obscureText
               ? IconButton(
-            icon: Icon(
-              passwordVisible
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined,
-              color: AppColors.eyeColor,
-            ),
-            onPressed: () {
-              setState(() => passwordVisible = !passwordVisible);
-            },
-          )
+                  icon: Icon(
+                    passwordVisible
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    color: AppColors.eyeColor,
+                  ),
+                  onPressed: () {
+                    setState(() => passwordVisible = !passwordVisible);
+                  },
+                )
               : widget.suffix != null
-              ? IconButton(
-            icon: widget.suffix!,
-            onPressed: widget.suffixPressed,
-          )
-              : null,
+                  ? IconButton(
+                      icon: widget.suffix!,
+                      onPressed: widget.suffixPressed,
+                    )
+                  : null,
         ),
         style: const TextStyle(
           fontSize: 16,
@@ -193,8 +194,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
 
 class PriceInputFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
-      TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     String newText = newValue.text;
 
     newText = newText.replaceAll(RegExp(r'\D'), '');
@@ -221,8 +222,8 @@ class UpperCaseTextFormatter extends TextInputFormatter {
   UpperCaseTextFormatter({this.maxLength});
 
   @override
-  TextEditingValue formatEditUpdate(TextEditingValue oldValue,
-      TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
     if (maxLength != null && newValue.text.length > maxLength!) {
       return oldValue;
     }

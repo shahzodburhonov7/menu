@@ -28,10 +28,7 @@ class FoodsAllSuccessFully extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 10.w,
           mainAxisSpacing: 50.0,
-          mainAxisExtent: MediaQuery
-              .of(context)
-              .size
-              .height * 0.26,
+          mainAxisExtent: MediaQuery.of(context).size.height * 0.26,
         ),
         itemCount: foodsPro.length,
         itemBuilder: (context, index) {
@@ -43,9 +40,12 @@ class FoodsAllSuccessFully extends StatelessWidget {
                 ),
               );
             },
-            name: isUzbek ? "${foodsPro[index].name_uz}" : isRussian
-                ? "${foodsPro[index].name_ru}":"${foodsPro[index].name_en}",
-            price: "${foodsPro[index].price}",
+            name: isUzbek
+                ? "${foodsPro[index].name_uz}"
+                : isRussian
+                    ? "${foodsPro[index].name_ru}"
+                    : "${foodsPro[index].name_en}",
+            price: "${foodsPro[index].price} UZS",
             image: "${foodsPro[index].image}",
             loading: loadingPro,
           );

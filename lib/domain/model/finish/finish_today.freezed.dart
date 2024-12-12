@@ -26,12 +26,8 @@ mixin _$FinishToday {
   int? get total_price => throw _privateConstructorUsedError;
   int? get ofitsant_kpi => throw _privateConstructorUsedError;
 
-  /// Serializes this FinishToday to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of FinishToday
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinishTodayCopyWith<FinishToday> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,8 +56,6 @@ class _$FinishTodayCopyWithImpl<$Res, $Val extends FinishToday>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinishToday
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,8 +114,6 @@ class __$$FinishTodayImplCopyWithImpl<$Res>
       _$FinishTodayImpl _value, $Res Function(_$FinishTodayImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinishToday
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -200,14 +192,12 @@ class _$FinishTodayImpl implements _FinishToday {
                 other.ofitsant_kpi == ofitsant_kpi));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, sana, orders, percentage_for, total_price, ofitsant_kpi);
 
-  /// Create a copy of FinishToday
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinishTodayImplCopyWith<_$FinishTodayImpl> get copyWith =>
@@ -242,11 +232,8 @@ abstract class _FinishToday implements FinishToday {
   int? get total_price;
   @override
   int? get ofitsant_kpi;
-
-  /// Create a copy of FinishToday
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinishTodayImplCopyWith<_$FinishTodayImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

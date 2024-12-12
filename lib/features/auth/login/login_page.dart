@@ -119,6 +119,7 @@ class LoginPage extends BasePage<LoginCubit, LoginBuildable, LoginListenable> {
                   }
                 },
                 text: 'Log in'.tr(),
+
               ),
             ],
           ),

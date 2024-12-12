@@ -60,7 +60,7 @@ class FoodCard extends StatelessWidget {
               ),
               SizedBox(height: 10.h),
               name.s(14.sp).c(AppColors.hintTextColor).w(400),
-              '$price UZS'.s(14.sp).w(600).c(AppColors.black),
+              '$price'.s(14.sp).w(600).c(AppColors.black),
             ],
           ),
         ),

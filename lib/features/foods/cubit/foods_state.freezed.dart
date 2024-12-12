@@ -17,12 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$FoodsBuildable {
   bool get loading => throw _privateConstructorUsedError;
+  bool get loadingVegetables => throw _privateConstructorUsedError;
   bool get proLoading => throw _privateConstructorUsedError;
   bool get pageLoading => throw _privateConstructorUsedError;
   bool get orderLoading => throw _privateConstructorUsedError;
+  bool get vegetablesOrder => throw _privateConstructorUsedError;
+  bool get vegetablesOrderPro => throw _privateConstructorUsedError;
   int get orderCount => throw _privateConstructorUsedError;
   int get pageType => throw _privateConstructorUsedError;
   List<FoodCategory> get foodCategoryList => throw _privateConstructorUsedError;
+  List<VegetablesAll> get vegetablesAll => throw _privateConstructorUsedError;
   int get tableNumber => throw _privateConstructorUsedError;
   TableOrder? get tableOrder => throw _privateConstructorUsedError;
   List<dynamic> get getTableList => throw _privateConstructorUsedError;
@@ -30,9 +34,7 @@ mixin _$FoodsBuildable {
   String get type => throw _privateConstructorUsedError;
   int get cartId => throw _privateConstructorUsedError;
 
-  /// Create a copy of FoodsBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FoodsBuildableCopyWith<FoodsBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,12 +47,16 @@ abstract class $FoodsBuildableCopyWith<$Res> {
   @useResult
   $Res call(
       {bool loading,
+      bool loadingVegetables,
       bool proLoading,
       bool pageLoading,
       bool orderLoading,
+      bool vegetablesOrder,
+      bool vegetablesOrderPro,
       int orderCount,
       int pageType,
       List<FoodCategory> foodCategoryList,
+      List<VegetablesAll> vegetablesAll,
       int tableNumber,
       TableOrder? tableOrder,
       List<dynamic> getTableList,
@@ -71,18 +77,20 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FoodsBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? loading = null,
+    Object? loadingVegetables = null,
     Object? proLoading = null,
     Object? pageLoading = null,
     Object? orderLoading = null,
+    Object? vegetablesOrder = null,
+    Object? vegetablesOrderPro = null,
     Object? orderCount = null,
     Object? pageType = null,
     Object? foodCategoryList = null,
+    Object? vegetablesAll = null,
     Object? tableNumber = null,
     Object? tableOrder = freezed,
     Object? getTableList = null,
@@ -94,6 +102,10 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadingVegetables: null == loadingVegetables
+          ? _value.loadingVegetables
+          : loadingVegetables // ignore: cast_nullable_to_non_nullable
               as bool,
       proLoading: null == proLoading
           ? _value.proLoading
@@ -107,6 +119,14 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      vegetablesOrder: null == vegetablesOrder
+          ? _value.vegetablesOrder
+          : vegetablesOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
+      vegetablesOrderPro: null == vegetablesOrderPro
+          ? _value.vegetablesOrderPro
+          : vegetablesOrderPro // ignore: cast_nullable_to_non_nullable
+              as bool,
       orderCount: null == orderCount
           ? _value.orderCount
           : orderCount // ignore: cast_nullable_to_non_nullable
@@ -119,6 +139,10 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
           ? _value.foodCategoryList
           : foodCategoryList // ignore: cast_nullable_to_non_nullable
               as List<FoodCategory>,
+      vegetablesAll: null == vegetablesAll
+          ? _value.vegetablesAll
+          : vegetablesAll // ignore: cast_nullable_to_non_nullable
+              as List<VegetablesAll>,
       tableNumber: null == tableNumber
           ? _value.tableNumber
           : tableNumber // ignore: cast_nullable_to_non_nullable
@@ -146,8 +170,6 @@ class _$FoodsBuildableCopyWithImpl<$Res, $Val extends FoodsBuildable>
     ) as $Val);
   }
 
-  /// Create a copy of FoodsBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TableOrderCopyWith<$Res>? get tableOrder {
@@ -171,12 +193,16 @@ abstract class _$$FoodsBuildableImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool loading,
+      bool loadingVegetables,
       bool proLoading,
       bool pageLoading,
       bool orderLoading,
+      bool vegetablesOrder,
+      bool vegetablesOrderPro,
       int orderCount,
       int pageType,
       List<FoodCategory> foodCategoryList,
+      List<VegetablesAll> vegetablesAll,
       int tableNumber,
       TableOrder? tableOrder,
       List<dynamic> getTableList,
@@ -196,18 +222,20 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
       _$FoodsBuildableImpl _value, $Res Function(_$FoodsBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FoodsBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? loading = null,
+    Object? loadingVegetables = null,
     Object? proLoading = null,
     Object? pageLoading = null,
     Object? orderLoading = null,
+    Object? vegetablesOrder = null,
+    Object? vegetablesOrderPro = null,
     Object? orderCount = null,
     Object? pageType = null,
     Object? foodCategoryList = null,
+    Object? vegetablesAll = null,
     Object? tableNumber = null,
     Object? tableOrder = freezed,
     Object? getTableList = null,
@@ -219,6 +247,10 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
       loading: null == loading
           ? _value.loading
           : loading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadingVegetables: null == loadingVegetables
+          ? _value.loadingVegetables
+          : loadingVegetables // ignore: cast_nullable_to_non_nullable
               as bool,
       proLoading: null == proLoading
           ? _value.proLoading
@@ -232,6 +264,14 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
               as bool,
+      vegetablesOrder: null == vegetablesOrder
+          ? _value.vegetablesOrder
+          : vegetablesOrder // ignore: cast_nullable_to_non_nullable
+              as bool,
+      vegetablesOrderPro: null == vegetablesOrderPro
+          ? _value.vegetablesOrderPro
+          : vegetablesOrderPro // ignore: cast_nullable_to_non_nullable
+              as bool,
       orderCount: null == orderCount
           ? _value.orderCount
           : orderCount // ignore: cast_nullable_to_non_nullable
@@ -244,6 +284,10 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
           ? _value._foodCategoryList
           : foodCategoryList // ignore: cast_nullable_to_non_nullable
               as List<FoodCategory>,
+      vegetablesAll: null == vegetablesAll
+          ? _value._vegetablesAll
+          : vegetablesAll // ignore: cast_nullable_to_non_nullable
+              as List<VegetablesAll>,
       tableNumber: null == tableNumber
           ? _value.tableNumber
           : tableNumber // ignore: cast_nullable_to_non_nullable
@@ -277,12 +321,16 @@ class __$$FoodsBuildableImplCopyWithImpl<$Res>
 class _$FoodsBuildableImpl implements _FoodsBuildable {
   const _$FoodsBuildableImpl(
       {this.loading = false,
+      this.loadingVegetables = false,
       this.proLoading = false,
       this.pageLoading = false,
       this.orderLoading = false,
+      this.vegetablesOrder = false,
+      this.vegetablesOrderPro = false,
       this.orderCount = 0,
       this.pageType = 0,
       final List<FoodCategory> foodCategoryList = const [],
+      final List<VegetablesAll> vegetablesAll = const [],
       this.tableNumber = 0,
       this.tableOrder,
       final List<dynamic> getTableList = const [],
@@ -290,12 +338,16 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
       this.type = "",
       this.cartId = 0})
       : _foodCategoryList = foodCategoryList,
+        _vegetablesAll = vegetablesAll,
         _getTableList = getTableList,
         _foodPro = foodPro;
 
   @override
   @JsonKey()
   final bool loading;
+  @override
+  @JsonKey()
+  final bool loadingVegetables;
   @override
   @JsonKey()
   final bool proLoading;
@@ -305,6 +357,12 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
   @override
   @JsonKey()
   final bool orderLoading;
+  @override
+  @JsonKey()
+  final bool vegetablesOrder;
+  @override
+  @JsonKey()
+  final bool vegetablesOrderPro;
   @override
   @JsonKey()
   final int orderCount;
@@ -319,6 +377,15 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
       return _foodCategoryList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_foodCategoryList);
+  }
+
+  final List<VegetablesAll> _vegetablesAll;
+  @override
+  @JsonKey()
+  List<VegetablesAll> get vegetablesAll {
+    if (_vegetablesAll is EqualUnmodifiableListView) return _vegetablesAll;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_vegetablesAll);
   }
 
   @override
@@ -353,7 +420,7 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
 
   @override
   String toString() {
-    return 'FoodsBuildable(loading: $loading, proLoading: $proLoading, pageLoading: $pageLoading, orderLoading: $orderLoading, orderCount: $orderCount, pageType: $pageType, foodCategoryList: $foodCategoryList, tableNumber: $tableNumber, tableOrder: $tableOrder, getTableList: $getTableList, foodPro: $foodPro, type: $type, cartId: $cartId)';
+    return 'FoodsBuildable(loading: $loading, loadingVegetables: $loadingVegetables, proLoading: $proLoading, pageLoading: $pageLoading, orderLoading: $orderLoading, vegetablesOrder: $vegetablesOrder, vegetablesOrderPro: $vegetablesOrderPro, orderCount: $orderCount, pageType: $pageType, foodCategoryList: $foodCategoryList, vegetablesAll: $vegetablesAll, tableNumber: $tableNumber, tableOrder: $tableOrder, getTableList: $getTableList, foodPro: $foodPro, type: $type, cartId: $cartId)';
   }
 
   @override
@@ -362,18 +429,26 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
         (other.runtimeType == runtimeType &&
             other is _$FoodsBuildableImpl &&
             (identical(other.loading, loading) || other.loading == loading) &&
+            (identical(other.loadingVegetables, loadingVegetables) ||
+                other.loadingVegetables == loadingVegetables) &&
             (identical(other.proLoading, proLoading) ||
                 other.proLoading == proLoading) &&
             (identical(other.pageLoading, pageLoading) ||
                 other.pageLoading == pageLoading) &&
             (identical(other.orderLoading, orderLoading) ||
                 other.orderLoading == orderLoading) &&
+            (identical(other.vegetablesOrder, vegetablesOrder) ||
+                other.vegetablesOrder == vegetablesOrder) &&
+            (identical(other.vegetablesOrderPro, vegetablesOrderPro) ||
+                other.vegetablesOrderPro == vegetablesOrderPro) &&
             (identical(other.orderCount, orderCount) ||
                 other.orderCount == orderCount) &&
             (identical(other.pageType, pageType) ||
                 other.pageType == pageType) &&
             const DeepCollectionEquality()
                 .equals(other._foodCategoryList, _foodCategoryList) &&
+            const DeepCollectionEquality()
+                .equals(other._vegetablesAll, _vegetablesAll) &&
             (identical(other.tableNumber, tableNumber) ||
                 other.tableNumber == tableNumber) &&
             (identical(other.tableOrder, tableOrder) ||
@@ -389,12 +464,16 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
   int get hashCode => Object.hash(
       runtimeType,
       loading,
+      loadingVegetables,
       proLoading,
       pageLoading,
       orderLoading,
+      vegetablesOrder,
+      vegetablesOrderPro,
       orderCount,
       pageType,
       const DeepCollectionEquality().hash(_foodCategoryList),
+      const DeepCollectionEquality().hash(_vegetablesAll),
       tableNumber,
       tableOrder,
       const DeepCollectionEquality().hash(_getTableList),
@@ -402,9 +481,7 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
       type,
       cartId);
 
-  /// Create a copy of FoodsBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FoodsBuildableImplCopyWith<_$FoodsBuildableImpl> get copyWith =>
@@ -415,12 +492,16 @@ class _$FoodsBuildableImpl implements _FoodsBuildable {
 abstract class _FoodsBuildable implements FoodsBuildable {
   const factory _FoodsBuildable(
       {final bool loading,
+      final bool loadingVegetables,
       final bool proLoading,
       final bool pageLoading,
       final bool orderLoading,
+      final bool vegetablesOrder,
+      final bool vegetablesOrderPro,
       final int orderCount,
       final int pageType,
       final List<FoodCategory> foodCategoryList,
+      final List<VegetablesAll> vegetablesAll,
       final int tableNumber,
       final TableOrder? tableOrder,
       final List<dynamic> getTableList,
@@ -431,17 +512,25 @@ abstract class _FoodsBuildable implements FoodsBuildable {
   @override
   bool get loading;
   @override
+  bool get loadingVegetables;
+  @override
   bool get proLoading;
   @override
   bool get pageLoading;
   @override
   bool get orderLoading;
   @override
+  bool get vegetablesOrder;
+  @override
+  bool get vegetablesOrderPro;
+  @override
   int get orderCount;
   @override
   int get pageType;
   @override
   List<FoodCategory> get foodCategoryList;
+  @override
+  List<VegetablesAll> get vegetablesAll;
   @override
   int get tableNumber;
   @override
@@ -454,11 +543,8 @@ abstract class _FoodsBuildable implements FoodsBuildable {
   String get type;
   @override
   int get cartId;
-
-  /// Create a copy of FoodsBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FoodsBuildableImplCopyWith<_$FoodsBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -482,9 +568,6 @@ class _$FoodsListenableCopyWithImpl<$Res, $Val extends FoodsListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of FoodsListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -501,9 +584,6 @@ class __$$FoodsListenableImplCopyWithImpl<$Res>
   __$$FoodsListenableImplCopyWithImpl(
       _$FoodsListenableImpl _value, $Res Function(_$FoodsListenableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of FoodsListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

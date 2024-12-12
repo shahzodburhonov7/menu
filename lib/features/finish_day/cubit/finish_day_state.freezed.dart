@@ -21,9 +21,7 @@ mixin _$FinishDayBuildable {
   CashierFinish? get cashierFinish => throw _privateConstructorUsedError;
   bool get cashLoading => throw _privateConstructorUsedError;
 
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinishDayBuildableCopyWith<FinishDayBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,8 +52,6 @@ class _$FinishDayBuildableCopyWithImpl<$Res, $Val extends FinishDayBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,8 +80,6 @@ class _$FinishDayBuildableCopyWithImpl<$Res, $Val extends FinishDayBuildable>
     ) as $Val);
   }
 
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FinishTodayCopyWith<$Res>? get finishToday {
@@ -98,8 +92,6 @@ class _$FinishDayBuildableCopyWithImpl<$Res, $Val extends FinishDayBuildable>
     });
   }
 
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CashierFinishCopyWith<$Res>? get cashierFinish {
@@ -141,8 +133,6 @@ class __$$FinishDayBuildableImplCopyWithImpl<$Res>
       $Res Function(_$FinishDayBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -215,9 +205,7 @@ class _$FinishDayBuildableImpl implements _FinishDayBuildable {
   int get hashCode => Object.hash(
       runtimeType, loading, finishToday, cashierFinish, cashLoading);
 
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinishDayBuildableImplCopyWith<_$FinishDayBuildableImpl> get copyWith =>
@@ -240,11 +228,8 @@ abstract class _FinishDayBuildable implements FinishDayBuildable {
   CashierFinish? get cashierFinish;
   @override
   bool get cashLoading;
-
-  /// Create a copy of FinishDayBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinishDayBuildableImplCopyWith<_$FinishDayBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -253,9 +238,7 @@ abstract class _FinishDayBuildable implements FinishDayBuildable {
 mixin _$FinishDayListenable {
   FinishEffect? get effect => throw _privateConstructorUsedError;
 
-  /// Create a copy of FinishDayListenable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $FinishDayListenableCopyWith<FinishDayListenable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -279,8 +262,6 @@ class _$FinishDayListenableCopyWithImpl<$Res, $Val extends FinishDayListenable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of FinishDayListenable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -314,8 +295,6 @@ class __$$FinishDayListenableImplCopyWithImpl<$Res>
       $Res Function(_$FinishDayListenableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of FinishDayListenable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -354,9 +333,7 @@ class _$FinishDayListenableImpl implements _FinishDayListenable {
   @override
   int get hashCode => Object.hash(runtimeType, effect);
 
-  /// Create a copy of FinishDayListenable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FinishDayListenableImplCopyWith<_$FinishDayListenableImpl> get copyWith =>
@@ -370,11 +347,8 @@ abstract class _FinishDayListenable implements FinishDayListenable {
 
   @override
   FinishEffect? get effect;
-
-  /// Create a copy of FinishDayListenable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FinishDayListenableImplCopyWith<_$FinishDayListenableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

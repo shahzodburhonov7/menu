@@ -22,9 +22,7 @@ mixin _$AboutBuildable {
   bool get orderLoading => throw _privateConstructorUsedError;
   int get cartId => throw _privateConstructorUsedError;
 
-  /// Create a copy of AboutBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AboutBuildableCopyWith<AboutBuildable> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,8 +53,6 @@ class _$AboutBuildableCopyWithImpl<$Res, $Val extends AboutBuildable>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AboutBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,8 +86,6 @@ class _$AboutBuildableCopyWithImpl<$Res, $Val extends AboutBuildable>
     ) as $Val);
   }
 
-  /// Create a copy of AboutBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FoodInfoCopyWith<$Res>? get foodInfo {
@@ -132,8 +126,6 @@ class __$$AboutBuildableImplCopyWithImpl<$Res>
       _$AboutBuildableImpl _value, $Res Function(_$AboutBuildableImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AboutBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,9 +208,7 @@ class _$AboutBuildableImpl implements _AboutBuildable {
   int get hashCode =>
       Object.hash(runtimeType, loading, foodInfo, count, orderLoading, cartId);
 
-  /// Create a copy of AboutBuildable
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AboutBuildableImplCopyWith<_$AboutBuildableImpl> get copyWith =>
@@ -244,11 +234,8 @@ abstract class _AboutBuildable implements AboutBuildable {
   bool get orderLoading;
   @override
   int get cartId;
-
-  /// Create a copy of AboutBuildable
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AboutBuildableImplCopyWith<_$AboutBuildableImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -272,9 +259,6 @@ class _$AboutListenableCopyWithImpl<$Res, $Val extends AboutListenable>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of AboutListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -291,9 +275,6 @@ class __$$AboutListenableImplCopyWithImpl<$Res>
   __$$AboutListenableImplCopyWithImpl(
       _$AboutListenableImpl _value, $Res Function(_$AboutListenableImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of AboutListenable
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

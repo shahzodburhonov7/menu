@@ -1,4 +1,3 @@
-import 'package:WaiterPro/domain/model/table_order/table_order.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/common/base/base_cubit.dart';
@@ -45,7 +44,6 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
   }
 
   void tableOrder({required int number}) async {
-
     storage.cardId.set(number);
     build((buildable) => buildable.copyWith(cartId: number));
     await callable(
@@ -71,6 +69,16 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
     );
   }
 
+  void getFoodProductsVegetables({required int page}) {
+    callable(
+      future: productRepo.getVegetables(),
+      buildOnStart: () => buildable.copyWith(vegetablesOrder: true),
+      buildOnData: (data) =>
+          buildable.copyWith(vegetablesAll: data, vegetablesOrder: false),
+      buildOnError: (e) => buildable.copyWith(vegetablesOrder: false),
+    );
+  }
+
   void getFoodProductsId({required int id, required int page}) {
     callable(
       future: productRepo.foodCategoryId(id: id, page: page),
@@ -79,6 +87,26 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
           buildable.copyWith(foodPro: data, proLoading: false),
       buildOnError: (e) => buildable.copyWith(proLoading: false),
     );
+  }
+  void getFoodProductsVegetablesId({required int id, required int page}) {
+    callable(
+      future: productRepo.foodCategoryVegetablesId(id: id, page: page),
+      buildOnStart: () => buildable.copyWith(vegetablesOrder: true),
+      buildOnData: (data) =>
+          buildable.copyWith(vegetablesAll: data, vegetablesOrder: false),
+      buildOnError: (e) => buildable.copyWith(vegetablesOrder: false),
+    );
+  }
+
+  void getCategoryVegetables({required int page}) {
+    callable(
+      future: repo.vegetablesCategory(page: page),
+      buildOnStart: () => buildable.copyWith(vegetablesOrderPro: true),
+      buildOnData: (d) =>
+          buildable.copyWith(foodCategoryList: d, vegetablesOrderPro: false),
+      buildOnError: (e) => buildable.copyWith(vegetablesOrderPro: false),
+    );
+    getFoodProductsVegetables(page: page);
   }
 
   void getCategory({required int page}) {

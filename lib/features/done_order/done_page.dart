@@ -22,16 +22,12 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
     if (USER_TYPE == Constants.ofitsant) {
       context.read<DoneCubit>().orderDoneList();
     } else if (USER_TYPE == Constants.kassir) {
-      // context.read<DoneCubit>().confirmList(pageNumber: currentPage);
+      // context.read<DoneCubit>().confirmList(pageNumber: null);
       context.read<DoneCubit>().getAllOrder();
 
     }
 
   }
-
-
-
-
 
   String formatDate(String dateTime) {
     final DateTime parsedDate = DateTime.parse(dateTime);
@@ -111,30 +107,7 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                               controller: state.locationController
 
                           )
-                          // CashierAll(
-                          //   tableNumber: state.confirmPagination![index]
-                          //       .cart!.table_number
-                          //       .toString(),
-                          //   dateTime: formatTime(
-                          //     state.confirmPagination![index].time
-                          //         .toString(),
-                          //   ),
-                          //   dateNumber: formatDate(
-                          //     "${state.confirmPagination![index].date.toString()}",
-                          //   ),
-                          //   waiterName: state.confirmPagination![index]
-                          //       .user_full_name
-                          //       .toString(),
-                          //   priceAll: state
-                          //       .confirmPagination![index].total_price
-                          //       .toString(),
-                          //   carts: state.confirmPagination![index].cart!
-                          //       .cart_items,
-                          //   onTap: () {
-                          //     debugPrint(
-                          //         "========${state.confirmPagination![index].id!}");
-                          //   },
-                          // ),
+                         
                           ),
                     ),
                   )

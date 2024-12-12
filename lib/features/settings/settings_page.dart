@@ -72,30 +72,7 @@ class SettingsPage
                     profileContext: context,
                   ),
             SizedBox(height: 10.h),
-            if (USER_TYPE == Constants.omborchi)
-              GestureDetector(
-                onTap: () {
-                  context.router.push(
-                    ProductAddRoute(),
-                  );
-                },
-                child: CustomContainer(
-                  child: Row(
-                    children: [
-                      Assets.images.box.svg(),
-                      SizedBox(width: 11.w),
-                      'Mahsulot qo’shish'
-                          .tr()
-                          .s(12.sp)
-                          .w(500)
-                          .c(AppColors.textColor),
-                      const Spacer(),
-                      Assets.icons.next.svg()
-                    ],
-                  ),
-                ),
-              ),
-            SizedBox(height: 12.h),
+
             GestureDetector(
               onTap: () {
                 context.router.replaceAll([LoginRoute()]);

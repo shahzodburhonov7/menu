@@ -7,18 +7,20 @@ class SettingsWidget extends StatelessWidget {
   final String title;
   final Widget icon;
   final Widget? trailing;
+  final double? height;
 
   const SettingsWidget({
     super.key,
     required this.title,
     required this.icon,
     this.trailing,
+    this.height=50,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50.h,
+      height: height,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
@@ -32,9 +34,10 @@ class SettingsWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: ListTile(
+      child:
+      ListTile(
         leading: icon,
-        title: title.s(12).w(500),
+        title: title.s(12.sp).w(500),
         trailing: trailing,
       ),
     );

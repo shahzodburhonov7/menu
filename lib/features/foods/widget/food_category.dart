@@ -1,3 +1,4 @@
+import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
@@ -28,7 +29,7 @@ class FoodCategoryWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
-                  image,
+                  "${Constants.baseUrl}${image}",
                   width: 104.w,
                   height: 104.h,
                   fit: BoxFit.cover,
