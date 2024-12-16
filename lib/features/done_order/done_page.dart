@@ -1,6 +1,6 @@
 import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:WaiterPro/domain/storage/storage.dart';
-import 'package:WaiterPro/features/done_order/widget/home_list.dart';
+import 'package:WaiterPro/features/done_order/widget/cashier_all.dart';
 import 'package:WaiterPro/features/done_order/widget/item_order_done.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -14,6 +14,7 @@ import 'package:WaiterPro/features/done_order/cubit/done_state.dart';
 @RoutePage()
 class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
   DonePage({super.key});
+
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -22,11 +23,9 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
     if (USER_TYPE == Constants.ofitsant) {
       context.read<DoneCubit>().orderDoneList();
     } else if (USER_TYPE == Constants.kassir) {
-      // context.read<DoneCubit>().confirmList(pageNumber: null);
-      context.read<DoneCubit>().getAllOrder();
-
+      context.read<DoneCubit>().confirmList(pageNumber: 1);
+      // context.read<DoneCubit>().getAllOrder();
     }
-
   }
 
   String formatDate(String dateTime) {
@@ -44,7 +43,8 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
     }
 
     return Scaffold(
-        body: Column(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             if (USER_TYPE == Constants.ofitsant)
               state.loading
@@ -79,11 +79,9 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                                 Card(
                                   color: const Color(0xffFFFFFF),
                                   child: ItemOrderDone(
-                                    price: state
-                                        .orderDoneList[index].total_price
+                                    price: state.orderDoneList[index].total_price
                                         .toString(),
-                                    table: state
-                                        .orderDoneList[index].cart!.table
+                                    table: state.orderDoneList[index].cart!.table
                                         .toString(),
                                     cartItems: state
                                         .orderDoneList[index].cart!.cart_items!,
@@ -97,23 +95,51 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                       ],
                     )
             else if (USER_TYPE == Constants.kassir)
-               Padding(
-                    padding: REdgeInsets.symmetric(vertical: 10),
-                    child: Card(
-                      color: Colors.white,
-                      child: Padding(
-                          padding: REdgeInsets.all(24.0),
-                          child: HomeList(
-                              controller: state.locationController
-
-                          )
-                         
-                          ),
-                    ),
-                  )
+              state.confirmLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : Column(
+                      children: [
+                        ...List.generate(
+                          state.confirmPagination!.length,
+                          (index) {
+                            return Padding(
+                              padding: REdgeInsets.symmetric(vertical: 10),
+                              child: Card(
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: REdgeInsets.all(24.0),
+                                  child: CashierAll(
+                                    tableNumber: state.confirmPagination![index]
+                                        .cart!.table_number
+                                        .toString(),
+                                    dateTime: formatTime(
+                                      state.confirmPagination![index].time
+                                          .toString(),
+                                    ),
+                                    dateNumber: formatDate(
+                                      "${state.confirmPagination![index].date.toString()}",
+                                    ),
+                                    waiterName: state
+                                        .confirmPagination![index].user_full_name
+                                        .toString(),
+                                    priceAll: state
+                                        .confirmPagination![index].total_price
+                                        .toString(),
+                                    carts: state.confirmPagination?[index].cart?.cart_items,
+                                    onTap: () {},
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    )
           ],
         ),
+      ),
     );
   }
 }
-

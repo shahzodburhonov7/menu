@@ -34,8 +34,6 @@ class Result with _$Result {
 
   factory Result.fromJson(Map<String, dynamic> json) => _$ResultFromJson(json);
 }
-List<Result> orderListFromJson(dynamic json) =>
-    List<Result>.from(json.map((x) => Result.fromJson(x)));
 
 @freezed
 class Cart with _$Cart {

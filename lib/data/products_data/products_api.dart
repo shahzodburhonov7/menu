@@ -34,6 +34,7 @@ class ProductsApi {
   }) async {
     return await dio.get("${Constants.apiFoodsId}$id");
   }
+
   Future<Response> vegetablesInfo({
     required int id,
   }) async {
@@ -63,6 +64,31 @@ class ProductsApi {
           "product_name": productName,
           'image': await MultipartFile.fromFile(productImage.path),
           "category": categoryId
+        },
+      ),
+    );
+  }
+
+  Future<Response> productAddInfo({
+    required int product,
+    required int weight,
+    required String unit_status,
+    required int cart,
+    required String date,
+    required String time,
+    required int price,
+  }) async {
+    return dio.post(
+      Constants.apiInfoAdd,
+      data: FormData.fromMap(
+        {
+          "product":product,
+          "weight":weight,
+          "unit_status":unit_status,
+          "cart":cart,
+          "date":date,
+          "time":time,
+          "price":price
         },
       ),
     );

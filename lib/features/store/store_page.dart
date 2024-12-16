@@ -1,3 +1,4 @@
+import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class StorePage extends BasePage<StoreCubit, StoreBuildable, StoreListenable> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             child: Image.network(
-                                              "${state.tableOrder!.cart_items![index].food_image!}",
+                                              "${Constants.baseUrl}""${state.tableOrder!.cart_items![index].food_image!}",
                                               width: 80.w,
                                               height: 80.h,
                                               fit: BoxFit.cover,

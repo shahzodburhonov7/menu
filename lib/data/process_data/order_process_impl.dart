@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:WaiterPro/domain/model/confirm_list/confirm_pagination.dart';
 import 'package:WaiterPro/domain/model/confirm_price/confirm_all.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:infinite_scroll_pagination/src/core/paging_controller.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/data/process_data/order_process_api.dart';
 import 'package:WaiterPro/domain/model/order_done_list/order_done_list.dart';
@@ -65,7 +64,8 @@ class OrderProcessImpl extends TableProcessRepo {
       return [ConfirmAll.fromJson(response.data)];
     }
 
-    throw Exception("Expected a List or Map but got ${response.data.runtimeType}");
+    throw Exception(
+        "Expected a List or Map but got ${response.data.runtimeType}");
   }
 
   // OrderProcessImpl sinfida
@@ -78,31 +78,31 @@ class OrderProcessImpl extends TableProcessRepo {
   }
 
   @override
-  Future<List<Result>> fetchConfirmAll({required int pageNumber}) async {
+  Future<ConfirmPagination> fetchConfirmAll({required int pageNumber}) async {
     final response = await orderProcessApi.confirmPaginationAll(pageNumber: pageNumber);
-    return orderListFromJson(response.data);
-  }
+    if(response.statusCode==200){
+      return ConfirmPagination.fromJson(response.data);
+    }else{
+      throw Exception("Failed");
+    }
 
-  @override
-  PagingController<int, Result> getLocationController() {
-    final orderController = PagingController<int, Result>(firstPageKey: 1);
-    orderController.addPageRequestListener((pageKey) async {
-      final locations = await fetchConfirmAll(
-        pageNumber: pageKey
-      );
-      if (locations.length < 8) {
-        orderController.appendLastPage(locations);
-        return;
-      }
-      orderController.appendPage(locations, pageKey + 1);
-    });
-    return orderController;
   }
 
 
+
+// @override
+// PagingController<int, Result> getLocationController() {
+//   final orderController = PagingController<int, Result>(firstPageKey: 1);
+//   orderController.addPageRequestListener((pageKey) async {
+//     final locations = await fetchConfirmAll(
+//       pageNumber: pageKey
+//     );
+//     if (locations.length < 8) {
+//       orderController.appendLastPage(locations);
+//       return;
+//     }
+//     orderController.appendPage(locations, pageKey + 1);
+//   });
+//   return orderController;
+// }
 }
-
-
-
-
-

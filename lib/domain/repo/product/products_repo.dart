@@ -8,14 +8,18 @@ import 'package:WaiterPro/domain/model/vegetables_info/vegetables_info.dart';
 
 abstract class ProductsRepo {
   Future<List<FoodProducts>> getProducts();
+
   Future<List<VegetablesAll>> getVegetables();
 
   Future<List<FoodProducts>> searchProducts({required String query});
-  Future<List<FoodCategory>>getCategoryAll();
+
+  Future<List<FoodCategory>> getCategoryAll();
+
   Future<List<FoodProducts>> foodCategoryId({
     required int page,
     required int id,
   });
+
   Future<List<VegetablesAll>> foodCategoryVegetablesId({
     required int page,
     required int id,
@@ -24,6 +28,7 @@ abstract class ProductsRepo {
   Future<FoodInfo> foodInfo({
     required int id,
   });
+
   Future<VegetablesInfo> vegetablesInfo({
     required int id,
   });
@@ -32,5 +37,15 @@ abstract class ProductsRepo {
     required String productName,
     required File productImage,
     required int categoryId,
+  });
+
+  Future <void> productInfoAdd({
+    required int product,
+    required int weight,
+    required String unit_status,
+    required int cart,
+    required String date,
+    required String time,
+    required int price,
   });
 }

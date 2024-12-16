@@ -8,7 +8,8 @@ import 'package:WaiterPro/features/about_page/cubit/about_state.dart';
 
 @injectable
 class AboutCubit extends BaseCubit<AboutBuildable, AboutListenable> {
-  AboutCubit(this.productRepo, this.orderRepo, this.storage) : super(const AboutBuildable());
+  AboutCubit(this.productRepo, this.orderRepo, this.storage)
+      : super(const AboutBuildable());
   final ProductsRepo productRepo;
   final OrderRepo orderRepo;
   final Storage storage;
@@ -18,7 +19,11 @@ class AboutCubit extends BaseCubit<AboutBuildable, AboutListenable> {
     required int quantity,
   }) {
     callable(
-      future: orderRepo.orderSale(foodId: foodId, quantity: quantity, cartId: storage.cardId.call()!),
+      future: orderRepo.orderSale(
+        foodId: foodId,
+        quantity: quantity,
+        cartId: storage.cardId.call()!,
+      ),
       buildOnStart: () => buildable.copyWith(orderLoading: true),
       buildOnData: (d) => buildable.copyWith(orderLoading: false),
       buildOnError: (e) => buildable.copyWith(orderLoading: false),

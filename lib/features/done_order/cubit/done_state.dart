@@ -20,8 +20,7 @@ class DoneBuildable with _$DoneBuildable {
     int? count, // Ma'lumotlar soni
     String? next, // Keyingi sahifa (agar bo'lsa)
     String? previous, // Oldingi sahifa (agar bo'lsa)
-    List<Result>?  confirmPagination, // Ma'lumotlar ro'yxati
-    PagingController<int, Result>? locationController,
+    List<Result>? confirmPagination, // Ma'lumotlar ro'yxati
     @Default(false) bool hasMore,
     @Default(false) bool isLoading,
 

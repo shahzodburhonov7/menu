@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:WaiterPro/domain/model/vegetables/vegetables_all.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/data/food_category/food_category_api.dart';
 import 'package:WaiterPro/domain/model/category/food_category.dart';

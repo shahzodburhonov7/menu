@@ -161,12 +161,14 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i166.BasketRepo>(
         () => _i982.BasketRepoImpl(gh<_i935.BasketApi>()));
+    gh.factory<_i734.VegetablesCubit>(() => _i734.VegetablesCubit(
+          gh<_i387.ProductsRepo>(),
+          gh<_i550.Storage>(),
+        ));
     gh.factory<_i152.TableCubit>(() => _i152.TableCubit(
           gh<_i236.TableRepo>(),
           gh<_i550.Storage>(),
         ));
-    gh.factory<_i734.VegetablesCubit>(
-        () => _i734.VegetablesCubit(gh<_i387.ProductsRepo>()));
     gh.factory<_i751.AboutCubit>(() => _i751.AboutCubit(
           gh<_i387.ProductsRepo>(),
           gh<_i242.OrderRepo>(),

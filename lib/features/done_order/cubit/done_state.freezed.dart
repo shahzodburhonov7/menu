@@ -33,8 +33,6 @@ mixin _$DoneBuildable {
       throw _privateConstructorUsedError; // Oldingi sahifa (agar bo'lsa)
   List<Result>? get confirmPagination =>
       throw _privateConstructorUsedError; // Ma'lumotlar ro'yxati
-  PagingController<int, Result>? get locationController =>
-      throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
@@ -62,7 +60,6 @@ abstract class $DoneBuildableCopyWith<$Res> {
       String? next,
       String? previous,
       List<Result>? confirmPagination,
-      PagingController<int, Result>? locationController,
       bool hasMore,
       bool isLoading});
 }
@@ -92,7 +89,6 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
     Object? next = freezed,
     Object? previous = freezed,
     Object? confirmPagination = freezed,
-    Object? locationController = freezed,
     Object? hasMore = null,
     Object? isLoading = null,
   }) {
@@ -145,10 +141,6 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
           ? _value.confirmPagination
           : confirmPagination // ignore: cast_nullable_to_non_nullable
               as List<Result>?,
-      locationController: freezed == locationController
-          ? _value.locationController
-          : locationController // ignore: cast_nullable_to_non_nullable
-              as PagingController<int, Result>?,
       hasMore: null == hasMore
           ? _value.hasMore
           : hasMore // ignore: cast_nullable_to_non_nullable
@@ -182,7 +174,6 @@ abstract class _$$DoneBuildableImplCopyWith<$Res>
       String? next,
       String? previous,
       List<Result>? confirmPagination,
-      PagingController<int, Result>? locationController,
       bool hasMore,
       bool isLoading});
 }
@@ -210,7 +201,6 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
     Object? next = freezed,
     Object? previous = freezed,
     Object? confirmPagination = freezed,
-    Object? locationController = freezed,
     Object? hasMore = null,
     Object? isLoading = null,
   }) {
@@ -263,10 +253,6 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
           ? _value._confirmPagination
           : confirmPagination // ignore: cast_nullable_to_non_nullable
               as List<Result>?,
-      locationController: freezed == locationController
-          ? _value.locationController
-          : locationController // ignore: cast_nullable_to_non_nullable
-              as PagingController<int, Result>?,
       hasMore: null == hasMore
           ? _value.hasMore
           : hasMore // ignore: cast_nullable_to_non_nullable
@@ -295,7 +281,6 @@ class _$DoneBuildableImpl implements _DoneBuildable {
       this.next,
       this.previous,
       final List<Result>? confirmPagination,
-      this.locationController,
       this.hasMore = false,
       this.isLoading = false})
       : _orderDoneList = orderDoneList,
@@ -371,8 +356,6 @@ class _$DoneBuildableImpl implements _DoneBuildable {
 
 // Ma'lumotlar ro'yxati
   @override
-  final PagingController<int, Result>? locationController;
-  @override
   @JsonKey()
   final bool hasMore;
   @override
@@ -381,7 +364,7 @@ class _$DoneBuildableImpl implements _DoneBuildable {
 
   @override
   String toString() {
-    return 'DoneBuildable(loading: $loading, orderDoneList: $orderDoneList, confirmLoading: $confirmLoading, confirmAll: $confirmAll, confirmAllOrder: $confirmAllOrder, pageNumber: $pageNumber, totalPages: $totalPages, currentPage: $currentPage, count: $count, next: $next, previous: $previous, confirmPagination: $confirmPagination, locationController: $locationController, hasMore: $hasMore, isLoading: $isLoading)';
+    return 'DoneBuildable(loading: $loading, orderDoneList: $orderDoneList, confirmLoading: $confirmLoading, confirmAll: $confirmAll, confirmAllOrder: $confirmAllOrder, pageNumber: $pageNumber, totalPages: $totalPages, currentPage: $currentPage, count: $count, next: $next, previous: $previous, confirmPagination: $confirmPagination, hasMore: $hasMore, isLoading: $isLoading)';
   }
 
   @override
@@ -410,8 +393,6 @@ class _$DoneBuildableImpl implements _DoneBuildable {
                 other.previous == previous) &&
             const DeepCollectionEquality()
                 .equals(other._confirmPagination, _confirmPagination) &&
-            (identical(other.locationController, locationController) ||
-                other.locationController == locationController) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
@@ -432,7 +413,6 @@ class _$DoneBuildableImpl implements _DoneBuildable {
       next,
       previous,
       const DeepCollectionEquality().hash(_confirmPagination),
-      locationController,
       hasMore,
       isLoading);
 
@@ -457,7 +437,6 @@ abstract class _DoneBuildable implements DoneBuildable {
       final String? next,
       final String? previous,
       final List<Result>? confirmPagination,
-      final PagingController<int, Result>? locationController,
       final bool hasMore,
       final bool isLoading}) = _$DoneBuildableImpl;
 
@@ -486,8 +465,6 @@ abstract class _DoneBuildable implements DoneBuildable {
   @override // Oldingi sahifa (agar bo'lsa)
   List<Result>? get confirmPagination;
   @override // Ma'lumotlar ro'yxati
-  PagingController<int, Result>? get locationController;
-  @override
   bool get hasMore;
   @override
   bool get isLoading;

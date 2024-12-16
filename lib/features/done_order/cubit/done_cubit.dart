@@ -21,16 +21,18 @@ class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {
       buildOnStart: () => buildable.copyWith(confirmLoading: true),
       buildOnData: (d) => buildable.copyWith(
         confirmLoading: false,
+        confirmPagination: [...?buildable.confirmPagination,...?d.results],
+        totalPages: getTotalPages(d.count ??0,10),
+        pageNumber: pageNumber
       ),
       buildOnError: (e) => buildable.copyWith(confirmLoading: false),
     );
   }
 
-  void getAllOrder() {
-    final controller = repo.getLocationController();
-    build((buildable) => buildable.copyWith(locationController: controller));
-
-  }
+  // void getAllOrder() {
+  //   final controller = repo.confirmListAll();
+  //   build((buildable) => buildable.copyWith(confirmAllOrder: controller));
+  // }
 
   void orderDoneList() {
     callable(

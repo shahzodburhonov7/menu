@@ -33,6 +33,7 @@ class LoginCubit extends BaseCubit<LoginBuildable, LoginListenable> {
     }
   }
 
+
   bool validation({required String login, required String password}) {
     if (login.isEmpty || login.length < 3) {
       build(

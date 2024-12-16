@@ -76,8 +76,8 @@ class ProductsRepoImpl extends ProductsRepo {
   }
 
   @override
-  Future<List<VegetablesAll>> foodCategoryVegetablesId (
-      {required int page, required int id}) async{
+  Future<List<VegetablesAll>> foodCategoryVegetablesId(
+      {required int page, required int id}) async {
     final response = await api.foodCategoryId(id: id, page: page);
     return vegetablesAllFromJson(
       jsonEncode(response.data),
@@ -85,12 +85,32 @@ class ProductsRepoImpl extends ProductsRepo {
   }
 
   @override
-  Future<VegetablesInfo> vegetablesInfo({required int id})async {
+  Future<VegetablesInfo> vegetablesInfo({required int id}) async {
     final response = await api.vegetablesInfo(
       id: id,
     );
     return vegetablesInfoFromJson(
       jsonEncode(response.data),
     );
+  }
+
+  @override
+  Future<void> productInfoAdd(
+      {required int product,
+      required int weight,
+      required String unit_status,
+      required int cart,
+      required String date,
+      required String time,
+      required int price}) {
+    final response= api.productAddInfo(
+        product: product,
+        weight: weight,
+        unit_status: unit_status,
+        cart: cart,
+        date: date,
+        time: time,
+        price: price);
+    return response;
   }
 }

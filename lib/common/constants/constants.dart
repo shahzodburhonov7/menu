@@ -35,6 +35,7 @@ class Constants {
   static const apiProductId="/product/product-category/";
   static const apiProductAdd="/product/product/create/";
   static const apiProductInfo="/product/product/";
+  static const apiInfoAdd="/product/cart-item/create/";
 
 
   // STOREKEEPER

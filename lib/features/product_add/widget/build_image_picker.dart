@@ -41,6 +41,6 @@ class BuildImagePickerOptions extends StatelessWidget {
         ],
       ),
     );
-    ;
+
   }
 }
