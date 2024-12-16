@@ -45,7 +45,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'FOOD APP',
             theme: ThemeData(
-              appBarTheme: const AppBarTheme(surfaceTintColor: Colors.white, backgroundColor: Colors.white),
+              appBarTheme: const AppBarTheme(
+                  surfaceTintColor: Colors.white,
+                  backgroundColor: Colors.white),
               scaffoldBackgroundColor: Colors.white,
             ),
             routerConfig: getIt<AppRouter>().config(),
