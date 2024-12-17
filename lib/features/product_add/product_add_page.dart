@@ -31,12 +31,12 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
       case ProductEffect.error:
         CommonToast.snackBar(
           context,
-          message: "xato",
+          message: "Something went wrong".tr(),
         );
       case ProductEffect.success:
         CommonToast.snackBar(
           context,
-          message: "Malumotlar qo'shildi",
+          message: "Information added".tr(),
           color: Colors.green,
         );
     }
@@ -59,7 +59,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
 
     return Scaffold(
       appBar: AppBar(
-        title: "Mahsulot qo’shish".s(22.sp).w(600),
+        title: "Add product".s(22.sp).w(600).tr(),
         centerTitle: true,
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -77,9 +77,9 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              "Yangi mahsulot".s(18.sp).w(600),
+              "New product".s(18.sp).w(600).tr(),
               SizedBox(height: 20.h),
-              "Mahsulot turi".s(14.sp).w(400).c(AppColors.black).tr(),
+              "Product type".s(14.sp).w(400).c(AppColors.black).tr(),
               SizedBox(height: 6.h),
               Container(
                 height: 56.h,
@@ -96,7 +96,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
                     value: state.selectedCategory,
                     dropdownColor: Colors.white,
                     borderRadius: BorderRadius.circular(10),
-                    hint: Text('Taomlar'),
+                    hint: Text('Select').tr(),
                     isExpanded: true,
                     underline: SizedBox(),
                     items: state.foodCategoryList.map((FoodCategory item) {
@@ -114,12 +114,12 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
               if (state.selectedCategoryError != null)
                 state.selectedCategoryError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 12.h),
-              "Mahsulot nomi".s(14.sp).w(400).c(AppColors.black).tr(),
+              "Product name".s(14.sp).w(400).c(AppColors.black).tr(),
               SizedBox(height: 6.h),
               CommonTextField(
                 controller: productName,
                 onChanged: (v) => cubit.clearError(),
-                hint: "Taom",
+                hint: "Select".tr(),
                 background: AppColors.white,
                 enabledBorderColor: AppColors.borderColor,
               ),
@@ -197,7 +197,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
 
                 },
 
-                text: "Saqlash",
+                text: "Save".tr(),
                 radius: 6,
               )
             ],

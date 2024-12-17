@@ -1,132 +1,115 @@
 import 'package:WaiterPro/common/base/base_cubit.dart';
 import 'package:WaiterPro/domain/repo/product/products_repo.dart';
+import 'package:WaiterPro/domain/repo/table/table_repo.dart';
 import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:WaiterPro/features/vegetables/cubit/vegetables_state.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class VegetablesCubit
     extends BaseCubit<VegetablesBuildable, VegetablesListenable> {
-  VegetablesCubit(this.productRepo, this.storage)
+  VegetablesCubit(this.productRepo, this.storage, this.repo)
       : super(const VegetablesBuildable()) {}
   final ProductsRepo productRepo;
   final Storage storage;
+  final TableRepo repo;
 
   void clearError({
-    bool clearQuantity = false,
-    bool clearPrice = false,
-    bool clearDate = false,
-    bool clearTime = false,
+    bool clearPriceError = true,
+    bool clearQuantityError = true,
+    bool clearDateError = true,
+    bool clearTimeError = true,
   }) {
-    build(
-      (buildable) => buildable.copyWith(
-        quantityError: clearQuantity ? "" : buildable.quantityError,
-        priceError: clearPrice ? "" : buildable.priceError,
-        dateError: clearDate ? "" : buildable.dateError,
-        timeError: clearTime ? "" : buildable.timeError,
-      ),
-    );
+    if (clearPriceError) {
+      build((buildable) => buildable.copyWith(priceError: ""));
+    }
+    if (clearQuantityError) {
+      build((buildable) => buildable.copyWith(quantityError: ""));
+    }
+    if (clearDateError) {
+      build((buildable) => buildable.copyWith(dateError: ""));
+    }
+    if (clearTimeError) {
+      build((buildable) => buildable.copyWith(timeError: ""));
+    }
   }
 
   bool validation({
-    required int quantity,
-    required int price,
-    required String date, // Format: dd.MM.yyyy
-    required String time, // Format: hh:mm
+    required String quantity,
+    required String price,
+    required String date,
+    required String time,
   }) {
-    if (quantity <= 0) {
-      build(
-        (buildable) => buildable.copyWith(
-          quantityError: "Son xato: musbat son kiriting",
-        ),
-      );
-      return false;
+    bool isValid = true;
+
+    // Price maydoni uchun validation
+    if (price.isEmpty) {
+      build((buildable) => buildable.copyWith(priceError: 'Price is required'));
+      isValid = false;
+    } else {
+      build((buildable) => buildable.copyWith(priceError: ''));
     }
 
-    if (price <= 0) {
-      build(
-        (buildable) => buildable.copyWith(
-          priceError: "Narx xato: musbat qiymat kiriting",
-        ),
-      );
-      return false;
+    // Quantity maydoni uchun validation
+    if (quantity.isEmpty) {
+      build((buildable) =>
+          buildable.copyWith(quantityError: 'Quantity is required'));
+
+      isValid = false;
+    } else {
+      build((buildable) => buildable.copyWith(quantityError: ''));
     }
 
-    // Sana uchun (date)
-    try {
-      final parsedDate = DateFormat('dd.MM.yyyy').parseStrict(date);
-      final today = DateTime.now();
-      if (parsedDate.isBefore(today)) {
-        build(
-          (buildable) => buildable.copyWith(
-            dateError: "Sana xato: kelajakdagi sanani kiriting",
-          ),
-        );
-        return false;
-      }
-    } catch (e) {
-      build(
-        (buildable) => buildable.copyWith(
-          dateError: "Sana xato: to'g'ri formatda kiriting (dd.MM.yyyy)",
-        ),
-      );
-      return false;
+    // Date maydoni uchun validation
+    if (date.isEmpty) {
+      build((buildable) => buildable.copyWith(dateError: 'Date is required'));
+
+      isValid = false;
+    } else {
+      build((buildable) => buildable.copyWith(dateError: ''));
     }
 
-    // Vaqt uchun (time)
-    final timeParts = time.split(':');
-    if (timeParts.length != 2) {
-      build(
-        (buildable) => buildable.copyWith(
-          timeError: "Vaqt xato: to'g'ri formatda kiriting (hh:mm)",
-        ),
-      );
-      return false;
+    // Time maydoni uchun validation
+    if (time.isEmpty) {
+      build((buildable) => buildable.copyWith(timeError: 'Time is required'));
+
+      isValid = false;
+    } else {
+      build((buildable) => buildable.copyWith(timeError: ''));
     }
 
-    try {
-      final hour = int.parse(timeParts[0]);
-      final minute = int.parse(timeParts[1]);
-      if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
-        build(
-          (buildable) => buildable.copyWith(
-            timeError: "Vaqt xato: soat va daqiqani to'g'ri kiriting",
-          ),
-        );
-        return false;
-      }
-    } catch (e) {
-      build(
-        (buildable) => buildable.copyWith(
-          timeError: "Vaqt xato: faqat raqam kiriting",
-        ),
-      );
-      return false;
-    }
-
-    return true; // Hammasi muvaffaqiyatli o'tdi
+    return isValid;
   }
 
   void changeDropdownValue(String value) {
     build((buildable) => buildable.copyWith(selectedValue: value));
   }
 
-  void addVegetables({
+  Future<void> tableCreate() async {
+    await callable(
+      future: repo.tableCreatedVegetables(),
+      buildOnStart: () => buildable.copyWith(postCreate: true),
+      buildOnData: (d) => buildable.copyWith(postCreate: false),
+      buildOnError: (e) => buildable.copyWith(postCreate: false),
+    );
+  }
+
+  Future<void> addVegetables({
     required int product,
     required int weight,
     required String unit_status,
     required String date,
     required String time,
     required int price,
-  }) {
-    callable(
+  }) async {
+    await tableCreate();
+    await callable(
       future: productRepo.productInfoAdd(
         product: product,
         weight: weight,
         unit_status: unit_status,
-        cart: storage.cardId.call()!,
+        cart: storage.cardCreate.call()!,
         date: date,
         time: time,
         price: price,

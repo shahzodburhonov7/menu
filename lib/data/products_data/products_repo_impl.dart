@@ -103,7 +103,7 @@ class ProductsRepoImpl extends ProductsRepo {
       required String date,
       required String time,
       required int price}) {
-    final response= api.productAddInfo(
+    final response = api.productAddInfo(
         product: product,
         weight: weight,
         unit_status: unit_status,
@@ -113,4 +113,11 @@ class ProductsRepoImpl extends ProductsRepo {
         price: price);
     return response;
   }
+
+  @override
+  Future<List<VegetablesAll>> searchProductsVegetables({required String query})async {
+    final response = await api.productSearch(query: query);
+    return vegetablesAllFromJson(jsonEncode(response.data));
+  }
+
 }

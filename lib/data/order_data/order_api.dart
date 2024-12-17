@@ -14,6 +14,18 @@ class OrderApi {
     );
   }
 
+  Future<Response> orderProduct({required int id}) async {
+    return await dio.get("${Constants.apiOrderProduct}$id/");
+  }
+
+  Future<Response> fetchPaginatedOrders({required int page}) async {
+    return await dio.get(
+      "${Constants.apiFinishPagination}?page=$page",
+    );
+  }
+
+
+
   Future<Response> orderConfirm({required int orderId}) async {
     return await dio.post(
       Constants.apiOrderCreate,
@@ -24,9 +36,22 @@ class OrderApi {
       ),
     );
   }
+  Future<Response> orderConfirmProduct({required int orderId}) async {
+    return await dio.post(
+      Constants.apiProductCreate,
+      data: FormData.fromMap(
+        {
+          "cart": orderId,
+        },
+      ),
+    );
+  }
 
   Future<Response> orderDelete({required String cartDelete}) async {
     return await dio.delete("${Constants.apiCartDelete}$cartDelete/delete/");
+  }
+  Future<Response> orderDeleteProduct({required String cartDelete}) async {
+    return await dio.delete("${Constants.apiProductDelete}$cartDelete/delete/");
   }
 
   Future<Response> orderSales({
@@ -55,6 +80,20 @@ class OrderApi {
       data: FormData.fromMap(
         {
           "quantity ": quantity,
+        },
+      ),
+    );
+  }
+
+  Future<Response> orderProductUpdate({
+    required int weight,
+    required int cart_item_id ,
+  }) async {
+    return await dio.patch(
+      "${Constants.apiProductUpdate}/$cart_item_id/update/",
+      data: FormData.fromMap(
+        {
+          "weight": weight,
         },
       ),
     );

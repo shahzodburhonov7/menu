@@ -1,3 +1,4 @@
+import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +38,7 @@ class ItemOrderDone extends StatelessWidget {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
-                              "${cartItems[index].food_image!}",
+                              "${Constants.baseUrl}${cartItems[index].food_image!}",
                               width: 80.w,
                               height: 80.h,
                               fit: BoxFit.cover,

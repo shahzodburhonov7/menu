@@ -2,7 +2,6 @@ import 'package:WaiterPro/common/router/app_router.dart';
 import 'package:WaiterPro/domain/model/vegetables/vegetables_all.dart';
 import 'package:WaiterPro/features/foods/widget/food_card.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,8 +17,6 @@ class FoodAllVegetables extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isUzbek = context.locale.languageCode == "uz";
-    final bool isRussian = context.locale.languageCode == "ru";
     return Expanded(
       child: GridView.builder(
         scrollDirection: Axis.vertical,

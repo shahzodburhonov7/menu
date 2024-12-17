@@ -1,8 +1,10 @@
 import 'package:WaiterPro/common/colors/app_colors.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
-import 'package:WaiterPro/domain/model/confirm_list/confirm_pagination.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../domain/model/confirm_list/done_list.dart';
 
 class CashierAll extends StatelessWidget {
   CashierAll({
@@ -31,9 +33,9 @@ class CashierAll extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            "Stol raqami".s(20.sp).w(500).c(
+            "Table number".s(20.sp).w(500).c(
               AppColors.textFinal,
-            ),
+            ).tr(),
             "${tableNumber}".s(20.sp).w(500)
           ],
         ),
@@ -86,7 +88,7 @@ class CashierAll extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            "Sana:".s(18.sp).w(500).c(AppColors.textFinal),
+            "Date".s(18.sp).w(500).c(AppColors.textFinal).tr(),
             Text(
               dateNumber,
               style: TextStyle(
@@ -101,7 +103,7 @@ class CashierAll extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            "Vaqt:".s(18.sp).w(500).c(AppColors.textFinal),
+            "time".s(18.sp).w(500).c(AppColors.textFinal).tr(),
             dateTime.s(20.sp).w(500)
           ],
         ),
@@ -142,7 +144,7 @@ class CashierAll extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              "Summa:".s(18.sp).w(500).c(AppColors.textFinal),
+              "Total".s(18.sp).w(500).c(AppColors.textFinal).tr(),
               "${priceAll}".s(20.sp).w(500)
             ],
           ),

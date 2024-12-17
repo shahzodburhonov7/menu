@@ -20,19 +20,18 @@ mixin _$DoneBuildable {
   List<OrdersDoneList> get orderDoneList => throw _privateConstructorUsedError;
   bool get confirmLoading => throw _privateConstructorUsedError;
   List<ConfirmAll?> get confirmAll => throw _privateConstructorUsedError;
-  List<ConfirmPagination?> get confirmAllOrder =>
+  List<DoneList?> get confirmAllOrder => throw _privateConstructorUsedError;
+  List<ProductProgress?> get productProgress =>
       throw _privateConstructorUsedError;
-  int get pageNumber =>
-      throw _privateConstructorUsedError; // Default sahifa raqami 1
-  int get totalPages => throw _privateConstructorUsedError; // Total sahifalar
-  int get currentPage => throw _privateConstructorUsedError; // Total sahifalar
-  int? get count => throw _privateConstructorUsedError; // Ma'lumotlar soni
-  String? get next =>
-      throw _privateConstructorUsedError; // Keyingi sahifa (agar bo'lsa)
-  String? get previous =>
-      throw _privateConstructorUsedError; // Oldingi sahifa (agar bo'lsa)
-  List<Result>? get confirmPagination =>
-      throw _privateConstructorUsedError; // Ma'lumotlar ro'yxati
+  List<ProductProgress?> get productConfirmList =>
+      throw _privateConstructorUsedError;
+  bool get productLoading => throw _privateConstructorUsedError;
+  int get pageNumber => throw _privateConstructorUsedError;
+  int get totalPages => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
+  int? get count => throw _privateConstructorUsedError;
+  String? get next => throw _privateConstructorUsedError;
+  String? get previous => throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
@@ -52,14 +51,16 @@ abstract class $DoneBuildableCopyWith<$Res> {
       List<OrdersDoneList> orderDoneList,
       bool confirmLoading,
       List<ConfirmAll?> confirmAll,
-      List<ConfirmPagination?> confirmAllOrder,
+      List<DoneList?> confirmAllOrder,
+      List<ProductProgress?> productProgress,
+      List<ProductProgress?> productConfirmList,
+      bool productLoading,
       int pageNumber,
       int totalPages,
       int currentPage,
       int? count,
       String? next,
       String? previous,
-      List<Result>? confirmPagination,
       bool hasMore,
       bool isLoading});
 }
@@ -82,13 +83,15 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
     Object? confirmLoading = null,
     Object? confirmAll = null,
     Object? confirmAllOrder = null,
+    Object? productProgress = null,
+    Object? productConfirmList = null,
+    Object? productLoading = null,
     Object? pageNumber = null,
     Object? totalPages = null,
     Object? currentPage = null,
     Object? count = freezed,
     Object? next = freezed,
     Object? previous = freezed,
-    Object? confirmPagination = freezed,
     Object? hasMore = null,
     Object? isLoading = null,
   }) {
@@ -112,7 +115,19 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
       confirmAllOrder: null == confirmAllOrder
           ? _value.confirmAllOrder
           : confirmAllOrder // ignore: cast_nullable_to_non_nullable
-              as List<ConfirmPagination?>,
+              as List<DoneList?>,
+      productProgress: null == productProgress
+          ? _value.productProgress
+          : productProgress // ignore: cast_nullable_to_non_nullable
+              as List<ProductProgress?>,
+      productConfirmList: null == productConfirmList
+          ? _value.productConfirmList
+          : productConfirmList // ignore: cast_nullable_to_non_nullable
+              as List<ProductProgress?>,
+      productLoading: null == productLoading
+          ? _value.productLoading
+          : productLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       pageNumber: null == pageNumber
           ? _value.pageNumber
           : pageNumber // ignore: cast_nullable_to_non_nullable
@@ -137,10 +152,6 @@ class _$DoneBuildableCopyWithImpl<$Res, $Val extends DoneBuildable>
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
               as String?,
-      confirmPagination: freezed == confirmPagination
-          ? _value.confirmPagination
-          : confirmPagination // ignore: cast_nullable_to_non_nullable
-              as List<Result>?,
       hasMore: null == hasMore
           ? _value.hasMore
           : hasMore // ignore: cast_nullable_to_non_nullable
@@ -166,14 +177,16 @@ abstract class _$$DoneBuildableImplCopyWith<$Res>
       List<OrdersDoneList> orderDoneList,
       bool confirmLoading,
       List<ConfirmAll?> confirmAll,
-      List<ConfirmPagination?> confirmAllOrder,
+      List<DoneList?> confirmAllOrder,
+      List<ProductProgress?> productProgress,
+      List<ProductProgress?> productConfirmList,
+      bool productLoading,
       int pageNumber,
       int totalPages,
       int currentPage,
       int? count,
       String? next,
       String? previous,
-      List<Result>? confirmPagination,
       bool hasMore,
       bool isLoading});
 }
@@ -194,13 +207,15 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
     Object? confirmLoading = null,
     Object? confirmAll = null,
     Object? confirmAllOrder = null,
+    Object? productProgress = null,
+    Object? productConfirmList = null,
+    Object? productLoading = null,
     Object? pageNumber = null,
     Object? totalPages = null,
     Object? currentPage = null,
     Object? count = freezed,
     Object? next = freezed,
     Object? previous = freezed,
-    Object? confirmPagination = freezed,
     Object? hasMore = null,
     Object? isLoading = null,
   }) {
@@ -224,7 +239,19 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
       confirmAllOrder: null == confirmAllOrder
           ? _value._confirmAllOrder
           : confirmAllOrder // ignore: cast_nullable_to_non_nullable
-              as List<ConfirmPagination?>,
+              as List<DoneList?>,
+      productProgress: null == productProgress
+          ? _value._productProgress
+          : productProgress // ignore: cast_nullable_to_non_nullable
+              as List<ProductProgress?>,
+      productConfirmList: null == productConfirmList
+          ? _value._productConfirmList
+          : productConfirmList // ignore: cast_nullable_to_non_nullable
+              as List<ProductProgress?>,
+      productLoading: null == productLoading
+          ? _value.productLoading
+          : productLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       pageNumber: null == pageNumber
           ? _value.pageNumber
           : pageNumber // ignore: cast_nullable_to_non_nullable
@@ -249,10 +276,6 @@ class __$$DoneBuildableImplCopyWithImpl<$Res>
           ? _value.previous
           : previous // ignore: cast_nullable_to_non_nullable
               as String?,
-      confirmPagination: freezed == confirmPagination
-          ? _value._confirmPagination
-          : confirmPagination // ignore: cast_nullable_to_non_nullable
-              as List<Result>?,
       hasMore: null == hasMore
           ? _value.hasMore
           : hasMore // ignore: cast_nullable_to_non_nullable
@@ -273,20 +296,23 @@ class _$DoneBuildableImpl implements _DoneBuildable {
       final List<OrdersDoneList> orderDoneList = const [],
       this.confirmLoading = false,
       final List<ConfirmAll?> confirmAll = const [],
-      final List<ConfirmPagination?> confirmAllOrder = const [],
+      final List<DoneList?> confirmAllOrder = const [],
+      final List<ProductProgress?> productProgress = const [],
+      final List<ProductProgress?> productConfirmList = const [],
+      this.productLoading = false,
       this.pageNumber = 1,
       this.totalPages = 1,
       this.currentPage = 1,
       this.count,
       this.next,
       this.previous,
-      final List<Result>? confirmPagination,
       this.hasMore = false,
       this.isLoading = false})
       : _orderDoneList = orderDoneList,
         _confirmAll = confirmAll,
         _confirmAllOrder = confirmAllOrder,
-        _confirmPagination = confirmPagination;
+        _productProgress = productProgress,
+        _productConfirmList = productConfirmList;
 
   @override
   @JsonKey()
@@ -312,49 +338,52 @@ class _$DoneBuildableImpl implements _DoneBuildable {
     return EqualUnmodifiableListView(_confirmAll);
   }
 
-  final List<ConfirmPagination?> _confirmAllOrder;
+  final List<DoneList?> _confirmAllOrder;
   @override
   @JsonKey()
-  List<ConfirmPagination?> get confirmAllOrder {
+  List<DoneList?> get confirmAllOrder {
     if (_confirmAllOrder is EqualUnmodifiableListView) return _confirmAllOrder;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_confirmAllOrder);
   }
 
+  final List<ProductProgress?> _productProgress;
+  @override
+  @JsonKey()
+  List<ProductProgress?> get productProgress {
+    if (_productProgress is EqualUnmodifiableListView) return _productProgress;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productProgress);
+  }
+
+  final List<ProductProgress?> _productConfirmList;
+  @override
+  @JsonKey()
+  List<ProductProgress?> get productConfirmList {
+    if (_productConfirmList is EqualUnmodifiableListView)
+      return _productConfirmList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productConfirmList);
+  }
+
+  @override
+  @JsonKey()
+  final bool productLoading;
   @override
   @JsonKey()
   final int pageNumber;
-// Default sahifa raqami 1
   @override
   @JsonKey()
   final int totalPages;
-// Total sahifalar
   @override
   @JsonKey()
   final int currentPage;
-// Total sahifalar
   @override
   final int? count;
-// Ma'lumotlar soni
   @override
   final String? next;
-// Keyingi sahifa (agar bo'lsa)
   @override
   final String? previous;
-// Oldingi sahifa (agar bo'lsa)
-  final List<Result>? _confirmPagination;
-// Oldingi sahifa (agar bo'lsa)
-  @override
-  List<Result>? get confirmPagination {
-    final value = _confirmPagination;
-    if (value == null) return null;
-    if (_confirmPagination is EqualUnmodifiableListView)
-      return _confirmPagination;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-// Ma'lumotlar ro'yxati
   @override
   @JsonKey()
   final bool hasMore;
@@ -364,7 +393,7 @@ class _$DoneBuildableImpl implements _DoneBuildable {
 
   @override
   String toString() {
-    return 'DoneBuildable(loading: $loading, orderDoneList: $orderDoneList, confirmLoading: $confirmLoading, confirmAll: $confirmAll, confirmAllOrder: $confirmAllOrder, pageNumber: $pageNumber, totalPages: $totalPages, currentPage: $currentPage, count: $count, next: $next, previous: $previous, confirmPagination: $confirmPagination, hasMore: $hasMore, isLoading: $isLoading)';
+    return 'DoneBuildable(loading: $loading, orderDoneList: $orderDoneList, confirmLoading: $confirmLoading, confirmAll: $confirmAll, confirmAllOrder: $confirmAllOrder, productProgress: $productProgress, productConfirmList: $productConfirmList, productLoading: $productLoading, pageNumber: $pageNumber, totalPages: $totalPages, currentPage: $currentPage, count: $count, next: $next, previous: $previous, hasMore: $hasMore, isLoading: $isLoading)';
   }
 
   @override
@@ -381,6 +410,12 @@ class _$DoneBuildableImpl implements _DoneBuildable {
                 .equals(other._confirmAll, _confirmAll) &&
             const DeepCollectionEquality()
                 .equals(other._confirmAllOrder, _confirmAllOrder) &&
+            const DeepCollectionEquality()
+                .equals(other._productProgress, _productProgress) &&
+            const DeepCollectionEquality()
+                .equals(other._productConfirmList, _productConfirmList) &&
+            (identical(other.productLoading, productLoading) ||
+                other.productLoading == productLoading) &&
             (identical(other.pageNumber, pageNumber) ||
                 other.pageNumber == pageNumber) &&
             (identical(other.totalPages, totalPages) ||
@@ -391,8 +426,6 @@ class _$DoneBuildableImpl implements _DoneBuildable {
             (identical(other.next, next) || other.next == next) &&
             (identical(other.previous, previous) ||
                 other.previous == previous) &&
-            const DeepCollectionEquality()
-                .equals(other._confirmPagination, _confirmPagination) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
@@ -406,13 +439,15 @@ class _$DoneBuildableImpl implements _DoneBuildable {
       confirmLoading,
       const DeepCollectionEquality().hash(_confirmAll),
       const DeepCollectionEquality().hash(_confirmAllOrder),
+      const DeepCollectionEquality().hash(_productProgress),
+      const DeepCollectionEquality().hash(_productConfirmList),
+      productLoading,
       pageNumber,
       totalPages,
       currentPage,
       count,
       next,
       previous,
-      const DeepCollectionEquality().hash(_confirmPagination),
       hasMore,
       isLoading);
 
@@ -429,14 +464,16 @@ abstract class _DoneBuildable implements DoneBuildable {
       final List<OrdersDoneList> orderDoneList,
       final bool confirmLoading,
       final List<ConfirmAll?> confirmAll,
-      final List<ConfirmPagination?> confirmAllOrder,
+      final List<DoneList?> confirmAllOrder,
+      final List<ProductProgress?> productProgress,
+      final List<ProductProgress?> productConfirmList,
+      final bool productLoading,
       final int pageNumber,
       final int totalPages,
       final int currentPage,
       final int? count,
       final String? next,
       final String? previous,
-      final List<Result>? confirmPagination,
       final bool hasMore,
       final bool isLoading}) = _$DoneBuildableImpl;
 
@@ -449,22 +486,26 @@ abstract class _DoneBuildable implements DoneBuildable {
   @override
   List<ConfirmAll?> get confirmAll;
   @override
-  List<ConfirmPagination?> get confirmAllOrder;
+  List<DoneList?> get confirmAllOrder;
+  @override
+  List<ProductProgress?> get productProgress;
+  @override
+  List<ProductProgress?> get productConfirmList;
+  @override
+  bool get productLoading;
   @override
   int get pageNumber;
-  @override // Default sahifa raqami 1
+  @override
   int get totalPages;
-  @override // Total sahifalar
+  @override
   int get currentPage;
-  @override // Total sahifalar
+  @override
   int? get count;
-  @override // Ma'lumotlar soni
+  @override
   String? get next;
-  @override // Keyingi sahifa (agar bo'lsa)
+  @override
   String? get previous;
-  @override // Oldingi sahifa (agar bo'lsa)
-  List<Result>? get confirmPagination;
-  @override // Ma'lumotlar ro'yxati
+  @override
   bool get hasMore;
   @override
   bool get isLoading;

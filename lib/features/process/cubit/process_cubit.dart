@@ -11,7 +11,6 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
   final TableProcessRepo repo;
   final Storage storage;
 
-
   void confirmOrder({required int orderId}) async {
     await callable(
       future: repo.tableConfirm(tableId: orderId),
@@ -19,15 +18,27 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
       buildOnData: (d) => buildable.copyWith(confirmDoneLoading: false),
       buildOnError: (e) => buildable.copyWith(confirmDoneLoading: false),
     );
-    confirmList(); // Confirm listni qayta chaqirish
+    confirmList();
   }
 
-  void confirmList() {
+
+  void productProgress() {
     callable(
+      future: repo.getProductProgress(),
+      buildOnStart: () => buildable.copyWith(confirmDoneProduct: true),
+      buildOnData: (d) =>
+          buildable.copyWith(confirmDoneProduct: false, productProgress: d),
+      buildOnError: (e) => buildable.copyWith(confirmDoneProduct: true),
+    );
+  }
+
+  void confirmList() async{
+   await callable(
       future: repo.confirmList(),
       buildOnStart: () => buildable.copyWith(confirmLoading: true),
-      buildOnData: (d) => buildable.copyWith(confirmLoading: false, confirmAll: d),
-      buildOnError: (e) => buildable.copyWith(confirmLoading: false), // Xatoni modelga bermaslik
+      buildOnData: (d) =>
+          buildable.copyWith(confirmLoading: false, confirmAll: d),
+      buildOnError: (e) => buildable.copyWith(confirmLoading: false),
     );
   }
 
@@ -39,6 +50,15 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
       buildOnData: (e) => buildable.copyWith(loading: false, tableProcess: e),
       buildOnError: (e) => buildable.copyWith(loading: false),
     );
+  }
+  void orderDoneProduct({required int orderId}) async {
+    await callable(
+      future: repo.productConfirm(order_id: orderId),
+      buildOnStart: () => buildable.copyWith(orderLoadingProduct: true),
+      buildOnData: (d) => buildable.copyWith(orderLoadingProduct: false),
+      buildOnError: (e) => buildable.copyWith(orderLoadingProduct: false),
+    );
+    productProgress();
   }
 
   void orderDone({required int orderId}) async {
@@ -55,7 +75,16 @@ class ProcessCubit extends BaseCubit<ProcessBuildable, ProcessListenable> {
     callable(
       future: repo.tableProcessNumber(tableId: tableId),
       buildOnStart: () => buildable.copyWith(loading: true),
-      buildOnData: (data) => buildable.copyWith(tableProcess: data, loading: false),
+      buildOnData: (data) =>
+          buildable.copyWith(tableProcess: data, loading: false),
+    );
+  }
+  Future<void> tableProcessNumberVegetables({required int tableId}) async {
+    callable(
+      future: repo.tableProcessNumber(tableId: tableId),
+      buildOnStart: () => buildable.copyWith(loading: true),
+      buildOnData: (data) =>
+          buildable.copyWith(tableProcess: data, loading: false),
     );
   }
 }

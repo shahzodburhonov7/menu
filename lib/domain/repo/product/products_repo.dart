@@ -12,8 +12,11 @@ abstract class ProductsRepo {
   Future<List<VegetablesAll>> getVegetables();
 
   Future<List<FoodProducts>> searchProducts({required String query});
+  Future<List<VegetablesAll>> searchProductsVegetables({required String query});
+
 
   Future<List<FoodCategory>> getCategoryAll();
+
 
   Future<List<FoodProducts>> foodCategoryId({
     required int page,

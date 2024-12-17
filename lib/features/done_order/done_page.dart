@@ -2,6 +2,7 @@ import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:WaiterPro/features/done_order/widget/cashier_all.dart';
 import 'package:WaiterPro/features/done_order/widget/item_order_done.dart';
+import 'package:WaiterPro/features/done_order/widget/product_done.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -15,16 +16,15 @@ import 'package:WaiterPro/features/done_order/cubit/done_state.dart';
 class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
   DonePage({super.key});
 
-  final ScrollController _scrollController = ScrollController();
-
   @override
   void init(BuildContext context) {
     super.init(context);
     if (USER_TYPE == Constants.ofitsant) {
       context.read<DoneCubit>().orderDoneList();
     } else if (USER_TYPE == Constants.kassir) {
-      context.read<DoneCubit>().confirmList(pageNumber: 1);
-      // context.read<DoneCubit>().getAllOrder();
+      context.read<DoneCubit>().confirmList();
+    } else if (USER_TYPE == Constants.omborchi) {
+      context.read<DoneCubit>().orderDoneListProduct();
     }
   }
 
@@ -35,8 +35,6 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
 
   @override
   Widget builder(BuildContext context, state) {
-    final cubit = context.read<DoneCubit>();
-
     String formatTime(String rawTime) {
       final parts = rawTime.split('.');
       return parts[0];
@@ -48,8 +46,16 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
           children: [
             if (USER_TYPE == Constants.ofitsant)
               state.loading
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
                     )
                   : Column(
                       children: [
@@ -79,9 +85,11 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                                 Card(
                                   color: const Color(0xffFFFFFF),
                                   child: ItemOrderDone(
-                                    price: state.orderDoneList[index].total_price
+                                    price: state
+                                        .orderDoneList[index].total_price
                                         .toString(),
-                                    table: state.orderDoneList[index].cart!.table
+                                    table: state
+                                        .orderDoneList[index].cart!.table
                                         .toString(),
                                     cartItems: state
                                         .orderDoneList[index].cart!.cart_items!,
@@ -96,13 +104,21 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                     )
             else if (USER_TYPE == Constants.kassir)
               state.confirmLoading
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
                     )
                   : Column(
                       children: [
                         ...List.generate(
-                          state.confirmPagination!.length,
+                          state.confirmAllOrder.length,
                           (index) {
                             return Padding(
                               padding: REdgeInsets.symmetric(vertical: 10),
@@ -111,23 +127,76 @@ class DonePage extends BasePage<DoneCubit, DoneBuildable, DoneListenable> {
                                 child: Padding(
                                   padding: REdgeInsets.all(24.0),
                                   child: CashierAll(
-                                    tableNumber: state.confirmPagination![index]
+                                    tableNumber: state.confirmAllOrder[index]!
                                         .cart!.table_number
                                         .toString(),
                                     dateTime: formatTime(
-                                      state.confirmPagination![index].time
+                                      state.confirmAllOrder[index]!.time
                                           .toString(),
                                     ),
                                     dateNumber: formatDate(
-                                      "${state.confirmPagination![index].date.toString()}",
+                                      "${state.confirmAllOrder[index]!.date.toString()}",
                                     ),
                                     waiterName: state
-                                        .confirmPagination![index].user_full_name
+                                        .confirmAllOrder[index]!.user_full_name
                                         .toString(),
                                     priceAll: state
-                                        .confirmPagination![index].total_price
+                                        .confirmAllOrder[index]!.total_price
                                         .toString(),
-                                    carts: state.confirmPagination?[index].cart?.cart_items,
+                                    carts: state.confirmAllOrder[index]!.cart
+                                        ?.cart_items,
+                                    onTap: () {},
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    )
+            else if (USER_TYPE == Constants.omborchi)
+              state.productLoading
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        ...List.generate(
+                          state.productConfirmList.length,
+                          (index) {
+                            return Padding(
+                              padding: REdgeInsets.symmetric(vertical: 10),
+                              child: Card(
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: REdgeInsets.all(24.0),
+                                  child: ProductDone(
+                                    tableNumber: state
+                                        .productConfirmList[index]!.cart!.id
+                                        .toString(),
+                                    dateTime: formatTime(
+                                      state.productConfirmList[index]!.time
+                                          .toString(),
+                                    ),
+                                    dateNumber: formatDate(
+                                      "${state.productConfirmList[index]!.date.toString()}",
+                                    ),
+                                    waiterName: state
+                                        .productConfirmList[index]!.full_name
+                                        .toString(),
+                                    priceAll: state
+                                        .productConfirmList[index]!.total_price
+                                        .toString(),
+                                    carts: state.productConfirmList[index]!
+                                        .cart!.cart_item,
                                     onTap: () {},
                                   ),
                                 ),

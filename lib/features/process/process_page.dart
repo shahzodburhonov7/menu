@@ -2,6 +2,7 @@ import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:WaiterPro/features/process/widgets/cashier_widget.dart';
 import 'package:WaiterPro/features/process/widgets/process_item_widget.dart';
+import 'package:WaiterPro/features/process/widgets/product_progress.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,8 @@ class ProcessPage
       context.read<ProcessCubit>().processList();
     } else if (USER_TYPE == Constants.kassir) {
       context.read<ProcessCubit>().confirmList();
+    } else if (USER_TYPE == Constants.omborchi) {
+      context.read<ProcessCubit>().productProgress();
     }
     super.init(context);
   }
@@ -55,23 +58,33 @@ class ProcessPage
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CommonSearchField(
-              textInputType: TextInputType.number,
-              onChanged: (value) {
-                context
-                    .read<ProcessCubit>()
-                    .tableProcessNumber(tableId: int.parse(value));
-              },
-              controller: textEditingController,
-              height: 44.h,
-            ),
+            USER_TYPE != Constants.omborchi && USER_TYPE != Constants.kassir
+                ? CommonSearchField(
+                    textInputType: TextInputType.number,
+                    onChanged: (value) {
+                      context.read<ProcessCubit>().tableProcessNumber(
+                            tableId: int.parse(value),
+                          );
+                    },
+                    controller: textEditingController,
+                    height: 44.h,
+                  )
+                : SizedBox.shrink(),
             SizedBox(
               height: 5,
             ),
             if (USER_TYPE == Constants.ofitsant)
               state.loading
-                  ? const Center(
-                      child: CircularProgressIndicator(),
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
                     )
                   : Column(
                       children: [
@@ -135,8 +148,16 @@ class ProcessPage
                     )
             else if (USER_TYPE == Constants.kassir)
               state.confirmLoading
-                  ? Center(
-                      child: CircularProgressIndicator(),
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
                     )
                   : Column(
                       children: [
@@ -182,10 +203,68 @@ class ProcessPage
                         )
                       ],
                     )
+            else if (USER_TYPE == Constants.omborchi)
+              state.confirmDoneProduct
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.3,
+                        ),
+                        Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        ...List.generate(
+                          state.productProgress.length,
+                          (index) {
+                            return Padding(
+                              padding: REdgeInsets.symmetric(vertical: 10),
+                              child: Card(
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: REdgeInsets.all(24.0),
+                                  child: ProductProgress(
+                                    tableNumber: state
+                                        .productProgress[index]!.cart!.id
+                                        .toString(),
+                                    dateTime: formatTime(
+                                      state.productProgress[index]!.time
+                                          .toString(),
+                                    ),
+                                    dateNumber: formatDate(
+                                      "${state.productProgress[index]!.date.toString()}",
+                                    ),
+                                    waiterName: state
+                                        .productProgress[index]!.full_name
+                                        .toString(),
+                                    priceAll: state
+                                        .productProgress[index]!.total_price
+                                        .toString(),
+                                    carts: state.productProgress[index]!.cart!
+                                        .cart_item!,
+                                    onTap: () {
+                                      cubit.orderDoneProduct(
+                                        orderId:
+                                            state.productProgress[index]!.id!,
+                                      );
+                                      debugPrint(
+                                          "========${state.confirmAll[index]!.id!}");
+                                    },
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    )
           ],
         ),
       ),
     );
   }
 }
-

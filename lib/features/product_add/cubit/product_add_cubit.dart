@@ -1,9 +1,9 @@
 import 'dart:io';
-
 import 'package:WaiterPro/common/base/base_cubit.dart';
 import 'package:WaiterPro/domain/model/category/food_category.dart';
 import 'package:WaiterPro/domain/repo/product/products_repo.dart';
 import 'package:WaiterPro/features/product_add/cubit/product_add_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
 
@@ -69,25 +69,25 @@ class ProductAddCubit
   void updateSelectedCategory(FoodCategory? category) {
     build((buildable) => buildable.copyWith(
           selectedCategory: category,
-          selectedCategoryError: "", // Xatoni tozalash
+          selectedCategoryError: "",
         ));
   }
 
   bool validation({
     required FoodCategory? selectedCategory,
     required String productName,
-    required File? productImage, // File? bo'lishi kerak
+    required File? productImage,
   }) {
     if (selectedCategory == null) {
       build((buildable) => buildable.copyWith(
-            selectedCategoryError: "Mahsulot turi tanlanmagan",
+            selectedCategoryError: "Product type not selected".tr(),
           ));
       return false;
     }
 
     if (productName.isEmpty) {
       build((buildable) => buildable.copyWith(
-            productName: "Mahsulot nomi bo'sh",
+            productName: "Product name is empty".tr(),
           ));
       return false;
     }
@@ -95,7 +95,7 @@ class ProductAddCubit
     if (productImage == null) {
       build(
         (buildable) => buildable.copyWith(
-          productImage: "Rasm tanlanmagan",
+          productImage: "No image selected.",
         ),
       );
       return false;

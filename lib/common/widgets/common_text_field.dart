@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:WaiterPro/common/colors/app_colors.dart';
 
@@ -33,8 +34,10 @@ class CommonTextField extends StatefulWidget {
     this.maxLines = 1,
     this.onFocusChange,
     this.borderRadius = 16,
+    this.focusedBorderColor,
   });
 
+  final Color? focusedBorderColor;
   final double? borderRadius;
   final String? hint;
   final Widget? prefixIcon;
@@ -122,6 +125,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
           filled: true,
           fillColor: widget.background ?? const Color(0xffFAFAFA),
           hintText: widget.hint,
+
           errorText: widget.errorText,
           contentPadding: widget.padding ??
               const EdgeInsets.symmetric(
@@ -135,8 +139,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
                   alignment: Alignment.center,
                   child: widget.prefixIcon,
                 ),
-          hintStyle: const TextStyle(
-            fontSize: 16,
+          hintStyle:  TextStyle(
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             color: Color(0xff7F7F7F),
           ),
@@ -154,8 +158,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
             borderRadius: BorderRadius.circular(16),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Color(0xff2F2F3F),
+            borderSide: BorderSide(
+              color: widget.focusedBorderColor ?? const Color(0xff7F7F7F),
             ),
             borderRadius: BorderRadius.circular(16),
           ),
@@ -182,8 +186,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
                     )
                   : null,
         ),
-        style: const TextStyle(
-          fontSize: 16,
+        style:  TextStyle(
+          fontSize: 16.sp,
           fontWeight: FontWeight.w400,
           color: Colors.black,
         ),

@@ -13,6 +13,7 @@ class VegetablesBuildable with _$VegetablesBuildable {
     @Default('') String quantityError,
     @Default('') String priceError,
     @Default('') String dateError,
+    @Default(false) bool postCreate,
     @Default('') String timeError,
     @Default(null) DateTime? selectedDate,
   }) = _VegetablesBuildable;
@@ -24,4 +25,4 @@ class VegetablesListenable with _$VegetablesListenable {
       _VegetablesListenable;
 }
 
-enum VegetablesEffect { error, success}
+enum VegetablesEffect { error, success }

@@ -27,14 +27,13 @@ class FinishDayPage
       case FinishEffect.error:
         CommonToast.snackBar(
           context,
-          message: "xato",
+          message: "Something went wrong".tr(),
         );
       case FinishEffect.errorCashier:
         CommonToast.snackBar(
           context,
-          message: "xato",
+          message: "Nimdir xato ketti".tr(),
         );
-
     }
   }
 
@@ -80,8 +79,7 @@ class FinishDayPage
                               child: CircularProgressIndicator(),
                             )
                           : CashierPage(
-                              todayDate:
-                                  state.cashierFinish!.sana.toString(),
+                              todayDate: state.cashierFinish!.sana.toString(),
                               orderNumber:
                                   state.cashierFinish!.orders_count.toString(),
                               delivery:
@@ -103,7 +101,11 @@ class FinishDayPage
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    "Sana".s(20).w(500).c(AppColors.textFinal),
+                                    "Date"
+                                        .s(20)
+                                        .w(500)
+                                        .c(AppColors.textFinal)
+                                        .tr(),
                                     Text(
                                       formatDate(
                                         "${state.finishToday!.sana!}",
@@ -135,10 +137,11 @@ class FinishDayPage
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    "Xizmatlar soni"
+                                    "Number of services"
                                         .s(18.sp)
                                         .w(500)
-                                        .c(AppColors.textFinal),
+                                        .c(AppColors.textFinal)
+                                        .tr(),
                                     "${state.finishToday!.orders!}"
                                         .s(20.sp)
                                         .w(500)
@@ -150,10 +153,11 @@ class FinishDayPage
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      "Xizmat uchun foiz"
+                                      "Interest for service"
                                           .s(18.sp)
                                           .w(500)
-                                          .c(AppColors.textFinal),
+                                          .c(AppColors.textFinal)
+                                          .tr(),
                                       "${state.finishToday!.percentage_for!}%"
                                           .s(20)
                                           .w(500)
@@ -179,10 +183,10 @@ class FinishDayPage
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      "Summa"
+                                      "Total"
                                           .s(20)
                                           .w(500)
-                                          .c(AppColors.textFinal),
+                                          .c(AppColors.textFinal).tr(),
                                       Text(
                                         formatCurrency(
                                             "${state.finishToday!.total_price!} UZS"),

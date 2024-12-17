@@ -21,7 +21,6 @@ class CashierPage extends StatelessWidget {
   final String cashier;
 
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(

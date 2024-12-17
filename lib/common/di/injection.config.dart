@@ -164,6 +164,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i734.VegetablesCubit>(() => _i734.VegetablesCubit(
           gh<_i387.ProductsRepo>(),
           gh<_i550.Storage>(),
+          gh<_i236.TableRepo>(),
         ));
     gh.factory<_i152.TableCubit>(() => _i152.TableCubit(
           gh<_i236.TableRepo>(),
@@ -174,17 +175,20 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i242.OrderRepo>(),
           gh<_i550.Storage>(),
         ));
-    gh.factory<_i232.DoneCubit>(
-        () => _i232.DoneCubit(gh<_i596.TableProcessRepo>()));
-    gh.factory<_i834.ProductAddCubit>(
-        () => _i834.ProductAddCubit(gh<_i387.ProductsRepo>()));
     gh.factory<_i174.FoodsCubit>(() => _i174.FoodsCubit(
           gh<_i374.FoodCategoryRepo>(),
           gh<_i387.ProductsRepo>(),
           gh<_i550.Storage>(),
           gh<_i242.OrderRepo>(),
           gh<_i236.TableRepo>(),
+          gh<_i236.TableRepo>(),
         ));
+    gh.factory<_i232.DoneCubit>(() => _i232.DoneCubit(
+          gh<_i596.TableProcessRepo>(),
+          gh<_i242.OrderRepo>(),
+        ));
+    gh.factory<_i834.ProductAddCubit>(
+        () => _i834.ProductAddCubit(gh<_i387.ProductsRepo>()));
     return this;
   }
 }

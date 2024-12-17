@@ -25,6 +25,7 @@ class FoodCard extends StatelessWidget {
     return ZoomTapAnimation(
       onTap: onTap,
       child: Card(
+        color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16.0),
         ),

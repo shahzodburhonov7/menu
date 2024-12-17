@@ -10,6 +10,7 @@ class Constants {
   static const apiTableId = '/common/table/choose/';
   static const apiTableChoose = '/common/table/choose/';
   static const apiOrder = '/common/cart/';
+  static const apiOrderProduct = '/product/cart/';
   static const apiSale = '/common/cart-item/create/';
   static const apiOrderCreate = '/common/order/create/';
   static const apiCartDelete = '/common/cart-item/';
@@ -27,8 +28,9 @@ class Constants {
   static const apiConfirm = '/common/order/confirm/';
   static const apiConfirmAll = '/common/order/list/is-confirm/';
   static const apiTableCr = '/common/create/cart/';
+  static const apiTableVegetables = '/product/cart/create/';
   static const apiFinishCashier = '/common/cashier-finish-day/';
-
+  static const apiFinishPagination = '/common/order/list/is-confirm/';
 
   //product
   static const apiProductList="/product/product/list/";
@@ -36,6 +38,12 @@ class Constants {
   static const apiProductAdd="/product/product/create/";
   static const apiProductInfo="/product/product/";
   static const apiInfoAdd="/product/cart-item/create/";
+  static const apiProductUpdate="/product/cart-item/";
+  static const apiProductDelete="/product/cart-item/";
+  static const apiProductCreate="/product/order/create/";
+  static const apiProductIsConfirmNot="/product/order/list/is-not-confirm/";
+  static const apiProductConfirm="/product/order/confirm/";
+  static const apiProductDone="/product/order/list/is-confirm/";
 
 
   // STOREKEEPER
@@ -48,4 +56,5 @@ class Constants {
   static const omborchi = "omborchi";
   static const ofitsant = "ofitsant";
   static const kassir = "kassir";
+  static const kassirs = "kassir";
 }

@@ -19,9 +19,13 @@ mixin _$ProcessBuildable {
   bool get loading => throw _privateConstructorUsedError;
   List<TableProcess?> get tableProcess => throw _privateConstructorUsedError;
   List<ConfirmAll?> get confirmAll => throw _privateConstructorUsedError;
+  List<ProductProgress?> get productProgress =>
+      throw _privateConstructorUsedError;
   bool get orderLoading => throw _privateConstructorUsedError;
+  bool get orderLoadingProduct => throw _privateConstructorUsedError;
   bool get confirmLoading => throw _privateConstructorUsedError;
   bool get confirmDoneLoading => throw _privateConstructorUsedError;
+  bool get confirmDoneProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProcessBuildableCopyWith<ProcessBuildable> get copyWith =>
@@ -38,9 +42,12 @@ abstract class $ProcessBuildableCopyWith<$Res> {
       {bool loading,
       List<TableProcess?> tableProcess,
       List<ConfirmAll?> confirmAll,
+      List<ProductProgress?> productProgress,
       bool orderLoading,
+      bool orderLoadingProduct,
       bool confirmLoading,
-      bool confirmDoneLoading});
+      bool confirmDoneLoading,
+      bool confirmDoneProduct});
 }
 
 /// @nodoc
@@ -59,9 +66,12 @@ class _$ProcessBuildableCopyWithImpl<$Res, $Val extends ProcessBuildable>
     Object? loading = null,
     Object? tableProcess = null,
     Object? confirmAll = null,
+    Object? productProgress = null,
     Object? orderLoading = null,
+    Object? orderLoadingProduct = null,
     Object? confirmLoading = null,
     Object? confirmDoneLoading = null,
+    Object? confirmDoneProduct = null,
   }) {
     return _then(_value.copyWith(
       loading: null == loading
@@ -76,9 +86,17 @@ class _$ProcessBuildableCopyWithImpl<$Res, $Val extends ProcessBuildable>
           ? _value.confirmAll
           : confirmAll // ignore: cast_nullable_to_non_nullable
               as List<ConfirmAll?>,
+      productProgress: null == productProgress
+          ? _value.productProgress
+          : productProgress // ignore: cast_nullable_to_non_nullable
+              as List<ProductProgress?>,
       orderLoading: null == orderLoading
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      orderLoadingProduct: null == orderLoadingProduct
+          ? _value.orderLoadingProduct
+          : orderLoadingProduct // ignore: cast_nullable_to_non_nullable
               as bool,
       confirmLoading: null == confirmLoading
           ? _value.confirmLoading
@@ -87,6 +105,10 @@ class _$ProcessBuildableCopyWithImpl<$Res, $Val extends ProcessBuildable>
       confirmDoneLoading: null == confirmDoneLoading
           ? _value.confirmDoneLoading
           : confirmDoneLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      confirmDoneProduct: null == confirmDoneProduct
+          ? _value.confirmDoneProduct
+          : confirmDoneProduct // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -104,9 +126,12 @@ abstract class _$$ProcessBuildableImplCopyWith<$Res>
       {bool loading,
       List<TableProcess?> tableProcess,
       List<ConfirmAll?> confirmAll,
+      List<ProductProgress?> productProgress,
       bool orderLoading,
+      bool orderLoadingProduct,
       bool confirmLoading,
-      bool confirmDoneLoading});
+      bool confirmDoneLoading,
+      bool confirmDoneProduct});
 }
 
 /// @nodoc
@@ -123,9 +148,12 @@ class __$$ProcessBuildableImplCopyWithImpl<$Res>
     Object? loading = null,
     Object? tableProcess = null,
     Object? confirmAll = null,
+    Object? productProgress = null,
     Object? orderLoading = null,
+    Object? orderLoadingProduct = null,
     Object? confirmLoading = null,
     Object? confirmDoneLoading = null,
+    Object? confirmDoneProduct = null,
   }) {
     return _then(_$ProcessBuildableImpl(
       loading: null == loading
@@ -140,9 +168,17 @@ class __$$ProcessBuildableImplCopyWithImpl<$Res>
           ? _value._confirmAll
           : confirmAll // ignore: cast_nullable_to_non_nullable
               as List<ConfirmAll?>,
+      productProgress: null == productProgress
+          ? _value._productProgress
+          : productProgress // ignore: cast_nullable_to_non_nullable
+              as List<ProductProgress?>,
       orderLoading: null == orderLoading
           ? _value.orderLoading
           : orderLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      orderLoadingProduct: null == orderLoadingProduct
+          ? _value.orderLoadingProduct
+          : orderLoadingProduct // ignore: cast_nullable_to_non_nullable
               as bool,
       confirmLoading: null == confirmLoading
           ? _value.confirmLoading
@@ -151,6 +187,10 @@ class __$$ProcessBuildableImplCopyWithImpl<$Res>
       confirmDoneLoading: null == confirmDoneLoading
           ? _value.confirmDoneLoading
           : confirmDoneLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      confirmDoneProduct: null == confirmDoneProduct
+          ? _value.confirmDoneProduct
+          : confirmDoneProduct // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -163,11 +203,15 @@ class _$ProcessBuildableImpl implements _ProcessBuildable {
       {this.loading = false,
       final List<TableProcess?> tableProcess = const [],
       final List<ConfirmAll?> confirmAll = const [],
+      final List<ProductProgress?> productProgress = const [],
       this.orderLoading = false,
+      this.orderLoadingProduct = false,
       this.confirmLoading = false,
-      this.confirmDoneLoading = false})
+      this.confirmDoneLoading = false,
+      this.confirmDoneProduct = false})
       : _tableProcess = tableProcess,
-        _confirmAll = confirmAll;
+        _confirmAll = confirmAll,
+        _productProgress = productProgress;
 
   @override
   @JsonKey()
@@ -190,19 +234,34 @@ class _$ProcessBuildableImpl implements _ProcessBuildable {
     return EqualUnmodifiableListView(_confirmAll);
   }
 
+  final List<ProductProgress?> _productProgress;
+  @override
+  @JsonKey()
+  List<ProductProgress?> get productProgress {
+    if (_productProgress is EqualUnmodifiableListView) return _productProgress;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productProgress);
+  }
+
   @override
   @JsonKey()
   final bool orderLoading;
+  @override
+  @JsonKey()
+  final bool orderLoadingProduct;
   @override
   @JsonKey()
   final bool confirmLoading;
   @override
   @JsonKey()
   final bool confirmDoneLoading;
+  @override
+  @JsonKey()
+  final bool confirmDoneProduct;
 
   @override
   String toString() {
-    return 'ProcessBuildable(loading: $loading, tableProcess: $tableProcess, confirmAll: $confirmAll, orderLoading: $orderLoading, confirmLoading: $confirmLoading, confirmDoneLoading: $confirmDoneLoading)';
+    return 'ProcessBuildable(loading: $loading, tableProcess: $tableProcess, confirmAll: $confirmAll, productProgress: $productProgress, orderLoading: $orderLoading, orderLoadingProduct: $orderLoadingProduct, confirmLoading: $confirmLoading, confirmDoneLoading: $confirmDoneLoading, confirmDoneProduct: $confirmDoneProduct)';
   }
 
   @override
@@ -215,12 +274,18 @@ class _$ProcessBuildableImpl implements _ProcessBuildable {
                 .equals(other._tableProcess, _tableProcess) &&
             const DeepCollectionEquality()
                 .equals(other._confirmAll, _confirmAll) &&
+            const DeepCollectionEquality()
+                .equals(other._productProgress, _productProgress) &&
             (identical(other.orderLoading, orderLoading) ||
                 other.orderLoading == orderLoading) &&
+            (identical(other.orderLoadingProduct, orderLoadingProduct) ||
+                other.orderLoadingProduct == orderLoadingProduct) &&
             (identical(other.confirmLoading, confirmLoading) ||
                 other.confirmLoading == confirmLoading) &&
             (identical(other.confirmDoneLoading, confirmDoneLoading) ||
-                other.confirmDoneLoading == confirmDoneLoading));
+                other.confirmDoneLoading == confirmDoneLoading) &&
+            (identical(other.confirmDoneProduct, confirmDoneProduct) ||
+                other.confirmDoneProduct == confirmDoneProduct));
   }
 
   @override
@@ -229,9 +294,12 @@ class _$ProcessBuildableImpl implements _ProcessBuildable {
       loading,
       const DeepCollectionEquality().hash(_tableProcess),
       const DeepCollectionEquality().hash(_confirmAll),
+      const DeepCollectionEquality().hash(_productProgress),
       orderLoading,
+      orderLoadingProduct,
       confirmLoading,
-      confirmDoneLoading);
+      confirmDoneLoading,
+      confirmDoneProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -246,9 +314,12 @@ abstract class _ProcessBuildable implements ProcessBuildable {
       {final bool loading,
       final List<TableProcess?> tableProcess,
       final List<ConfirmAll?> confirmAll,
+      final List<ProductProgress?> productProgress,
       final bool orderLoading,
+      final bool orderLoadingProduct,
       final bool confirmLoading,
-      final bool confirmDoneLoading}) = _$ProcessBuildableImpl;
+      final bool confirmDoneLoading,
+      final bool confirmDoneProduct}) = _$ProcessBuildableImpl;
 
   @override
   bool get loading;
@@ -257,11 +328,17 @@ abstract class _ProcessBuildable implements ProcessBuildable {
   @override
   List<ConfirmAll?> get confirmAll;
   @override
+  List<ProductProgress?> get productProgress;
+  @override
   bool get orderLoading;
+  @override
+  bool get orderLoadingProduct;
   @override
   bool get confirmLoading;
   @override
   bool get confirmDoneLoading;
+  @override
+  bool get confirmDoneProduct;
   @override
   @JsonKey(ignore: true)
   _$$ProcessBuildableImplCopyWith<_$ProcessBuildableImpl> get copyWith =>

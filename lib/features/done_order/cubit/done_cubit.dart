@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:WaiterPro/domain/repo/order/order_repo.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/common/base/base_cubit.dart';
 import 'package:WaiterPro/domain/repo/table_process_repo/table_process_repo.dart';
@@ -6,31 +6,39 @@ import 'package:WaiterPro/features/done_order/cubit/done_state.dart';
 
 @injectable
 class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {
-  DoneCubit(this.repo) : super(const DoneBuildable());
+  DoneCubit(this.repo, this.repoOrder) : super(const DoneBuildable());
 
   final TableProcessRepo repo;
-  Future<void> confirmListOrder({required int pageNumber}) async {
-    debugPrint("Fetching page: $pageNumber");
-  }
+  final OrderRepo repoOrder;
 
-  Future<void> confirmList({required int pageNumber}) async {
-    debugPrint("Fetching page: $pageNumber");
 
+  Future<void> confirmList() async {
     await callable(
-      future: repo.fetchConfirmAll(pageNumber: pageNumber),
+      future: repo.fetchConfirmAll(),
       buildOnStart: () => buildable.copyWith(confirmLoading: true),
       buildOnData: (d) => buildable.copyWith(
         confirmLoading: false,
-        confirmPagination: [...?buildable.confirmPagination,...?d.results],
-        totalPages: getTotalPages(d.count ??0,10),
-        pageNumber: pageNumber
+        confirmAllOrder: d
       ),
       buildOnError: (e) => buildable.copyWith(confirmLoading: false),
     );
   }
 
+  // Future<void> confirmListOrder({required int pageNumber}) async {
+  //   debugPrint("Fetching page: $pageNumber");
+  //
+  //   await callable(
+  //     future: repo.fetchConfirmAll(pageNumber: pageNumber),
+  //     buildOnStart: () => buildable.copyWith(confirmLoading: true),
+  //     buildOnData: (d) => buildable.copyWith(
+  //       confirmLoading: false,
+  //     ),
+  //     buildOnError: (e) => buildable.copyWith(confirmLoading: false),
+  //   );
+  // }
+
   // void getAllOrder() {
-  //   final controller = repo.confirmListAll();
+  //   final controller = repoOrder.fetchOrdersPagination();
   //   build((buildable) => buildable.copyWith(confirmAllOrder: controller));
   // }
 
@@ -40,6 +48,15 @@ class DoneCubit extends BaseCubit<DoneBuildable, DoneListenable> {
       buildOnStart: () => buildable.copyWith(loading: true),
       buildOnData: (d) => buildable.copyWith(loading: false, orderDoneList: d),
       buildOnError: (d) => buildable.copyWith(loading: false),
+    );
+  }
+
+  void orderDoneListProduct() {
+    callable(
+      future: repo.ordersDoneProduct(),
+      buildOnStart: () => buildable.copyWith(productLoading: true),
+      buildOnData: (d) => buildable.copyWith(productLoading: false, productConfirmList: d),
+      buildOnError: (d) => buildable.copyWith(productLoading: false),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:WaiterPro/domain/model/confirm_list/confirm_pagination.dart';
+import 'package:WaiterPro/domain/model/confirm_list/done_list.dart';
 import 'package:WaiterPro/domain/model/confirm_price/confirm_all.dart';
+import 'package:WaiterPro/domain/model/product_progress/product_progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:WaiterPro/data/process_data/order_process_api.dart';
@@ -20,6 +21,14 @@ class OrderProcessImpl extends TableProcessRepo {
     final res = tableProcessFromJson(jsonEncode(response.data));
     debugPrint("========================= $res");
     return res;
+  }
+
+  @override
+  Future<List<ProductProgress>> getProductProgress() async {
+    final response = await orderProcessApi.productProgress();
+    return productProgressFromJson(
+      jsonEncode(response.data),
+    );
   }
 
   @override
@@ -52,14 +61,11 @@ class OrderProcessImpl extends TableProcessRepo {
   Future<List<ConfirmAll?>> tableConfirm({required int tableId}) async {
     final response = await orderProcessApi.orderConfirm(orderId: tableId);
 
-    // Agar response ro'yxat bo'lsa
     if (response.data is List) {
       return List<ConfirmAll?>.from(
         (response.data as List).map((x) => ConfirmAll.fromJson(x)),
       );
     }
-
-    // Agar faqat bitta obyekt qaytgan bo'lsa, uni ro'yxatga aylantirib qaytarish
     if (response.data is Map<String, dynamic>) {
       return [ConfirmAll.fromJson(response.data)];
     }
@@ -77,18 +83,45 @@ class OrderProcessImpl extends TableProcessRepo {
     );
   }
 
+  // @override
+  // Future<ConfirmPagination> fetchConfirmAll({required int pageNumber}) async {
+  //   final response =
+  //   await orderProcessApi.confirmPaginationAll(pageNumber: pageNumber);
+  //   if (response.statusCode == 200) {
+  //     return ConfirmPagination.fromJson(response.data);
+  //   } else {
+  //     throw Exception("Failed");
+  //   }
+  // }
+
   @override
-  Future<ConfirmPagination> fetchConfirmAll({required int pageNumber}) async {
-    final response = await orderProcessApi.confirmPaginationAll(pageNumber: pageNumber);
-    if(response.statusCode==200){
-      return ConfirmPagination.fromJson(response.data);
-    }else{
-      throw Exception("Failed");
+  Future<List<ProductProgress?>> productConfirm({required int order_id}) async {
+    final response = await orderProcessApi.productConfirm(order_id: order_id);
+    if (response.data is List) {
+      return List<ProductProgress?>.from(
+        (response.data as List).map((x) => ProductProgress.fromJson(x)),
+      );
+    }
+    if (response.data is Map<String, dynamic>) {
+      return [ProductProgress.fromJson(response.data)];
     }
 
+    throw Exception(
+        "Expected a List or Map but got ${response.data.runtimeType}");
   }
 
 
+  @override
+  Future<List<ProductProgress>> ordersDoneProduct() async {
+    final response = await orderProcessApi.orderProductDone();
+    return productProgressFromJson(jsonEncode(response.data));
+  }
+
+  @override
+  Future<List<DoneList>> fetchConfirmAll() async{
+    final response=await orderProcessApi.confirmPaginationAll();
+    return doneListFromJson(jsonEncode(response.data));
+  }
 
 // @override
 // PagingController<int, Result> getLocationController() {

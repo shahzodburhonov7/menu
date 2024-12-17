@@ -39,7 +39,7 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
       case TableEffect.error:
         CommonToast.snackBar(
           context,
-          message: "Stol band",
+          message: "The table is occupied".tr(),
         );
     }
     super.listener(context, state);

@@ -69,6 +69,8 @@ class ProductsApi {
     );
   }
 
+
+
   Future<Response> productAddInfo({
     required int product,
     required int weight,

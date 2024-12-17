@@ -10,8 +10,8 @@ import 'package:WaiterPro/features/foods/cubit/foods_state.dart';
 
 @injectable
 class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
-  FoodsCubit(
-      this.repo, this.productRepo, this.storage, this.orderRepo, this.tableRepo)
+  FoodsCubit(this.repo, this.productRepo, this.storage, this.orderRepo,
+      this.tableRepo, this.repoVegetables)
       : super(const FoodsBuildable()) {
     userType();
   }
@@ -21,6 +21,16 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
   final ProductsRepo productRepo;
   final Storage storage;
   final TableRepo tableRepo;
+  final TableRepo repoVegetables;
+
+  void tableCreate() {
+    callable(
+      future: repoVegetables.tableCreatedVegetables(),
+      buildOnStart: () => buildable.copyWith(postCreate: true),
+      buildOnData: (d) => buildable.copyWith(postCreate: false),
+      buildOnError: (e) => buildable.copyWith(postCreate: false),
+    );
+  }
 
   void searchFood({required String query}) {
     debugPrint('SALOM: $query');
@@ -29,7 +39,13 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
       buildOnData: (data) => buildable.copyWith(foodPro: data),
     );
   }
-
+  void searchFoodVegetables({required String query}) {
+    debugPrint('SALOM: $query');
+    callable(
+      future: productRepo.searchProductsVegetables(query: query),
+      buildOnData: (data) => buildable.copyWith(vegetablesAll: data),
+    );
+  }
   void selectTable({required int tableNumber}) {
     build((buildable) => buildable.copyWith(tableNumber: tableNumber));
   }
@@ -40,6 +56,22 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
       buildOnStart: () => buildable.copyWith(loading: true),
       buildOnData: (d) => buildable.copyWith(loading: false, getTableList: d),
       buildOnError: (e) => buildable.copyWith(loading: false),
+    );
+  }
+
+  void tableProduct({required int number})async{
+    storage.cardCreate.set(number);
+    build((buildable) => buildable.copyWith(cartIdProduct: number));
+    await callable(
+      future: orderRepo.orderTableProduct(number: number),
+      buildOnStart: () => buildable.copyWith(orderLoadingProduct: true),
+      buildOnData: (d) =>
+          buildable.copyWith(orderLoadingProduct: false, tableOrderProduct: d),
+      buildOnError: (e) => buildable.copyWith(orderLoadingProduct: false),
+    );
+    // tableOrder(number: number);
+    debugPrint(
+      "debug ======> ${buildable.tableOrder}",
     );
   }
 
@@ -88,6 +120,7 @@ class FoodsCubit extends BaseCubit<FoodsBuildable, FoodsListenable> {
       buildOnError: (e) => buildable.copyWith(proLoading: false),
     );
   }
+
   void getFoodProductsVegetablesId({required int id, required int page}) {
     callable(
       future: productRepo.foodCategoryVegetablesId(id: id, page: page),

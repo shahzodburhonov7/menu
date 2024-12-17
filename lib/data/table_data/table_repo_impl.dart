@@ -32,6 +32,15 @@ class TableRepoImpl extends TableRepo {
   Future<void> tableCreated() async {
     final response = await api.tableCreate();
     await storage.cardId.set(response.data["cart_id"]);
+    debugPrint("$response");
+    return response.data;
+  }
+
+  @override
+  Future<void> tableCreatedVegetables() async {
+    final response = await api.tableCreateVegetables();
+    await storage.cardCreate.set(response.data['cart_id']);
+    debugPrint("$response""asdaaaaaaadddddddddddddddddddddddddddddddddddddddddddddddddasdasdasdsadsadas");
     return response.data;
   }
 }

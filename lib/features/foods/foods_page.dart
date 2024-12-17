@@ -1,5 +1,6 @@
 import 'package:WaiterPro/common/constants/constants.dart';
 import 'package:WaiterPro/common/widgets/custom_button.dart';
+import 'package:WaiterPro/common/widgets/product_card_widget.dart';
 import 'package:WaiterPro/domain/storage/storage.dart';
 import 'package:WaiterPro/features/foods/widget/food_all_vegetables.dart';
 import 'package:WaiterPro/features/foods/widget/food_category_vegetables.dart';
@@ -31,14 +32,22 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
       context.read<FoodsCubit>().getCategory(page: 1);
     } else {
       context.read<FoodsCubit>().getCategoryVegetables(page: 1);
+      // context.read<FoodsCubit>().tableCreate();
     }
     if (USER_TYPE == Constants.ofitsant) {
       context.read<FoodsCubit>().getAllTable();
     }
+
     try {
-      context.read<FoodsCubit>().tableOrder(
-            number: context.read<FoodsCubit>().storage.cardId.call()!,
-          );
+      if (USER_TYPE == Constants.kassir) {
+        context.read<FoodsCubit>().tableOrder(
+              number: context.read<FoodsCubit>().storage.cardId.call()!,
+            );
+      } else {
+        context.read<FoodsCubit>().tableProduct(
+              number: context.read<FoodsCubit>().storage.cardCreate.call()!,
+            );
+      }
     } catch (e) {
       print("Xatolik: $e");
     }
@@ -53,9 +62,10 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
 
   @override
   void onFocusGained(BuildContext context) {
-    context
-        .read<FoodsCubit>()
-        .tableOrder(number: context.read<FoodsCubit>().storage.cardId.call()!);
+    if (USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir) {
+      context.read<FoodsCubit>().tableOrder(
+          number: context.read<FoodsCubit>().storage.cardId.call()!);
+    }
   }
 
   @override
@@ -88,7 +98,12 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
               SizedBox(height: 20.h),
               CommonSearchField(
                 onChanged: (query) {
-                  cubit.searchFood(query: query);
+                  if (USER_TYPE == Constants.kassir ||
+                      USER_TYPE == Constants.ofitsant) {
+                    cubit.searchFood(query: query);
+                  } else if(USER_TYPE == Constants.omborchi ){
+                    cubit.searchFoodVegetables(query: query);
+                  }
                 },
                 controller: textEditingController,
                 hintText: "Pizza, Burger, hot dog, etc",
@@ -131,21 +146,31 @@ class FoodsPage extends BasePage<FoodsCubit, FoodsBuildable, FoodsListenable> {
           ),
         ),
       ),
-      bottomSheet: state.tableOrder?.cart_items == null ||
-              state.tableOrder!.cart_items!.isEmpty
-          ? CustomButton(
-              radius: 0,
-              width: double.infinity,
-              onTap: () {
-                context.router.push(
-                  ProductAddRoute(),
-                );
-              },
-              text: "Mahsulot qo’shish",
-            )
-          : FoodsBottomSheetWidget(
-              tableOrder: state.tableOrder!,
-            ),
+      bottomSheet:
+          USER_TYPE == Constants.ofitsant || USER_TYPE == Constants.kassir
+              ? state.tableOrder?.cart_items == null ||
+                      state.tableOrder!.cart_items!.isEmpty
+                  ? SizedBox.shrink()
+                  : FoodsBottomSheetWidget(
+                      tableOrder: state.tableOrder!,
+                    )
+              : USER_TYPE == Constants.omborchi
+                  ? state.tableOrderProduct?.cart_item == null ||
+                          state.tableOrderProduct!.cart_item!.isEmpty
+                      ? CustomButton(
+                          radius: 0,
+                          width: double.infinity,
+                          onTap: () {
+                            context.router.push(
+                              ProductAddRoute(),
+                            );
+                          },
+                          text: "Add product".tr(),
+                        )
+                      : ProductCardWidget(
+                          tableOrder: state.tableOrderProduct!,
+                        )
+                  : SizedBox.shrink(),
     );
   }
 }
