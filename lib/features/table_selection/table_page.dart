@@ -84,10 +84,10 @@ class TablePage extends BasePage<TableCubit, TableBuildable, TableListenable> {
               ),
               Center(
                 child: SizedBox(
-                  width: 107.w,
-                  height: 299.h,
+                  width: MediaQuery.of(context).size.width*0.3,
+                  height: MediaQuery.of(context).size.height*0.3,
                   child: CupertinoPicker(
-                    itemExtent: 50,
+                    itemExtent: 50.h,
                     onSelectedItemChanged: (index) {
                       cubit.setTable(
                         state.getTableList.elementAt(index)["number"],

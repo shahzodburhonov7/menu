@@ -57,7 +57,6 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                       SizedBox(height: 181.h),
                       Container(
                         width: double.infinity,
-                        height: 80.h,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
@@ -65,116 +64,122 @@ class AboutPage extends BasePage<AboutCubit, AboutBuildable, AboutListenable> {
                             topRight: Radius.circular(30),
                           ),
                         ),
-                        child: Padding(
-                          padding: REdgeInsets.all(24.0),
-                          child: Row(
-                            children: [
-                              "${state.foodInfo?.name_uz}".s(20.sp).w(500),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: REdgeInsets.only(left: 27, right: 29),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child:Column(
                           children: [
-                            Text(
-                              formatCurrency(
-                                "${state.foodInfo?.price} uzs",
+                            Padding(
+                              padding: REdgeInsets.all(24.0),
+                              child: Row(
+                                children: [
+                                  "${state.foodInfo?.name_uz}".s(20.sp).w(500),
+                                ],
                               ),
-                              style: TextStyle(
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.appColorOrange),
                             ),
-                            Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.remove();
-                                  },
-                                  child: Assets.images.remove
-                                      .svg(width: 24.w, height: 24.h),
-                                ),
-                                Padding(
-                                  padding:
-                                      REdgeInsets.symmetric(horizontal: 16),
-                                  child: "${state.count}"
+                            Padding(
+                              padding: REdgeInsets.only(left: 27, right: 29),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    formatCurrency(
+                                      "${state.foodInfo?.price} uzs",
+                                    ),
+                                    style: TextStyle(
+                                        fontSize: 20.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.appColorOrange),
+                                  ),
+                                  Row(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          cubit.remove();
+                                        },
+                                        child: Assets.images.remove
+                                            .svg(width: 24.w, height: 24.h),
+                                      ),
+                                      Padding(
+                                        padding:
+                                        REdgeInsets.symmetric(horizontal: 16),
+                                        child: "${state.count}"
+                                            .s(14.sp)
+                                            .w(400)
+                                            .c(AppColors.black),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          cubit.add();
+                                        },
+                                        child: Assets.images.add
+                                            .svg(width: 24.w, height: 24.h),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: REdgeInsets.only(left: 20, top: 40),
+                              child: Row(
+                                children: [
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                        AppColors.elevatedButtonColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(8),
+                                        )),
+                                    child: "About the product"
+                                        .s(14.sp)
+                                        .c(AppColors.appColorOrange)
+                                        .w(600)
+                                        .tr(),
+                                  ),
+                                  SizedBox(
+                                    width: 16.w,
+                                  ),
+                                  "Composition"
                                       .s(14.sp)
                                       .w(400)
-                                      .c(AppColors.black),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
-                                    cubit.add();
-                                  },
-                                  child: Assets.images.add
-                                      .svg(width: 24.w, height: 24.h),
-                                ),
-                              ],
+                                      .c(AppColors.hintTextColor)
+                                      .tr(),
+                                ],
+                              ),
                             ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: REdgeInsets.only(left: 20, top: 40),
-                        child: Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      AppColors.elevatedButtonColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  )),
-                              child: "About the product"
+                            Padding(
+                              padding: REdgeInsets.only(
+                                  left: 20, top: 20, right: 70, bottom: 20),
+                              child: isUzbek
+                                  ? "${state.foodInfo?.food_info_uz}"
                                   .s(14.sp)
-                                  .c(AppColors.appColorOrange)
-                                  .w(600)
-                                  .tr(),
+                                  .w(400)
+                                  .c(AppColors.hintTextColor)
+                                  : isRussian
+                                  ? "${state.foodInfo?.food_info_uz}"
+                                  .s(14.sp)
+                                  .w(400)
+                                  .c(AppColors.hintTextColor)
+                                  : "${state.foodInfo?.food_info_uz}"
+                                  .s(14.sp)
+                                  .w(400)
+                                  .c(AppColors.hintTextColor)
+                                  .s(14.sp)
+                                  .w(400)
+                                  .c(AppColors.hintTextColor),
+                            ),
+                            const Divider(
+                              color: AppColors.dividerColor,
+                              thickness: 5,
+                              indent: 9,
+                              endIndent: 9,
                             ),
                             SizedBox(
-                              width: 16.w,
-                            ),
-                            "Composition"
-                                .s(14.sp)
-                                .w(400)
-                                .c(AppColors.hintTextColor)
-                                .tr(),
+                                height: MediaQuery.of(context).size.height * 0.1),
                           ],
-                        ),
+                        )
+
                       ),
-                      Padding(
-                        padding: REdgeInsets.only(
-                            left: 20, top: 20, right: 70, bottom: 20),
-                        child: isUzbek
-                            ? "${state.foodInfo?.food_info_uz}"
-                                .s(14.sp)
-                                .w(400)
-                                .c(AppColors.hintTextColor)
-                            : isRussian
-                                ? "${state.foodInfo?.food_info_uz}"
-                                    .s(14.sp)
-                                    .w(400)
-                                    .c(AppColors.hintTextColor)
-                                : "${state.foodInfo?.food_info_uz}"
-                                    .s(14.sp)
-                                    .w(400)
-                                    .c(AppColors.hintTextColor)
-                                    .s(14.sp)
-                                    .w(400)
-                                    .c(AppColors.hintTextColor),
-                      ),
-                      const Divider(
-                        color: AppColors.dividerColor,
-                        thickness: 5,
-                        indent: 9,
-                        endIndent: 9,
-                      ),
-                      SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1),
+
                     ],
                   ),
                 ),
