@@ -1,6 +1,8 @@
 import 'package:WaiterPro/common/colors/app_colors.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
 import 'package:WaiterPro/domain/model/product_progress/product_progress.dart';
+import 'package:WaiterPro/features/about_page/about_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,9 +34,9 @@ class ProductDone extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            "Stol raqami".s(20.sp).w(500).c(
+            "Tartib raqam".s(20.sp).w(500).c(
               AppColors.textFinal,
-            ),
+            ).tr(),
             "${tableNumber}".s(20.sp).w(500)
           ],
         ),
