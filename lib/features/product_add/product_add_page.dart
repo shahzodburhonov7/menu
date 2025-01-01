@@ -17,8 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
-    ProductAddListenable> {
+class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable, ProductAddListenable> {
   ProductAddPage({super.key});
 
   TextEditingController productName = TextEditingController();
@@ -111,8 +110,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
                   ),
                 ),
               ),
-              if (state.selectedCategoryError != null)
-                state.selectedCategoryError.s(14.sp).c(AppColors.validationRed),
+              if (state.selectedCategoryError != null) state.selectedCategoryError.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 12.h),
               "Product name".s(14.sp).w(400).c(AppColors.black).tr(),
               SizedBox(height: 6.h),
@@ -123,8 +121,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
                 background: AppColors.white,
                 enabledBorderColor: AppColors.borderColor,
               ),
-              if (state.productName.isNotEmpty)
-                state.productName.s(14.sp).c(AppColors.validationRed),
+              if (state.productName.isNotEmpty) state.productName.s(14.sp).c(AppColors.validationRed),
               SizedBox(height: 20.h),
               DottedBorder(
                 borderType: BorderType.RRect,
@@ -170,8 +167,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
                   ),
                 ),
               ),
-              if (state.productImage.isNotEmpty)
-                state.productImage.s(14.sp).c(AppColors.validationRed),
+              if (state.productImage.isNotEmpty) state.productImage.s(14.sp).c(AppColors.validationRed),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
               ),
@@ -194,9 +190,7 @@ class ProductAddPage extends BasePage<ProductAddCubit, ProductAddBuildable,
                     cubit.clearSelectedImage();
                     state.productImage == "";
                   }
-
                 },
-
                 text: "Save".tr(),
                 radius: 6,
               )

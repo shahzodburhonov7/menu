@@ -10,53 +10,53 @@ class ProgressShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Card(
-            color: Colors.white,
-            child: Padding(
-              padding: REdgeInsets.all(25.0),
-              child: Column(
-                children: [
-                  // Table Number
-                  shimmerRow("Stol raqami", 100),
-                  SizedBox(height: 12.h),
-                  shimmerLine(50),
+    return ListView.builder(
+      physics: BouncingScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Card(
+          color: Colors.white,
+          child: Padding(
+            padding: REdgeInsets.all(25.0),
+            child: Column(
+              children: [
+                // Table Number
+                shimmerRow("Stol raqami", 100),
+                SizedBox(height: 12.h),
+                shimmerLine(50),
 
-                  shimmerProductRow(),
-                  shimmerProductRow(),
-                  shimmerProductRow(),
+                shimmerProductRow(),
+                shimmerProductRow(),
+                shimmerProductRow(),
 
-                  SizedBox(height: 12.h),
-                  shimmerLine(50),
-                  SizedBox(height: 10,),
-                  shimmerRow("Sana", 80),
-                  SizedBox(height: 8.h),
-                  shimmerRow("Vaqt", 80),
+                SizedBox(height: 12.h),
+                shimmerLine(50),
+                SizedBox(
+                  height: 10,
+                ),
+                shimmerRow("Sana", 80),
+                SizedBox(height: 8.h),
+                shimmerRow("Vaqt", 80),
 
-                  SizedBox(height: 12.h),
+                SizedBox(height: 12.h),
 
-                  shimmerLine(50),
-                  SizedBox(height: 12.h),
+                shimmerLine(50),
+                SizedBox(height: 12.h),
 
-                  shimmerRow("Omborchi", 80),
+                shimmerRow("Omborchi", 80),
 
-                  SizedBox(height: 20.h),
-                  shimmerLine(50), // Line separator
-                  SizedBox(height: 12.h),
+                SizedBox(height: 20.h),
+                shimmerLine(50), // Line separator
+                SizedBox(height: 12.h),
 
-                  // Price
-                  shimmerRow("Summa", 100),
-                ],
-              ),
+                // Price
+                shimmerRow("Summa", 100),
+              ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -66,7 +66,7 @@ class ProgressShimmer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         shimmerItem(18, width), // Shimmer for the title
-        shimmerItem(20, 120),   // Shimmer for the value (could be dynamic width)
+        shimmerItem(20, 120), // Shimmer for the value (could be dynamic width)
       ],
     );
   }
@@ -79,7 +79,7 @@ class ProgressShimmer extends StatelessWidget {
       child: Row(
         children: List.generate(
           count,
-              (index) => Expanded(
+          (index) => Expanded(
             child: Container(
               height: 1,
               color: index % 2 == 0 ? Colors.grey : Colors.transparent,

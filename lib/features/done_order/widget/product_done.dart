@@ -1,11 +1,9 @@
 import 'package:WaiterPro/common/colors/app_colors.dart';
 import 'package:WaiterPro/common/extensions/text_extensions.dart';
 import 'package:WaiterPro/domain/model/product_progress/product_progress.dart';
-import 'package:WaiterPro/features/about_page/about_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class ProductDone extends StatelessWidget {
   ProductDone({
@@ -34,9 +32,13 @@ class ProductDone extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            "Tartib raqam".s(20.sp).w(500).c(
-              AppColors.textFinal,
-            ).tr(),
+            "Tartib raqam"
+                .s(20.sp)
+                .w(500)
+                .c(
+                  AppColors.textFinal,
+                )
+                .tr(),
             "${tableNumber}".s(20.sp).w(500)
           ],
         ),
@@ -44,7 +46,7 @@ class ProductDone extends StatelessWidget {
         Row(
           children: List.generate(
             50,
-                (index) => Expanded(
+            (index) => Expanded(
               child: Container(
                 height: 1,
                 color: index % 2 == 0 ? Colors.grey : Colors.transparent,
@@ -54,20 +56,14 @@ class ProductDone extends StatelessWidget {
         ),
         ...List.generate(
           carts!.length,
-              (i) {
+          (i) {
             return Column(
               children: [
                 Padding(
                   padding: REdgeInsets.symmetric(vertical: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      "${carts![i].product_name}"
-                          .s(18.sp)
-                          .w(500)
-                          .c(AppColors.textFinal),
-                      "${carts![i].weight}".s(20.sp).w(500)
-                    ],
+                    children: ["${carts![i].product_name}".s(18.sp).w(500).c(AppColors.textFinal), "${carts![i].weight}".s(20.sp).w(500)],
                   ),
                 ),
               ],
@@ -77,7 +73,7 @@ class ProductDone extends StatelessWidget {
         Row(
           children: List.generate(
             50,
-                (index) => Expanded(
+            (index) => Expanded(
               child: Container(
                 height: 1,
                 color: index % 2 == 0 ? Colors.grey : Colors.transparent,
@@ -103,17 +99,14 @@ class ProductDone extends StatelessWidget {
         SizedBox(height: 8.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            "Vaqt:".s(18.sp).w(500).c(AppColors.textFinal),
-            dateTime.s(20.sp).w(500)
-          ],
+          children: ["Vaqt:".s(18.sp).w(500).c(AppColors.textFinal), dateTime.s(20.sp).w(500)],
         ),
         Padding(
           padding: REdgeInsets.symmetric(vertical: 12.0),
           child: Row(
             children: List.generate(
               50,
-                  (index) => Expanded(
+              (index) => Expanded(
                 child: Container(
                   height: 1,
                   color: index % 2 == 0 ? Colors.grey : Colors.transparent,
@@ -124,15 +117,12 @@ class ProductDone extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            "Omborchi:".s(18.sp).w(500).c(AppColors.textFinal),
-            waiterName.s(20.sp).w(500)
-          ],
+          children: ["Omborchi:".s(18.sp).w(500).c(AppColors.textFinal), waiterName.s(20.sp).w(500)],
         ),
         Row(
           children: List.generate(
             50,
-                (index) => Expanded(
+            (index) => Expanded(
               child: Container(
                 height: 1,
                 color: index % 2 == 0 ? Colors.grey : Colors.transparent,
@@ -144,16 +134,13 @@ class ProductDone extends StatelessWidget {
           padding: REdgeInsets.only(top: 20.0, bottom: 15.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              "Summa:".s(18.sp).w(500).c(AppColors.textFinal),
-              "${priceAll}".s(20.sp).w(500)
-            ],
+            children: ["Summa:".s(18.sp).w(500).c(AppColors.textFinal), "${priceAll}".s(20.sp).w(500)],
           ),
         ),
         Row(
           children: List.generate(
             50,
-                (index) => Expanded(
+            (index) => Expanded(
               child: Container(
                 height: 1,
                 color: index % 2 == 0 ? Colors.grey : Colors.transparent,
